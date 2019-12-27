@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans Condensed';
+  font-family: 'Open Sans', sans-serif;;
 }
 
 .body {
@@ -31,6 +31,11 @@ th {
 
 td {
   color: white;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }
 
 tr:nth-child(even) {background-color: #321450;}

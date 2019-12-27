@@ -1,19 +1,51 @@
 import React from 'react'
 import './admin-match.styles.scss';
 
+import { ReactComponent as AddIcon } from '../../assets/icon-add-button.svg';
+
 const AdminMatch = () => (
   <div className='admin-match'>
       <h3>Match</h3>
       <table className='admin-match-table'>
         <tr>
-          <th className='title'>Home</th>
-          <th className='date'></th>
-          <th className='time'>Away</th>
+          <th className=''>Home</th>
+          <th className=''></th>
+          <th className=''>Away</th>
         </tr>
         <tr className=''>
-          <td className='date'>02/20/2019(Sat)</td>
-          <td className='time'>9:30AM</td>
-          <td className='title'>New Jersey FC Team Match</td>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''>Drop</td>
+          <td className=''>  vs  </td>
+          <td className=''>Drop</td>
+        </tr>
+        <tr className=''>
+          <td className=''></td>
+          <td className=''><AddIcon className='icon' /></td>
+          <td className=''></td>
         </tr>
       </table>
   </div>
