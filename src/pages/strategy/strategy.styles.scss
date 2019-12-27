@@ -1,0 +1,13 @@
+.strategy-page {
+  display: inline-block;
+  .squad-position {
+    width: 700px;
+    height: 1000px;
+    margin: 0;
+    padding: 0;
+
+    .soccer-field-img {
+      position: absolute;
+    }
+  }
+}

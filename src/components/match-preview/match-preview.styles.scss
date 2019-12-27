@@ -1,0 +1,11 @@
+.match-preview {
+    .title {
+        text-decoration: underline;
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+    .preview {
+        display: flex;
+        justify-content: space-between;
+    }
+}

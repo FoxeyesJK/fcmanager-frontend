@@ -1,0 +1,54 @@
+.match-item {
+    width: 600px;
+    height: 200px;
+    background-color: 	#00BFFF;
+    padding: 30px;
+    margin: 20px;
+
+    .final-score-container {
+        display: flex;
+        justify-content: space-between;
+
+        .team {
+            display: block;
+            width: 48px;
+            text-align: center;
+            .icon {
+                height: 48px;
+                width: 48px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .final-score {
+            font-size: 32px;
+            margin: auto;
+            font-weight: bold;
+
+            .score {
+                padding: 15px;
+            }
+        }
+    }
+
+    .record {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        border-top: 1px solid #efefef;
+        margin: 20px 0;
+        padding: 5px 0;
+
+        .player {
+
+            .icon {
+                height: 13px;
+                width: 13px;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 5px;
+            }
+        }
+    }
+}
