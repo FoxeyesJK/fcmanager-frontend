@@ -2,26 +2,25 @@ import React from 'react';
 
 import './form-dropdown.styles.scss';
 
-const FormDropdown = ({ handleChange, label, val, ...otherProps }) => (
-    <div className='form-dropdown'>
-        {label ? (
-            <label
-            >
-                {label}
-            </label>
-        ) : null}
+import FormDropdownItem from '../form-dropdown-item/form-dropdown-item.component';
 
-        <select onChange={handleChange} {...otherPorps}>
-            <option value="val">{}</option>
-        </select>
-        <input className='form-input' onChange={handleChange} {...otherProps} />
-        {label ? (
-            <label
-            >
-                {label}
-            </label>
-        ) : null}
+const FormDropdown = ({ dropdownItems }) => (
+    <div className='form-dropdown'>
+        <div className='form-dropdown-items'>
+            <select>
+            {
+                dropdownItems.length ? (
+                dropdownItems.map(dropdownItem => (
+                    <FormDropdownItem key={dropdownItem.id} item={dropdownItem} />
+                ))
+                ) : (
+                    <span className='empty-message'>Your cart is empty</span>
+                )
+            }
+            </select>
+        </div>
     </div>
+
 )
 
 export default FormDropdown;

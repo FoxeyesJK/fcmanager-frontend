@@ -1,13 +1,30 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
+
 import './admin-schedule.styles.scss';
 import { ReactComponent as DeleteIcon } from '../../assets/icon-delete-button.svg';
 import { ReactComponent as EditIcon } from '../../assets/icon-edit-button.svg';
+import { ReactComponent as AddIcon } from '../../assets/icon-add-button.svg';
+import { ReactComponent as SaveIcon } from '../../assets/icon-save-button.svg';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
+import SCHEDULE_DATA from '../../pages/schedule/schedule.data';
+
+import ScheduleAddItem from '../admin-schedule-add-item/admin-schedule-add-item.component';
+import ScheduleItem from '../admin-schedule-item/admin-schedule-item.component';
+
 export default class AdminSchedule extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      count: 0,
+      schedules: SCHEDULE_DATA
+    }
+  }
   // state = {
   //   persons: [],
   // };
@@ -17,14 +34,13 @@ export default class AdminSchedule extends React.Component {
   //     this.setState({ persons: res.data });
   //   })
   // }
-  state = {
-    date: '',
-    title: '',
-    location: ''
-  }
 
   handleChange = event => {
-    this.setState({ date: event.target.value });
+    const { value, name } = event.target;
+
+    this.setState({ 
+      [name]: value //dynamically setting value
+    });
   }
 
   handleSubmit = event => {
@@ -43,8 +59,16 @@ export default class AdminSchedule extends React.Component {
       });
   }
 
+  addScheduleRow = () => {
+    this.setState(prevState => {
+      return {count: prevState.count + 1}
+    });
+  }
+
 
   render() {
+    const { schedules, count } = this.state;
+    console.log(count);
     return (
         <div className='admin-schedule'>
             {/* <ul>
@@ -52,76 +76,25 @@ export default class AdminSchedule extends React.Component {
             </ul> */}
             <h3>Schedule</h3>
             <form onSubmit={this.handleSubmit}>
-              <FormInput 
-                name='Date' 
-                type='date' 
-                value={this.state.date} 
-                handleChange={this.handleChange} 
-                label='Date'
-                required 
-              />
-              <FormInput
-                name='title'
-                type='text'
-                value={this.state.title}
-                handleChange={this.handleChange}
-                label='title'
-                required
-              />
-              <FormInput
-                name='location'
-                type='text'
-                value={this.state.location}
-                handleChange={this.handleChange}
-                label='location'
-                required
-              />
-              <div className='buttons'>
-                  <CustomButton type='submit'> Add Schedule </CustomButton>
-              </div>
-            </form>
-            <table className='admin-schedule-table'>
-              <tr>
-                <th className='title'>Date</th>
-                <th className='date'>Time</th>
-                <th className='time'>Title</th>
-                <th className='location'>Location</th>
-                <th className='location'></th>
-                <th className='location'></th>
-              </tr>
-              <tr className='match'>
-                <td className='date'>02/20/2019(Sat)</td>
-                <td className='time'>9:30AM</td>
-                <td className='title'>New Jersey FC Team Match</td>
-                <td className='location'>Fort Lee, NJ</td>
-                <td className='location'><EditIcon className='icon' /></td>
-                <td className='location'><DeleteIcon className='icon' /></td>
-              </tr> 
-              <tr className='match'>
-                <td className='date'>02/20/2019(Sat)</td>
-                <td className='time'>9:30AM</td>
-                <td className='title'>New Jersey FC Team Match</td>
-                <td className='location'>Fort Lee, NJ</td>
-                <td className='location'><EditIcon className='icon' /></td>
-                <td className='location'><DeleteIcon className='icon' /></td>
-              </tr>
-              <tr className='match'>
-                <td className='date'>02/20/2019(Sat)</td>
-                <td className='time'>9:30AM</td>
-                <td className='title'>New Jersey FC Team Match</td>
-                <td className='location'>Fort Lee, NJ</td>
-                <td className='location'><EditIcon className='icon' /></td>
-                <td className='location'><DeleteIcon className='icon' /></td>
-              </tr>
-              <tr className='match'>
-                <td className='date'>02/20/2019(Sat)</td>
-                <td className='time'>9:30AM</td>
-                <td className='title'>New Jersey FC Team Match</td>
-                <td className='location'>Fort Lee, NJ</td>
-                <td className='location'><EditIcon className='icon' /></td>
-                <td className='location'><DeleteIcon className='icon' /></td>
-              </tr>
-          </table>
+              <table className='admin-schedule-table'>
+                <tr className='table-row'>
+                    <th className='date'>Date</th>
+                    <th className='title'>Title</th>
+                    <th className='location'>Location</th>
+                    <th className='location'></th>
+                    <th className='icontr'><button className='button-icon' onClick={this.addScheduleRow}><AddIcon className='icon' /></button></th>
+                </tr>
+                {
+                  this.state.count > 0 ? 
+                  <ScheduleAddItem /> : null
+                }
+                {
+                  schedules.map(({ id, ...otherScheduleProps }) => (
+                    <ScheduleItem key={id} {...otherScheduleProps} />
+                  ))
+                }
+            </table>
+          </form>
         </div>
     )
   }
