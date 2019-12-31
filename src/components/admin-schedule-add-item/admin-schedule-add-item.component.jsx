@@ -3,8 +3,7 @@ import React from 'react';
 import './admin-schedule-add-item.styles.scss';
 
 import FormInput from '../form-input/form-input.component';
-import { ReactComponent as AddIcon } from '../../assets/icon-add-button.svg';
-import { ReactComponent as SaveIcon } from '../../assets/icon-save-button.svg';
+import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 
 export default class AdminScheduleAddItem extends React.Component {
     constructor(props) {
@@ -48,7 +47,7 @@ export default class AdminScheduleAddItem extends React.Component {
                 />
                 </td>
                 <td className='location'></td>
-                <td className='location'><SaveIcon className='icon' /></td>
+                <td className='location'><CustomIconButton type='save' handleClick={this.addScheduleRow} /></td>
             </tr>
         )
     }

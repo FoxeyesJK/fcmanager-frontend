@@ -3,13 +3,11 @@ import axios from 'axios';
 import moment from 'moment';
 
 import './admin-schedule.styles.scss';
-import { ReactComponent as DeleteIcon } from '../../assets/icon-delete-button.svg';
-import { ReactComponent as EditIcon } from '../../assets/icon-edit-button.svg';
-import { ReactComponent as AddIcon } from '../../assets/icon-add-button.svg';
-import { ReactComponent as SaveIcon } from '../../assets/icon-save-button.svg';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
+
 
 import SCHEDULE_DATA from '../../pages/schedule/schedule.data';
 
@@ -82,7 +80,7 @@ export default class AdminSchedule extends React.Component {
                     <th className='title'>Title</th>
                     <th className='location'>Location</th>
                     <th className='location'></th>
-                    <th className='icontr'><button className='button-icon' onClick={this.addScheduleRow}><AddIcon className='icon' /></button></th>
+                    <td className='location'><CustomIconButton type='add' handleClick={this.addScheduleRow} /></td>
                 </tr>
                 {
                   this.state.count > 0 ? 
