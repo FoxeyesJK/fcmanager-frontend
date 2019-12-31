@@ -11,6 +11,7 @@ import Strategy from './pages/strategy/strategy.component';
 import League from './pages/league/league.component';
 import Schedule from './pages/schedule/schedule.component';
 import Admin from './pages/admin/admin.component';
+import AdminMember from './pages/admin-member/admin-member.component';
 
 import Menu from './components/menu/menu.component';
 
@@ -56,6 +57,7 @@ class App extends React.Component {
             <Route exact path='/league' component={League} />
             <Route exact path='/schedule' component={Schedule} />
             <Route exact path='/admin' component={Admin} />
+            <Route exact path='/admin-member' component={AdminMember} />
           </Switch>
         </div>
       </div>

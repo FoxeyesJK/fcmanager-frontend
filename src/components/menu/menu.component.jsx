@@ -42,6 +42,10 @@ const Menu = ({ match, isSelectedOption }) => {
         <ReportIcon className='icon' />
         <span>Admin</span>
       </Link>
+      <Link className='option' to='/admin-member'>
+        <ReportIcon className='icon' />
+        <span>Admin-Member</span>
+      </Link>
     </div>
   </div>
   )

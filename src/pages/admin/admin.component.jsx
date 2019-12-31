@@ -9,7 +9,7 @@ const AdminPage = () => {
   return (
     <div className='admin-page'>
       <AdminSchedule />
-      <AdminMatch/>
+      <AdminMatch />
     </div>
   )
 }
