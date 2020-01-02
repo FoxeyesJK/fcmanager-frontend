@@ -16,8 +16,8 @@ export default class AdminMatchAddItem  extends React.Component {
 
   render () {
       return (
-        <tr className=''>
-        <td className=''>
+        <div className='admin-match-item'>
+        <div className=''>
           <FormDropdown 
             name='home'
             dropdownItems={[
@@ -27,9 +27,23 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-        </td>
-        <td className=''><CustomIconButton type='add' /></td>
-        <td className=''>
+          <FormDropdown 
+            name='home'
+            dropdownItems={[
+              { value: 'Nathan Jeong', id: 1 },
+            ]}
+            required
+          />
+          <FormDropdown 
+            name='home'
+            dropdownItems={[
+              { value: 'Nathan Jeong', id: 1 },
+            ]}
+            required
+          />
+        </div>
+        <div className=''><CustomIconButton type='add' /></div>
+        <div className=''>
           <FormDropdown 
             name='home'
             dropdownItems={[
@@ -39,8 +53,22 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-        </td>
-      </tr>
+          <FormDropdown 
+            name='home'
+            dropdownItems={[
+              { value: 'Nathan Jeong', id: 1 },
+            ]}
+            required
+          />
+          <FormDropdown 
+            name='home'
+            dropdownItems={[
+              { value: 'Nathan Jeong', id: 1 },
+            ]}
+            required
+          />
+        </div>
+      </div>
       )
   }
 }

@@ -14,32 +14,60 @@ export default class AdminMatch extends React.Component {
 
   this.state = {
     count: 0,
+    selectedId: 0,
     matches: MATCH_DATA
   }
 }
 
+handleClick = (id) => {
+
+  // const { name, value } = event.target;
+  console.log(id);
+  this.setState = ({
+    selectedId: id
+  })
+}
+
+
   render() {
-    const { count, matches } = this.state;
+    const { count, selectedId, matches } = this.state;
 
     return (
       <div className='admin-match'>
           <h3>Match</h3>
 
-          <table className='admin-match-table'>
-            <tr>
-              <th className=''>Home</th>
-              <th className=''></th>
-              <th className=''>Away</th>
-            </tr>
+          <div className='admin-match-table'>
+            <div className='header'>
+              <div className='column'>
+                <span className=''>Home</span>
+              </div>
+              <div className='column'>
+                <span className=''></span>
+              </div>
+              <div className='column'>
+                <span className=''>Away</span>
+              </div>
+            </div>
+            <div>
             {
-              matches.map(({ id, ...otherMatchProps }) => (
-                <MatchItem key={id} {...otherMatchProps} />
+              matches.map(({ id, ...otherMatchProps}) => (
+                <div className='admin-match-container'>
+                  {selectedId}
+                  {
+                    selectedId == id?
+                    <MatchAddItem />
+                    : <MatchItem key={id} id={id} handleClick={this.handleClick} {...otherMatchProps} />
+                  }
+                </div>
+              
               ))
+                              //<ScoreItem key={id} {...otherScoreProps} />]
             }
             {
               <MatchAddItem />
             }
-          </table>
+            </div>
+          </div>
       </div>
     )
   }

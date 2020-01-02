@@ -9,8 +9,8 @@ import { ReactComponent as DeleteIcon } from '../../assets/icon-delete-button.sv
 import { ReactComponent as ErrorIcon } from '../../assets/icon-error-button.svg';
 
 //Need refactoring
-const CustomIconButton = ({ type, handleClick, ...otherProps }) => (
-   <button className='button-icon' onClick={handleClick}>
+const CustomIconButton = ({ type, id, handleClick, ...otherProps }) => (
+   <button className='button-icon' onClick={() => handleClick(id)}>
       {
          type == 'add' ? <AddIcon className='icon' /> :
          type == 'save' ? <SaveIcon className='icon'/> :

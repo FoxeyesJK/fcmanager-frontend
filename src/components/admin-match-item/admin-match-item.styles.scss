@@ -1,0 +1,13 @@
+.admin-match-item {
+    display: flex;
+    justify-content: space-between;
+    
+    .column {
+        margin: auto;
+
+        .score {
+            padding: 10px;
+        }
+    }
+
+}
