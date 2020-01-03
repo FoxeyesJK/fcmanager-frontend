@@ -4,15 +4,15 @@ import './match-preview.styles.scss';
 
 import MatchItem from '../match-item/match-item.component';
 
-const MatchPreview = ({ date, items }) => {
+const MatchPreview = ({ title, matches }) => {
   return (
     <div className='match-preview'>
-        <h1 className='title'>{date.toUpperCase()}</h1>
+        <h1 className='title'>{title.toUpperCase()}</h1>
         <div className='preview'>
-            {items
-                .filter((item, idx) => idx < 3)
-                .map(item => (
-                    <MatchItem key={item.id} item={item} />
+            {matches
+                .filter((match, idx) => idx < 3)
+                .map(match => (
+                    <MatchItem key={match.id} match={match} />
             ))}
         </div>
     </div>

@@ -3,11 +3,10 @@ import './admin-match.styles.scss';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 
-import MatchItem from '../admin-match-item/admin-match-item.component';
+import MatchItem from '../match-item/match-item.component';
 import MatchAddItem from '../admin-match-add-item/admin-match-add-item.component';
-import MatchDetail from '../admin-match-detail/admin-match-detail.component';
 
-import MATCH_DATA from '../../pages/league/match2.data';
+import MATCH_DATA from '../../pages/league/match.data';
 
 export default class AdminMatch extends React.Component {
   constructor(props) {
@@ -33,6 +32,8 @@ handleClick = (id) => {
 
     return (
       <div className='admin-match'>
+          <h3>Match</h3>
+
           <div className='admin-match-table'>
             <div className='header'>
               <div className='column'>
@@ -49,19 +50,24 @@ handleClick = (id) => {
             {
               matches
               .filter((id) => id != selectedId)
-              .map((match) => (
+              .map(({ id, ...otherMatchProps}) => (
                 <div className='admin-match-container'>
+                  {selectedId}
                   {
-                    <MatchItem key={match.id} id={match.id} match={match} handleClick={this.handleClick} />
+                    selectedId == id?
+                    <MatchAddItem />
+                    : <MatchItem key={id} id={id} handleClick={this.handleClick} {...otherMatchProps} />
                   }
                 </div>
               
               ))
                               //<ScoreItem key={id} {...otherScoreProps} />]
             }
+            {
+              <MatchAddItem />
+            }
             </div>
           </div>
-              <MatchDetail id={selectedId} />
       </div>
     )
   }

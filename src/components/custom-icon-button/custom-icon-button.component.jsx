@@ -11,7 +11,6 @@ import { ReactComponent as ErrorIcon } from '../../assets/icon-error-button.svg'
 //Need refactoring
 const CustomIconButton = ({ type, id, handleClick, ...otherProps }) => (
    <div>
-      hi{id}
    <button className='button-icon' onClick={() => handleClick(id)}>
       {
          type == 'add' ? <AddIcon className='icon' /> :

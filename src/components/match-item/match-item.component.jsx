@@ -9,34 +9,116 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 
-const MatchItem = ({ item }) => {
-  const { FirstTeam, FirstTeamFinalScore, FirstTeamScore, FirstTeamAssist, SecondTeam, SecondTeamFinalScore, SecondTeamScore, SecondTeamAssist } = item;
+import FormDropdown from '../form-dropdown/form-dropdown.component';
+
+const MatchItem = ({ match, isEdit }) => {
+  const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
  
   return (
     <div className='match-item'>
         <div className='final-score-container'>
           <div className='team'>
-            <RedIcon className='icon' />
-            <span className='first-team'>{FirstTeam}</span>
+            {
+              isEdit ? 
+              <FormDropdown 
+              name='home'
+              className='home team-name'
+              dropdownItems={[
+                { value: 'RED', id: 1 },
+                { value: 'BLUE', id: 2 },
+                { value: 'YELLOW', id: 3}
+              ]}
+              required
+              /> :
+              <div><RedIcon className='icon' /><br /><span className='first-team'>{HomeTeamName}</span></div>
+            }
           </div>
           <div className='final-score'>
-            <span className='score'>{FirstTeamFinalScore}</span>
+            <span className='score'>{HomeScore}</span>
             <span>  -  </span>
-            <span className='score'>{SecondTeamFinalScore}</span>
+            <span className='score'>{AwayScore}</span>
           </div>
           <div className='team'>
-            <YellowIcon className='icon' />
-            <span className='second-team'>{SecondTeam}</span>
+            {
+              isEdit ?
+              <FormDropdown 
+                className='away team-name'
+                name='away'
+                dropdownItems={[
+                  { value: 'RED', id: 1 },
+                  { value: 'BLUE', id: 2 },
+                  { value: 'YELLOW', id: 3}
+                ]}
+                required
+              /> :
+              <div><YellowIcon className='icon' /><br /><span className='second-team'>{AwayTeamName}</span></div>
+            }
           </div>
         </div>
         <div  className='record'>
-          <div className='player'>
-            <ScoreIcon className='icon' /><span className='scorer'>{FirstTeamScore}</span><br />
-            <span>└</span><AssistIcon className='icon' /><span className='assist'>{FirstTeamAssist}</span>
+          <div className='player-container'>
+            <div className='player'>
+            <ScoreIcon className='icon' />
+            {
+              isEdit ?
+              <FormDropdown 
+                name='home'
+                className='scorer'
+                dropdownItems={[
+                  { value: 'Nathan Jeong', id: 1 },
+                ]}
+                required
+              /> :
+              <span className='scorer'>Nathan Jeong</span>
+            }
+            </div>
+            <div className='player'>
+            <span>└</span><AssistIcon className='icon' />
+            {
+              isEdit ?
+              <FormDropdown 
+                name='home'
+                className='assist'
+                dropdownItems={[
+                  { value: 'Nathan Jeong', id: 1 },
+                ]}
+                required
+              /> :
+              <span className='assist'>Nathan Jeong</span>
+            }
+            </div>
+
           </div>
-          <div className='player'>
-            <span className='scorer'>{SecondTeamScore}</span><ScoreIcon className='icon' /><br />
-            <span className='assist'>ㄴ{SecondTeamAssist}</span><AssistIcon className='icon' />
+          <div className='player-container'>
+            <div className='player'>
+            {
+              isEdit ?
+              <FormDropdown 
+                name='home'
+                dropdownItems={[
+                  { value: 'Nathan Jeong', id: 1 },
+                ]}
+                required
+              /> :
+              <span className='scorer'>Nathan Jeong</span>
+            }
+            <ScoreIcon className='icon' />
+            </div>
+            <div className='player'>
+            {
+              isEdit ?
+              <FormDropdown 
+                name='home'
+                dropdownItems={[
+                  { value: 'Nathan Jeong', id: 1 },
+                ]}
+                required
+              /> 
+              :
+              <span className='assist'>ㄴNathan Jeong</span>
+            }
+            <AssistIcon className='icon' />
+            </div>
           </div>
         </div>
     </div>

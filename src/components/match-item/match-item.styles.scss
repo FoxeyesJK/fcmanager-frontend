@@ -11,7 +11,7 @@
 
         .team {
             display: block;
-            width: 48px;
+            width: 100px;
             text-align: center;
             .icon {
                 height: 48px;
@@ -40,14 +40,16 @@
         margin: 20px 0;
         padding: 5px 0;
 
-        .player {
-
-            .icon {
-                height: 13px;
-                width: 13px;
-                display: inline-block;
-                vertical-align: middle;
-                margin: 0 5px;
+        .player-container {
+            .player {
+                display:flex;
+                .icon {
+                    height: 13px;
+                    width: 13px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 5px;
+                }
             }
         }
     }

@@ -34,6 +34,9 @@ class AdminMatchItem extends React.Component {
   constructor(props) {
     super(props);
     
+    // this.state = {
+    //   selectedId: 0
+    // }
     this.state = {
       selectedId: 0
     }
@@ -43,32 +46,33 @@ class AdminMatchItem extends React.Component {
 
 //   this.setState({ isEditClicked: true });
 // }
-handleClick = (id) => {
+// handleClick = (id) => {
 
-  // const { name, value } = event.target;
-  console.log(id);
-  this.setState({
-    selectedId: id
-  })
-}
+//   // const { name, value } = event.target;
+//   console.log(id);
+//   this.setState({
+//     selectedId: id
+//   })
+// }
 
   render () {
+    //const { isEditClicked } = this.state;
     const { selectedId } = this.state;
-    const { match } = this.props;
-
-
+    
   return (
     <div className='admin-match-item'>
           <div className='column'>
-            <span className='home'>{match.HomeTeamName}</span>
+            <span className='home'>{this.props.home}</span>
+            <AdminRecord />
           </div>
           <div className='column'>
-            <span className='score'>{match.HomeScore}</span>
+            <span className='score'>1</span>
             <span className=''>vs</span>
-            <span className='score'>{match.AwayScore}</span>
+            <span className='score'>1</span>
           </div>
           <div className='column'>
-            <span className='away'>{match.AwayTeamName}</span>
+            <span className='away'>{this.props.away}</span>
+            <AdminRecord />
           </div>
           <CustomIconButton type='edit' id={this.props.id} handleClick={this.props.handleClick} />
     </div>
