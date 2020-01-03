@@ -10,6 +10,8 @@ import { ReactComponent as ErrorIcon } from '../../assets/icon-error-button.svg'
 
 //Need refactoring
 const CustomIconButton = ({ type, id, handleClick, ...otherProps }) => (
+   <div>
+      hi{id}
    <button className='button-icon' onClick={() => handleClick(id)}>
       {
          type == 'add' ? <AddIcon className='icon' /> :
@@ -18,7 +20,7 @@ const CustomIconButton = ({ type, id, handleClick, ...otherProps }) => (
          type == 'delete' ? <DeleteIcon className='icon' /> : 
          <ErrorIcon className='icon' /> 
       }
-   </button>
+   </button></div>
 )
 
 export default CustomIconButton;

@@ -14,19 +14,19 @@ export default class AdminMatch extends React.Component {
 
   this.state = {
     count: 0,
-    selectedId: 0,
+    //selectedId: 0,
     matches: MATCH_DATA
   }
 }
 
-handleClick = (id) => {
+// handleClick = (id) => {
 
-  // const { name, value } = event.target;
-  console.log(id);
-  this.setState = ({
-    selectedId: id
-  })
-}
+//   // const { name, value } = event.target;
+//   console.log(id);
+//   this.setState = ({
+//     selectedId: id
+//   })
+// }
 
 
   render() {
@@ -56,7 +56,7 @@ handleClick = (id) => {
                   {
                     selectedId == id?
                     <MatchAddItem />
-                    : <MatchItem key={id} id={id} handleClick={this.handleClick} {...otherMatchProps} />
+                    : <MatchItem key={id} id={id} {...otherMatchProps} />
                   }
                 </div>
               
