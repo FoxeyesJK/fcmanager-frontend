@@ -31,9 +31,9 @@ export default class AdminMatchDetail extends React.Component {
       <div className='admin-match-detail'>
         {
           matches
-          .filter((match, id) => id === this.props.id)
-          .map(match => (
-            <MatchItem key={match.id} match={match} isEdit />
+          .filter((match, id) => id === this.props.id - 1)
+          .map((match) =>  (
+            <MatchItem key={match.id} id={match.id} match={match} isEdit />
           ))
       }
       </div>

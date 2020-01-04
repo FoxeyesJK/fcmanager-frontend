@@ -7,15 +7,15 @@ import CustomIconButton from '../../components/custom-icon-button/custom-icon-bu
 
 
 
-const AdminScheduleItem = (schedule) => {
-    const { date, title, location } = schedule;
+const AdminScheduleItem = ({date, title, location, id, handleClick}) => {
+    //const { date, title, location, id } = schedule;
     
     return (
-    <tr className='admin-schedule-item'>
+    <tr className='admin-schedule-item' onClick={() => handleClick(id)}>
+        <div>{id}</div>
         <td className='date'>{moment(date).format('llll')}</td>
         <td className='title'>{title}</td>
         <td className='location'>{location}</td>
-        <td className='location'><CustomIconButton type='edit'/></td>
         <td className='location'><CustomIconButton type='delete'/></td>
     </tr>
     );

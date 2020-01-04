@@ -11,7 +11,7 @@ import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg'
 
 import FormDropdown from '../form-dropdown/form-dropdown.component';
 
-const MatchItem = ({ match, isEdit }) => {
+const MatchItem = ({ match, isEdit, id }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
  
   return (

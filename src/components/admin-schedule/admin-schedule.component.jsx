@@ -57,6 +57,11 @@ export default class AdminSchedule extends React.Component {
       });
   }
 
+  handleClick = (id) => {
+    this.setState({})
+    console.log('hello'+id);
+  }
+
   addScheduleRow = () => {
     this.setState(prevState => {
       return {count: prevState.count + 1}
@@ -88,7 +93,7 @@ export default class AdminSchedule extends React.Component {
                 }
                 {
                   schedules.map(({ id, ...otherScheduleProps }) => (
-                    <ScheduleItem key={id} {...otherScheduleProps} />
+                    <ScheduleItem key={id} id={id} {...otherScheduleProps} handleClick={this.handleClick} />
                   ))
                 }
             </table>

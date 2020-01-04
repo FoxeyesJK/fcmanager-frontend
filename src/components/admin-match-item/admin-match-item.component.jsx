@@ -43,14 +43,6 @@ class AdminMatchItem extends React.Component {
 
 //   this.setState({ isEditClicked: true });
 // }
-handleClick = (id) => {
-
-  // const { name, value } = event.target;
-  console.log(id);
-  this.setState({
-    selectedId: id
-  })
-}
 
   render () {
     const { selectedId } = this.state;
@@ -58,7 +50,7 @@ handleClick = (id) => {
 
 
   return (
-    <div className='admin-match-item'>
+    <div className='admin-match-item' onClick={() => this.props.handleClick(this.props.id)}>
           <div className='column'>
             <span className='home'>{match.HomeTeamName}</span>
           </div>
@@ -70,7 +62,6 @@ handleClick = (id) => {
           <div className='column'>
             <span className='away'>{match.AwayTeamName}</span>
           </div>
-          <CustomIconButton type='edit' id={this.props.id} handleClick={this.props.handleClick} />
     </div>
   );
   }

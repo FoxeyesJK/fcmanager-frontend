@@ -12,7 +12,7 @@ const MATCH_DATA =  [
           HomeTeamName: 'BLUE',
           HomeScore: '1',
           AwayTeamName: 'YELLOW',
-          AwayScore: '3',
+          AwayScore: '1',
           Time: '2014-01-01T23:28:56.782Z'
         },
         {
@@ -20,7 +20,7 @@ const MATCH_DATA =  [
           HomeTeamName: 'RED',
           HomeScore: '1',
           AwayTeamName: 'YELLOW',
-          AwayScore: '2',
+          AwayScore: '4',
           Time: '2014-01-01T23:28:56.782Z'
         },
         {
