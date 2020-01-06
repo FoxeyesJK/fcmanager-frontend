@@ -27,7 +27,6 @@ class Test extends React.Component {
     //console.log(teams);
     return (
       <div>
-        Hellow
       </div>
     )
   }

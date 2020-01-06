@@ -2,6 +2,7 @@ import React from 'react';
 
 import './admin-league-container.styles.scss';
 
+import Header from '../../components/header/header.component';
 import AdminSchedule from '../../components/admin-schedule/admin-schedule.component';
 import AdminMatch from '../../components/admin-match/admin-match.component';
 
@@ -11,11 +12,10 @@ export default class AdminLeagueContainer extends React.Component {
 
 }
 
-
-
   render() {
     return (
       <div className='admin-league-container'>
+        <Header />
         <AdminSchedule />
         <AdminMatch />
       </div>

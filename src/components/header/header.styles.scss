@@ -1,0 +1,16 @@
+$main-color: #321450;
+$sub-color: #3e1964;
+
+.header {
+  margin: 20px 0;
+  width: 100%;
+  .options {
+    .option {
+      padding: 5px 8px;
+    }
+
+    .option-active {
+      border-bottom: 3px solid white;
+    }
+  }
+}

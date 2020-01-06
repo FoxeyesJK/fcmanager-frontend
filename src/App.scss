@@ -1,12 +1,19 @@
+$main-color: #321450;
+$sub-color: #3e1964;
+
+
 body {
   font-family: 'Open Sans', sans-serif;;
 }
 
 .body {
-  padding: 100px;
+  padding: 0 150px;
   width: 85%;
   float: right;
   background-color: #282828;
+}
+.option {
+  color: white;
 }
 
 span {
@@ -38,8 +45,8 @@ td {
   height: 20px;
 }
 
-tr:nth-child(even) {background-color: #321450;}
-tr:nth-child(odd) {background-color: #3e1964;}
+tr:nth-child(even) {background-color: $main-color;}
+tr:nth-child(odd) {background-color: $sub-color;}
 
 a {
   text-decoration: none;
