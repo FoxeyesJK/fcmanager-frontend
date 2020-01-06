@@ -9,7 +9,7 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 
-import FormDropdown from '../form-dropdown/form-dropdown.component';
+import TeamDropdown from '../team-dropdown/team-dropdown.component';
 
 const MatchItem = ({ match, isEdit, id }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
@@ -20,7 +20,7 @@ const MatchItem = ({ match, isEdit, id }) => {
           <div className='team'>
             {
               isEdit ? 
-              <FormDropdown 
+              <TeamDropdown 
               name='home'
               className='home team-name'
               dropdownItems={[
@@ -41,7 +41,7 @@ const MatchItem = ({ match, isEdit, id }) => {
           <div className='team'>
             {
               isEdit ?
-              <FormDropdown 
+              <TeamDropdown 
                 className='away team-name'
                 name='away'
                 dropdownItems={[
@@ -61,7 +61,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             <ScoreIcon className='icon' />
             {
               isEdit ?
-              <FormDropdown 
+              <TeamDropdown 
                 name='home'
                 className='scorer'
                 dropdownItems={[
@@ -76,7 +76,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             <span>└</span><AssistIcon className='icon' />
             {
               isEdit ?
-              <FormDropdown 
+              <TeamDropdown 
                 name='home'
                 className='assist'
                 dropdownItems={[
@@ -93,7 +93,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             <div className='player'>
             {
               isEdit ?
-              <FormDropdown 
+              <TeamDropdown 
                 name='home'
                 dropdownItems={[
                   { value: 'Nathan Jeong', id: 1 },
@@ -107,7 +107,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             <div className='player'>
             {
               isEdit ?
-              <FormDropdown 
+              <TeamDropdown 
                 name='home'
                 dropdownItems={[
                   { value: 'Nathan Jeong', id: 1 },

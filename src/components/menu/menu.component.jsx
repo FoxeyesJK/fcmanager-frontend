@@ -8,7 +8,6 @@ import { ReactComponent as PaymentIcon } from '../../assets/icon-payment.svg';
 import { ReactComponent as ReportIcon } from '../../assets/icon-report.svg';
 
 const Menu = ({ match, isSelectedOption }) => {
-  console.log('match', match);
   return (
   <div className='menu'>
     <div className='menu-title'>

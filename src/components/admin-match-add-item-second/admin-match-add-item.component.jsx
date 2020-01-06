@@ -2,7 +2,7 @@ import React from 'react'
 import './admin-match-add-item.styles.scss';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
-import FormDropdown from '../form-dropdown/form-dropdown.component';
+import TeamDropdown from '../team-dropdown/team-dropdown.component';
 
 export default class AdminMatchAddItem  extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class AdminMatchAddItem  extends React.Component {
       return (
         <div className='admin-match-item'>
         <div className=''>
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'RED', id: 1 },
@@ -27,14 +27,14 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'Nathan Jeong', id: 1 },
             ]}
             required
           />
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'Nathan Jeong', id: 1 },
@@ -44,7 +44,7 @@ export default class AdminMatchAddItem  extends React.Component {
         </div>
         <div className=''><CustomIconButton type='add' /></div>
         <div className=''>
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'RED', id: 1 },
@@ -53,14 +53,14 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'Nathan Jeong', id: 1 },
             ]}
             required
           />
-          <FormDropdown 
+          <TeamDropdown 
             name='home'
             dropdownItems={[
               { value: 'Nathan Jeong', id: 1 },

@@ -23,7 +23,6 @@ export default class AdminMatch extends React.Component {
 handleClick = (id) => {
 
   // const { name, value } = event.target;
-  console.log(id);
   this.setState({ selectedId: id })
 }
 

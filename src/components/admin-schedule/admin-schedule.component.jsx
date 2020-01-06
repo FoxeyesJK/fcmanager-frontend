@@ -52,14 +52,11 @@ export default class AdminSchedule extends React.Component {
 
     axios.post(`https://jsonplaceholder.typicode.com/schedules`, { schedule })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
       });
   }
 
   handleClick = (id) => {
     this.setState({})
-    console.log('hello'+id);
   }
 
   addScheduleRow = () => {
@@ -71,7 +68,6 @@ export default class AdminSchedule extends React.Component {
 
   render() {
     const { schedules, count } = this.state;
-    console.log(count);
     return (
         <div className='admin-schedule'>
             {/* <ul>
