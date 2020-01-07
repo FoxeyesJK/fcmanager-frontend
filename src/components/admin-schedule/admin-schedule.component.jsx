@@ -2,7 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import './admin-schedule.styles.scss';
+import {
+  AdminScheduleContainer,
+  Title,
+  AdminScheduleTable,
+  TableRow,
+  TableHeader
+} from './admin-schedule.styles.jsx';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -69,20 +75,17 @@ export default class AdminSchedule extends React.Component {
   render() {
     const { schedules, count } = this.state;
     return (
-        <div className='admin-schedule'>
-            {/* <ul>
-              { this.state.persons.map(person => <li>{person.name}</li>)}
-            </ul> */}
-            <h3>Schedule</h3>
+        <AdminScheduleContainer>
+            <Title>SCHEDULES</Title>
             <form onSubmit={this.handleSubmit}>
-              <table className='admin-schedule-table'>
-                <tr className='table-row'>
-                    <th className='date'>Date</th>
-                    <th className='title'>Title</th>
-                    <th className='location'>Location</th>
-                    <th className='location'></th>
-                    <td className='location'><CustomIconButton type='add' handleClick={this.addScheduleRow} /></td>
-                </tr>
+              <AdminScheduleTable as='div'>
+                <TableRow as='tr' className='table-row'>
+                  <TableHeader className='date'>No</TableHeader>
+                  <TableHeader className='date'>Date</TableHeader>
+                  <TableHeader className='title'>Title</TableHeader>
+                  <TableHeader className='location'>Location</TableHeader>
+                  <td className='location'><CustomIconButton type='add' handleClick={this.addScheduleRow} /></td>
+                </TableRow>
                 {
                   this.state.count > 0 ? 
                   <ScheduleAddItem /> : null
@@ -92,9 +95,9 @@ export default class AdminSchedule extends React.Component {
                     <ScheduleItem key={id} id={id} {...otherScheduleProps} handleClick={this.handleClick} />
                   ))
                 }
-            </table>
+            </AdminScheduleTable>
           </form>
-        </div>
+        </AdminScheduleContainer>
     )
   }
 }

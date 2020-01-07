@@ -1,19 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './header.styles.scss';
+
+import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
+
+import { 
+  HeaderContainer, 
+  LogoContainer, 
+  TextContainer,
+  Title,
+  SubTitle 
+} from './header.styles';
 
 const Header = ({ match, isSelectedOption }) => {
   return (
-  <div className='header'>
-    <div className='options'>
-      <NavLink className='option' activeClassName='option-active' exact to='/admin-member'>
-        User
-      </NavLink>
-      <NavLink className='option' activeClassName='option-active' exact to='/admin-league'>
-        League
-      </NavLink>
-    </div>
-  </div>
+    <HeaderContainer>
+      <LogoContainer>
+        <ClubIcon />
+      </LogoContainer>
+
+      <TextContainer>
+        <Title>TEAM REPORT</Title>
+        <SubTitle>2020 Spring Championship League</SubTitle>
+      </TextContainer>
+    </HeaderContainer>
   )
 };
 

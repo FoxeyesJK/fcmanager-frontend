@@ -1,7 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 
-import './admin-schedule-item.styles.scss';
+import {
+    TableRow,
+    TableData
+} from './admin-schedule-item.styles.jsx';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 
@@ -11,13 +14,13 @@ const AdminScheduleItem = ({date, title, location, id, handleClick}) => {
     //const { date, title, location, id } = schedule;
     
     return (
-    <tr className='admin-schedule-item' onClick={() => handleClick(id)}>
+    <TableRow onClick={() => handleClick(id)}>
         <div>{id}</div>
-        <td className='date'>{moment(date).format('llll')}</td>
-        <td className='title'>{title}</td>
-        <td className='location'>{location}</td>
-        <td className='location'><CustomIconButton type='delete'/></td>
-    </tr>
+        <TableData className='date'>{moment(date).format('llll')}</TableData>
+        <TableData className='title'>{title}</TableData>
+        <TableData className='location'>{location}</TableData>
+        <TableData className='location'><CustomIconButton type='delete'/></TableData>
+    </TableRow>
     );
 }
 
