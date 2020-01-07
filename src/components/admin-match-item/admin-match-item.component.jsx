@@ -1,5 +1,11 @@
 import React from 'react'
-import './admin-match-item.styles.scss';
+import {
+  AdminMatchData,
+  TableHomeColumn,
+  TableAwayColumn,
+  TableScoreColumn,
+  TableData
+} from './admin-match-item.styles.jsx';
 
 import AdminRecord from '../admin-record/admin-record.component';
 import CustomIconButton from '../custom-icon-button/custom-icon-button.component';
@@ -50,19 +56,20 @@ class AdminMatchItem extends React.Component {
 
 
   return (
-    <div className='admin-match-item' onClick={() => this.props.handleClick(this.props.id)}>
-          <div className='column'>
-            <span className='home'>{match.HomeTeamName}</span>
-          </div>
-          <div className='column'>
-            <span className='score'>{match.HomeScore}</span>
-            <span className=''>vs</span>
-            <span className='score'>{match.AwayScore}</span>
-          </div>
-          <div className='column'>
-            <span className='away'>{match.AwayTeamName}</span>
-          </div>
-    </div>
+    <AdminMatchData onClick={() => this.props.handleClick(this.props.id)}>
+      <TableHomeColumn>
+        <TableData>{match.HomeTeamName}</TableData>
+      </TableHomeColumn>
+      <TableScoreColumn>
+        <TableData>{match.HomeScore}</TableData>
+      </TableScoreColumn>
+      <TableScoreColumn>
+        <TableData>{match.AwayScore}</TableData>
+      </TableScoreColumn>
+      <TableAwayColumn>
+        <TableData>{match.AwayTeamName}</TableData>
+      </TableAwayColumn>
+    </AdminMatchData>
   );
   }
 }

@@ -1,5 +1,14 @@
 import React from 'react'
-import './admin-match.styles.scss';
+import { 
+  AdminMatchContainer,
+  Title,
+  AdminMatchTable,
+  TableHeader,
+  TableBody,
+  MatchDate,
+  MatchTitle
+}
+from './admin-match.styles.jsx';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 
@@ -15,7 +24,7 @@ export default class AdminMatch extends React.Component {
 
   this.state = {
     count: 0,
-    selectedId: 0,
+    selectedId: 1,
     matches: MATCH_DATA
   }
 }
@@ -31,37 +40,30 @@ handleClick = (id) => {
     const { count, selectedId, matches } = this.state;
 
     return (
-      <div className='admin-match'>
-          <div className='admin-match-table'>
-            <div className='header'>
-              <div className='column'>
-                <span className=''>Home</span>
-              </div>
-              <div className='column'>
-                <span className=''></span>
-              </div>
-              <div className='column'>
-                <span className=''>Away</span>
-              </div>
-            </div>
-            <div>
+      <AdminMatchContainer>
+          <Title>MATCHES</Title>
+          <AdminMatchTable>
+            <TableHeader>
+              <MatchDate>Sunday 27 October 2019</MatchDate>
+              <MatchTitle>Fort Lee, NJ</MatchTitle>
+            </TableHeader>
+            <TableBody>
             {
               matches
               .filter((id) => id != selectedId)
               .map((match) => (
-                <div className='admin-match-container'>
+                <div>
                   {
                     <MatchItem key={match.id} id={match.id} match={match} handleClick={this.handleClick} />
                   }
                 </div>
-              
               ))
                               //<ScoreItem key={id} {...otherScoreProps} />]
             }
-            </div>
-          </div>
+            </TableBody>
+          </AdminMatchTable>
               <MatchDetail id={selectedId} />
-      </div>
+      </AdminMatchContainer>
     )
   }
 }

@@ -7,7 +7,8 @@ import {
   Title,
   AdminScheduleTable,
   TableRow,
-  TableHeader
+  TableHeader,
+  TableBody
 } from './admin-schedule.styles.jsx';
 
 import FormInput from '../form-input/form-input.component';
@@ -77,15 +78,15 @@ export default class AdminSchedule extends React.Component {
     return (
         <AdminScheduleContainer>
             <Title>SCHEDULES</Title>
-            <form onSubmit={this.handleSubmit}>
-              <AdminScheduleTable as='div'>
-                <TableRow as='tr' className='table-row'>
-                  <TableHeader className='date'>No</TableHeader>
-                  <TableHeader className='date'>Date</TableHeader>
-                  <TableHeader className='title'>Title</TableHeader>
-                  <TableHeader className='location'>Location</TableHeader>
-                  <td className='location'><CustomIconButton type='add' handleClick={this.addScheduleRow} /></td>
+              <AdminScheduleTable>
+                <TableRow className='table-row'>
+                  <TableHeader>Date</TableHeader>
+                  <TableHeader>Time</TableHeader>
+                  <TableHeader>Title</TableHeader>
+                  <TableHeader>Location</TableHeader>
+                  <TableHeader><CustomIconButton type='add' handleClick={this.addScheduleRow} /></TableHeader>
                 </TableRow>
+                <TableBody onSubmit={this.handleSubmit}>
                 {
                   this.state.count > 0 ? 
                   <ScheduleAddItem /> : null
@@ -95,8 +96,9 @@ export default class AdminSchedule extends React.Component {
                     <ScheduleItem key={id} id={id} {...otherScheduleProps} handleClick={this.handleClick} />
                   ))
                 }
+                </TableBody>
             </AdminScheduleTable>
-          </form>
+
         </AdminScheduleContainer>
     )
   }

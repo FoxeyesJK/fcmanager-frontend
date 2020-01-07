@@ -15,11 +15,11 @@ const AdminScheduleItem = ({date, title, location, id, handleClick}) => {
     
     return (
     <TableRow onClick={() => handleClick(id)}>
-        <div>{id}</div>
-        <TableData className='date'>{moment(date).format('llll')}</TableData>
-        <TableData className='title'>{title}</TableData>
-        <TableData className='location'>{location}</TableData>
-        <TableData className='location'><CustomIconButton type='delete'/></TableData>
+        <TableData>{moment().format('ddd')}, {moment().add(10, 'days').calendar()}</TableData>
+        <TableData>{moment().format('LT')}</TableData>
+        <TableData>{title}</TableData>
+        <TableData>{location}</TableData>
+        <TableData><CustomIconButton type='delete'/></TableData>
     </TableRow>
     );
 }

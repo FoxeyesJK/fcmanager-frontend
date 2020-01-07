@@ -1,6 +1,9 @@
 import React from 'react';
 
-import './admin-schedule-add-item.styles.scss';
+import {
+    TableRow,
+    TableData
+} from './admin-schedule-add-item.styles.jsx';
 
 import FormInput from '../form-input/form-input.component';
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
@@ -18,17 +21,17 @@ export default class AdminScheduleAddItem extends React.Component {
 
     render () {
         return (
-            <tr className='admin-schedule-add-item'>
-                <td className='date'>
+            <TableRow>
+                <TableData>
                 <FormInput 
                 name='date' 
-                type='datetime-local' 
+                type='time' 
                 value={this.state.date} 
                 handleChange={this.handleChange} 
                 required 
                 />
-                </td>
-                <td className='title'>
+                </TableData>
+                <TableData>
                 <FormInput
                 name='title'
                 type='text'
@@ -36,8 +39,8 @@ export default class AdminScheduleAddItem extends React.Component {
                 handleChange={this.handleChange}
                 required
                 />
-                </td>
-                <td className='location'>
+                </TableData>
+                <TableData>
                 <FormInput
                 name='location'
                 type='text'
@@ -45,10 +48,9 @@ export default class AdminScheduleAddItem extends React.Component {
                 handleChange={this.handleChange}
                 required
                 />
-                </td>
-                <td className='location'></td>
-                <td className='location'><CustomIconButton type='save' handleClick={this.addScheduleRow} /></td>
-            </tr>
+                </TableData>
+                <TableData className='location'><CustomIconButton type='save' handleClick={this.addScheduleRow} /></TableData>
+            </TableRow>
         )
     }
 }

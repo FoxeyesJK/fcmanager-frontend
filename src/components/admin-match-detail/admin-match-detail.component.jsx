@@ -1,8 +1,11 @@
 import React from 'react'
-import './admin-match-detail.styles.scss';
+import {
+  AdminMatchDetailContainer,
+  Title
+} from './admin-match-detail.styles.jsx';
 
 
-import MatchItem from '../match-item/match-item.component';
+import AdminMatchDetailItem from '../admin-match-detail-item/admin-match-detail-item.component';
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 
 import MATCH_DATA from '../../pages/league/match2.data';
@@ -28,15 +31,16 @@ export default class AdminMatchDetail extends React.Component {
   render() {
     const { matches } = this.state;
     return (
-      <div className='admin-match-detail'>
+      <AdminMatchDetailContainer>
+          <Title>Match Detail</Title>
         {
           matches
           .filter((match, id) => id === this.props.id - 1)
           .map((match) =>  (
-            <MatchItem key={match.id} id={match.id} match={match} isEdit />
+            <AdminMatchDetailItem key={match.id} id={match.id} match={match} isEdit />
           ))
       }
-      </div>
+      </AdminMatchDetailContainer>
     )
   }
 }

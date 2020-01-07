@@ -14,8 +14,8 @@ const AdminLeague = () => {
   return (
     <AdminLeaguePage>
       <Header />
+      <SubHeader />
       <AdminLeagueContainer>
-        <SubHeader />
         <AdminSchedule />
         <AdminMatch />
       </AdminLeagueContainer>
