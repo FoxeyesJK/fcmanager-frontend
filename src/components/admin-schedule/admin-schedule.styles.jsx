@@ -27,7 +27,10 @@ export const TableRow = styled.div`
 export const TableHeader = styled.div`
     background-color: #3e1964;
     text-align: center;
-    padding: 0px 5px 5px 5px;
+    padding: 10px 5px;
+    margin: auto;
+    font-size: 16px;
+
     &:nth-child(1) {
         width: 20%;
     }
@@ -42,9 +45,11 @@ export const TableHeader = styled.div`
     }
     &:nth-child(5) {
         width: 5%;
+        padding: 6.5px 0;
     }
     &:nth-child(6) {
         width: 5%;
+        padding: 6.5px 0;
     }
 `;
 

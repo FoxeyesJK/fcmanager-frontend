@@ -10,7 +10,7 @@ export const TableData = styled.div`
     margin: auto;
     font-size: 12px;
     &:nth-child(1) {
-        width: 30%;
+        width: 33%;
     }
     &:nth-child(2) {
         width: 40%;

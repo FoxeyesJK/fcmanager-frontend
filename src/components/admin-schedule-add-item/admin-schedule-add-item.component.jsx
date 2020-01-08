@@ -20,9 +20,9 @@ export default class AdminScheduleAddItem extends React.Component {
         super(props);
         
         this.state = {
-            date: '', 
+            date: new Date(),
             title: '', 
-            location: '',date: new Date(),
+            location: '',
         }
     }
     
@@ -35,7 +35,6 @@ export default class AdminScheduleAddItem extends React.Component {
                 <DateTimePicker
                     defaultValue={new Date()}
                 />
-
                 {/* <FormInput 
                 name='date' 
                 type='time' 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { 
   AdminMatchContainer,
+  TitleContainer,
   Title,
   AdminMatchTable,
   TableHeader,
@@ -41,7 +42,10 @@ handleClick = (id) => {
 
     return (
       <AdminMatchContainer>
-          <Title>MATCHES</Title>
+          <TitleContainer>
+            <Title>MATCHES</Title>
+            <CustomIconButton type='add' handleClick={this.addScheduleRow} />
+          </TitleContainer>
           <AdminMatchTable>
             <TableHeader>
               <MatchDate>Sunday 27 October 2019</MatchDate>
@@ -58,7 +62,6 @@ handleClick = (id) => {
                   }
                 </div>
               ))
-                              //<ScoreItem key={id} {...otherScoreProps} />]
             }
             </TableBody>
           </AdminMatchTable>

@@ -1,5 +1,8 @@
 import React from 'react'
-import './admin-match-add-item.styles.scss';
+import {
+  TableRow,
+  Team
+} from './admin-match-add-item.styles.jsx';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
 import FormDropdown from '../team-dropdown/team-dropdown.component';
@@ -16,8 +19,8 @@ export default class AdminMatchAddItem  extends React.Component {
 
   render () {
       return (
-        <div className='admin-match-item'>
-        <div className=''>
+        <TableRow>
+        <Team>
           <FormDropdown 
             name='home'
             dropdownItems={[
@@ -27,23 +30,8 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-          <FormDropdown 
-            name='home'
-            dropdownItems={[
-              { value: 'Nathan Jeong', id: 1 },
-            ]}
-            required
-          />
-          <FormDropdown 
-            name='home'
-            dropdownItems={[
-              { value: 'Nathan Jeong', id: 1 },
-            ]}
-            required
-          />
-        </div>
-        <div className=''><CustomIconButton type='add' /></div>
-        <div className=''>
+        </Team>
+        <Team>
           <FormDropdown 
             name='home'
             dropdownItems={[
@@ -53,22 +41,8 @@ export default class AdminMatchAddItem  extends React.Component {
             ]}
             required
           />
-          <FormDropdown 
-            name='home'
-            dropdownItems={[
-              { value: 'Nathan Jeong', id: 1 },
-            ]}
-            required
-          />
-          <FormDropdown 
-            name='home'
-            dropdownItems={[
-              { value: 'Nathan Jeong', id: 1 },
-            ]}
-            required
-          />
-        </div>
-      </div>
+        </Team>
+      </TableRow>
       )
   }
 }

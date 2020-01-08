@@ -8,6 +8,11 @@ export const AdminMatchContainer = styled.div`
     width: 35%;
 `;
 
+export const TitleContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
