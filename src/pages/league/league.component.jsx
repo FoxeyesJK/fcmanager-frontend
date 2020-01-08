@@ -2,12 +2,19 @@ import React from 'react';
 
 import MATCH_DATA from './match.data.js';
 
-import './league.styles.scss';
+import { 
+  LeaguePage,
+  StandingContainer,
+  LeagueContainer 
+} from './league.styles.jsx';
+
+import Header from '../../components/header/header.component';
+import SubHeader from '../../components/sub-header/sub-header.component';
 import CurrentChampion from '../../components/current-champion/current-champion.component';
-import Standings from '../../components/standings/standings.component';
+import Standing from '../../components/standing/standing.component';
 import MatchPreview from '../../components/match-preview/match-preview.component';
 
-class LeaguePage extends React.Component {
+class League extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,18 +28,23 @@ class LeaguePage extends React.Component {
     const { matches } = this.state;
     return (
     
-    <div className='league-page'>
-      <div className='league-top'>
+    <LeaguePage>
+      <Header />
+      <SubHeader />
+      <StandingContainer >
         <CurrentChampion />
-        <Standings />
-      </div>
+        <Standing />
+      </StandingContainer >
+      <LeagueContainer>
       {
           matches.map(({ id, ...otherMemberProps }) => (
             <MatchPreview key={id} {...otherMemberProps} />
           ))
       }
-      </div>)
+      </LeagueContainer>
+    </LeaguePage>
+    )
   }
 }
 
-export default LeaguePage;
+export default League;
