@@ -19,9 +19,12 @@ export const TableData = styled.div`
         width: 40%;
     }
     &:nth-child(4) {
-        width: 25%;
+        width: 20%;
     }
     &:nth-child(5) {
+        width: 5%;
+    }
+    &:nth-child(6) {
         width: 5%;
     }
 `;

@@ -8,7 +8,7 @@ export const TableRow = styled.div`
 export const TableData = styled.div`
     padding: 5px;
     margin: auto;
-    font-size: 20px;
+    font-size: 12px;
     &:nth-child(1) {
         width: 30%;
     }
@@ -21,4 +21,19 @@ export const TableData = styled.div`
     &:nth-child(4) {
         width: 5%;
     }
+
+    div > input {
+        background-color: #441f69;
+        color: white;
+    }
+
 `;
+
+// div {
+//     color: white;
+//     background-color: #441f69;
+// }
+
+// div > td {
+//     color: white;
+// }

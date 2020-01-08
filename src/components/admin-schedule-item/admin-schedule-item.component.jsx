@@ -19,6 +19,7 @@ const AdminScheduleItem = ({date, title, location, id, handleClick}) => {
         <TableData>{moment().format('LT')}</TableData>
         <TableData>{title}</TableData>
         <TableData>{location}</TableData>
+        <TableData><CustomIconButton type='edit' /></TableData>
         <TableData><CustomIconButton type='delete'/></TableData>
     </TableRow>
     );

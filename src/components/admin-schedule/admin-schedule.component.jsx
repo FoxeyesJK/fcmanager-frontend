@@ -84,6 +84,7 @@ export default class AdminSchedule extends React.Component {
                   <TableHeader>Time</TableHeader>
                   <TableHeader>Title</TableHeader>
                   <TableHeader>Location</TableHeader>
+                  <TableHeader></TableHeader>
                   <TableHeader><CustomIconButton type='add' handleClick={this.addScheduleRow} /></TableHeader>
                 </TableRow>
                 <TableBody onSubmit={this.handleSubmit}>
