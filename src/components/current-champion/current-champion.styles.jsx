@@ -12,19 +12,20 @@ export const CurrentChampionContainer = styled.div`
     text-align: center;
     background-color: #3e1964;
     padding: 20px;
+    margin: 5px 30px;
 `;
 
 export const Title = styled.div`
     padding: 20px;
-    font-size: 20px;
+    font-size: 18px;
 `;
 
 export const IconContainer = styled.div`
-    width: 80px;
-    height: 80px;
+    padding: 10px;
 `;
 
 export const Team = styled.div`
+    font-size: 18px;
     width: 100%;
 `;
 

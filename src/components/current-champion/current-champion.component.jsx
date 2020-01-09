@@ -4,14 +4,17 @@ import {
   CurrentChampionContainer,
   Title,
   Team,
-  TeamIcon
+  TeamIcon, 
+  IconContainer
 } from './current-champion.styles.jsx';
 
 const CurrentChampion = () => {
   return (
     <CurrentChampionContainer>
       <Title>Current Champion</Title>
+      <IconContainer>
       <TeamIcon />
+      </IconContainer>
       <Team>Blue</Team>
     </CurrentChampionContainer>
   )

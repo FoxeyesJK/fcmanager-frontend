@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const StandingContainer = styled.div`
-    width: 80%;
+    width: 70%;
+    margin: 0 auto;
 `;
 
 export const Title = styled.div`
@@ -17,23 +18,31 @@ export const Table = styled.table`
     text-align: center;
     margin: 5px;
     width: 100%;
+    table-layout: fixed;
+    border: 2px solid #3e1964;
 `;
 
 export const TableRow = styled.tr`
-
+    &:nth-child(even) {background-color: #321450}
+    &:nth-child(odd) {background-color: #3e1964}
 `;
+
 export const TableHeader = styled.th`
     padding: 10px 20px;
     width: 10%;
 `;
 
 export const TableData = styled.td`
-    width: 10%;
+    width: 8%;
     padding: 5px 10px;
 `;
 
-export const TeamContainer = styled.td`
-    width: 300px;
+export const TableTeamHeader = styled.th`
+    width: 30%
+`;
+
+export const TableIndexHeader = styled.th`
+    width: 5%
 `;
 
 // tr:nth-child(even) {background-color: $main-color;}
