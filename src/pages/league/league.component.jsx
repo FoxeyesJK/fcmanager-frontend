@@ -13,6 +13,7 @@ import SubHeader from '../../components/sub-header/sub-header.component';
 import CurrentChampion from '../../components/current-champion/current-champion.component';
 import Standing from '../../components/standing/standing.component';
 import MatchPreview from '../../components/match-preview/match-preview.component';
+import MatchPreviewSecond from '../../components/match-preview-second/match-preview-second.component';
 
 class League extends React.Component {
   constructor(props) {
@@ -35,10 +36,17 @@ class League extends React.Component {
         <CurrentChampion />
         <Standing />
       </StandingContainer >
-      <LeagueContainer>
+      {/* <LeagueContainer>
       {
           matches.map(({ id, ...otherMemberProps }) => (
             <MatchPreview key={id} {...otherMemberProps} />
+          ))
+      }
+      </LeagueContainer> */}
+      <LeagueContainer>
+      {
+          matches.map(({ id, ...otherMemberProps }) => (
+            <MatchPreviewSecond key={id} {...otherMemberProps} />
           ))
       }
       </LeagueContainer>

@@ -1,7 +1,10 @@
 import React from 'react';
 
 import {
-  MatchItemContainer
+  MatchItemContainer,
+  ScoreContainer,
+  TeamContainer,
+  RecordContainer,
 } from './match-item.styles.jsx';
 
 import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
@@ -18,8 +21,8 @@ const MatchItem = ({ match, isEdit, id }) => {
  
   return (
     <MatchItemContainer>
-        <div className='final-score-container'>
-          <div className='team'>
+        <ScoreContainer>
+          <TeamContainer>
             {
               isEdit ? 
               <TeamDropdown 
@@ -34,13 +37,13 @@ const MatchItem = ({ match, isEdit, id }) => {
               /> :
               <div><RedIcon className='icon' /><br /><span className='first-team'>{HomeTeamName}</span></div>
             }
-          </div>
+          </TeamContainer>
           <div className='final-score'>
             <span className='score'>{HomeScore}</span>
             <span>  -  </span>
             <span className='score'>{AwayScore}</span>
           </div>
-          <div className='team'>
+          <TeamContainer>
             {
               isEdit ?
               <TeamDropdown 
@@ -55,9 +58,9 @@ const MatchItem = ({ match, isEdit, id }) => {
               /> :
               <div><YellowIcon className='icon' /><br /><span className='second-team'>{AwayTeamName}</span></div>
             }
-          </div>
-        </div>
-        <div  className='record'>
+          </TeamContainer>
+        </ScoreContainer>
+        <RecordContainer>
           <div className='player-container'>
             <div className='player'>
             <ScoreIcon className='icon' />
@@ -122,7 +125,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             <AssistIcon className='icon' />
             </div>
           </div>
-        </div>
+        </RecordContainer>
     </MatchItemContainer>
   )
 }
