@@ -7,6 +7,9 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectTeams } from '../../redux/team/team.selectors';
 
+// import { fetchTeamsStartAsync } from '../../redux/team/team.actions';
+// import { selectIsTeamFetching } from '../../redux/team/team.selectors';
+
 import TeamDropdownItem from '../team-dropdown-item/team-dropdown-item.component';
 
 const TeamDropdown = ({ teams, dispatch}) => (
@@ -31,4 +34,16 @@ const TeamDropdown = ({ teams, dispatch}) => (
 const mapStateToProps = createStructuredSelector({
     teams: selectTeams
 })
-export default withRouter(connect(mapStateToProps)(TeamDropdown));
+
+// const mapStateToProps = createStructuredSelector({
+//     isTeamFetching: selectIsTeamFetching
+//   })
+  
+//   const mapDispatchToProps = dispatch => ({
+//     fetchTeamsStartAsync: () => dispatch(fetchTeamsStartAsync())
+//   });
+  
+export default withRouter(connect(
+    mapStateToProps
+    //mapDispatchToProps
+    )(TeamDropdown));

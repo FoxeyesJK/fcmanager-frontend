@@ -2,15 +2,19 @@ import React from 'react';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getTeam } from '../../redux/team/team.actions';
+//import { getTeam } from '../../redux/team/team.actions';
+import { createStructuredSelector } from 'reselect';
 import TeamActionTypes from '../../redux/team/team.types';
+
+import { fetchTeamsStartAsync } from '../../redux/team/team.actions';
+import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
 
 class Test extends React.Component {
-
-  async componentDidMount() {
-    const { getTeam } = this.props;
+  componentDidMount() {
+    const { fetchTeamsStartAsync } = this.props;
+    fetchTeamsStartAsync();
 
     // axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
     //   console.log(res);
@@ -18,8 +22,8 @@ class Test extends React.Component {
     //   //this.setState({ teams: res.data });
     // })
 
-    const teamRes = await axios.get(url);
-    getTeam(teamRes.data)
+    // const teamRes = await axios.get(url);
+    // getTeam(teamRes.data)
   };
 
   render() {
@@ -32,12 +36,21 @@ class Test extends React.Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  isTeamFetching: selectIsTeamFetching,
+  isTeamLoaded: selectIsTeamFetching
+})
+
 const mapDispatchToProps = dispatch => ({
-  getTeam: team => dispatch(getTeam(team))
+  fetchTeamsStartAsync: () => dispatch(fetchTeamsStartAsync())
 });
 
+// const mapDispatchToProps = dispatch => ({
+//   getTeam: team => dispatch(getTeam(team))
+// });
+
 export default connect (
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Test);
 
