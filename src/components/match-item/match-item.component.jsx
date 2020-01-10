@@ -1,6 +1,8 @@
 import React from 'react';
 
-import './match-item.styles.scss';
+import {
+  MatchItemContainer
+} from './match-item.styles.jsx';
 
 import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
 import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
@@ -15,7 +17,7 @@ const MatchItem = ({ match, isEdit, id }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
  
   return (
-    <div className='match-item'>
+    <MatchItemContainer>
         <div className='final-score-container'>
           <div className='team'>
             {
@@ -121,7 +123,7 @@ const MatchItem = ({ match, isEdit, id }) => {
             </div>
           </div>
         </div>
-    </div>
+    </MatchItemContainer>
   )
 }
 

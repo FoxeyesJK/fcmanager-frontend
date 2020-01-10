@@ -1,21 +1,27 @@
 import React from 'react';
 
-import './match-preview.styles.scss';
+import {
+  MatchPreviewContainer,
+  Title,
+  MatchItemContainer
+} from './match-preview.styles.jsx';
 
 import MatchItem from '../match-item/match-item.component';
 
 const MatchPreview = ({ title, matches }) => {
   return (
-    <div className='match-preview'>
-        <h1 className='title'>{title.toUpperCase()}</h1>
-        <div className='preview'>
-            {matches
-                .filter((match, idx) => idx < 3)
-                .map(match => (
-                    <MatchItem key={match.id} match={match} />
-            ))}
-        </div>
-    </div>
+    <MatchPreviewContainer>
+        <Title>{title.toUpperCase()}</Title>
+        <MatchItemContainer>
+          {
+          matches
+              .filter((match, idx) => idx < 3)
+              .map(match => (
+                  <MatchItem key={match.id} match={match} />
+          ))
+          }
+          </MatchItemContainer>
+    </MatchPreviewContainer>
   )
 }
 
