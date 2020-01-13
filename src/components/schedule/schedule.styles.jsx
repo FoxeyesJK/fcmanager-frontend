@@ -25,11 +25,13 @@ export const TableRow = styled.div`
 `;
 
 export const TableHeader = styled.div`
-    background-color: #3e1964;
-    text-align: center;
+    background-color: #321450;
+    text-align: left;
     padding: 5px 5px;
     margin: auto;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #A9A9A9;
 
     &:nth-child(1) {
         width: 20%;

@@ -62,7 +62,7 @@ export default class AdminSchedule extends React.Component {
       });
   }
 
-  handleClick = (id) => {
+  handleClick(id) {
     this.setState({})
   }
 

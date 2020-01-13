@@ -1,9 +1,8 @@
 const MATCH_DATA = [
     {
       id: 1,
-      title: 'League Match',
+      title: 'Fixtures',
       ScheduledOn: '2014-01-01T23:28:56.782Z',
-      Location: 'Fort Lee, NJ',
       matches: [
         {
           id: 1,
