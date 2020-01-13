@@ -15,15 +15,15 @@ export default class FixtureDetail extends React.Component {
 
 
   render() {
+    const {isAdmin} = this.props;
     return (
         <FixtureDetailContainer>
-          <div>{this.props.id}</div>
             <Title>{this.props.title}</Title>
             {
               this.props.matches
               .filter((match, id) => id === this.props.id - 1)
               .map((match) =>  (
-                <FixtureDetailItem key={match.id} id={match.id} match={match} />
+                <FixtureDetailItem key={match.id} id={match.id} match={match} isAdmin={isAdmin}/>
               ))
             }
         </FixtureDetailContainer>

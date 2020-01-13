@@ -22,6 +22,9 @@ const Header = ({ match, isSelectedOption }) => {
         <OptionNavLink exact to='/league'>
           League
         </OptionNavLink>
+        <OptionNavLink exact to='/fixture'>
+          Fixture
+        </OptionNavLink>
         <OptionNavLink exact to='/schedule'>
           Schedule
         </OptionNavLink>

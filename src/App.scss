@@ -1,16 +1,18 @@
-$main-color: #321450;
+$main-color: #2e1452;
 $sub-color: #3e1964;
+//#321450
 
 
 body {
-  font-family: 'Open Sans', sans-serif;;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #361556;
 }
 
 .body {
   padding: 0 0px;
   width: 75%;
   float: right;
-  background-color: rgb(49, 24, 77);;
+  background-color: #361556;
 }
 
 div {
@@ -50,8 +52,8 @@ td {
 }
 
 .icon {
-  width: 8px;
-  height: 8px;
+  width: 14px;
+  height: 14px;
 }
 
 // tr:nth-child(even) {background-color: $main-color;}

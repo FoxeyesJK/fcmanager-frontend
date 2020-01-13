@@ -1,247 +1,230 @@
 import React from 'react';
+import moment from 'moment';
+import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 
 import {
-  AdminMatchDetailItemContainer,
+  FixtureDetailItemContainer,
   Title,
+  IconContainer,
+  TeamIcon,
+  TeamContainer,
+  FixtureContainer,
+  LeagueContainer,
+  Schedule,
+  LocationContainer,
   ScoreContainer,
-  Team,
+  Record,
+  HomeRecord,
+  AwayRecord,
   RecordContainer,
+  PlayerContainer,
   Player,
   StyledAssistIcon,
-  StyledScoreIcon
+  StyledScoreIcon,
+  DateTimePickerContainer
 } from './fixture-detail-item.styles.jsx';
 
-import TeamDropdown from '../team-dropdown/team-dropdown.component';
+import DropdownTeam from '../dropdown-team/dropdown-team.component';
+import DropdownLeague from '../dropdown-league/dropdown-league.component';
+import DropdownLocation from '../dropdown-location/dropdown-location.component';
 
-const FixtureDetailItem = ({ match, id }) => {
-  const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
+const FixtureDetailItem = ({ match, id, isAdmin }) => {
+  const { HomeTeamName, HomeScore, AwayTeamName, AwayScore, ScheduledOn, LocationName, League} = match;
  
   return (
-    <AdminMatchDetailItemContainer>
-        <ScoreContainer>
-          <Team>
-              <TeamDropdown 
-              name='home'
-              className='home team-name'
-              dropdownItems={[
-                { value: 'RED', id: 1 },
-                { value: 'BLUE', id: 2 },
-                { value: 'YELLOW', id: 3}
-              ]}
-              required
-              />
-          </Team>
-          <div className='final-score'>
-            <span className='score'>{HomeScore}</span>
-            <span>  -  </span>
-            <span className='score'>{AwayScore}</span>
-          </div>
-          <Team>
-              <TeamDropdown 
-                className='away team-name'
-                name='away'
+    <FixtureDetailItemContainer isAdmin={isAdmin}>
+        <TeamContainer>
+            {
+              isAdmin 
+              ?
+              <DropdownTeam 
+                name='home'
                 dropdownItems={[
                   { value: 'RED', id: 1 },
                   { value: 'BLUE', id: 2 },
                   { value: 'YELLOW', id: 3}
                 ]}
                 required
-              />
-          </Team>
-        </ScoreContainer>
+              />  
+              :
+              <IconContainer>
+                <TeamIcon />
+              </IconContainer>
+              }
+            <ScoreContainer>
+              { HomeScore }
+              -
+              { AwayScore }
+            </ScoreContainer> 
+            {
+              isAdmin 
+              ?
+              <DropdownTeam 
+                name='home'
+                dropdownItems={[
+                  { value: 'RED', id: 1 },
+                  { value: 'BLUE', id: 2 },
+                  { value: 'YELLOW', id: 3}
+                ]}
+                required
+              />  
+              :
+              <IconContainer>
+                <TeamIcon />
+              </IconContainer>
+              }
+        </TeamContainer>
+        
+          {
+            isAdmin 
+            ? <FixtureContainer>
+              <LeagueContainer isAdmin={isAdmin}>
+                <DropdownLeague 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                /> 
+              </LeagueContainer>
+              <DateTimePickerContainer>
+                <DateTimePicker defaultValue={new Date()} />
+              </DateTimePickerContainer>
+              <LocationContainer isAdmin={isAdmin}>
+                <DropdownLocation 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                /> 
+              </LocationContainer>
+              </FixtureContainer>
+            : <FixtureContainer>
+            <LeagueContainer>{League}</LeagueContainer>
+            <Schedule>{moment(ScheduledOn).format('LLLL')}</Schedule>
+            <LocationContainer>{LocationName}</LocationContainer>
+            </FixtureContainer>
+          }
         <RecordContainer>
-          <Team>
-            <Player>
-            <StyledScoreIcon />
-              <TeamDropdown 
-                name='home'
-                className='scorer'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            </Player>
-            <Player>
-            <StyledAssistIcon />
-              <TeamDropdown 
-                name='home'
-                className='assist'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-            </Player>
-          </Team>
-          <Team>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            <StyledScoreIcon />
-            </Player>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-                <StyledAssistIcon />
-            </Player>
-          </Team>
+          <Record>
+            <PlayerContainer>
+              <StyledScoreIcon />
+              {
+                  isAdmin ?
+                  <DropdownTeam 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                />  
+                : <Player>Nathan Jeong</Player>
+                }
+            </PlayerContainer>
+            <PlayerContainer>
+            {
+                  isAdmin ?
+                  <DropdownTeam 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                />  
+                : <Player>Nathan Jeong</Player>
+                }
+              <StyledScoreIcon />
+            </PlayerContainer>
+          </Record>
+          <Record>
+            <PlayerContainer>
+              <StyledAssistIcon />   
+                {
+                  isAdmin ?
+                  <DropdownTeam 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                />  
+                : <Player>Nathan Jeong</Player>
+                }
+            </PlayerContainer>
+            <PlayerContainer>
+            {
+                  isAdmin ?
+                  <DropdownTeam 
+                  name='home'
+                  dropdownItems={[
+                    { value: 'RED', id: 1 },
+                    { value: 'BLUE', id: 2 },
+                    { value: 'YELLOW', id: 3}
+                  ]}
+                  required
+                />  
+                : <Player>Nathan Jeong</Player>
+                }
+              <StyledAssistIcon />
+            </PlayerContainer>
+          </Record>
         </RecordContainer>
         <RecordContainer>
-          <Team>
-            <Player>
-            <StyledScoreIcon />
-              <TeamDropdown 
-                name='home'
-                className='scorer'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            </Player>
-            <Player>
-            <StyledAssistIcon />
-              <TeamDropdown 
-                name='home'
-                className='assist'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-            </Player>
-          </Team>
-          <Team>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            <StyledScoreIcon />
-            </Player>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-                <StyledAssistIcon />
-            </Player>
-          </Team>
+        <Record>
+            <PlayerContainer>
+              <StyledScoreIcon />
+              <Player>Nathan Jeong</Player>
+            </PlayerContainer>
+            <PlayerContainer>
+              <Player>Jake Kwon</Player>
+              <StyledScoreIcon />
+            </PlayerContainer>
+          </Record>
+          <Record>
+            <PlayerContainer>
+              <StyledAssistIcon />
+              <Player>Nathan Jeong</Player>
+            </PlayerContainer>
+            <PlayerContainer>
+              <Player>Jake Kwon</Player>
+              <StyledAssistIcon />
+            </PlayerContainer>
+          </Record>
         </RecordContainer>
         <RecordContainer>
-          <Team>
-            <Player>
-            <StyledScoreIcon />
-              <TeamDropdown 
-                name='home'
-                className='scorer'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            </Player>
-            <Player>
-            <StyledAssistIcon />
-              <TeamDropdown 
-                name='home'
-                className='assist'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-            </Player>
-          </Team>
-          <Team>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            <StyledScoreIcon />
-            </Player>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-                <StyledAssistIcon />
-            </Player>
-          </Team>
+        <Record>
+            <PlayerContainer>
+              <StyledScoreIcon />
+              <Player>Nathan Jeong</Player>
+            </PlayerContainer>
+            <PlayerContainer>
+              <Player>Jake Kwon</Player>
+              <StyledScoreIcon />
+            </PlayerContainer>
+          </Record>
+          <Record>
+            <PlayerContainer>
+              <StyledAssistIcon />
+              <Player>Nathan Jeong</Player>
+            </PlayerContainer>
+            <PlayerContainer>
+              <Player>Jake Kwon</Player>
+              <StyledAssistIcon />
+            </PlayerContainer>
+          </Record>
         </RecordContainer>
-        <RecordContainer>
-          <Team>
-            <Player>
-            <StyledScoreIcon />
-              <TeamDropdown 
-                name='home'
-                className='scorer'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            </Player>
-            <Player>
-            <StyledAssistIcon />
-              <TeamDropdown 
-                name='home'
-                className='assist'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-            </Player>
-          </Team>
-          <Team>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              />
-            <StyledScoreIcon />
-            </Player>
-            <Player>
-              <TeamDropdown 
-                name='home'
-                dropdownItems={[
-                  { value: 'Nathan Jeong', id: 1 },
-                ]}
-                required
-              /> 
-                <StyledAssistIcon />
-            </Player>
-          </Team>
-        </RecordContainer>
-    </AdminMatchDetailItemContainer>
+    </FixtureDetailItemContainer>
   )
 }
 

@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
 
-export const LeaguePage = Styled.div`
+export const FixturePage = Styled.div`
+
 `;
 
 export const StandingContainer = Styled.div`
@@ -13,9 +14,14 @@ export const LeagueContainer = Styled.div`
     flex-direction: row;
 `;
 
-export const FixtureContainer = Styled.div`
+export const FixtureListContainer = Styled.div`
     padding: 15px;
     width: 65%;
+`;
+
+export const FixtureContainer = Styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 export const Title = Styled.div`
@@ -38,14 +44,14 @@ export const TableRow = Styled.div`
 export const TableHeader = Styled.div`
     background-color: #361556;
     text-align: left;
-    padding: 5px 5px;
+    padding: 0px 5px;
     font-size: 12px;
     font-weight: bold;
-    color: #A9A9A9;
+    color: 	#C0C0C0;
 
     &:nth-child(1) {
-        text-align: center;
-        width: 70px;
+        text-align: left;
+        width: 80px;
     }
     &:nth-child(2) {
         text-align: left;

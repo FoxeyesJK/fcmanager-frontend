@@ -11,7 +11,7 @@ import {
   StyledScoreIcon
 } from './admin-match-detail-item.styles.jsx';
 
-import TeamDropdown from '../team-dropdown/team-dropdown.component';
+import TeamDropdown from '../dropdown-team/dropdown-team.component';
 
 const AdminMatchDetailItem = ({ match, id }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;

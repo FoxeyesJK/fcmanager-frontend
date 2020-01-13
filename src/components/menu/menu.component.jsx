@@ -33,6 +33,14 @@ const Menu = ({ match, isSelectedOption }) => {
         <ReportIcon className='icon' />
         <span>League</span>
       </Link>
+      <Link className='option' to='/fixture'>
+        <ReportIcon className='icon' />
+        <span>Fixture</span>
+      </Link>
+      <Link className='option' to='/fixture-admin'>
+        <ReportIcon className='icon' />
+        <span>Fixture-Admin</span>
+      </Link>
       <Link className='option' to='/admin-league'>
         <ReportIcon className='icon' />
         <span>Schedule</span>

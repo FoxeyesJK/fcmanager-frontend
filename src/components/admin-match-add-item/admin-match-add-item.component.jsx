@@ -5,7 +5,7 @@ import {
 } from './admin-match-add-item.styles.jsx';
 
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
-import FormDropdown from '../team-dropdown/team-dropdown.component';
+import FormDropdown from '../dropdown-team/dropdown-team.component';
 
 export default class AdminMatchAddItem  extends React.Component {
   constructor(props) {

@@ -14,7 +14,7 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 
-import TeamDropdown from '../team-dropdown/team-dropdown.component';
+import TeamDropdown from '../dropdown-team/dropdown-team.component';
 
 const MatchItem = ({ match, isEdit, id }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;

@@ -7,8 +7,8 @@ export const FixturePreviewContainer = Styled.div`
 export const Title = Styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #A9A9A9;
-    padding: 5px 3px;
+    color: 	#C0C0C0;
+    padding: 5px 20px;
 `;
 
 export const FixtureItemContainer = Styled.div`
@@ -17,7 +17,7 @@ export const FixtureItemContainer = Styled.div`
 `;
 export const TableBody = Styled.div`
     > div:nth-child(odd) {background-color: #3e1964;}
-    > div:nth-child(even) {background-color: #321450;}
+    > div:nth-child(even) {background-color: #361556;}
 `;
 
 

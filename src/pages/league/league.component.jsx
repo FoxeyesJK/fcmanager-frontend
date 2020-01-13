@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleBarReact from 'simplebar-react';
-import MATCH_DATA from './fixture.data.js';
+import MATCH_DATA from '../fixture/fixture.data.js';
 
 import { 
   LeaguePage,
@@ -25,17 +25,10 @@ export default class League extends React.Component {
     super(props);
 
     this.state = {
-      selectedId: 0,
+      selectedId: 1,
       matches: MATCH_DATA
     }
   }
-
-  handleClick = (id) => {
-    // const { name, value } = event.target;
-    console.log(id);
-    this.setState({ selectedId: id })
-  }
-  
 
   render () {
     const { matches, selectedId } = this.state;
@@ -48,38 +41,6 @@ export default class League extends React.Component {
         <CurrentChampion />
         <Standing />
       </StandingContainer >
-      {/* <LeagueContainer>
-      {
-          matches.map(({ id, ...otherMemberProps }) => (
-            <MatchPreview key={id} {...otherMemberProps} />
-          ))
-      }
-      </LeagueContainer> */}
-      <LeagueContainer>
-        <FixtureContainer>
-      <Title>FIXTURES</Title>
-      <Table>
-        <TableRow>
-            <TableHeader>TIME</TableHeader>
-            <TableHeader>OPPOSITION</TableHeader>
-            <TableHeader>RESULT</TableHeader>
-            <TableHeader>COMPETITION</TableHeader>
-        </TableRow>
-        <SimpleBarReact style={{ maxHeight: 500 }}>
-        {
-            matches.map(({ id, ...otherMatchProps }) => (
-              <FixturePreview key={id} {...otherMatchProps} handleClick={this.handleClick} />
-            ))
-        }
-        </SimpleBarReact>
-      </Table>
-      </FixtureContainer>
-      {
-        matches.map(({ id, ...otherMatchProps }) => (
-          <FixtureDetail key={id} id={selectedId} {...otherMatchProps} handleClick={this.handleClick} />
-        ))
-      }
-      </LeagueContainer>
     </LeaguePage>
     )
   }
