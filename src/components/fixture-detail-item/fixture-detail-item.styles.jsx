@@ -55,6 +55,7 @@ export const FixtureContainer = styled.div`
 
 export const LeagueContainer = styled.div`
     padding: ${props => props.isAdmin ? "10px 0px;" : "10x"}
+    width: 100%;
 `;
 
 export const Schedule = styled.div`

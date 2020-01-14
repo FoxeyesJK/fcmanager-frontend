@@ -4,8 +4,8 @@ import {
 
 } from './dropdown-league-item.styles.jsx';
 
-const DropdownLeagueItem = ({ team: { name } }) => (
-    <option value={name}>{name}</option>
+const DropdownLeagueItem = ({ league: { title } }) => (
+    <option value={title}>{title}</option>
 )
 
 export default DropdownLeagueItem;

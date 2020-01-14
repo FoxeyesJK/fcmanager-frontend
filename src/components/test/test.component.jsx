@@ -1,34 +1,21 @@
 import React from 'react';
 
-import axios from 'axios';
 import { connect } from 'react-redux';
-//import { getTeam } from '../../redux/team/team.actions';
 import { createStructuredSelector } from 'reselect';
-import TeamActionTypes from '../../redux/team/team.types';
 
 import { fetchTeamsStart } from '../../redux/team/team.actions';
+import { fetchLeaguesStart } from '../../redux/league/league.actions';
 import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
-
-const url = 'https://jsonplaceholder.typicode.com/users';
+import { selectIsLeagueFetching, selectIsLeaguesLoaded } from '../../redux/league/league.selectors';
 
 class Test extends React.Component {
   componentDidMount() {
-    const { fetchTeamsStart } = this.props;
+    const { fetchTeamsStart, fetchLeaguesStart } = this.props;
     fetchTeamsStart();
-
-    // axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
-    //   console.log(res);
-    //   getTeam(res.data)
-    //   //this.setState({ teams: res.data });
-    // })
-
-    // const teamRes = await axios.get(url);
-    // getTeam(teamRes.data)
+    fetchLeaguesStart();
   };
 
   render() {
-    //const { teams } = this.state;
-    //console.log(teams);
     return (
       <div>
       </div>
@@ -38,55 +25,17 @@ class Test extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   isTeamFetching: selectIsTeamFetching,
-  isTeamLoaded: selectIsTeamFetching
+  isTeamLoaded: selectIsTeamsLoaded,
+  isLeagueFetching: selectIsLeagueFetching,
+  isLeagueLoaded: selectIsLeaguesLoaded
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchTeamsStart: () => dispatch(fetchTeamsStart())
+  fetchTeamsStart: () => dispatch(fetchTeamsStart()),
+  fetchLeaguesStart: () => dispatch(fetchLeaguesStart())
 });
-
-// const mapDispatchToProps = dispatch => ({
-//   getTeam: team => dispatch(getTeam(team))
-// });
 
 export default connect (
   mapStateToProps,
   mapDispatchToProps
 )(Test);
-
-  // return dispatch => {
-  //   console.log("hi" + dispatch);
-  //   dispatch({
-  //     type: TeamActionTypes.GET_TEAM
-  //   });
-  //   return axios.get(url)
-  //     .then(res => {
-  //       console.log(res);
-  //       dispatch({
-  //         type: TeamActionTypes.GET_TEAM,
-  //         payload: res.data
-  //       })
-  //     })
-  //     .catch(error => {
-  //       dispatch({
-  //         type: TeamActionTypes.GET_TEAM,
-  //         payload: ''
-  //       })
-  //     })
-  // }
-
-  // componentDidMount() {
-  //   axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
-  //     console.log(res);
-  //     this.setState({ persons: res.data });
-  //   })
-  // }
-
-// const mapDispatchToProps = dispatch => ({
-//   getTeam: team => dispatch(getTeam(team))
-// });
-
-// export default connect (
-//   null,
-//   mapDispatchToProps
-// )(Test);

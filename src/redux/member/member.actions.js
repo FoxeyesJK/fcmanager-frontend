@@ -1,7 +1,6 @@
 import MemberActionTypes from './member.types';
 import axios from 'axios';
 const url = 'https://jsonplaceholder.typicode.com/users';
-// import 
 
 export const fetchMembersStart = () => ({
     type: MemberActionTypes.FETCH_MEMBERS_START

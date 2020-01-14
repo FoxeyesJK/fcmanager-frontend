@@ -12,7 +12,7 @@ export const fetchMatchesSuccess = matchesMap => ({
 })
 
 export const fetchMatchesFailure = errorMessage => ({
-    type: TeamActionTypes.FETCH_MATCHES_FAILURE,
+    type: MatchActionTypes.FETCH_MATCHES_FAILURE,
     payload: errorMessage
 })
 
