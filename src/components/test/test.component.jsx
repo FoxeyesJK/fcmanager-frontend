@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import TeamActionTypes from '../../redux/team/team.types';
 
-import { fetchTeamsStartAsync } from '../../redux/team/team.actions';
+import { fetchTeamsStart } from '../../redux/team/team.actions';
 import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
 
 class Test extends React.Component {
   componentDidMount() {
-    const { fetchTeamsStartAsync } = this.props;
-    fetchTeamsStartAsync();
+    const { fetchTeamsStart } = this.props;
+    fetchTeamsStart();
 
     // axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
     //   console.log(res);
@@ -42,7 +42,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchTeamsStartAsync: () => dispatch(fetchTeamsStartAsync())
+  fetchTeamsStart: () => dispatch(fetchTeamsStart())
 });
 
 // const mapDispatchToProps = dispatch => ({

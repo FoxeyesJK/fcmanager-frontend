@@ -1,0 +1,8 @@
+const MemberActionTypes = {
+    //GET_TEAM: 'GET_TEAM',
+    FETCH_MEMBERS_START: 'FETCH_MEMBERS_START',
+    FETCH_MEMBERS_SUCCESS: 'FETCH_MEMBERS_SUCCESS',
+    FETCH_MEMBERS_FAILURE: 'FETCH_MEMBERS_FAILURE'
+}
+
+export default MemberActionTypes;

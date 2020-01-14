@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import { Combobox } from 'react-input-enhancements';
 
 import {
   FixtureDetailItemContainer,
@@ -27,6 +28,7 @@ import {
 import DropdownTeam from '../dropdown-team/dropdown-team.component';
 import DropdownLeague from '../dropdown-league/dropdown-league.component';
 import DropdownLocation from '../dropdown-location/dropdown-location.component';
+
 
 const FixtureDetailItem = ({ match, id, isAdmin }) => {
   const { HomeTeamName, HomeScore, AwayTeamName, AwayScore, ScheduledOn, LocationName, League} = match;
