@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -8,19 +8,16 @@ import { fetchLeaguesStart } from '../../redux/league/league.actions';
 import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
 import { selectIsLeagueFetching, selectIsLeaguesLoaded } from '../../redux/league/league.selectors';
 
-class Test extends React.Component {
-  componentDidMount() {
-    const { fetchTeamsStart, fetchLeaguesStart } = this.props;
+const Test = ({ fetchTeamsStart, fetchLeaguesStart }) => {
+  useEffect(() => {
     fetchTeamsStart();
     fetchLeaguesStart();
-  };
+  })
 
-  render() {
-    return (
-      <div>
-      </div>
-    )
-  }
+  return (
+    <div>
+    </div>
+  )
 }
 
 const mapStateToProps = createStructuredSelector({

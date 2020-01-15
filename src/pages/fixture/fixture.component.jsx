@@ -69,7 +69,7 @@ export default class Fixture extends React.Component {
         matches
         .filter((match, id) => id < 1)
         .map(({ id, ...otherMatchProps }) => (
-          <FixtureDetail key={id} id={selectedId} {...otherMatchProps} handleClick={this.handleClick} isAdmin={isAdmin}/>
+          <FixtureDetail key={id} selectedId={selectedId} {...otherMatchProps} handleClick={this.handleClick} isAdmin={isAdmin}/>
         ))
       }
       </FixtureContainer>
