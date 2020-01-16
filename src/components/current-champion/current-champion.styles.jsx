@@ -7,16 +7,16 @@ const IconStyles = css`
 `;
 
 export const CurrentChampionContainer = styled.div`
-    width: 250px;
-    height: 250px;
     text-align: center;
-    background-color: #3e1964;
-    padding: 20px;
-    margin: 5px 30px;
+    background-color: #321450;
+    width: 300px;
+    height: 300px;
+    padding: 20px
+    flex-grow: 1;
 `;
 
 export const Title = styled.div`
-    padding: 20px;
+    padding: 25px 0;
     font-size: 18px;
 `;
 
@@ -26,7 +26,7 @@ export const IconContainer = styled.div`
 
 export const Team = styled.div`
     font-size: 18px;
-    width: 100%;
+    padding: 10px;
 `;
 
 export const TeamIcon = styled(BlueIcon)`

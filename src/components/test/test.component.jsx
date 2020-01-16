@@ -12,7 +12,7 @@ const Test = ({ fetchTeamsStart, fetchLeaguesStart }) => {
   useEffect(() => {
     fetchTeamsStart();
     fetchLeaguesStart();
-  })
+  }, [fetchTeamsStart, fetchLeaguesStart]);
 
   return (
     <div>

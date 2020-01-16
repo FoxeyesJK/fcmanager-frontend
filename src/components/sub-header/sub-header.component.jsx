@@ -10,7 +10,7 @@ const Header = ({ match, isSelectedOption }) => {
   return (
     <SubHeaderContainer>
       <OptionsContainer>
-        <OptionNavLink exact to='/member'>
+        {/* <OptionNavLink exact to='/member'>
           User
         </OptionNavLink>
         <OptionNavLink exact to='/strategy'>
@@ -18,15 +18,12 @@ const Header = ({ match, isSelectedOption }) => {
         </OptionNavLink>
         <OptionNavLink exact to='/payment'>
           Payment
-        </OptionNavLink>
+        </OptionNavLink> */}
         <OptionNavLink exact to='/league'>
           League
         </OptionNavLink>
         <OptionNavLink exact to='/fixture'>
           Fixture
-        </OptionNavLink>
-        <OptionNavLink exact to='/schedule'>
-          Schedule
         </OptionNavLink>
       </OptionsContainer>
     </SubHeaderContainer>

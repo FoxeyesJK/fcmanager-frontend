@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Directory from '../../components/directory/directory.component';
 import Test from '../../components/test/test.component';
 import { Dropdown } from 'semantic-ui-react'
 import './homepage.styles.scss';

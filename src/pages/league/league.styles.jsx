@@ -4,13 +4,20 @@ export const LeaguePage = Styled.div`
 `;
 
 export const StandingContainer = Styled.div`
-    display: flex;
     padding: 15px;
+`;
+
+export const StandingContentContainer = Styled.div`
+    display: flex;
+    justify-content: space-between;
+    background-color: #321450;
+    margin: 5px 10px;
 `;
 
 export const LeagueContainer = Styled.div`
     display: flex;
     flex-direction: row;
+    background-color: #321450
 `;
 
 export const FixtureContainer = Styled.div`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import './App.scss';
+import { GlobalStyle } from './global.styles';
 
 import HomePage from './pages/homepage/homepage.component';
 import Member from './pages/member/member.component';
@@ -17,7 +17,8 @@ import Menu from './components/menu/menu.component';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className='appcontainer'>
+        <GlobalStyle />
         <Menu />
         <Test />
         <div className='body'>

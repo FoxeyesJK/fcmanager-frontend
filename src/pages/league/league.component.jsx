@@ -5,6 +5,7 @@ import MATCH_DATA from '../fixture/fixture.data.js';
 import { 
   LeaguePage,
   StandingContainer,
+  StandingContentContainer,
   LeagueContainer,
   FixtureContainer,
   Title,
@@ -38,8 +39,11 @@ export default class League extends React.Component {
       <Header />
       <SubHeader />
       <StandingContainer >
-        <CurrentChampion />
-        <Standing />
+        <Title>Standings</Title>
+        <StandingContentContainer>
+          <CurrentChampion />
+          <Standing />
+        </StandingContentContainer>
       </StandingContainer >
     </LeaguePage>
     )

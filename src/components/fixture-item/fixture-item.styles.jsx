@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const TableRow = styled.div`
     text-align: center;
     display: flex;
-    
 `;
 
 export const TableData = styled.div`
@@ -23,7 +22,7 @@ export const TableData = styled.div`
     }
     &:nth-child(4) {
         text-align: left;
-        width: 30%;
+        width: 250px;
         padding-left: 10px;
     }
 `;

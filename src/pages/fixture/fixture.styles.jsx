@@ -1,47 +1,52 @@
-import Styled from 'styled-components';
+import styled from 'styled-components';
+import SimpleBarReact from 'simplebar-react';
 
-export const FixturePage = Styled.div`
+export const FixturePage = styled.div`
 
 `;
 
-export const StandingContainer = Styled.div`
+export const StandingContainer = styled.div`
     display: flex;
     padding: 15px;
 `;
 
-export const LeagueContainer = Styled.div`
+export const LeagueContainer = styled.div`
     display: flex;
     flex-direction: row;
 `;
 
-export const FixtureListContainer = Styled.div`
+export const FixtureListContainer = styled.div`
     padding: 15px;
     width: 65%;
 `;
 
-export const FixtureContainer = Styled.div`
+export const FixtureContainer = styled.div`
     display: flex;
     flex-direction: row;
 `;
 
-export const Title = Styled.div`
+export const SimpleBarReactContainer = styled(SimpleBarReact)`
+    max-hegit: 700
+`;
+
+export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: #FFFD5E;
     padding: 5px 3px;
 `;
 
-export const Table = Styled.div`
+export const Table = styled.div`
     margin: 5px 10px;
     //background-color: #a3a3a3;
 `;
 
-export const TableRow = Styled.div`
+export const TableRow = styled.div`
     width: 100%;
     display: flex;
 `;
 
-export const TableHeader = Styled.div`
+export const TableHeader = styled.div`
     background-color: #361556;
     text-align: left;
     padding: 0px 5px;
