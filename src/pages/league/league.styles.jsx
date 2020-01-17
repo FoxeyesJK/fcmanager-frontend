@@ -25,6 +25,10 @@ export const FixtureContainer = Styled.div`
     width: 65%;
 `;
 
+export const RecordContainer = Styled.div`
+    display: flex;
+`;
+
 export const Title = Styled.div`
     font-size: 14px;
     font-weight: bold;

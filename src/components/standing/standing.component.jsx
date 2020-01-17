@@ -20,6 +20,7 @@ import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 const Standing = () => {
   return (
     <StandingContainer>
+      <Title>STANDINGS</Title>
       <Table>
         <TableRow>
           <TableIndexHeader>POS</TableIndexHeader>

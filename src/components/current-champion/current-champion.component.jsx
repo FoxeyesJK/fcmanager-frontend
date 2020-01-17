@@ -2,20 +2,28 @@ import React from 'react';
 
 import {
   CurrentChampionContainer,
+  TeamContainer,
+  TitleContainer,
   Title,
   Team,
   TeamIcon, 
+  ChampionIcon,
   IconContainer
 } from './current-champion.styles.jsx';
 
 const CurrentChampion = () => {
   return (
     <CurrentChampionContainer>
-      <Title>Current Champion</Title>
+      <TitleContainer>
+        <Title>CHAMPION</Title>
+      </TitleContainer>
       <IconContainer>
-      <TeamIcon />
+        <TeamIcon />
       </IconContainer>
-      <Team>Blue</Team>
+      <TeamContainer>
+        <ChampionIcon />
+        <Team>BLUE TEAM</Team>
+      </TeamContainer>
     </CurrentChampionContainer>
   )
 }

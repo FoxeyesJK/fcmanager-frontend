@@ -11,15 +11,15 @@ import {
   Title,
   TableRow,
   TableHeader,
-  Table
+  Table,
+  RecordContainer
 } from './league.styles.jsx';
 
 import Header from '../../components/header/header.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
 import CurrentChampion from '../../components/current-champion/current-champion.component';
 import Standing from '../../components/standing/standing.component';
-import FixturePreview from '../../components/fixture-preview/fixture-preview.component';
-import FixtureDetail from '../../components/fixture-detail/fixture-detail.component';
+import Record from '../../components/record/record.component';
 
 export default class League extends React.Component {
   constructor(props) {
@@ -39,12 +39,15 @@ export default class League extends React.Component {
       <Header />
       <SubHeader />
       <StandingContainer >
-        <Title>Standings</Title>
         <StandingContentContainer>
           <CurrentChampion />
           <Standing />
         </StandingContentContainer>
       </StandingContainer >
+      <RecordContainer>
+        <Record />
+        <Record />
+      </RecordContainer>
     </LeaguePage>
     )
   }

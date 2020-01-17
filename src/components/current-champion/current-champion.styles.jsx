@@ -1,5 +1,6 @@
 import styled, {css}from 'styled-components';
 import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
+import { ReactComponent as ChampIcon } from '../../assets/icon-champion.svg';
 
 const IconStyles = css`
     height: 80px;
@@ -7,31 +8,52 @@ const IconStyles = css`
 `;
 
 export const CurrentChampionContainer = styled.div`
-    text-align: center;
     background-color: #321450;
+    //#321450;
+    //#361556
     width: 300px;
     height: 300px;
-    padding: 20px
+    padding: 10px
     flex-grow: 1;
 `;
 
 export const Title = styled.div`
-    padding: 25px 0;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFD5E;
+    padding-bottom: 30px;
 `;
 
 export const IconContainer = styled.div`
-    padding: 10px;
+    padding: 20px;
+    text-align: center;
+`;
+
+export const TitleContainer = styled.div`
+    display: flex;
+`;
+
+export const TeamContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 0px 0;
 `;
 
 export const Team = styled.div`
     font-size: 18px;
-    padding: 10px;
+    text-align: center;
+    padding-left: 5px;
 `;
 
 export const TeamIcon = styled(BlueIcon)`
     ${IconStyles}
 `;
+
+export const ChampionIcon = styled(ChampIcon)`
+    height: 20px;
+    width: 20px;
+`;
+
 
 // .current-champion {
 //     width: 250px;
