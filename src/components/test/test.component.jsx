@@ -5,14 +5,17 @@ import { createStructuredSelector } from 'reselect';
 
 import { fetchTeamsStart } from '../../redux/team/team.actions';
 import { fetchLeaguesStart } from '../../redux/league/league.actions';
+import { fetchMembersStart } from '../../redux/member/member.actions';
 import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
 import { selectIsLeagueFetching, selectIsLeaguesLoaded } from '../../redux/league/league.selectors';
+import { selectIsMemberFetching, selectIsMembersLoaded } from '../../redux/member/member.selectors';
 
-const Test = ({ fetchTeamsStart, fetchLeaguesStart }) => {
+const Test = ({ fetchTeamsStart, fetchLeaguesStart, fetchMembersStart }) => {
   useEffect(() => {
     fetchTeamsStart();
     fetchLeaguesStart();
-  }, [fetchTeamsStart, fetchLeaguesStart]);
+    fetchMembersStart();
+  }, [fetchTeamsStart, fetchLeaguesStart, fetchMembersStart]);
 
   return (
     <div>
@@ -24,12 +27,15 @@ const mapStateToProps = createStructuredSelector({
   isTeamFetching: selectIsTeamFetching,
   isTeamLoaded: selectIsTeamsLoaded,
   isLeagueFetching: selectIsLeagueFetching,
-  isLeagueLoaded: selectIsLeaguesLoaded
+  isLeagueLoaded: selectIsLeaguesLoaded,
+  isMemberFetching: selectIsMemberFetching,
+  isMemberLoaded: selectIsMembersLoaded
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchTeamsStart: () => dispatch(fetchTeamsStart()),
-  fetchLeaguesStart: () => dispatch(fetchLeaguesStart())
+  fetchLeaguesStart: () => dispatch(fetchLeaguesStart()),
+  fetchMembersStart: () => dispatch(fetchMembersStart())
 });
 
 export default connect (

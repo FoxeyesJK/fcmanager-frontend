@@ -9,7 +9,8 @@ import {
   OptionLink,
   OptionName,
   StyledLeagueIcon,
-  StyledScheduleIcon
+  StyledScheduleIcon,
+  StyledSquadIcon
 } from './menu.styles.jsx';
 
 const Menu = ({ match, isSelectedOption }) => {
@@ -20,11 +21,11 @@ const Menu = ({ match, isSelectedOption }) => {
       <ClubType>football club</ClubType>
     </TitleContainer>
     <OptionsContainer>
-      {/* <OptionLink className={`${isSelectedOption ? 'selected-option' : ''} option`} to='/member'>
-        <SquadIcon className='icon' />
-        <OptionName>Squad</OptionName>
+      <OptionLink to='/member'>
+        <StyledSquadIcon />
+        <OptionName>Players</OptionName>
       </OptionLink>
-      <OptionLink to='/strategy'>
+      {/* <OptionLink to='/strategy'>
         <StrategyIcon className='icon' />
         <OptionName>Strategy</OptionName>
       </OptionLink>

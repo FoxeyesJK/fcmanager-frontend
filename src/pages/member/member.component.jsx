@@ -1,29 +1,36 @@
 import React from 'react';
+import _ from 'lodash';
 
-import MEMBER_DATA from './member.data.js';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+
+import {
+  MemberPage
+} from './member.styles';
 
 import MemberPreview from '../../components/member-preview/member-preview.component';
+import { selectGroupMembers } from '../../redux/member/member.selectors';
 
-class MemberPage extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      members: MEMBER_DATA
+const Member = ({ members }) => {
+  return (
+
+  <MemberPage>
+    {
+        members.value().map(({ ...otherMemberProps }) => (
+          <MemberPreview {...otherMemberProps} />
+        ))
     }
-  }
-
-  render () {
-    const {members} = this.state;
-    return (<div className='member-page'>
-      {
-          members.map(({ id, ...otherMemberProps }) => (
-            <MemberPreview key={id} {...otherMemberProps} />
-          ))
-      }
-    </div>)
-  }
+  </MemberPage>
+  )
 }
 
-export default MemberPage;
+const mapStateToProps = createStructuredSelector({
+  members: selectGroupMembers,
+})
+
+export default withRouter(connect(
+ mapStateToProps 
+)(Member));
 

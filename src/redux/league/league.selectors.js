@@ -5,7 +5,7 @@ const selectLeague = state => state.league;
 //Use selectLeagues if API contains Key, Text, Value
 export const selectLeagues = createSelector(
     [selectLeague],
-    league => league.leagues
+    league => league.leagues,
 )
 
 export const selectLeagueOptions = createSelector(

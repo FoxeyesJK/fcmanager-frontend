@@ -1,21 +1,25 @@
 import React from 'react';
 
-import './member-preview.styles.scss';
+import {
+  MemberPreivewContainer,
+  MemberItemContainer,
+  Team
+} from './member-preview.styles';
 
 import MemberItem from '../member-item/member-item.component';
 
-const MemberPreview = ({ title, items }) => {
+const MemberPreview = ({ name, items }) => {
   return (
-    <div className='member-preview'>
-        <h1 className='title'>{title.toUpperCase()}</h1>
-        <div className='preview'>
+    <MemberPreivewContainer>
+        <Team>{name.toUpperCase()}</Team>
+        <MemberItemContainer>
             {items
                 .filter((item, idx) => idx < 4)
                 .map(item => (
                     <MemberItem key={item.id} item={item} />
             ))}
-        </div>
-    </div>
+        </MemberItemContainer>
+    </MemberPreivewContainer>
   )
 }
 

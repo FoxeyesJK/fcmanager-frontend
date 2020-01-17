@@ -17,7 +17,7 @@ const memberReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isFetching: false,
-                teams: action.payload
+                members: action.payload
             }
         case MemberActionTypes.FETCH_MEMBERS_FAILURE:
             return {

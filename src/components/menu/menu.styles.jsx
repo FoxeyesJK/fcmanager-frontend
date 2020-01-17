@@ -99,6 +99,10 @@ export const StyledScheduleIcon = styled(ScheduleIcon)`
     ${IconStyles}
 `;
 
+export const StyledSquadIcon = styled(SquadIcon)`
+    ${IconStyles}
+`;
+
 
 
 
