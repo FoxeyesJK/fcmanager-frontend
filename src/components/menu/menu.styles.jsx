@@ -13,6 +13,10 @@ const IconStyles = css`
         width: 40px;
         display: inline-block;
         vertical-align: middle;
+
+        @media (max-width: 800px) {
+          height: 40px;
+        }
 `;
 
 export const MenuContainer = styled.div`
@@ -27,12 +31,21 @@ export const MenuContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+
+  @media (max-width: 800px) {
+    width: 15%;
+    padding: 10px;
+  }
 `;
 
 export const TitleContainer = styled.div`
     width: 100%;
     text-align: center;
     padding: 10px;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
 `;
 
 export const OptionsContainer = styled.div`
@@ -40,6 +53,10 @@ export const OptionsContainer = styled.div`
     flex-direction: column;
     margin-top: 1.5em;
     width: 100%;
+
+    @media (max-width: 800px) {
+      margin-top: 0;
+    }
 `;
 
 export const ClubName = styled.div`
@@ -58,11 +75,20 @@ export const OptionLink = styled(Link)`
       display: flex;
       padding: 16px 0;
       border-bottom: 1px solid 	#404040;
+
+      @media (max-width: 800px) {
+        padding: 20px 0;
+        margin: auto;
+      }
 `;
 
 export const OptionName = styled.div`
-        margin-left: 3px;
-        font-size: 20px;
+  margin-left: 3px;
+  font-size: 20px;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const StyledLeagueIcon = styled(ReportIcon)`

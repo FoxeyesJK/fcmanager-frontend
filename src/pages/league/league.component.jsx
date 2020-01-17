@@ -27,12 +27,14 @@ export default class League extends React.Component {
 
     this.state = {
       selectedId: 1,
-      matches: MATCH_DATA
+      matches: MATCH_DATA,
+      type: 'score',
+      type1: 'assist'
     }
   }
 
   render () {
-    const { matches, selectedId } = this.state;
+    const { matches, selectedId, type, type1 } = this.state;
     return (
     
     <LeaguePage>
@@ -45,8 +47,8 @@ export default class League extends React.Component {
         </StandingContentContainer>
       </StandingContainer >
       <RecordContainer>
-        <Record />
-        <Record />
+        <Record type={type} />
+        <Record type={type1} />
       </RecordContainer>
     </LeaguePage>
     )

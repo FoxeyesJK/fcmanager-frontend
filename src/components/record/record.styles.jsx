@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 
 import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as SoccerIcon } from '../../assets/icon-soccerball.svg';
+import { ReactComponent as ShoesIcon } from '../../assets/icon-soccershoes.svg';
 
 const IconStyles = css`
     height: 20px;
@@ -10,6 +11,10 @@ const IconStyles = css`
 `;
 
 export const ScoreIcon = styled(SoccerIcon)`
+    ${IconStyles}
+`;
+
+export const AssistIcon = styled(ShoesIcon)`
     ${IconStyles}
 `;
 
@@ -30,6 +35,7 @@ export const IconContainer = styled.div`
     height: 40px;
     background-color: #FFFD5E;
     border-radius: 50%;
+
 `;
 
 export const Title = styled.div`

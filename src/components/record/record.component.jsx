@@ -5,6 +5,7 @@ import {
   RecordContentContainer,
   IconContainer,
   ScoreIcon,
+  AssistIcon,
   Title,
   Table,
   TableRow,
@@ -22,14 +23,14 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
 import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 
-const Record = () => {
+const Record = ({ type }) => {
   return (
     <RecordContainer>
       <IconContainer>
-        <ScoreIcon/>
+        {type == 'score' ? <ScoreIcon /> : <AssistIcon />}
       </IconContainer>
       <RecordContentContainer>
-      <Title>TOP SCORERS</Title>
+      <Title>{type == 'score' ? 'TOP SCORERS' : 'TOP ASSISTS'}</Title>
       <Table>
         <TableRow>
           <TableIndexHeader>POS</TableIndexHeader>
