@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'; //window local storage
 import teamReducer from './team/team.reducer';
 import leagueReducer from './league/league.reducer';
 import memberReducer from './member/member.reducer';
+import matchReducer from './match/match.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   team: teamReducer,
   league: leagueReducer,
-  member: memberReducer
+  member: memberReducer,
+  match: matchReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

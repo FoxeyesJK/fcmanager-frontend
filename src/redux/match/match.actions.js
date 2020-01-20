@@ -1,6 +1,6 @@
 import MatchActionTypes from './match.types';
 import axios from 'axios';
-const url = 'https://jsonplaceholder.typicode.com/users'; 
+const url = 'http://68.132.136.143:5611/Match/2'; 
 
 export const fetchMatchesStart = () => ({
     type: MatchActionTypes.FETCH_MATCHES_START

@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, all, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
@@ -10,7 +10,7 @@ import MatchActionTypes from './match.types';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
 
-export function* fetchTeamsAsync() {
+export function* fetchMatchesAsync() {
     yield console.log('I am fired');
 
     try {
@@ -27,3 +27,10 @@ export function* fetchMatchesStart() {
         fetchMatchesAsync
     );
 }
+
+
+export function* matchSagas() {
+    yield all([call(fetchMatchesStart)]);
+}
+
+
