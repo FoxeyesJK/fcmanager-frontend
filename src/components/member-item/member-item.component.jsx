@@ -1,7 +1,10 @@
 import React from 'react';
+import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 import {
   MemberItemContainer,
+  NameContainer,
+  IconContainer,
   ImageContainer,
   ContentContainer,
   TextContainer,
@@ -10,13 +13,20 @@ import {
   Text
 } from './member-item.styles.jsx';
 
-import profile from '../../assets/profile-blank.png';
 
-const MemberItem = ({ item }) => {
+const MemberItem = ({ item, id, handleClick, isAdmin }) => {
   const { name, email, imageUrl } = item;
   return (
     <MemberItemContainer>
-        <Name>{name}</Name>
+        <NameContainer>
+          <Name>{name}</Name>
+          {isAdmin ? 
+            <IconContainer>
+              <CustomIcon type='edit' handleClick={handleClick} />
+              <CustomIcon type='delete' handleClick={handleClick} />
+            </IconContainer>
+            : null}
+        </NameContainer>
         <ContentContainer>
         <ImageContainer>
         <ProfileImage

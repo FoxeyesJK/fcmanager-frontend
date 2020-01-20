@@ -7,6 +7,17 @@ export const MemberItemContainer = styled.div`
     border-radius: 10px;
 `;
 
+export const NameContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const IconContainer = styled.div`
+    display: flex;
+    padding: 0 5px;
+`;
+
 export const ContentContainer = styled.div`
     display: flex;
     width: 100%;

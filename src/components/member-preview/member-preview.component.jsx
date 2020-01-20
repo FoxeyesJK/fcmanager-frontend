@@ -19,7 +19,7 @@ const MemberPreview = ({ name, items, isAdmin }) => {
             {items
                 .filter((item, idx) => idx < 4)
                 .map(item => (
-                    <MemberItem key={item.id} item={item} />
+                    <MemberItem key={item.id} item={item} isAdmin={isAdmin}/>
             ))}
         </MemberItemContainer>
     </MemberPreivewContainer>
