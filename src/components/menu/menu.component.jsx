@@ -25,6 +25,10 @@ const Menu = ({ match, isSelectedOption }) => {
         <StyledSquadIcon />
         <OptionName>Players</OptionName>
       </OptionLink>
+      <OptionLink to='/member-admin'>
+        <StyledSquadIcon />
+        <OptionName>Players-Admin</OptionName>
+      </OptionLink>
       {/* <OptionLink to='/strategy'>
         <StrategyIcon className='icon' />
         <OptionName>Strategy</OptionName>

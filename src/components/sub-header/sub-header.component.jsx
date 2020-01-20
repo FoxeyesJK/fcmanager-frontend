@@ -19,6 +19,9 @@ const Header = ({ match, isSelectedOption }) => {
         <OptionNavLink exact to='/payment'>
           Payment
         </OptionNavLink> */}
+        <OptionNavLink exact to='/member'>
+          Players
+        </OptionNavLink>
         <OptionNavLink exact to='/league'>
           League
         </OptionNavLink>
