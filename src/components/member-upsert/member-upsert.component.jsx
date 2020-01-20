@@ -5,14 +5,17 @@ import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 import {
   MemberUpsertContainer,
   FormContainer,
+  FormContentContainer,
+  ImageContainer,
+  TextInputContainer,
   InputContainer,
   DateTimePickerContainer,
   ButtonContainer,
   Title,
   Text,
-  Input
 } from './member-upsert.styles';
 
+import ImageInput from '../image-input/image-input.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -62,7 +65,6 @@ const handleSubmit = type => event => {
     .then(res => {
       console.log(res.data);
     })
-
   }
 }
 
@@ -76,45 +78,58 @@ const handleChange = event => {
     <MemberUpsertContainer>
       <Title>{type == 'add' ? 'Add Player' : 'Edit Player'}</Title>
       <FormContainer onSubmit={handleSubmit({type})}>
-        <InputContainer>
-          <Text>Name: </Text>
-          <FormInput
-            name='name'
-            type='text'
-            value={name}
+        <FormContentContainer>
+        <ImageContainer>
+          <ImageInput
+            id='photo'
+            name='file'
+            type='file'
+            label='Upload Photo'
             handleChange={handleChange}
-            required
           />
-        </InputContainer>
-        <InputContainer>
-          <Text>Email: </Text>
-          <FormInput
-            name='email'
-            type='text'
-            value={email}
-            handleChange={handleChange}
-            required
-          />
-        </InputContainer>
-        <InputContainer>
-          <Text>Phone: </Text>
-          <FormInput
-            name='phone'
-            type='text'
-            value={phone}
-            handleChange={handleChange}
-            required
-          />
-        </InputContainer>
-        <InputContainer>
-          <Text>BOA: </Text>
-          <DateTimePickerContainer>
-            <DateTimePicker defaultValue={new Date()} />
-          </DateTimePickerContainer>
-        </InputContainer>
+        </ImageContainer>
+        <TextInputContainer>
+          <InputContainer>
+            <Text>Name: </Text>
+            <FormInput
+              name='name'
+              type='text'
+              value={name}
+              handleChange={handleChange}
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <Text>Email: </Text>
+            <FormInput
+              name='email'
+              type='text'
+              value={email}
+              handleChange={handleChange}
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <Text>Phone: </Text>
+            <FormInput
+              name='phone'
+              type='text'
+              value={phone}
+              handleChange={handleChange}
+              required
+            />
+          </InputContainer>
+          <InputContainer>
+            <Text>BOA: </Text>
+            <DateTimePickerContainer>
+              <DateTimePicker defaultValue={new Date()} />
+            </DateTimePickerContainer>
+          </InputContainer>
+        </TextInputContainer>
+        </FormContentContainer>
         <ButtonContainer>
-          <CustomButton>Save</CustomButton>
-        </ButtonContainer>
+            <CustomButton>Save</CustomButton>
+          </ButtonContainer>
       </FormContainer>
     </MemberUpsertContainer>
   )

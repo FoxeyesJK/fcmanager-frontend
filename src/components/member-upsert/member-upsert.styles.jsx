@@ -1,12 +1,34 @@
 import styled, { css } from 'styled-components';
 
 export const MemberUpsertContainer = styled.div`
-    width: 360px;
+    width: 600px;
     background-color: #2e1249;
     margin: 20px;
 `;
 
 export const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const FormContentContainer = styled.form`
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+`;
+
+export const ImageContainer = styled.div`
+    background-color: #441f69;
+    border: solid 1px #5f3a85;
+    border-radius: 7px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+`;
+
+export const TextInputContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;

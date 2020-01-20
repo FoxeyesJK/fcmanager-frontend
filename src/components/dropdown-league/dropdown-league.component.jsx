@@ -17,7 +17,7 @@ import { selectLeagueOptions } from '../../redux/league/league.selectors';
 
 import DropdownLeagueItem from '../dropdown-league-item/dropdown-league-item.component';
 
-const DropdownLeague = ({ league, leagueOptions }) => (
+const DropdownLeague = ({ league, leagueOptions, isAdmin }) => (
     <DropDownContainer>
         {
         leagueOptions.length ? 
@@ -26,6 +26,7 @@ const DropdownLeague = ({ league, leagueOptions }) => (
             selection
             search
             options={leagueOptions}
+            isAdmin={isAdmin}
         />) : null
         }
     </DropDownContainer>

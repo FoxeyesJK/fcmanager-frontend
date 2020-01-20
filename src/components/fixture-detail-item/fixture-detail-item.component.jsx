@@ -75,7 +75,7 @@ const friendOptions = [
 ]
 
 const FixtureDetailItem = ({ match, id, isAdmin }) => {
-  const { HomeTeamName, HomeScore, AwayTeamName, AwayScore, ScheduledOn, LocationName, League} = match;
+  const { homeTeamName, homeScore, awayTeamName, awayScore, ScheduledOn, LocationName, League} = match;
  
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
@@ -98,9 +98,9 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
               </IconContainer>
               }
             <ScoreContainer>
-              { HomeScore }
+              { homeScore }
               -
-              { AwayScore }
+              { awayScore }
             </ScoreContainer> 
             {
               isAdmin 

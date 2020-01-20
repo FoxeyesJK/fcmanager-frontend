@@ -20,7 +20,6 @@ export function* fetchTeamsAsync() {
     } catch (error) {
         yield put(fetchTeamsFailure(error.message))
     }
-    //getTeam(teamRes.data)
 }
 
 export function* fetchTeamsStart() {

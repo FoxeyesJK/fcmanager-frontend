@@ -9,7 +9,7 @@ import {
 
 import MemberItem from '../member-item/member-item.component';
 
-const MemberPreview = ({ name, items, id, type, handleClick, isAdmin }) => {
+const MemberPreview = ({ name, items, handleClick, isAdmin }) => {
   return (
     <MemberPreivewContainer>
         <TeamContainer>
@@ -19,7 +19,7 @@ const MemberPreview = ({ name, items, id, type, handleClick, isAdmin }) => {
             {items
                 .filter((item, idx) => idx < 4)
                 .map(item => (
-                    <MemberItem key={item.id} item={item} id={id} type={type} handleClick={handleClick} isAdmin={isAdmin}/>
+                    <MemberItem key={item.id} item={item} handleClick={handleClick} isAdmin={isAdmin}/>
             ))}
         </MemberItemContainer>
     </MemberPreivewContainer>

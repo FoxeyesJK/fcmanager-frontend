@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MATCH_DATA from './fixture.data.js';
 import SimpleBarReact from 'simplebar-react';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+import { selectMatches } from '../../redux/match/match.selectors';
 
 import { 
   FixturePage,
@@ -19,28 +24,17 @@ import FixturePreview from '../../components/fixture-preview/fixture-preview.com
 import FixtureDetail from '../../components/fixture-detail/fixture-detail.component';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
-export default class Fixture extends React.Component {
-  constructor(props) {
-    super(props);
+const Fixture = ({ matches, isAdmin}) => {
+  const [button, setButton] = useState({ selectedId: 0, type: '' })
 
-    this.state = {
-      selectedId: 1,
-      matches: MATCH_DATA
-    }
+  const { selectedId, type } = button;
+
+  const handleClick = (id, type) => {
+    console.log(id)
+    setButton({ selectedId: id, type: type });
   }
 
-  handleClick = (id) => {
-    // const { name, value } = event.target;
-    console.log(id);
-    this.setState({ selectedId: id })
-  }
-  
-
-  render () {
-    const { matches, selectedId } = this.state;
-    const { isAdmin } = this.props;
-    return (
-    
+  return (
     <FixturePage>
       <FixtureContainer>
       <FixtureListContainer>
@@ -51,12 +45,12 @@ export default class Fixture extends React.Component {
               <TableHeader>OPPOSITION</TableHeader>
               <TableHeader>RESULT</TableHeader>
               <TableHeader>COMPETITION</TableHeader>
-              {isAdmin ? <CustomIcon type='add' />: null}
+              {isAdmin ? <CustomIcon type='add' id={selectedId} handleClick={handleClick}/>: null}
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
               matches.map(({ id, ...otherMatchProps }) => (
-                <FixturePreview id={id} key={id} {...otherMatchProps} handleClick={this.handleClick} />
+                <FixturePreview key={id} id={selectedId} type={type} handleClick={handleClick} {...otherMatchProps} />
               ))
           }
           </SimpleBarReact>
@@ -66,11 +60,19 @@ export default class Fixture extends React.Component {
           matches
           .filter((match, id) => id < 1)
           .map(({ id, ...otherMatchProps }) => (
-            <FixtureDetail key={id} selectedId={selectedId} {...otherMatchProps} handleClick={this.handleClick} isAdmin={isAdmin}/>
+            <FixtureDetail key={id} selectedId={selectedId} handleClick={handleClick} isAdmin={isAdmin} {...otherMatchProps}/>
           ))
         }
       </FixtureContainer>
     </FixturePage>
-    )
-  }
+  )
 }
+
+const mapStateToProps = createStructuredSelector({
+  matches: selectMatches,
+})
+
+export default withRouter(connect(
+ mapStateToProps 
+)(Fixture));
+

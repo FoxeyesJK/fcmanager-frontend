@@ -10,15 +10,15 @@ import CustomIconButton from '../../components/custom-icon-button/custom-icon-bu
 
 
 
-const FixtureItem = ({match, handleClick, id}) => {
-    const { time, HomeTeamName, HomeScore, AwayTeamName, AwayScore} = match;
+const FixtureItem = ({match, handleClick, type, id}) => {
+    const { time, homeTeamName, homeScore, awayTeamName, awayScore} = match;
     
     return (
-    <TableRow onClick={() => handleClick(id)} >
+    <TableRow onClick={() => handleClick(id, type)} >
         {/* <TableData>{moment(time).format('ddd')}, {moment(time).add(10, 'days').calendar()}</TableData> */}
         <TableData IsCenter>{moment(time).format('LT')}</TableData>
-        <TableData>{HomeTeamName} vs {AwayTeamName}</TableData>
-        <TableData>{HomeScore} - {AwayScore}</TableData>
+        <TableData>{homeTeamName} vs {awayTeamName}</TableData>
+        <TableData>{homeScore} - {awayScore}</TableData>
         <TableData>2020 Spring Championship League</TableData>
     </TableRow>
     );

@@ -22,7 +22,7 @@ export const RecordContainer = styled.div`
     background-color: #321450;
     width: 400px;
     height: 400px;
-    margin-left: 25px;
+    margin-left: 10px;
     display: flex;
 `;
 

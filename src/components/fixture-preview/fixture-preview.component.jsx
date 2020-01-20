@@ -9,7 +9,7 @@ import {
 
 import FixtureItem from '../fixture-item/fixture-item.component';
 
-const FixturePreview = ({ ScheduledOn, matches, handleClick }) => {
+const FixturePreview = ({ ScheduledOn, matches, type, handleClick }) => {
   return (
     <FixturePreviewContainer>
       <Title>{moment(ScheduledOn).format('ddd')}, {moment(ScheduledOn).add(10, 'days').calendar()}</Title>
@@ -25,7 +25,7 @@ const FixturePreview = ({ ScheduledOn, matches, handleClick }) => {
         <TableBody>
         {
           matches.map(match => (
-            <FixtureItem key={match.id} id={match.id} match={match} handleClick={handleClick}/>
+            <FixtureItem key={match.id} id={match.id} match={match} type={type} handleClick={handleClick}/>
           ))
         }
         </TableBody>

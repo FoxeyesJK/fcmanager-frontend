@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
+
 export const FormInputContainer = styled.div`
   width: 100%;
+
 `;
 
 export const Input = styled.input`

@@ -4,13 +4,13 @@ import {
     FormInputContainer,
     Input,
     Label
- } from './form-input.styles.jsx';
+ } from './image-input.styles.jsx';
 
-const FormInput = ({ handleChange, label, ...otherProps }) => (
+const FormInput = ({ handleChange, label, id, ...otherProps }) => (
     <FormInputContainer>
-        <Input onChange={handleChange} {...otherProps}/>
+        <Input id={id} onChange={handleChange} {...otherProps}/>
         {label ? (
-            <Label>
+            <Label for={id}>
                 {label}
             </Label>
         ) : null}
