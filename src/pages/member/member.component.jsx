@@ -33,8 +33,6 @@ const Member = ({ members, isAdmin }) => {
   
   return (
     <MemberPage>
-      <Header />
-      <SubHeader />
       <TitleContainer>
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={selectedId} handleClick={handleClick} />: null}

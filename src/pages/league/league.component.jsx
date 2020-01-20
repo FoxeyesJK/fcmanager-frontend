@@ -15,8 +15,6 @@ import {
   RecordContainer
 } from './league.styles.jsx';
 
-import Header from '../../components/header/header.component';
-import SubHeader from '../../components/sub-header/sub-header.component';
 import CurrentChampion from '../../components/current-champion/current-champion.component';
 import Standing from '../../components/standing/standing.component';
 import Record from '../../components/record/record.component';
@@ -38,8 +36,6 @@ export default class League extends React.Component {
     return (
     
     <LeaguePage>
-      <Header />
-      <SubHeader />
       <StandingContainer >
         <StandingContentContainer>
           <CurrentChampion />

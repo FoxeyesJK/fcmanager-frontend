@@ -1,52 +1,52 @@
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
-export const LeaguePage = Styled.div`
+export const LeaguePage = styled.div`
 `;
 
-export const StandingContainer = Styled.div`
-    padding: 15px;
+export const StandingContainer = styled.div`
+ 
 `;
 
-export const StandingContentContainer = Styled.div`
+export const StandingContentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: #321450;
     margin: 5px 10px;
 `;
 
-export const LeagueContainer = Styled.div`
+export const LeagueContainer = styled.div`
     display: flex;
     flex-direction: row;
     background-color: #321450
 `;
 
-export const FixtureContainer = Styled.div`
+export const FixtureContainer = styled.div`
     padding: 15px;
     width: 65%;
 `;
 
-export const RecordContainer = Styled.div`
+export const RecordContainer = styled.div`
     display: flex;
 `;
 
-export const Title = Styled.div`
+export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: #FFFD5E;
     padding: 5px 3px;
 `;
 
-export const Table = Styled.div`
+export const Table = styled.div`
     margin: 5px 10px;
     //background-color: #a3a3a3;
 `;
 
-export const TableRow = Styled.div`
+export const TableRow = styled.div`
     width: 100%;
     display: flex;
 `;
 
-export const TableHeader = Styled.div`
+export const TableHeader = styled.div`
     background-color: #361556;
     text-align: left;
     padding: 5px 5px;

@@ -15,8 +15,6 @@ import {
   Table
 } from './fixture.styles.jsx';
 
-import Header from '../../components/header/header.component';
-import SubHeader from '../../components/sub-header/sub-header.component';
 import FixturePreview from '../../components/fixture-preview/fixture-preview.component';
 import FixtureDetail from '../../components/fixture-detail/fixture-detail.component';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
@@ -44,8 +42,6 @@ export default class Fixture extends React.Component {
     return (
     
     <FixturePage>
-      <Header />
-      <SubHeader />
       <FixtureContainer>
       <FixtureListContainer>
         <Title>FIXTURES</Title>

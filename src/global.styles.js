@@ -1,19 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-
     body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #361556;
-    }
-
-    .appcontainer {
-    }
-
-    .body {
-    padding: 0 0px;
-    width: 75%;
-    float: right;
     background-color: #361556;
     }
 
@@ -28,8 +17,6 @@ export const GlobalStyle = createGlobalStyle`
     .option {
     color: white;
     }
-
-
 
     h1 {
     color: white;

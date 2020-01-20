@@ -7,7 +7,6 @@ export const FixturePage = styled.div`
 
 export const StandingContainer = styled.div`
     display: flex;
-    padding: 15px;
 `;
 
 export const LeagueContainer = styled.div`
@@ -16,7 +15,6 @@ export const LeagueContainer = styled.div`
 `;
 
 export const FixtureListContainer = styled.div`
-    padding: 15px;
     width: 65%;
 `;
 
