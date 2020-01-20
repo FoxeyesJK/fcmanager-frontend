@@ -14,7 +14,7 @@ import {
 } from './member-item.styles.jsx';
 
 
-const MemberItem = ({ item, id, handleClick, isAdmin }) => {
+const MemberItem = ({ item, id, type, handleClick, isAdmin }) => {
   const { name, email, imageUrl } = item;
   return (
     <MemberItemContainer>

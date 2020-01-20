@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const MemberAddContainer = styled.div`
-    width: 400px;
+export const MemberUpsertContainer = styled.div`
+    width: 360px;
     background-color: #2e1249;
     margin: 20px;
 `;

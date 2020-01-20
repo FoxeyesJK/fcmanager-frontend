@@ -15,7 +15,7 @@ import {
 import Header from '../../components/header/header.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
-import MemberAdd from '../../components/member-add/member-add.component';
+import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectGroupMembers } from '../../redux/member/member.selectors';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
@@ -39,7 +39,7 @@ const Member = ({ members, isAdmin }) => {
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={selectedId} handleClick={handleClick} />: null}
       </TitleContainer>
-      {type == 'add' ? <MemberAdd />: null}
+      {type == 'add' || type =='edit' ? <MemberUpsert id={selectedId} type={type}/> : null}
       <MemberContainer>
       {
           members.value().map(({ ...otherMemberProps }) => (
