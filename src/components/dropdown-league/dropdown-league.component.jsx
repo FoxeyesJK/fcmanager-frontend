@@ -3,8 +3,7 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react'
 
 import {
-    DropDownContainer,
-    DropDownItemContainer
+    DropDownLeagueContainer
 } from './dropdown-league.styles.jsx';
 
 import { connect } from 'react-redux';
@@ -12,13 +11,15 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectLeagueOptions } from '../../redux/league/league.selectors';
 
+import { toggleLeagueHidden } from '../../redux/league/league.actions';
+
 // import { fetchTeamsStartAsync } from '../../redux/team/team.actions';
 // import { selectIsTeamFetching } from '../../redux/team/team.selectors';
 
 import DropdownLeagueItem from '../dropdown-league-item/dropdown-league-item.component';
 
-const DropdownLeague = ({ league, leagueOptions, isAdmin }) => (
-    <DropDownContainer>
+const DropdownLeagueContents = ({ toggleLeagueHidden, league, leagueOptions, isAdmin }) => (
+    <DropDownLeagueContainer>
         {
         leagueOptions.length ? 
         (<Dropdown
@@ -29,18 +30,12 @@ const DropdownLeague = ({ league, leagueOptions, isAdmin }) => (
             isAdmin={isAdmin}
         />) : null
         }
-    </DropDownContainer>
-
+    </DropDownLeagueContainer>
 )
 
-const mapStateToProps = createStructuredSelector({
-    leagueOptions: selectLeagueOptions
-})
-
-export default withRouter(connect(
-    mapStateToProps
-    //mapDispatchToProps
-    )(DropdownLeague));
-
-
-    
+const mapDispatchToProps = dispatch => ({
+    toggleLeagueHidden: () => dispatch(toggleLeagueHidden())
+ });
+ 
+ export default connect(null, mapDispatchToProps)(DropdownLeagueContents);
+ 

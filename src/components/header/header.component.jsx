@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
+import CustomDropdown from '../../components/custom-dropdown/custom-dropdown.component';
 
 import { 
   HeaderContainer, 
@@ -10,20 +12,22 @@ import {
   SubTitle 
 } from './header.styles';
 
-const Header = ({ match, isSelectedOption }) => {
+const Header = ({ match, isSelectedOption, hidden }) => {
   return (
     <HeaderContainer>
       <LogoContainer>
         <ClubIcon />
       </LogoContainer>
-
       <TextContainer>
         <Title>TEAM REPORT</Title>
-        <SubTitle>2020 Spring Championship League</SubTitle>
+        <SubTitle>{hidden ? null : <CustomDropdown />}</SubTitle>
       </TextContainer>
     </HeaderContainer>
   )
 };
 
-
-export default Header;
+const mapStateToProps = ({league: { hidden }}) => ({
+  hidden
+})
+  
+export default connect(mapStateToProps)(Header);

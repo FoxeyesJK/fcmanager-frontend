@@ -2,6 +2,10 @@ import LeagueActionTypes from './league.types';
 import axios from 'axios';
 const url = 'https://jsonplaceholder.typicode.com/users'; 
 
+export const toggleLeagueHidden = () => ({
+    type: LeagueActionTypes.TOGGLE_LEAGUE_HIDDEN
+})
+
 export const fetchLeaguesStart = () => ({
     type: LeagueActionTypes.FETCH_LEAGUES_START
 })

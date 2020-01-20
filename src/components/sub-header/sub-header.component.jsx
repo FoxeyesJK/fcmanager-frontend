@@ -6,7 +6,7 @@ import {
   OptionNavLink
 } from './sub-header.styles';
 
-const Header = ({ match, isSelectedOption }) => {
+const SubHeader = ({ match, isSelectedOption }) => {
   return (
     <SubHeaderContainer>
       <OptionsContainer>
@@ -34,4 +34,4 @@ const Header = ({ match, isSelectedOption }) => {
 };
 
 
-export default Header;
+export default SubHeader;

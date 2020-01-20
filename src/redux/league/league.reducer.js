@@ -1,6 +1,7 @@
 import LeagueActionTypes from './league.types';
 
 const INITIAL_STATE = {
+    hidden: true,
     leagues: [],
     isFetching: false,
     errorMessage: undefined
@@ -8,6 +9,11 @@ const INITIAL_STATE = {
 
 const leagueReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case LeagueActionTypes.TOGGLE_LEAGUE_HIDDEN: 
+            return {
+                ...state,
+                hidden: !state.hidden
+            }
         case LeagueActionTypes.FETCH_LEAGUES_START:
             return {
                 ...state,
