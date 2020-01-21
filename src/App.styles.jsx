@@ -8,7 +8,7 @@ export const BodyContainer= styled.div`
     padding: 15px;
 `;
 
-export const Body= styled.body`
+export const Body= styled.div`
     padding: 0 0px;
     width: 75%;
     float: right;

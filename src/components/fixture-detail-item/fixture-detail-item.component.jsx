@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 import { Combobox } from 'react-input-enhancements';
-import { Dropdown } from 'semantic-ui-react'
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
@@ -28,6 +28,7 @@ import {
   Player,
   StyledAssistIcon,
   StyledScoreIcon,
+  StyledDropdown,
   DateTimePickerContainer
 } from './fixture-detail-item.styles.jsx';
 
@@ -206,7 +207,7 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
             <PlayerContainer>
             {
                   isAdmin ?
-                  <Dropdown
+                  <StyledDropdown
                   placeholder='Select Member'
                   fluid
                   search

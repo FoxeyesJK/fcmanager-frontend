@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Dropdown } from 'semantic-ui-react';
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
@@ -86,6 +87,18 @@ export const Player = styled.div`
 export const DateTimePickerContainer = styled.div`
     width: 240px;
     margin: auto;
+`;
+
+
+export const StyledDropdown = styled(Dropdown)`
+    border: 1px solid #C0C0C0;
+    transform: skew(-15deg);
+    background-color: #3e1964;
+    color: #C0C0C0;
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
 `;
 
 export const StyledAssistIcon = styled(AssistIcon)`

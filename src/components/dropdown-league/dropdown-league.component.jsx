@@ -18,18 +18,9 @@ import { toggleLeagueHidden } from '../../redux/league/league.actions';
 
 import DropdownLeagueItem from '../dropdown-league-item/dropdown-league-item.component';
 
-const DropdownLeagueContents = ({ toggleLeagueHidden, league, leagueOptions, isAdmin }) => (
-    <DropDownLeagueContainer>
-        {
-        leagueOptions.length ? 
-        (<Dropdown
-            placeholder='Select League'
-            selection
-            search
-            options={leagueOptions}
-            isAdmin={isAdmin}
-        />) : null
-        }
+const DropdownLeague = ({ toggleLeagueHidden, league, leagueOptions, isAdmin }) => (
+    <DropDownLeagueContainer onClick={toggleLeagueHidden}>
+        2020 Spring Championship League
     </DropDownLeagueContainer>
 )
 
@@ -37,5 +28,5 @@ const mapDispatchToProps = dispatch => ({
     toggleLeagueHidden: () => dispatch(toggleLeagueHidden())
  });
  
- export default connect(null, mapDispatchToProps)(DropdownLeagueContents);
+ export default connect(null, mapDispatchToProps)(DropdownLeague);
  

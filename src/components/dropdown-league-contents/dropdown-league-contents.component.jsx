@@ -4,13 +4,11 @@ import { connect } from 'react-redux';
 import { toggleLeagueHidden } from '../../redux/league/league.actions';
 
 import {
-   Dropdown,
-   DropdownButton,
    DropdownContent,
    DropdownOption
 } from './dropdown-league-contents.styles.jsx';
 
-const DropdownLeagueContents = ({ toggleLeagueHidden }) => {
+const DropdownLeagueContents = ({ }) => {
    // const [clickedOutside, setClickedOutside] = useState(false);
    // const myRef = useRef();
 
@@ -29,16 +27,18 @@ const DropdownLeagueContents = ({ toggleLeagueHidden }) => {
 
    return (
     <DropdownContent>
-        <DropdownOption value="volvo">2020 Spring Championship League</DropdownOption>
-        <DropdownOption value="saab">Saab</DropdownOption>
-        <DropdownOption value="mercedes">Mercedes</DropdownOption>
-        <DropdownOption value="audi">Audi</DropdownOption>
+        <DropdownOption>2020 Spring Championship League</DropdownOption>
+        <DropdownOption>Saab</DropdownOption>
+        <DropdownOption>Mercedes</DropdownOption>
+        <DropdownOption>Audi</DropdownOption>
     </DropdownContent>
    );
 };
 
-const mapDispatchToProps = dispatch => ({
-   toggleLeagueHidden: () => dispatch(toggleLeagueHidden())
-});
+export default DropdownLeagueContents;
 
-export default connect(null, mapDispatchToProps)(DropdownLeagueContents);
+// const mapDispatchToProps = dispatch => ({
+//    toggleLeagueHidden: () => dispatch(toggleLeagueHidden())
+// });
+
+// export default connect(null, mapDispatchToProps)(DropdownLeagueContents);
