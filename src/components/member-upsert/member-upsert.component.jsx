@@ -18,6 +18,7 @@ import {
 import ImageInput from '../image-input/image-input.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
 
 const MemberUpsert = ({ id, type }) => {
@@ -117,6 +118,12 @@ const handleChange = event => {
               value={phone}
               handleChange={handleChange}
               required
+            />
+          </InputContainer>
+          <InputContainer>
+            <Text>Team: </Text>
+            <CustomDropdown
+            
             />
           </InputContainer>
           <InputContainer>

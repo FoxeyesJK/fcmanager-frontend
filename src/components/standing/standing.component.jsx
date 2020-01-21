@@ -7,15 +7,14 @@ import {
   TableRow,
   TableHeader,
   TableData,
+  TeamIcon,
   TableTeamData,
+  TableTeamText,
   TableTeamHeader,
   TableIndexHeader,
   TableIndexData
 } from './standing.styles.jsx';
 
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
-import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
-import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 
 const Standing = () => {
   return (
@@ -25,18 +24,18 @@ const Standing = () => {
         <TableRow>
           <TableIndexHeader>POS</TableIndexHeader>
           <TableTeamHeader>TEAM</TableTeamHeader>
-          <TableHeader>PLD</TableHeader>
-          <TableHeader>WON</TableHeader>
-          <TableHeader>DRN</TableHeader>
-          <TableHeader>LST</TableHeader>
-          <TableHeader>FOR</TableHeader>
-          <TableHeader>AG</TableHeader>
+          <TableHeader>MP</TableHeader>
+          <TableHeader>W</TableHeader>
+          <TableHeader>D</TableHeader>
+          <TableHeader>L</TableHeader>
+          <TableHeader>GF</TableHeader>
+          <TableHeader>GA</TableHeader>
           <TableHeader>GD</TableHeader>
           <TableHeader>PTS</TableHeader>
         </TableRow>
         <TableRow>
           <TableIndexData>1st</TableIndexData>
-          <TableTeamData><BlueIcon className='icon' /> Blue Team</TableTeamData>
+          <TableTeamData><TeamIcon /><TableTeamText>Blue Team</TableTeamText></TableTeamData>
           <TableData>6</TableData>
           <TableData>2</TableData>
           <TableData>2</TableData>
@@ -44,11 +43,11 @@ const Standing = () => {
           <TableData>0</TableData>
           <TableData>6</TableData>
           <TableData>3</TableData>
-          <TableData className='points'>3</TableData>
+          <TableData>3</TableData>
         </TableRow>
         <TableRow>
           <TableIndexData>2nd</TableIndexData>
-          <TableTeamData><RedIcon className='icon' /> Red Team</TableTeamData>
+          <TableTeamData><TeamIcon /><TableTeamText>Red Team</TableTeamText></TableTeamData>
           <TableData>4</TableData>
           <TableData>2</TableData>
           <TableData>1</TableData>
@@ -56,11 +55,11 @@ const Standing = () => {
           <TableData>0</TableData>
           <TableData>5</TableData>
           <TableData>2</TableData>
-          <TableData className='points'>3</TableData>
+          <TableData>3</TableData>
         </TableRow>
         <TableRow>
           <TableIndexData>3rd</TableIndexData>
-          <TableTeamData><YellowIcon className='icon' /> Yellow Team</TableTeamData>
+          <TableTeamData><TeamIcon /><TableTeamText>Yellow Team</TableTeamText></TableTeamData>
           <TableData>4</TableData>
           <TableData>2</TableData>
           <TableData>1</TableData>
@@ -68,7 +67,7 @@ const Standing = () => {
           <TableData>0</TableData>
           <TableData>3</TableData>
           <TableData>0</TableData>
-          <TableData className='points'>3</TableData>
+          <TableData>3</TableData>
         </TableRow>
       </Table>
    </StandingContainer>

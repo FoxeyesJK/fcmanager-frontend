@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Select from 'react-select';
 
 const TextFontStyles = css`
     color: #FFFFFF;
@@ -17,6 +18,13 @@ export const LogoContainer = styled.div`
 
 export const TextContainer = styled.div`
     padding: 5px 10px;
+`;
+
+export const DropdownContainer = styled.div`
+    width: 300px;
+    @media screen and (max-width: 800px) {
+        width: 50vw;
+    }
 `;
 
 export const Title = styled.div`

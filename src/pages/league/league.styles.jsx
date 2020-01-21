@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const LeaguePage = styled.div`
+    @media screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 export const StandingContainer = styled.div`
@@ -12,6 +18,13 @@ export const StandingContentContainer = styled.div`
     justify-content: space-between;
     background-color: #321450;
     margin: 5px 10px;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
 `;
 
 export const LeagueContainer = styled.div`
@@ -27,6 +40,13 @@ export const FixtureContainer = styled.div`
 
 export const RecordContainer = styled.div`
     display: flex;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+    }
 `;
 
 export const Title = styled.div`
@@ -71,11 +91,3 @@ export const TableHeader = styled.div`
         width: 400px;
     }
 `;
-// .league-page {
-//     width: 1400px;
-
-//     .league-top {
-//         display: flex;
-//         justify-content: space-between;
-//     }
-// }

@@ -17,7 +17,6 @@ const MemberPreview = ({ name, items, handleClick, isAdmin }) => {
         </TeamContainer>
         <MemberItemContainer>
             {items
-                .filter((item, idx) => idx < 4)
                 .map(item => (
                     <MemberItem key={item.id} item={item} handleClick={handleClick} isAdmin={isAdmin}/>
             ))}

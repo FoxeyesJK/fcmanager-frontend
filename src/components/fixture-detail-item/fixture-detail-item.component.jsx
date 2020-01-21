@@ -1,7 +1,13 @@
 import React from 'react';
-import moment from 'moment';
+import { render } from 'react-dom';
+import moment from 'moment'
+import momentLocalizer from 'react-widgets-moment';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 import { Combobox } from 'react-input-enhancements';
+import { DropdownList } from 'react-widgets'
+import Select from 'react-select'
+
+import 'react-widgets/dist/css/react-widgets.css';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -35,6 +41,9 @@ import {
 import DropdownTeam from '../dropdown-team/dropdown-team.component';
 import DropdownLeague from '../dropdown-league/dropdown-league.component';
 import DropdownLocation from '../dropdown-location/dropdown-location.component';
+
+moment.locale('en')
+momentLocalizer()
 
 const friendOptions = [
   {
@@ -192,15 +201,7 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
               <StyledAssistIcon />   
                 {
                   isAdmin ?
-                  <DropdownTeam 
-                  name='home'
-                  dropdownItems={[
-                    { value: 'RED', id: 1 },
-                    { value: 'BLUE', id: 2 },
-                    { value: 'YELLOW', id: 3}
-                  ]}
-                  required
-                />  
+                  <Select options={friendOptions} />
                 : <Player>Nathan Jeong</Player>
                 }
             </PlayerContainer>

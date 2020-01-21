@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const MemberItemContainer = styled.div`
-    width: 340px;
-    height: 160px;
     background-color: #2e1249;
     border-radius: 10px;
+
+    @media screen and (max-width: 800px) {
+        width: 80vw;
+        height: 15vh;
+        font-size: 10px;
+    }
 `;
 
 export const NameContainer = styled.div`
@@ -25,6 +29,10 @@ export const ContentContainer = styled.div`
     background-color: #4d1f7a;
     border-radius: 0 0 10px 10px;
     padding: 5px;
+
+    @media screen and (max-width: 800px) {
+        height: 130px;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -38,6 +46,11 @@ export const TextContainer = styled.div`
     background-color: #3e1964
     margin-left: 5px;
     border-radius: 0 10px 10px 0;
+
+    @media screen and (max-width: 800px) {
+        width: 70%;
+        height: 100%;
+    }
 `;
 
 export const Name = styled.div`
@@ -50,10 +63,19 @@ export const ProfileImage = styled.img`
     height: 150px;
     background-size: cover;
     border-radius: 10px 0 0 10px;
+
+    @media screen and (max-width: 800px) {
+        width: 120px;
+        height: 120px;
+    }
 `;
 
 export const Text = styled.div`
-    padding: 5px 5px;
+    padding: 5px;
+    
+    @media screen and (max-width: 800px) {
+        padding: 0;
+    }
 `;
 
 

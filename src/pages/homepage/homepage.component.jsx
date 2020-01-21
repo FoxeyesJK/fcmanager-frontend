@@ -1,8 +1,12 @@
 import React from 'react';
+import Select from 'react-select';
 
 import Test from '../../components/test/test.component';
 import { Dropdown } from 'semantic-ui-react'
-import './homepage.styles.scss';
+import {
+  HomePageContainer,
+  StyledSelect
+} from './homepage.styles.jsx';
 
 const countryOptions = [
   { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
@@ -30,16 +34,26 @@ const countryOptions = [
   { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
 ]
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
 const HomePage = () => (
-  <div className='homepage'>
-      <Dropdown
+  <HomePageContainer>
+      {/* <Dropdown
     placeholder='Select Country'
     search
     selection
     options={countryOptions}
-  />
+  /> */}
+  <StyledSelect options={options} />
     <Test />
-  </div>
+  </HomePageContainer>
 );
 
 export default HomePage;

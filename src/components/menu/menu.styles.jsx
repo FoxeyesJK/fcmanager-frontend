@@ -9,14 +9,14 @@ import { ReactComponent as ScheduleIcon } from '../../assets/icon-schedule.svg';
 
 
 const IconStyles = css`
-        height: 24px;
-        width: 40px;
-        display: inline-block;
-        vertical-align: middle;
+  height: 24px;
+  width: 40px;
+  display: inline-block;
+  vertical-align: middle;
 
-        @media (max-width: 800px) {
-          height: 40px;
-        }
+  @media screen and (max-width: 800px) {
+    height: 40px;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -32,8 +32,8 @@ export const MenuContainer = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  @media (max-width: 800px) {
-    width: 15%;
+  @media screen and (max-width: 800px) {
+    width: 15vw;
     padding: 10px;
   }
 `;
@@ -43,9 +43,9 @@ export const TitleContainer = styled.div`
     text-align: center;
     padding: 10px;
 
-    @media (max-width: 800px) {
-      display: none;
-    }
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -54,7 +54,7 @@ export const OptionsContainer = styled.div`
     margin-top: 1.5em;
     width: 100%;
 
-    @media (max-width: 800px) {
+        @media screen and (max-width: 800px) {
       margin-top: 0;
     }
 `;

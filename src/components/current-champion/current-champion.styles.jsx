@@ -9,12 +9,14 @@ const IconStyles = css`
 
 export const CurrentChampionContainer = styled.div`
     background-color: #321450;
-    //#321450;
-    //#361556
-    width: 300px;
-    height: 300px;
+    min-width: 300px;
+    min-height: 300px;
     padding: 10px
     flex-grow: 1;
+
+    @media screen and (max-width: 800px) {
+        padding: 0; 
+    }
 `;
 
 export const Title = styled.div`

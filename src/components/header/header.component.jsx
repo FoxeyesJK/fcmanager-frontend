@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
+import Dropdown from '../../components/custom-dropdown/custom-dropdown.component';
 import DropdownLeague from '../../components/dropdown-league/dropdown-league.component';
 import DropdownLeagueContents from '../../components/dropdown-league-contents/dropdown-league-contents.component';
 
@@ -9,9 +10,19 @@ import {
   HeaderContainer, 
   LogoContainer, 
   TextContainer,
+  DropdownContainer,
   Title,
-  SubTitle 
+  SubTitle
 } from './header.styles';
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 const Header = ({ match, isSelectedOption, hidden }) => {
   return (
@@ -22,8 +33,10 @@ const Header = ({ match, isSelectedOption, hidden }) => {
       <TextContainer>
         <Title>TEAM REPORT</Title>
         <SubTitle>
-          <DropdownLeague />
-          {hidden ? null : <DropdownLeagueContents />}
+          <DropdownContainer>
+            <Dropdown />
+          </DropdownContainer>
+          {/* {hidden ? null : <DropdownLeagueContents />} */}
           </SubTitle>
       </TextContainer>
     </HeaderContainer>

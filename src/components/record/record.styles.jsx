@@ -24,6 +24,13 @@ export const RecordContainer = styled.div`
     height: 400px;
     margin-left: 10px;
     display: flex;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-top: 1px solid white;
+    }
 `;
 
 export const RecordContentContainer = styled.div`
