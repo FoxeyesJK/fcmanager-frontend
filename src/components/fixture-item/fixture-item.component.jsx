@@ -19,7 +19,7 @@ const FixtureItem = ({match, handleClick, type, id}) => {
         <TableData IsCenter>{moment(time).format('LT')}</TableData>
         <TableData>{homeTeamName} vs {awayTeamName}</TableData>
         <TableData>{homeScore} - {awayScore}</TableData>
-        <TableData>2020 Spring Championship League</TableData>
+        <TableData>2020 Spring</TableData>
     </TableRow>
     );
 }

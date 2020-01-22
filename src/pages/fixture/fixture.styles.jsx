@@ -14,14 +14,26 @@ export const LeagueContainer = styled.div`
     flex-direction: row;
 `;
 
-export const FixtureListContainer = styled.div`
-    width: 65%;
-`;
-
 export const FixtureContainer = styled.div`
     display: flex;
     flex-direction: row;
+
+    @media screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+    }
 `;
+
+export const FixtureListContainer = styled.div`
+    width: 65%;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+
+`;
+
 
 export const SimpleBarReactContainer = styled(SimpleBarReact)`
     max-hegit: 700

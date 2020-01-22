@@ -4,6 +4,11 @@ export const FixtureDetailContainer = styled.div`
     width: 35%;
     background-color: #2e1249;
     margin: 15px;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+        margin: 0;
+    }
 `;
 
 export const Title = styled.div`

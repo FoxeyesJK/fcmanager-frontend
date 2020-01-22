@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MemberPage = styled.div`
-
+    width: 100%;
 `;
 
 export const MemberContainer = styled.div`
