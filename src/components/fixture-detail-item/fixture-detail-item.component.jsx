@@ -39,6 +39,7 @@ import {
 } from './fixture-detail-item.styles.jsx';
 
 import DropdownTeam from '../dropdown-team/dropdown-team.component';
+import Dropdown from '../custom-dropdown/custom-dropdown.component';
 import DropdownLeague from '../dropdown-league/dropdown-league.component';
 import DropdownLocation from '../dropdown-location/dropdown-location.component';
 
@@ -93,15 +94,7 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
             {
               isAdmin 
               ?
-              <DropdownTeam 
-                name='home'
-                dropdownItems={[
-                  { value: 'RED', id: 1 },
-                  { value: 'BLUE', id: 2 },
-                  { value: 'YELLOW', id: 3}
-                ]}
-                required
-              />  
+              <Dropdown/>  
               :
               <IconContainer>
                 <TeamIcon />
@@ -115,15 +108,7 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
             {
               isAdmin 
               ?
-              <DropdownTeam 
-                name='home'
-                dropdownItems={[
-                  { value: 'RED', id: 1 },
-                  { value: 'BLUE', id: 2 },
-                  { value: 'YELLOW', id: 3}
-                ]}
-                required
-              />  
+              <Dropdown/>  
               :
               <IconContainer>
                 <TeamIcon />
@@ -135,24 +120,13 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
             isAdmin 
             ? <FixtureContainer>
               <LeagueContainer isAdmin={isAdmin}>
-                <DropdownLeague 
-                  name='home'
-                  required
-                /> 
+                <Dropdown/>
               </LeagueContainer>
               <DateTimePickerContainer>
                 <DateTimePicker defaultValue={new Date()} />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
-                <DropdownLocation 
-                  name='home'
-                  dropdownItems={[
-                    { value: 'RED', id: 1 },
-                    { value: 'BLUE', id: 2 },
-                    { value: 'YELLOW', id: 3}
-                  ]}
-                  required
-                /> 
+              <Dropdown/>
               </LocationContainer>
               </FixtureContainer>
             : <FixtureContainer>
@@ -167,30 +141,14 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
               <StyledScoreIcon />
               {
                   isAdmin ?
-                  <DropdownTeam 
-                  name='home'
-                  dropdownItems={[
-                    { value: 'RED', id: 1 },
-                    { value: 'BLUE', id: 2 },
-                    { value: 'YELLOW', id: 3}
-                  ]}
-                  required
-                />  
+                  <Dropdown/>
                 : <Player>Nathan Jeong</Player>
                 }
             </PlayerContainer>
             <PlayerContainer>
             {
                   isAdmin ?
-                  <DropdownTeam 
-                  name='home'
-                  dropdownItems={[
-                    { value: 'RED', id: 1 },
-                    { value: 'BLUE', id: 2 },
-                    { value: 'YELLOW', id: 3}
-                  ]}
-                  required
-                />  
+                  <Dropdown/>
                 : <Player>Nathan Jeong</Player>
                 }
               <StyledScoreIcon />
@@ -201,20 +159,14 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
               <StyledAssistIcon />   
                 {
                   isAdmin ?
-                  <Select options={friendOptions} />
+                  <Dropdown/>
                 : <Player>Nathan Jeong</Player>
                 }
             </PlayerContainer>
             <PlayerContainer>
             {
                   isAdmin ?
-                  <StyledDropdown
-                  placeholder='Select Member'
-                  fluid
-                  search
-                  selection
-                  options={friendOptions}
-                />
+                  <Dropdown/>
                 : <Player>Nathan Jeong</Player>
                 }
               <StyledAssistIcon />
