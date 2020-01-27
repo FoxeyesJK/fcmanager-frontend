@@ -7,6 +7,10 @@ import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 const IconStyles = css`
     height: 14px;
     width: 14px;
+    margin: auto 0;
+    @media screen and (max-width: 800px) {
+        margin: auto;
+    }
 `;
 
 export const StandingContainer = styled.div`
@@ -46,19 +50,17 @@ export const TableData = styled.td`
 `;
 
 export const TableTeamData = styled.td`
+    display: flex;
     text-align: left;
     padding: 5px;
-    @media screen and (max-width: 800px) {
-        text-align: center;
-    }
 `;
 
 export const TeamIcon = styled(BlueIcon)`
     ${IconStyles}
-    
 `;
 
 export const TableTeamText = styled.td`
+    padding: 0 5px;
     @media screen and (max-width: 800px) {
         display: none;
     }
