@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+
+import ImageInput from '../image-input/image-input.component';
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
+
+import { postMembersStart } from '../../redux/member/member.actions';
 
 import {
   MemberUpsertContainer,
@@ -15,13 +22,8 @@ import {
   Text,
 } from './member-upsert.styles';
 
-import ImageInput from '../image-input/image-input.component';
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
-import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
-
-const MemberUpsert = ({ id, type }) => {
+const MemberUpsert = ({ id, type, postMembersStart }) => {
   const [members, setMembers] = useState({
     name: '',
     email: '',
@@ -40,33 +42,13 @@ const MemberUpsert = ({ id, type }) => {
 
   //     fetchMember()
   // }
-  })
+  }, []);
 
 const handleSubmit = type => event => {
   event.preventDefault();
+  const { payload } = members;
 
-  if (type == 'add')
-  {
-    axios
-    .post(`url`)
-    .then(res => {
-      console.log(res.data);
-    })
-  }else if (type == 'edit')
-  {
-    axios
-    .put(`url`)
-    .then(res => {
-      console.log(res.data);
-    })
-  }else if (type == 'delete')
-  {
-    axios
-    .patch(`url`)
-    .then(res => {
-      console.log(res.data);
-    })
-  }
+  postMembersStart({members});
 }
 
 const handleChange = event => {
@@ -142,5 +124,9 @@ const handleChange = event => {
   )
 }
 
-export default MemberUpsert;
+const mapDispatchToProps = dispatch => ({
+  postMembersStart: (members) => dispatch(postMembersStart({members}))//(console.log(members)) //dispatch(postMembersStart({members})))
+})
+
+export default connect(null, mapDispatchToProps)(MemberUpsert);
 

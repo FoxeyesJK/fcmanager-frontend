@@ -1,7 +1,8 @@
 import MemberActionTypes from './member.types';
 import axios from 'axios';
+// import { memberService } from '../../services/services'
 //const url = 'https://jsonplaceholder.typicode.com/users';
-const url = 'https://localhost:5612/member';
+const apiEndPoint = 'member';
 
 export const fetchMembersStart = () => ({
     type: MemberActionTypes.FETCH_MEMBERS_START
@@ -17,14 +18,17 @@ export const fetchMembersFailure = errorMessage => ({
     payload: errorMessage
 })
 
-export const fetchMembersStartAsync = () => {
-    return dispatch => {
-        dispatch(fetchMembersStart());
+export const postMembersStart = membersMap => ({
+    type: MemberActionTypes.POST_MEMBERS_START,
+    payload: membersMap
+})
 
-        const memberRes = axios.get(url)
-            .then(res => {
-                dispatch(fetchMembersSuccess(res.data));
-            })
-            .catch(error => dispatch(fetchMembersFailure(error.message)));
-    }
-}
+export const postMembersSuccess = membersMap => ({
+    type: MemberActionTypes.POST_MEMBERS_SUCCESS,
+    payload: membersMap
+})
+
+export const postMembersFailure = errorMessage => ({
+    type: MemberActionTypes.POST_MEMBERS_FAILURE,
+    payload: errorMessage
+})

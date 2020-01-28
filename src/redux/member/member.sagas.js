@@ -5,23 +5,25 @@ import axios from 'axios';
 
 import {
     fetchMembersSuccess,
-    fetchMembersFailure
+    fetchMembersFailure,
+    postMembersSuccess,
+    postMembersFailure
 } from './member.actions';
 
 import MemberActionTypes from './member.types';
 
 //const url = 'https://jsonplaceholder.typicode.com/users';
-const url = 'https://localhost:5612/member';
+const baseUrl = 'https://localhost:5612/';
+const apiEndPoint = 'member';
 export function* fetchMembersAsync() {
     yield console.log('I am fired');
 
     try {
-        const memberRes = yield axios.get(url);
+        const memberRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchMembersSuccess(memberRes.data))
     } catch (error) {
         yield put(fetchMembersFailure(error.message))
     }
-    //getTeam(teamRes.data)
 }
 
 export function* fetchMembersStart() {
@@ -31,8 +33,26 @@ export function* fetchMembersStart() {
     );
 }
 
-export function* memberSagas() {
-    yield all([call(fetchMembersStart)]);
+export function* postMembersAsync({ payload }) {
+    yield console.log('postMember fired');
+    try {
+        const { member } = yield axios.post(baseUrl + apiEndPoint, payload);
+        yield put(postMembersSuccess(member.data))
+    } catch (error) {
+        yield put(postMembersFailure(error.message))
+    }
 }
 
+export function* postMembersStart() {
+    yield takeLatest(
+        MemberActionTypes.POST_MEMBERS_START,
+        postMembersAsync
+    );
+}
 
+export function* memberSagas() {
+    yield all([
+        call(fetchMembersStart), 
+        call(postMembersStart)
+    ]);
+}
