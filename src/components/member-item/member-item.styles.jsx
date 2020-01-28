@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const MemberItemContainer = styled.div`
     // background-color: #2e1249;
     // border-radius: 10px;
-    width: 20%;
+    //width: 20%;
     //min-width: 220px;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@ export const MemberItemContainer = styled.div`
     position: relative;
 
     @media screen and (max-width: 800px) {
-        width: 50%;
+        //width: 50%;
     }
 `;
 
@@ -35,7 +35,12 @@ export const ContentContainer = styled.div`
     justify-content: center;
     overflow: hidden;
 
-    @media screen and (max-width: 800px) {
+    
+    @media screen and (max-width: 767px) {
+        height: 200px;
+    }
+    
+    @media screen and (max-width: 415px) {
         height: 100px;
     }
 `;
@@ -48,8 +53,13 @@ export const FooterContainer = styled.div`
     top: 85%;
     font-size: 20px;
 
-    @media screen and (max-width: 800px) {
-        font-size: 10px
+    @media screen and (max-width: 767px) {
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 415px) {
+        font-size: 10px;
+        top: 80%;
     }
 `;
 

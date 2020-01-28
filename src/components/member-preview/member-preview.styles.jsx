@@ -13,6 +13,14 @@ export const TeamContainer = styled.div`
 
 
 export const MemberItemContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 30px;
+    
+    @media screen and (max-width: 767px) {
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+            grid-gap: 10px;
+        }
 `;
 
 

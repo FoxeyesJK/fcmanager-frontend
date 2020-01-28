@@ -13,7 +13,11 @@ const MemberPreview = ({ name, items, handleClick, isAdmin }) => {
   return (
     <MemberPreivewContainer>
         <TeamContainer>
-          <Team>Red</Team>
+          <Team>
+          {
+            name != "null" ? name : "OTHERS"
+          }
+          </Team>
         </TeamContainer>
         <MemberItemContainer>
             {items

@@ -10,7 +10,7 @@ export const selectMembers = createSelector(
 
 export const selectGroupMembers = createSelector(
     [selectMembers],
-    members => _.chain(members).groupBy('name').map((members, name) => {
+    members => _.chain(members).groupBy('teamName').map((members, name) => {
         const items = members.map((member) => { return member });
         return ({
             name,

@@ -10,7 +10,8 @@ import {
 
 import MemberActionTypes from './member.types';
 
-const url = 'https://jsonplaceholder.typicode.com/users';
+//const url = 'https://jsonplaceholder.typicode.com/users';
+const url = 'https://localhost:5612/member';
 export function* fetchMembersAsync() {
     yield console.log('I am fired');
 
