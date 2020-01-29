@@ -23,32 +23,28 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ id, type, postMembersStart }) => {
+const MemberUpsert = ({ type, postMembersStart, member}) => {
   const [members, setMembers] = useState({
     name: '',
     email: '',
     phone: '',
-    dob: ''
+    dob: '',
+    roleId: 1,
+    clubId: 1
   });
 
-  const { name, email, phone, dob } = members;
+  const { name, email, phone, dob, roleId, clubId } = member != null ? member : members;
 
   useEffect(() => {
     console.log('im called');
-  //   const fetchMember = async() => {
-  //     const res = await fetch('url');
-  //     const members = await res.json()
-  //     setMember(member[0]);
-
-  //     fetchMember()
-  // }
+    setMembers(member)
   }, []);
 
 const handleSubmit = type => event => {
   event.preventDefault();
   const { payload } = members;
-
-  postMembersStart({members});
+  postMembersStart(members)
+  //id == 0 ? postMembersStart(members) : putMembersStart(members);
 }
 
 const handleChange = event => {
@@ -125,7 +121,7 @@ const handleChange = event => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  postMembersStart: (members) => dispatch(postMembersStart({members}))//(console.log(members)) //dispatch(postMembersStart({members})))
+  postMembersStart: (members) => dispatch(postMembersStart(members))//(console.log(members)) //dispatch(postMembersStart({members})))
 })
 
 export default connect(null, mapDispatchToProps)(MemberUpsert);

@@ -33,11 +33,13 @@ export function* fetchMembersStart() {
     );
 }
 
-export function* postMembersAsync({ payload }) {
+export function* postMembersAsync({payload}) {
     yield console.log('postMember fired');
+
+    yield console.log(payload);
     try {
         const { member } = yield axios.post(baseUrl + apiEndPoint, payload);
-        yield put(postMembersSuccess(member.data))
+        yield put(postMembersSuccess(member)) //member.data
     } catch (error) {
         yield put(postMembersFailure(error.message))
     }

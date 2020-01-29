@@ -14,14 +14,14 @@ import {
 } from './member-item.styles.jsx';
 
 
-const MemberItem = ({ item, id, handleClick, isAdmin }) => {
-  const { name, email, imageUrl } = item;
+const MemberItem = ({ item, handleClick, isAdmin }) => {
+  const { id, name, email, imageUrl } = item;
   return (
     <MemberItemContainer>
       <HeaderContainer>
         {isAdmin ? 
           <IconContainer>
-            <CustomIcon type='edit' handleClick={handleClick} />
+            <CustomIcon type='edit' id={id} handleClick={handleClick} />
             <CustomIcon type='delete' handleClick={handleClick} />
           </IconContainer>
           : null}

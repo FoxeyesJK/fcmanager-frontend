@@ -16,32 +16,50 @@ import Header from '../../components/header/header.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
-import { selectGroupMembers } from '../../redux/member/member.selectors';
+import { selectMembers, selectGroupMembers } from '../../redux/member/member.selectors';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
-const Member = ({ members, isAdmin }) => {
-  const [button, setButton] = useState({ selectedId: 0, type: '' })
+const Member = ({ members, member, isAdmin }) => {
+  const [button, setButton] = useState({ memberId: 0, type: '' })
 
-  const { selectedId, type } = button;
+  const { memberId, type } = button;
 
   const handleClick = (id, type) => {
+    console.log('selectedId')
     console.log(id)
-    setButton({ selectedId: id, type: type });
+    setButton({ memberId: id, type: type });
   }
   
   return (
     <MemberPage>
       <TitleContainer>
         <Title>PLAYERS</Title>          
-        {isAdmin ? <CustomIcon type='add' id={selectedId} handleClick={handleClick} />: null}
+        {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
       </TitleContainer>
-      {type == 'add' || type =='edit' ? <MemberUpsert id={selectedId} type={type}/> : null}
+      {
+        console.log(member)
+      }
+      {
+        console.log(memberId)
+      }
+      {
+        console.log(member
+          .filter((member, id) => id === memberId))
+      }
+      {
+      type == 'add' || type =='edit' ? 
+        member
+        .filter((member, id) => id === memberId)
+        .map((member) => (
+        <MemberUpsert member={member} type={type}/> 
+        ))
+      : null}
       <MemberContainer>
       {
           members.value().map(({ ...otherMemberProps }) => (
-            <MemberPreview {...otherMemberProps} id={selectedId} handleClick={handleClick} isAdmin={isAdmin} />
+            <MemberPreview {...otherMemberProps} handleClick={handleClick} isAdmin={isAdmin} />
           ))
       }
       </MemberContainer>
@@ -51,6 +69,7 @@ const Member = ({ members, isAdmin }) => {
 
 const mapStateToProps = createStructuredSelector({
   members: selectGroupMembers,
+  member: selectMembers,
 })
 
 export default withRouter(connect(
