@@ -39,19 +39,12 @@ const Member = ({ members, member, isAdmin }) => {
         {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
       </TitleContainer>
       {
-        console.log(member)
+        type == 'add' ? <MemberUpsert member={member} type={type}/>  : null
       }
       {
-        console.log(memberId)
-      }
-      {
-        console.log(member
-          .filter((member, id) => id === memberId))
-      }
-      {
-      type == 'add' || type =='edit' ? 
+      type =='edit' ? 
         member
-        .filter((member, id) => id === memberId)
+        .filter((member, id) => id === memberId - 1)
         .map((member) => (
         <MemberUpsert member={member} type={type}/> 
         ))

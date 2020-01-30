@@ -33,11 +33,12 @@ const MemberUpsert = ({ type, postMembersStart, member}) => {
     clubId: 1
   });
 
-  const { name, email, phone, dob, roleId, clubId } = member != null ? member : members;
+  //console.log(!!member)
+  const { name, email, phone, dob, roleId, clubId } = !!member ? member : members;
 
   useEffect(() => {
     console.log('im called');
-    setMembers(member)
+    setMembers(members)
   }, []);
 
 const handleSubmit = type => event => {

@@ -26,6 +26,24 @@ export function* fetchMembersAsync() {
     }
 }
 
+export function* postMembersAsync({payload}) {
+    yield console.log('postMember fired');
+
+    yield console.log(payload);
+    try {
+        const memberRes = yield axios.post(baseUrl + apiEndPoint, payload);
+        console.log(memberRes)
+        yield put(postMembersSuccess(memberRes.data))
+    } catch (error) {
+        yield put(postMembersFailure(error.message))
+    }
+}
+
+export function* fetchMembersAsyncAfterPost() {
+    yield fetchMembersAsync();
+}
+
+
 export function* fetchMembersStart() {
     yield takeLatest(
         MemberActionTypes.FETCH_MEMBERS_START, //Start listening to actions
@@ -33,17 +51,6 @@ export function* fetchMembersStart() {
     );
 }
 
-export function* postMembersAsync({payload}) {
-    yield console.log('postMember fired');
-
-    yield console.log(payload);
-    try {
-        const { member } = yield axios.post(baseUrl + apiEndPoint, payload);
-        yield put(postMembersSuccess(member)) //member.data
-    } catch (error) {
-        yield put(postMembersFailure(error.message))
-    }
-}
 
 export function* postMembersStart() {
     yield takeLatest(
@@ -52,9 +59,15 @@ export function* postMembersStart() {
     );
 }
 
+export function* onPostMembersSuccess() {
+    yield takeLatest(MemberActionTypes.POST_MEMBERS_SUCCESS, fetchMembersAsyncAfterPost)
+}
+
+
 export function* memberSagas() {
     yield all([
         call(fetchMembersStart), 
-        call(postMembersStart)
+        call(postMembersStart),
+        call(onPostMembersSuccess)
     ]);
 }
