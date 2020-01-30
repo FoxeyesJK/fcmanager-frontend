@@ -7,7 +7,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
-import { postMembersStart } from '../../redux/member/member.actions';
+import { postMembersStart, putMembersStart } from '../../redux/member/member.actions';
 
 import {
   MemberUpsertContainer,
@@ -23,29 +23,22 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ type, postMembersStart, member}) => {
-  const [members, setMembers] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    dob: '',
-    roleId: 1,
-    clubId: 1
-  });
+const MemberUpsert = ({ type, postMembersStart, putMembersStart, member}) => {
+  const [members, setMembers] = useState(member);
 
-  //console.log(!!member)
-  const { name, email, phone, dob, roleId, clubId } = !!member ? member : members;
+  const { name, email, phone, dob, roleId, clubId } = members;
 
   useEffect(() => {
     console.log('im called');
+    console.log(members);
     setMembers(members)
-  }, []);
+  }, [members]);
 
 const handleSubmit = type => event => {
   event.preventDefault();
-  const { payload } = members;
-  postMembersStart(members)
-  //id == 0 ? postMembersStart(members) : putMembersStart(members);
+  console.log('hi')
+  console.log(members)
+  type == 'add' ? postMembersStart(members) : putMembersStart(members);
 }
 
 const handleChange = event => {
@@ -57,7 +50,7 @@ const handleChange = event => {
   return (
     <MemberUpsertContainer>
       <Title>{type == 'add' ? 'Add Player' : 'Edit Player'}</Title>
-      <FormContainer onSubmit={handleSubmit({type})}>
+      <FormContainer onSubmit={handleSubmit(type)}>
         <FormContentContainer>
         <ImageContainer>
           <ImageInput
@@ -101,9 +94,17 @@ const handleChange = event => {
           </InputContainer>
           <InputContainer>
             <Text>Team: </Text>
-            <CustomDropdown
-            
-            />
+            <CustomDropdown/>
+          </InputContainer>
+          <InputContainer>
+            <Text>Role: </Text>
+            <CustomDropdown/>
+          </InputContainer>
+          <InputContainer>
+            <Text>Joined: </Text>
+            <DateTimePickerContainer>
+              <DateTimePicker defaultValue={new Date()} />
+            </DateTimePickerContainer>
           </InputContainer>
           <InputContainer>
             <Text>BOA: </Text>
@@ -122,7 +123,8 @@ const handleChange = event => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  postMembersStart: (members) => dispatch(postMembersStart(members))//(console.log(members)) //dispatch(postMembersStart({members})))
+  postMembersStart: (members) => dispatch(postMembersStart(members)),
+  putMembersStart: (members) => dispatch(putMembersStart(members))
 })
 
 export default connect(null, mapDispatchToProps)(MemberUpsert);

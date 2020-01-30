@@ -7,18 +7,19 @@ import {
     fetchMembersSuccess,
     fetchMembersFailure,
     postMembersSuccess,
-    postMembersFailure
+    postMembersFailure,
+    putMembersSuccess,
+    putMembersFailure,
 } from './member.actions';
 
 import MemberActionTypes from './member.types';
 
 //const url = 'https://jsonplaceholder.typicode.com/users';
 const baseUrl = 'https://localhost:5612/';
-const apiEndPoint = 'member';
+const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
-    yield console.log('I am fired');
-
     try {
+        console.log('fetchfiredagain')
         const memberRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchMembersSuccess(memberRes.data))
     } catch (error) {
@@ -26,14 +27,17 @@ export function* fetchMembersAsync() {
     }
 }
 
-export function* postMembersAsync({payload}) {
-    yield console.log('postMember fired');
+export function* fetchMembersStart() {
+    yield takeLatest(
+        MemberActionTypes.FETCH_MEMBERS_START, //Start listening to actions
+        fetchMembersAsync //moment they heard run function
+    );
+}
 
-    yield console.log(payload);
+export function* postMembersAsync({payload}) {
     try {
-        const memberRes = yield axios.post(baseUrl + apiEndPoint, payload);
-        console.log(memberRes)
-        yield put(postMembersSuccess(memberRes.data))
+        const { member } = yield axios.post(baseUrl + apiEndPoint, payload);
+        yield put(postMembersSuccess(member))
     } catch (error) {
         yield put(postMembersFailure(error.message))
     }
@@ -43,12 +47,8 @@ export function* fetchMembersAsyncAfterPost() {
     yield fetchMembersAsync();
 }
 
-
-export function* fetchMembersStart() {
-    yield takeLatest(
-        MemberActionTypes.FETCH_MEMBERS_START, //Start listening to actions
-        fetchMembersAsync //moment they heard run function
-    );
+export function* onPostMembersSuccess() {
+    yield takeLatest(MemberActionTypes.POST_MEMBERS_SUCCESS, fetchMembersAsyncAfterPost)
 }
 
 
@@ -59,8 +59,30 @@ export function* postMembersStart() {
     );
 }
 
-export function* onPostMembersSuccess() {
-    yield takeLatest(MemberActionTypes.POST_MEMBERS_SUCCESS, fetchMembersAsyncAfterPost)
+export function* putMembersAsync({payload}) {
+    console.log('payload');
+    console.log(payload);
+    try {
+        const { member } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
+        yield put(putMembersSuccess(member))
+    } catch (error) {
+        yield put(putMembersFailure(error.message))
+    }
+}
+
+export function* fetchMembersAsyncAfterPut() {
+    yield fetchMembersAsync();
+}
+
+export function* onPutMembersSuccess() {
+    yield takeLatest(MemberActionTypes.PUT_MEMBERS_SUCCESS, fetchMembersAsyncAfterPut)
+}
+
+export function* putMembersStart() {
+    yield takeLatest(
+        MemberActionTypes.PUT_MEMBERS_START,
+        putMembersAsync
+    );
 }
 
 
@@ -68,6 +90,8 @@ export function* memberSagas() {
     yield all([
         call(fetchMembersStart), 
         call(postMembersStart),
-        call(onPostMembersSuccess)
+        call(onPostMembersSuccess),
+        call(putMembersStart),
+        call(onPutMembersSuccess),
     ]);
 }

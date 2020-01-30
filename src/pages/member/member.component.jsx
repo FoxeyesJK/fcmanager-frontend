@@ -21,7 +21,7 @@ import { selectMembers, selectGroupMembers } from '../../redux/member/member.sel
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
-const Member = ({ members, member, isAdmin }) => {
+const Member = ({ grouppedMembers, members, isAdmin }) => {
   const [button, setButton] = useState({ memberId: 0, type: '' })
 
   const { memberId, type } = button;
@@ -39,19 +39,22 @@ const Member = ({ members, member, isAdmin }) => {
         {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
       </TitleContainer>
       {
-        type == 'add' ? <MemberUpsert member={member} type={type}/>  : null
+        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: '', roleId: 1}} type={type}/>  : null
       }
       {
-      type =='edit' ? 
-        member
-        .filter((member, id) => id === memberId - 1)
+                console.log(members)
+      }
+      {
+      type =='edit' && members != null ? 
+        members
+        .filter(member => member.id === memberId)
         .map((member) => (
         <MemberUpsert member={member} type={type}/> 
         ))
       : null}
       <MemberContainer>
       {
-          members.value().map(({ ...otherMemberProps }) => (
+          grouppedMembers.value().map(({ ...otherMemberProps }) => (
             <MemberPreview {...otherMemberProps} handleClick={handleClick} isAdmin={isAdmin} />
           ))
       }
@@ -61,8 +64,8 @@ const Member = ({ members, member, isAdmin }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  members: selectGroupMembers,
-  member: selectMembers,
+  grouppedMembers: selectGroupMembers,
+  members: selectMembers,
 })
 
 export default withRouter(connect(
