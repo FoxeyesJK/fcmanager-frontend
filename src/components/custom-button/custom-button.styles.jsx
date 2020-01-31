@@ -1,9 +1,11 @@
 import styled, {css}from 'styled-components';
 
+import { MainTableColor } from '../../global.styles';
+
 export const Button = styled.button`
     border: 1px solid #C0C0C0;
     transform: skew(-15deg);
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
     color: #C0C0C0;
     width: 100%;
     height: 30px;

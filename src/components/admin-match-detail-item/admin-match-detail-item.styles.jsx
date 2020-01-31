@@ -2,13 +2,15 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 
+import { MainTableColor } from '../../global.styles';
+
 const IconStyles = css`
     height: 16px;
     width: 16px;
 `;
 
 export const AdminMatchDetailItemContainer = styled.div`
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
     padding: 30px;
     margin: 10px 10px;
 `;

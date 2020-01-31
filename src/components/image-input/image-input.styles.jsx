@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { MainTableColor } from '../../global.styles';
 
 export const FormInputContainer = styled.div`
   margin: auto;
@@ -16,7 +17,7 @@ export const Label = styled.label`
   position: relative;
   border: 1px solid #C0C0C0;
   transform: skew(-15deg);
-  background-color: #3e1964;
+  background-color: ${MainTableColor};
   color: #C0C0C0;
   width: 100px;
   height: 30px;

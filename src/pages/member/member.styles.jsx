@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { TitleColor } from '../../global.styles';
+
 export const MemberPage = styled.div`
     width: 100%;
 `;
@@ -15,6 +17,6 @@ export const TitleContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;  

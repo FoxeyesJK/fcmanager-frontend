@@ -1,6 +1,9 @@
 import styled, {css}from 'styled-components';
+
 import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as ChampIcon } from '../../assets/icon-champion.svg';
+
+import { TitleColor, SubTableColor } from '../../global.styles';
 
 const IconStyles = css`
     height: 80px;
@@ -8,7 +11,7 @@ const IconStyles = css`
 `;
 
 export const CurrentChampionContainer = styled.div`
-    background-color: #321450;
+    background-color: ${SubTableColor};
     min-width: 300px;
     min-height: 300px;
     padding: 10px
@@ -22,7 +25,7 @@ export const CurrentChampionContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding-bottom: 30px;
 `;
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TitleColor, SubTableColor, MainBackgroundColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
     @media screen and (max-width: 800px) {
@@ -16,7 +17,7 @@ export const StandingContainer = styled.div`
 export const StandingContentContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: #321450;
+    background-color: ${SubTableColor};
     margin: 5px 10px;
 
     @media screen and (max-width: 800px) {
@@ -30,7 +31,7 @@ export const StandingContentContainer = styled.div`
 export const LeagueContainer = styled.div`
     display: flex;
     flex-direction: row;
-    background-color: #321450
+    background-color: ${SubTableColor}
 `;
 
 export const FixtureContainer = styled.div`
@@ -52,7 +53,7 @@ export const RecordContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;
 
@@ -67,7 +68,7 @@ export const TableRow = styled.div`
 `;
 
 export const TableHeader = styled.div`
-    background-color: #361556;
+    background-color: ${MainBackgroundColor};
     text-align: left;
     padding: 5px 5px;
     font-size: 12px;

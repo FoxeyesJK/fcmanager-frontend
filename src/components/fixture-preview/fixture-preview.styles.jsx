@@ -1,5 +1,7 @@
 import Styled from 'styled-components';
 
+import { MainTableColor, MainBackgroundColor } from '../../global.styles';
+
 export const FixturePreviewContainer = Styled.div`
 
 `;
@@ -16,8 +18,8 @@ export const FixtureItemContainer = Styled.div`
     justify-content: space-between;
 `;
 export const TableBody = Styled.div`
-    > div:nth-child(odd) {background-color: #3e1964;}
-    > div:nth-child(even) {background-color: #361556;}
+    > div:nth-child(odd) {background-color: ${MainTableColor};}
+    > div:nth-child(even) {background-color: ${MainBackgroundColor};}
 `;
 
 

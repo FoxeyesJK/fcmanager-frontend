@@ -26,7 +26,7 @@ import {
 const MemberUpsert = ({ type, postMembersStart, putMembersStart, member}) => {
   const [members, setMembers] = useState(member);
 
-  const { name, email, phone, dob, roleId, clubId } = members;
+  const { name, email, phone, dob, startedOn, roleId, clubId } = members;
 
   useEffect(() => {
     console.log('im called');
@@ -103,13 +103,20 @@ const handleChange = event => {
           <InputContainer>
             <Text>Joined: </Text>
             <DateTimePickerContainer>
-              <DateTimePicker defaultValue={new Date()} />
+              <DateTimePicker 
+                defaultValue={new Date()} 
+                onChange={value => setMembers({ ...members, dob: value })}
+                value={dob}
+              />
             </DateTimePickerContainer>
           </InputContainer>
           <InputContainer>
             <Text>BOA: </Text>
             <DateTimePickerContainer>
-              <DateTimePicker defaultValue={new Date()} />
+              <DateTimePicker 
+                onChange={value => setMembers({ ...members, dob: value })}
+                value={startedOn}
+              />
             </DateTimePickerContainer>
           </InputContainer>
         </TextInputContainer>

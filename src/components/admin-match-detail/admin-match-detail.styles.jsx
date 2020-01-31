@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TitleColor, MainTableColor, SubTableColor } from '../../global.styles';
 
 export const AdminMatchDetailContainer = styled.div`
     font-size: 16px;
@@ -7,7 +8,7 @@ export const AdminMatchDetailContainer = styled.div`
 `;
 
 export const Table = styled.div`
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
     padding-top: 5px;
     width: 100%;
 `;
@@ -15,7 +16,7 @@ export const Table = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;
 // .admin-match {
@@ -23,7 +24,7 @@ export const Title = styled.div`
 //     font-size: 16px;
 
     // .admin-match-table {
-    //     background-color: #3e1964;
+    //     background-color: ${MainTableColor};
     //     width: 500px;
     //     .header {
     //         display: flex;
@@ -34,8 +35,8 @@ export const Title = styled.div`
 //             height: 41px;
 //         }
 
-//         .admin-match-container:nth-child(odd) {background-color: #321450;}
-//         .admin-match-container:nth-child(even) {background-color: #3e1964;}
+//         .admin-match-container:nth-child(odd) {background-color: ${SubTableColor};}
+//         .admin-match-container:nth-child(even) {background-color: ${MainTableColor};}
 //     }
     
 // }

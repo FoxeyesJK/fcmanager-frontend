@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { MainBackgroundColor } from './global.styles';
+
 export const AppContainer= styled.div`
 
 `;
@@ -16,7 +18,7 @@ export const Body = styled.div`
     padding: 0 0px;
     width: 75%;
     float: right;
-    background-color: #361556;
+    background-color: ${MainBackgroundColor};
 
     @media screen and (max-width: 800px) {
         width: 85vw;

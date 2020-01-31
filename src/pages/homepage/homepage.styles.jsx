@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import Select from 'react-select';
 
+import { MainTableColor } from '../../global.styles';
+
 export const HomePageContainer = styled.div`
   width: 300px;
 `;
@@ -11,7 +13,7 @@ export const StyledSelect = styled(Select)`
     
 
   div {
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
     color: white;
     cursor: pointer;
 

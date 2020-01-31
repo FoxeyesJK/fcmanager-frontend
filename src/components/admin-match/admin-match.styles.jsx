@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { TitleColor, MainTableColor, SubTableColor } from '../../global.styles';
+
 export const AdminMatchContainer = styled.div`
     padding: 10px;
     font-size: 12px;
@@ -16,12 +18,12 @@ export const TitleContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;
 
 export const AdminMatchTable = styled.div`
-    background-color: #321450;
+    background-color: ${SubTableColor};
     width: 100%;
     table-layout: fixed;
     display: table;
@@ -33,7 +35,7 @@ export const TableHeader = styled.div`
     flex-direction: column;
     text-align: center;
     font-size: 16px;
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
 `;
 
 export const MatchDate = styled.div`
@@ -47,6 +49,6 @@ export const MatchTitle = styled.div`
 `;
 
 export const TableBody = styled.div`
-    > div:nth-child(even) {background-color: #3e1964;}
-    > div:nth-child(odd) {background-color: #321450;}
+    > div:nth-child(even) {background-color: ${MainTableColor};}
+    > div:nth-child(odd) {background-color: ${SubTableColor};}
 `;

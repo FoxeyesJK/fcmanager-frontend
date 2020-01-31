@@ -1,5 +1,7 @@
 import Styled from 'styled-components';
 
+import { TitleColor } from '../../global.styles';
+
 export const MatchPreviewContainer = Styled.div`
 
 `;
@@ -7,7 +9,7 @@ export const MatchPreviewContainer = Styled.div`
 export const Title = Styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;
 

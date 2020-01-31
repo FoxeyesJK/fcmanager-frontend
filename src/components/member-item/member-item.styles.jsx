@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { MainTableColor, SubBackgroundColor } from '../../global.styles';
+
 export const MemberItemContainer = styled.div`
-    // background-color: #2e1249;
+    // background-color: ${SubBackgroundColor};
     // border-radius: 10px;
     //width: 20%;
     //min-width: 220px;
@@ -18,7 +20,7 @@ export const MemberItemContainer = styled.div`
 export const HeaderContainer = styled.div`
     display: flex;
     justify-content: flex-end;
-    background-color: #2e1249;
+    background-color: ${SubBackgroundColor};
 
 `;
 
@@ -88,7 +90,7 @@ export const Text = styled.div`
 
 
 // export const MemberItemContainer = styled.div`
-//     background-color: #2e1249;
+//     background-color: ${SubBackgroundColor};
 //     border-radius: 10px;
 
 //     @media screen and (max-width: 800px) {
@@ -130,7 +132,7 @@ export const Text = styled.div`
 //     display: flex;
 //     flex-direction: column;
 //     width: 300px;
-//     background-color: #3e1964
+//     background-color: ${MainTableColor}
 //     margin-left: 5px;
 //     border-radius: 0 10px 10px 0;
 

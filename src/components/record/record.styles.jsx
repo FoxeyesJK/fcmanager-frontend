@@ -4,6 +4,8 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as SoccerIcon } from '../../assets/icon-soccerball.svg';
 import { ReactComponent as ShoesIcon } from '../../assets/icon-soccershoes.svg';
 
+import { TitleColor, MainTableColor, SubTableColor } from '../../global.styles';
+
 const IconStyles = css`
     height: 20px;
     width: 20px;
@@ -19,7 +21,7 @@ export const AssistIcon = styled(ShoesIcon)`
 `;
 
 export const RecordContainer = styled.div`
-    background-color: #321450;
+    background-color: ${SubTableColor};
     width: 400px;
     height: 400px;
     margin-left: 10px;
@@ -40,7 +42,7 @@ export const IconContainer = styled.div`
     margin: 10px;
     width: 40px;
     height: 40px;
-    background-color: #FFFD5E;
+    background-color: ${TitleColor};
     border-radius: 50%;
 
 `;
@@ -48,20 +50,20 @@ export const IconContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 10px 5px 0px 5px;
 `;
 
 export const Table = styled.table`
-    background-color: #321450;
+    background-color: ${SubTableColor};
     text-align: center;
     width: 100%;
-    //border: 3px solid #3e1964;
+    //border: 3px solid ${MainTableColor};
 `;
 
 export const TableRow = styled.tr`
-    // &:nth-child(even) {background-color: #321450}
-    // &:nth-child(odd) {background-color: #3e1964}
+    // &:nth-child(even) {background-color: ${SubTableColor}}
+    // &:nth-child(odd) {background-color: ${MainTableColor}}
 `;
 
 export const TableIndexHeader = styled.th`

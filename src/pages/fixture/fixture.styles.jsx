@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import SimpleBarReact from 'simplebar-react';
 
+import { TitleColor, MainBackgroundColor } from '../../global.styles';
+
 export const FixturePage = styled.div`
 
 `;
@@ -42,7 +44,7 @@ export const SimpleBarReactContainer = styled(SimpleBarReact)`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px 3px;
 `;
 
@@ -57,7 +59,7 @@ export const TableRow = styled.div`
 `;
 
 export const TableHeader = styled.div`
-    background-color: #361556;
+    background-color: ${MainBackgroundColor};
     text-align: left;
     padding: 0px 5px;
     font-size: 12px;

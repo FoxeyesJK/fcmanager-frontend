@@ -4,6 +4,8 @@ import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg'
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
 import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 
+import { MainTableColor } from '../../global.styles';
+
 const IconStyles = css`
     height: 16px;
     width: 16px;
@@ -107,7 +109,7 @@ export const DateTimePickerContainer = styled.div`
 export const StyledDropdown = styled(Dropdown)`
     border: 1px solid #C0C0C0;
     transform: skew(-15deg);
-    background-color: #3e1964;
+    background-color: ${MainTableColor};
     color: #C0C0C0;
     width: 100%;
     height: 30px;

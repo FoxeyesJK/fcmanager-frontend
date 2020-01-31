@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import { TitleColor, SubBackgroundColor } from '../../global.styles';
+
 export const MemberUpsertContainer = styled.div`
     width: 600px;
-    background-color: #2e1249;
+    background-color: ${SubBackgroundColor};
     margin: 20px;
 `;
 
@@ -55,7 +57,7 @@ export const ButtonContainer = styled.div`
 export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #FFFD5E;
+    color: ${TitleColor};
     padding: 5px;
 `;
 

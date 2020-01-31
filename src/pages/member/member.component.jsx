@@ -16,12 +16,12 @@ import Header from '../../components/header/header.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
-import { selectMembers, selectGroupMembers } from '../../redux/member/member.selectors';
+import { selectMembers, selectTeamMembers } from '../../redux/member/member.selectors';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
-const Member = ({ grouppedMembers, members, isAdmin }) => {
+const Member = ({ teamMembers, members, isAdmin }) => {
   const [button, setButton] = useState({ memberId: 0, type: '' })
 
   const { memberId, type } = button;
@@ -39,7 +39,7 @@ const Member = ({ grouppedMembers, members, isAdmin }) => {
         {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
       </TitleContainer>
       {
-        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: '', roleId: 1}} type={type}/>  : null
+        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1}} type={type}/>  : null
       }
       {
                 console.log(members)
@@ -54,7 +54,7 @@ const Member = ({ grouppedMembers, members, isAdmin }) => {
       : null}
       <MemberContainer>
       {
-          grouppedMembers.value().map(({ ...otherMemberProps }) => (
+          teamMembers.value().map(({ ...otherMemberProps }) => (
             <MemberPreview {...otherMemberProps} handleClick={handleClick} isAdmin={isAdmin} />
           ))
       }
@@ -64,7 +64,7 @@ const Member = ({ grouppedMembers, members, isAdmin }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  grouppedMembers: selectGroupMembers,
+  teamMembers: selectTeamMembers,
   members: selectMembers,
 })
 
