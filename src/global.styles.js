@@ -9,7 +9,7 @@ export const TitleColor = '#FFFD5E';
 export const GlobalStyle = createGlobalStyle`
     body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #361556;
+    background-color: ${MainBackgroundColor};
     }
 
     div {
