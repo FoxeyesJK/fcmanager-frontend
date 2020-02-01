@@ -9,10 +9,10 @@ import {
 import RoleActionTypes from './role.types';
 
 const baseUrl = 'https://localhost:5612/';
-const apiEndPoint = 'role/';
+const apiEndPoint = 'code/';
 export function* fetchRolesAsync() {
     try {
-        console.log('fetchfiredagain')
+        console.log('fetchCorefiredagain')
         const roleRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchRolesSuccess(roleRes.data))
     } catch (error) {
