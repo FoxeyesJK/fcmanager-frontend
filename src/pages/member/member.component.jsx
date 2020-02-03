@@ -39,7 +39,7 @@ const Member = ({ teamMembers, members, isAdmin }) => {
         {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
       </TitleContainer>
       {
-        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1}} type={type}/>  : null
+        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0 }} type={type}/>  : null
       }
       {
                 console.log(members)

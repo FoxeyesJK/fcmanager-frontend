@@ -32,13 +32,14 @@ const CustomDropdown = ({ handleChange, value, options, ...otherProps }) => {
       <StyledSelect
          value=
          {
+            value > 0 ? 
             {
             value: value, 
             label: 
                !!options ? options
                   .find(option => option.value == value).label
                   : null
-            }
+            } : null
          }
          styles={customStyles}
          options={options} 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import { selectRoles } from '../../redux/role/role.selectors';
 import { createStructuredSelector } from 'reselect';
 
 import ImageInput from '../image-input/image-input.component';
@@ -10,6 +9,8 @@ import CustomButton from '../custom-button/custom-button.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
 import { postMembersStart, putMembersStart } from '../../redux/member/member.actions';
+import { selectRoles } from '../../redux/role/role.selectors';
+import { selectTeams } from '../../redux/team/team.selectors';
 
 import {
   MemberUpsertContainer,
@@ -25,9 +26,9 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ type, postMembersStart, putMembersStart, roles, member}) => {
+const MemberUpsert = ({ type, postMembersStart, putMembersStart, roles, teams, member}) => {
   const [members, setMembers] = useState(member);
-  const { name, email, phone, dob, startedOn, roleId, clubId } = members;
+  const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
 
   useEffect(() => {
     console.log('im called');
@@ -96,7 +97,11 @@ const handleChange = event => {
           <InputContainer>
             <Text>Team: </Text>
             <CustomDropdown
-
+              name='team'
+              value={teamId}
+              handleChange={team => setMembers({ ...members, teamId: team.value })}
+              options={teams}
+              required
             />
           </InputContainer>
           <InputContainer>
@@ -131,7 +136,7 @@ const handleChange = event => {
         </TextInputContainer>
         </FormContentContainer>
         <ButtonContainer>
-            <CustomButton>Save</CustomButton>
+            <CustomButton type='submit'>Save</CustomButton>
           </ButtonContainer>
       </FormContainer>
     </MemberUpsertContainer>
@@ -139,7 +144,8 @@ const handleChange = event => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  roles: selectRoles
+  roles: selectRoles,
+  teams: selectTeams
 })
 
 const mapDispatchToProps = dispatch => ({

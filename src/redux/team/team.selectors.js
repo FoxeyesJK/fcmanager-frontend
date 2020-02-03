@@ -4,7 +4,7 @@ const selectTeam = state => state.team;
 
 export const selectTeams = createSelector(
     [selectTeam],
-    team => team.teams
+    team => team.teams.map(team => { return { value: team.id, label: team.name }})
 )
 
 export const selectIsTeamFetching = createSelector(

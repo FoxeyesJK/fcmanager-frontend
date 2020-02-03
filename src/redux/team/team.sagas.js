@@ -1,7 +1,5 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, all, put } from 'redux-saga/effects';
 import axios from 'axios';
-//listens for every action 
-//call: invokes method
 
 import {
     fetchTeamsSuccess,
@@ -10,12 +8,11 @@ import {
 
 import TeamActionTypes from './team.types';
 
-const url = 'https://jsonplaceholder.typicode.com/users';
+const baseUrl = 'https://localhost:5612/';
+const apiEndPoint = 'team/';
 export function* fetchTeamsAsync() {
-    yield console.log('I am fired');
-
     try {
-        const teamRes = yield axios.get(url);
+        const teamRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchTeamsSuccess(teamRes.data))
     } catch (error) {
         yield put(fetchTeamsFailure(error.message))
@@ -27,4 +24,10 @@ export function* fetchTeamsStart() {
         TeamActionTypes.FETCH_TEAMS_START, //Start listening to actions
         fetchTeamsAsync //moment they heard run function
     );
+}
+
+export function* roleSagas() {
+    yield all([
+        call(fetchTeamsStart)
+    ]);
 }
