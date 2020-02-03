@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import { selectRoles } from '../../redux/role/role.selectors';
+import { createStructuredSelector } from 'reselect';
 
 import ImageInput from '../image-input/image-input.component';
 import FormInput from '../form-input/form-input.component';
@@ -23,9 +25,8 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ type, postMembersStart, putMembersStart, member}) => {
+const MemberUpsert = ({ type, postMembersStart, putMembersStart, roles, member}) => {
   const [members, setMembers] = useState(member);
-
   const { name, email, phone, dob, startedOn, roleId, clubId } = members;
 
   useEffect(() => {
@@ -94,28 +95,36 @@ const handleChange = event => {
           </InputContainer>
           <InputContainer>
             <Text>Team: </Text>
-            <CustomDropdown/>
+            <CustomDropdown
+
+            />
           </InputContainer>
           <InputContainer>
             <Text>Role: </Text>
-            <CustomDropdown/>
+            <CustomDropdown
+              name='role'
+              value={roleId}
+              handleChange={role => setMembers({ ...members, roleId: role.value })}
+              options={roles}
+              required
+            />
           </InputContainer>
           <InputContainer>
             <Text>Joined: </Text>
             <DateTimePickerContainer>
               <DateTimePicker 
                 defaultValue={new Date()} 
-                onChange={value => setMembers({ ...members, dob: value })}
-                value={dob}
+                onChange={value => setMembers({ ...members, startedOn: value })}
+                value={new Date(startedOn)}
               />
             </DateTimePickerContainer>
           </InputContainer>
           <InputContainer>
-            <Text>BOA: </Text>
+            <Text>DOB: </Text>
             <DateTimePickerContainer>
               <DateTimePicker 
                 onChange={value => setMembers({ ...members, dob: value })}
-                value={startedOn}
+                value={new Date(dob)}
               />
             </DateTimePickerContainer>
           </InputContainer>
@@ -129,10 +138,18 @@ const handleChange = event => {
   )
 }
 
+const mapStateToProps = createStructuredSelector({
+  roles: selectRoles
+})
+
 const mapDispatchToProps = dispatch => ({
   postMembersStart: (members) => dispatch(postMembersStart(members)),
   putMembersStart: (members) => dispatch(putMembersStart(members))
 })
 
-export default connect(null, mapDispatchToProps)(MemberUpsert);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(MemberUpsert);
+
 

@@ -5,7 +5,7 @@ const selectRole = state => state.role;
 
 export const selectRoles = createSelector(
     [selectRole],
-    role => role.roles
+    role => role.roles.map(role => { return { value: role.id, label: role.name }})
 )
 
 export const selectIsRoleFetching = createSelector(

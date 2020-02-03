@@ -25,23 +25,25 @@ const customStyles = {
     }),
  }
 
-const options = [
-   { value: 'chocolate', label: 'Chocolate' },
-   { value: 'strawberry', label: 'Strawberry' },
-   { value: 'vanilla', label: 'Vanilla' },
-   { value: 'chocolate', label: 'Chocolate' },
-   { value: 'strawberry', label: 'Strawberry' },
-   { value: 'vanilla', label: 'Vanilla' }
- ]
 
-const CustomDropdown = ({ toggleLeagueHidden }) => {
+const CustomDropdown = ({ handleChange, value, options, ...otherProps }) => {
    return (
    <Dropdown>
       <StyledSelect
-         //  minMenuHeight={10} 
-         //  maxMenuHeight={10}
+         value=
+         {
+            {
+            value: value, 
+            label: 
+               !!options ? options
+                  .find(option => option.value == value).label
+                  : null
+            }
+         }
          styles={customStyles}
          options={options} 
+         onChange={handleChange}
+         {...otherProps}
       />
    </Dropdown>
    );
@@ -49,8 +51,3 @@ const CustomDropdown = ({ toggleLeagueHidden }) => {
 
 export default CustomDropdown;
 
-// const mapDispatchToProps = dispatch => ({
-//    toggleLeagueHidden: () => dispatch(toggleLeagueHidden())
-// });
-
-// export default connect(null, mapDispatchToProps)(CustomDropdown);
