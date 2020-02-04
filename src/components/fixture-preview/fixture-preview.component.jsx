@@ -24,9 +24,10 @@ const FixturePreview = ({ ScheduledOn, matches, type, handleClick }) => {
         </MatchItemContainer> */}
         <TableBody>
         {
+          !!matches ? 
           matches.map(match => (
             <FixtureItem key={match.id} id={match.id} match={match} type={type} handleClick={handleClick}/>
-          ))
+          )) : null
         }
         </TableBody>
     </FixturePreviewContainer>

@@ -1,6 +1,4 @@
 import MatchActionTypes from './match.types';
-import axios from 'axios';
-const url = 'http://68.132.136.143:5611/Match/2'; 
 
 export const fetchMatchesStart = () => ({
     type: MatchActionTypes.FETCH_MATCHES_START
@@ -16,14 +14,32 @@ export const fetchMatchesFailure = errorMessage => ({
     payload: errorMessage
 })
 
-export const fetchMatchesStartAsync = () => {
-    return dispatch => {
-        dispatch(fetchMatchesStart());
+export const postMatchesStart = matchesMap => ({
+    type: MatchActionTypes.POST_MATCHES_START,
+    payload: matchesMap
+})
 
-        const matchRes = axios.get(url)
-            .then(res => {
-                dispatch(fetchMatchesSuccess(res.data));
-            })
-            .catch(error => dispatch(fetchMatchesFailure(error.message)));
-    }
-}
+export const postMatchesSuccess = matchesMap => ({
+    type: MatchActionTypes.POST_MATCHES_SUCCESS,
+    payload: matchesMap
+})
+
+export const postMatchesFailure = errorMessage => ({
+    type: MatchActionTypes.POST_MATCHES_FAILURE,
+    payload: errorMessage
+})
+
+export const putMatchesStart = matchesMap => ({
+    type: MatchActionTypes.PUT_MATCHES_START,
+    payload: matchesMap
+})
+
+export const putMatchesSuccess = matchesMap => ({
+    type: MatchActionTypes.PUT_MATCHES_SUCCESS,
+    payload: matchesMap
+})
+
+export const putMatchesFailure = errorMessage => ({
+    type: MatchActionTypes.PUT_MATCHES_FAILURE,
+    payload: errorMessage
+})

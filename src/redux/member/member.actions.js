@@ -1,8 +1,4 @@
 import MemberActionTypes from './member.types';
-import axios from 'axios';
-// import { memberService } from '../../services/services'
-//const url = 'https://jsonplaceholder.typicode.com/users';
-const apiEndPoint = 'member';
 
 export const fetchMembersStart = () => ({
     type: MemberActionTypes.FETCH_MEMBERS_START

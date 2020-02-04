@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; //window local storage
+import storage from 'redux-persist/lib/storage';
 
 import clubReducer from './club/club.reducer'
 import teamReducer from './team/team.reducer';
 import leagueReducer from './league/league.reducer';
 import memberReducer from './member/member.reducer';
-import matchReducer from './match/match.reducer';
 import roleReducer from './role/role.reducer';
+import matchReducer from './match/match.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   league: leagueReducer,
   member: memberReducer,
   match: matchReducer,
-  role: roleReducer
+  role: roleReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
