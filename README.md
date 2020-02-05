@@ -13,13 +13,13 @@ FCManager Front-end provides users with optimized UI, UX, and responsive design 
 
 ### Languages & Tools
 
-####Javascript
+**Javascript**
 * React
 * Redux
 * Redux-saga
 * Reselect
 
-####CSS
+**CSS**
 * SASS
 * Styled-components
 
