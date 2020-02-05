@@ -23,6 +23,10 @@ FCManager Front-end provides users with optimized UI, UX, and responsive design 
 * SASS
 * Styled-components
 
+### Contributors
+* [Jake Kwon](https://github.com/FoxeyesJK)
+* [Nathan Jeong](https://github.com/HolydayJeong)
+
 ### Club
 * Northern Valley FC
 
