@@ -9,10 +9,10 @@ import {
 
 import FixtureItem from '../fixture-item/fixture-item.component';
 
-const FixturePreview = ({ ScheduledOn, matches, type, handleClick }) => {
+const FixturePreview = ({ scheduledOn, matches, type, handleClick }) => {
   return (
     <FixturePreviewContainer>
-      <Title>{moment(ScheduledOn).format('ddd')}, {moment(ScheduledOn).add(10, 'days').calendar()}</Title>
+      <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).calendar()}</Title>
       {/* <MatchItemContainer>
         {
         matches

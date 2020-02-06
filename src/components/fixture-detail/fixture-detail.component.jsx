@@ -14,8 +14,8 @@ const FixtureDetail = ({matches, title, isAdmin, selectedId}) => {
           {
             !!matches ? 
             matches
-            .filter((match, id) => id === selectedId - 1)
-            .map((match) =>  (
+            .filter(match => match.id === selectedId)
+            .map(match =>  (
               <FixtureDetailItem key={match.id} id={match.id} match={match} isAdmin={isAdmin}/>
             )) : null
           }

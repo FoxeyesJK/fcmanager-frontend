@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import moment from 'moment'
 import momentLocalizer from 'react-widgets-moment';
@@ -42,59 +42,53 @@ import DropdownTeam from '../dropdown-team/dropdown-team.component';
 import Dropdown from '../custom-dropdown/custom-dropdown.component';
 import DropdownLeague from '../dropdown-league/dropdown-league.component';
 import DropdownLocation from '../dropdown-location/dropdown-location.component';
+import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
+import FormInput from '../form-input/form-input.component';
 
 moment.locale('en')
 momentLocalizer()
 
-const friendOptions = [
-  {
-    key: 'Jenny Hess',
-    text: 'Jenny Hess',
-    value: 'Jenny Hess',
-    image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },
-  {
-    key: 'Elliot Fu',
-    text: 'Elliot Fu',
-    value: 'Elliot Fu',
-    image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
-  },
-  {
-    key: 'Stevie Feliciano',
-    text: 'Stevie Feliciano',
-    value: 'Stevie Feliciano',
-    image: { avatar: true, src: '/images/avatar/small/stevie.jpg' },
-  },
-  {
-    key: 'Christian',
-    text: 'Christian',
-    value: 'Christian',
-    image: { avatar: true, src: '/images/avatar/small/christian.jpg' },
-  },
-  {
-    key: 'Matt',
-    text: 'Matt',
-    value: 'Matt',
-    image: { avatar: true, src: '/images/avatar/small/matt.jpg' },
-  },
-  {
-    key: 'Justen Kitsune',
-    text: 'Justen Kitsune',
-    value: 'Justen Kitsune',
-    image: { avatar: true, src: '/images/avatar/small/justen.jpg' },
-  },
-]
+const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
+  const [matches, setMatches] = useState(match);
+  const { homeTeamName, homeScore, awayTeamName, awayScore, scheduledAt, location, league, teamId} = match;
 
-const FixtureDetailItem = ({ match, id, isAdmin }) => {
-  const { homeTeamName, homeScore, awayTeamName, awayScore, ScheduledOn, LocationName, League} = match;
+  useEffect(() => {
+    setMatches(matches)
+  }, [matches]);
+
+  const handleSubmit = type => event => {
+    event.preventDefault();
+
+    //type == 'add' ? postMembersStart(matches) : putMembersStart(matches);
+  }
+  
+  const handleChange = event => {
+    const { name, value } = event.target;
+  
+    setMatches({ ...matches, [name]: value });
+  }
+    
+
  
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
+            {
+        console.log('hellow')
+      }
+      {
+        console.log(match)
+      }
         <TeamContainer>
             {
               isAdmin 
               ?
-              <Dropdown/>  
+              <CustomDropdown
+                name='team'
+                value={teamId}
+                handleChange={team => setMatches({ ...matches, teamId: team.value })}
+                options={teams}
+                required
+              />
               :
               <IconContainer>
                 <TeamIcon />
@@ -108,7 +102,13 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
             {
               isAdmin 
               ?
-              <Dropdown/>  
+              <CustomDropdown
+                name='team'
+                value={teamId}
+                handleChange={team => setMatches({ ...matches, teamId: team.value })}
+                options={teams}
+                required
+              />
               :
               <IconContainer>
                 <TeamIcon />
@@ -119,20 +119,23 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
           {
             isAdmin 
             ? <FixtureContainer>
-              <LeagueContainer isAdmin={isAdmin}>
-                <Dropdown/>
-              </LeagueContainer>
               <DateTimePickerContainer>
                 <DateTimePicker defaultValue={new Date()} />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
-              <Dropdown/>
+                <FormInput
+                  name='name'
+                  type='text'
+                  value={location}
+                  handleChange={handleChange}
+                  required
+                />
               </LocationContainer>
               </FixtureContainer>
             : <FixtureContainer>
-            <LeagueContainer>{League}</LeagueContainer>
-            <Schedule>{moment(ScheduledOn).format('LLLL')}</Schedule>
-            <LocationContainer>{LocationName}</LocationContainer>
+            <LeagueContainer>{league}</LeagueContainer>
+            <Schedule>{moment(scheduledAt).format('LLLL')}</Schedule>
+            <LocationContainer>{location}</LocationContainer>
             </FixtureContainer>
           }
         <RecordContainer>
@@ -221,4 +224,16 @@ const FixtureDetailItem = ({ match, id, isAdmin }) => {
   )
 }
 
-export default FixtureDetailItem;
+const mapStateToProps = createStructuredSelector({
+  teams: selectTeams
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(FixtureDetailItem);
+
+
