@@ -13,7 +13,7 @@ export const FormContainer = styled.form`
     flex-direction: column;
 `;
 
-export const FormContentContainer = styled.form`
+export const FormContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     padding: 30px;
