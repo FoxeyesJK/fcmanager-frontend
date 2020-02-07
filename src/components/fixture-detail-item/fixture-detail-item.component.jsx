@@ -39,10 +39,7 @@ import {
   DateTimePickerContainer
 } from './fixture-detail-item.styles.jsx';
 
-import DropdownTeam from '../dropdown-team/dropdown-team.component';
 import Dropdown from '../custom-dropdown/custom-dropdown.component';
-import DropdownLeague from '../dropdown-league/dropdown-league.component';
-import DropdownLocation from '../dropdown-location/dropdown-location.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';

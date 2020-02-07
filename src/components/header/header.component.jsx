@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
 import Dropdown from '../../components/custom-dropdown/custom-dropdown.component';
-import DropdownLeague from '../../components/dropdown-league/dropdown-league.component';
-import DropdownLeagueContents from '../../components/dropdown-league-contents/dropdown-league-contents.component';
 
 import { 
   HeaderContainer, 

@@ -11,7 +11,6 @@ import HomePage from './pages/homepage/homepage.component';
 import Member from './pages/member/member.component';
 import League from './pages/league/league.component';
 import Fixture from './pages/fixture/fixture.component';
-import AdminLeague from './pages/admin-league/admin-league.component';
 import Test from './components/test/test.component';
 import Header from './components/header/header.component';
 import SubHeader from './components/sub-header/sub-header.component';
@@ -37,7 +36,6 @@ class App extends React.Component {
               <Route exact path='/league' component={League} />
               <Route exact path='/fixture' component={Fixture} />
               <Route exact path='/fixture-admin' render={(props) => <Fixture {...props} isAdmin={true} />} />
-              <Route exact path='/admin-league' component={AdminLeague} />
             </Switch>
           </BodyContainer>
         </Body>
