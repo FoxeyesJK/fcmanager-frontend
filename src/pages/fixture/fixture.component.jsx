@@ -13,6 +13,7 @@ import {
   LeagueContainer,
   FixtureContainer,
   FixtureListContainer,
+  TitleContainer,
   SimpleBarReactContainer,
   Title,
   TableRow,
@@ -22,12 +23,29 @@ import {
 
 import FixturePreview from '../../components/fixture-preview/fixture-preview.component';
 import FixtureDetail from '../../components/fixture-detail/fixture-detail.component';
+import FixtureDetailItem from '../../components/fixture-detail-item/fixture-detail-item.component';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 const Fixture = ({ matches, isAdmin}) => {
-  const [button, setButton] = useState({ selectedId: 0, type: '' })
+  const [button, setButton] = useState({ selectedId: undefined, type: '' })
 
   const { selectedId, type } = button;
+
+  const match = selectedId != 0 
+                ? matches.flatMap(({matches}) => matches).find(({id}) => id === selectedId) 
+                : {
+                  homeTeamName: '',
+                  homeTeamId: '',
+                  homeScore: 0,
+                  awayTeamName: '',
+                  awayTeamId: 0,
+                  awayscore: 0,
+                  scheduledAt: '',
+                  location: '',
+                  leagueId: '',
+                  club: '',
+                  clubId: 1
+                }
 
   const handleClick = (id, type) => {
     console.log(id)
@@ -38,14 +56,16 @@ const Fixture = ({ matches, isAdmin}) => {
     <FixturePage>
       <FixtureContainer>
       <FixtureListContainer>
-        <Title>FIXTURES</Title>
+        <TitleContainer>
+        <Title>FIXTURES</Title>              
+        {isAdmin ? <CustomIcon type='add' id={0} handleClick={handleClick}/>: null}
+        </TitleContainer>
         <Table>
           <TableRow>
               <TableHeader>TIME</TableHeader>
               <TableHeader>OPPOSITION</TableHeader>
               <TableHeader>RESULT</TableHeader>
               <TableHeader>COMPETITION</TableHeader>
-              {isAdmin ? <CustomIcon type='add' id={selectedId} handleClick={handleClick}/>: null}
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
@@ -57,11 +77,9 @@ const Fixture = ({ matches, isAdmin}) => {
         </Table>
         </FixtureListContainer>
         {
-          matches
-          .filter((match, id) => id < 1)
-          .map(({ id, ...otherMatchProps }) => (
-            <FixtureDetail key={id} selectedId={selectedId} handleClick={handleClick} isAdmin={isAdmin} {...otherMatchProps}/>
-          ))
+          !!match 
+          ? <FixtureDetail handleClick={handleClick} isAdmin={isAdmin} match={match}/>
+          : null
         }
       </FixtureContainer>
     </FixturePage>

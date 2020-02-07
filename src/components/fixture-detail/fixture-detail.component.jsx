@@ -7,18 +7,15 @@ import {
 
 import FixtureDetailItem from '../fixture-detail-item/fixture-detail-item.component';
 
-const FixtureDetail = ({matches, title, isAdmin, selectedId}) => {
+const FixtureDetail = ({match, isAdmin}) => {
   return (
       <FixtureDetailContainer>
-          <Title>{title}</Title>
-          {
-            !!matches ? 
-            matches
-            .filter(match => match.id === selectedId)
-            .map(match =>  (
-              <FixtureDetailItem key={match.id} id={match.id} match={match} isAdmin={isAdmin}/>
-            )) : null
-          }
+        <Title></Title>
+        {
+          !!match 
+          ? <FixtureDetailItem match={match} isAdmin={isAdmin}/> 
+          : null
+        }
       </FixtureDetailContainer>
   )
 }

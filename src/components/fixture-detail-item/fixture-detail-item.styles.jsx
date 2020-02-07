@@ -12,12 +12,15 @@ const IconStyles = css`
 `;
 
 export const FixtureDetailItemContainer = styled.div`
-    
     padding: ${props => props.isAdmin ? "30px 10px;" : "0px 60px"}
 
     @media screen and (max-width: 800px) {
         padding: 0px 10px;
     }
+`;
+
+export const FormContainer = styled.form`
+
 `;
 
 
@@ -59,6 +62,7 @@ export const IconContainer = styled.div`
 `;
 
 export const ScoreContainer = styled.div`
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
@@ -93,6 +97,7 @@ export const RecordContainer = styled.div`
 `;
 
 export const PlayerContainer = styled.div`
+    width: 45%;
     display:flex;
 `;
 

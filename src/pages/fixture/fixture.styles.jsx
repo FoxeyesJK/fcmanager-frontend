@@ -33,7 +33,10 @@ export const FixtureListContainer = styled.div`
     @media screen and (max-width: 800px) {
         width: 100%;
     }
+`;
 
+export const TitleContainer = styled.div`
+    display: flex;
 `;
 
 
@@ -68,26 +71,18 @@ export const TableHeader = styled.div`
 
     &:nth-child(1) {
         text-align: left;
-        width: 80px;
+        width: 25%;
     }
     &:nth-child(2) {
         text-align: left;
-        width: 300px;
+        width: 40%;
     }
     &:nth-child(3) {
         text-align: center;
-        width: 60px;
+        width: 20%;
     }
     &:nth-child(4) {
         text-align: left;
-        width: 400px;
+        width: 35%;
     }
 `;
-// .league-page {
-//     width: 1400px;
-
-//     .league-top {
-//         display: flex;
-//         justify-content: space-between;
-//     }
-// }

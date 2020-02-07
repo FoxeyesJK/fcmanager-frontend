@@ -17,6 +17,7 @@ import { selectTeams } from '../../redux/team/team.selectors';
 
 import {
   FixtureDetailItemContainer,
+  FormContainer,
   Title,
   IconContainer,
   TeamIcon,
@@ -44,11 +45,12 @@ import DropdownLeague from '../dropdown-league/dropdown-league.component';
 import DropdownLocation from '../dropdown-location/dropdown-location.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 moment.locale('en')
 momentLocalizer()
 
-const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
+const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
   const [matches, setMatches] = useState(match);
   const { homeTeamName, homeScore, awayTeamName, awayScore, scheduledAt, location, league, teamId} = match;
 
@@ -59,7 +61,7 @@ const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
   const handleSubmit = type => event => {
     event.preventDefault();
 
-    //type == 'add' ? postMembersStart(matches) : putMembersStart(matches);
+    //type == 'add' ? postMatchesStart(matches) : putMatchesStart(matches);
   }
   
   const handleChange = event => {
@@ -68,16 +70,9 @@ const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
     setMatches({ ...matches, [name]: value });
   }
     
-
- 
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
-            {
-        console.log('hellow')
-      }
-      {
-        console.log(match)
-      }
+      <FormContainer onSubmit={handleSubmit(type)}>
         <TeamContainer>
             {
               isAdmin 
@@ -94,11 +89,14 @@ const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
                 <TeamIcon />
               </IconContainer>
               }
+            {!isAdmin ?
             <ScoreContainer>
               { homeScore }
               -
               { awayScore }
-            </ScoreContainer> 
+            </ScoreContainer>
+            : null
+            } 
             {
               isAdmin 
               ?
@@ -113,9 +111,17 @@ const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
               <IconContainer>
                 <TeamIcon />
               </IconContainer>
-              }
+            }
         </TeamContainer>
-        
+        {
+        isAdmin ? 
+        <ScoreContainer>
+              { homeScore }
+              -
+              { awayScore }
+        </ScoreContainer>
+        : null
+        }
           {
             isAdmin 
             ? <FixtureContainer>
@@ -220,6 +226,8 @@ const FixtureDetailItem = ({ match, id, teams, isAdmin }) => {
             </PlayerContainer>
           </Record>
         </RecordContainer>
+        <CustomButton type='submit'>Save</CustomButton>
+        </FormContainer>
     </FixtureDetailItemContainer>
   )
 }

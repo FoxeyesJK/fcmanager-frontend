@@ -27,27 +27,3 @@ const CustomIconButton = ({ type, id, handleClick }) => (
 )
 
 export default CustomIconButton;
-
-/*
-const CustomIconButton = ({ children, type, addIcon }) => (
-    <button className='button-icon'>
-          <div>{type}</div>
-       {((type) => {
-          console.log('type');
-          switch (type) {
-            case 'add':
-               return <AddIcon className='icon' />;
-            case 'save':
-               return <SaveIcon className='icon'/>; 
-            case 'edit':
-               return <EditIcon className='icon' />;
-            case 'delete':
-               return <DeleteIcon className='icon' />;
-            default:
-               return <DeleteIcon className='icon' />;
-          }
-       })}
-    </button>
-
-
-*/
