@@ -21,16 +21,3 @@ export const TableBody = Styled.div`
     > div:nth-child(odd) {background-color: ${MainTableColor};}
     > div:nth-child(even) {background-color: ${MainBackgroundColor};}
 `;
-
-
-// .match-preview {
-//     .title {
-//         text-decoration: underline;
-//         margin-bottom: 0;
-//         margin-top: 20px;
-//     }
-//     .preview {
-//         display: flex;
-//         justify-content: space-between;
-//     }
-// }

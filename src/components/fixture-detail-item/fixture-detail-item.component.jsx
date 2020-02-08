@@ -39,6 +39,7 @@ import {
   DateTimePickerContainer
 } from './fixture-detail-item.styles.jsx';
 
+import RecordPreview from '../record-preview/record-preview.component';
 import Dropdown from '../custom-dropdown/custom-dropdown.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
@@ -49,9 +50,11 @@ momentLocalizer()
 
 const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
   const [matches, setMatches] = useState(match);
-  const { homeTeamName, homeScore, awayTeamName, awayScore, scheduledAt, location, league, teamId} = match;
+  const { homeTeamId, homeTeamName, homeScore, awayTeamId, awayTeamName, awayScore, scheduledAt, location, league, matchRecords} = matches;
 
   useEffect(() => {
+    console.log('fired')
+    console.log(matches)
     setMatches(matches)
   }, [matches]);
 
@@ -69,6 +72,9 @@ const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
     
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
+      {
+        console.log(match)
+      }
       <FormContainer onSubmit={handleSubmit(type)}>
         <TeamContainer>
             {
@@ -76,8 +82,8 @@ const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
               ?
               <CustomDropdown
                 name='team'
-                value={teamId}
-                handleChange={team => setMatches({ ...matches, teamId: team.value })}
+                value={homeTeamId}
+                handleChange={team => setMatches({ ...matches, homeTeamId: team.value })}
                 options={teams}
                 required
               />
@@ -99,8 +105,8 @@ const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
               ?
               <CustomDropdown
                 name='team'
-                value={teamId}
-                handleChange={team => setMatches({ ...matches, teamId: team.value })}
+                value={awayTeamId}
+                handleChange={team => setMatches({ ...matches, awayTeamId: team.value })}
                 options={teams}
                 required
               />
@@ -141,88 +147,7 @@ const FixtureDetailItem = ({ type, match, teams, isAdmin }) => {
             <LocationContainer>{location}</LocationContainer>
             </FixtureContainer>
           }
-        <RecordContainer>
-          <Record>
-            <PlayerContainer>
-              <StyledScoreIcon />
-              {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-            </PlayerContainer>
-            <PlayerContainer>
-            {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-              <StyledScoreIcon />
-            </PlayerContainer>
-          </Record>
-          <Record>
-            <PlayerContainer>
-              <StyledAssistIcon />   
-                {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-            </PlayerContainer>
-            <PlayerContainer>
-            {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-              <StyledAssistIcon />
-            </PlayerContainer>
-          </Record>
-        </RecordContainer>
-        <RecordContainer>
-        <Record>
-            <PlayerContainer>
-              <StyledScoreIcon />
-              <Player>Nathan Jeong</Player>
-            </PlayerContainer>
-            <PlayerContainer>
-              <Player>Jake Kwon</Player>
-              <StyledScoreIcon />
-            </PlayerContainer>
-          </Record>
-          <Record>
-            <PlayerContainer>
-              <StyledAssistIcon />
-              <Player>Nathan Jeong</Player>
-            </PlayerContainer>
-            <PlayerContainer>
-              <Player>Jake Kwon</Player>
-              <StyledAssistIcon />
-            </PlayerContainer>
-          </Record>
-        </RecordContainer>
-        <RecordContainer>
-        <Record>
-            <PlayerContainer>
-              <StyledScoreIcon />
-              <Player>Nathan Jeong</Player>
-            </PlayerContainer>
-            <PlayerContainer>
-              <Player>Jake Kwon</Player>
-              <StyledScoreIcon />
-            </PlayerContainer>
-          </Record>
-          <Record>
-            <PlayerContainer>
-              <StyledAssistIcon />
-              <Player>Nathan Jeong</Player>
-            </PlayerContainer>
-            <PlayerContainer>
-              <Player>Jake Kwon</Player>
-              <StyledAssistIcon />
-            </PlayerContainer>
-          </Record>
-        </RecordContainer>
+          <RecordPreview matchRecords={matchRecords} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} />
         <CustomButton type='submit'>Save</CustomButton>
         </FormContainer>
     </FixtureDetailItemContainer>

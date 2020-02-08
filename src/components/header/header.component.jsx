@@ -31,9 +31,9 @@ const Header = ({ match, isSelectedOption, hidden }) => {
       <TextContainer>
         <Title>TEAM REPORT</Title>
         <SubTitle>
-          <DropdownContainer>
+          {/* <DropdownContainer>
             <Dropdown />
-          </DropdownContainer>
+          </DropdownContainer> */}
           {/* {hidden ? null : <DropdownLeagueContents />} */}
           </SubTitle>
       </TextContainer>

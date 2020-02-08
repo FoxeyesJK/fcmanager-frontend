@@ -19,6 +19,12 @@ export const selectTeamMembers = createSelector(
     })
 )
 
+export const selectMemberNames = createSelector(
+    [selectMembers],
+    members => members.map(member => { return { value: member.id, label: member.name, teamId: member.teamId }})
+)
+
+
 export const selectIsMemberFetching = createSelector(
     [selectMember],
     member => member.isFetching
