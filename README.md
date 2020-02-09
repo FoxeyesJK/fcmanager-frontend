@@ -5,11 +5,11 @@ FCManager is a league management software that helps players manage their organi
 FCManager Front-end provides users with optimized UI, UX, and responsive design allowing easy visibiltty of all operations.
 
 ### Features
-* Member Page
+* Member Page (Alpha)
 * Team Page
 * Strategy Page
-* Fixture Page
-* Match Page
+* League Page
+* Fixture Page (Alpha)
 
 ### Languages & Tools
 
