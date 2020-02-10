@@ -14,9 +14,9 @@ import MatchActionTypes from './record.types';
 
 const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'matchrecord/';
-export function* fetchRecordsAsync() {
+export function* fetchRecordsAsync({payload: { matchId }}) {
     try {
-        const recordRes = yield axios.get(baseUrl + apiEndPoint);
+        const recordRes = yield axios.get(baseUrl + apiEndPoint + matchId);
         yield put(fetchRecordsSuccess(recordRes.data))
     } catch (error) {
         yield put(fetchRecordsFailure(error.message))
@@ -25,8 +25,8 @@ export function* fetchRecordsAsync() {
 
 export function* fetchRecordsStart() {
     yield takeLatest(
-        MatchActionTypes.FETCH_RECORDS_START, //Start listening to actions
-        fetchRecordsAsync //moment they heard run function
+        MatchActionTypes.FETCH_RECORDS_START, 
+        fetchRecordsAsync 
     );
 }
 

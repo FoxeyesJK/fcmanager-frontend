@@ -163,7 +163,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             </FixtureContainer>
           }
         </FormContainer>
-        <RecordPreview matchRecords={matchRecords} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} />
+        <RecordPreview matchId={match.id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} />
     </FixtureDetailItemContainer>
   )
 }

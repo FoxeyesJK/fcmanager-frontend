@@ -58,6 +58,7 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin, isRecordAdmin, han
                     name='member'
                     value={scoreMemberId}
                     handleChange={handleChange}
+                    //add to record redux
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     required
                 /> :
@@ -87,6 +88,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
+  // /fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId }))
 })
 
 export default connect(

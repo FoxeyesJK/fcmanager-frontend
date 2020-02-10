@@ -13,8 +13,9 @@ import 'react-widgets/dist/css/react-widgets.css';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import { selectTeams } from '../../redux/team/team.selectors';
-import { postRecordsStart, putRecordsStart } from '../../redux/record/record.actions';
+import { selectRecords } from '../../redux/record/record.selectors';
+import { fetchRecordsStart, postRecordsStart, putRecordsStart } from '../../redux/record/record.actions';
+import { selectIsRecordFetching, selectIsRecordsLoaded } from '../../redux/record/record.selectors';
 
 import {
   RecordPreviewContainer,
@@ -37,11 +38,10 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordPreview = ({ matchRecords, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
-
+const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
   const [records, setRecords] = useState(matchRecords);
   const [selectedRecordId, setSelectedRecordId] = useState(null);
-  const teams = useSelector(selectTeams, shallowEqual)
+  //const records = useSelector(selectRecords, shallowEqual)
   const dispatch = useDispatch();
 
   const selectedId = 0;
@@ -55,22 +55,25 @@ const RecordPreview = ({ matchRecords, homeTeamId, awayTeamId, isAdmin, isRecord
   }, [records]);
 
   useEffect(() => {
+    fetchRecordsStart(matchId);
+  }, [fetchRecordsStart, matchId]);
+
+  useEffect(() => {
     setSelectedRecordId(selectedRecordId)
   }, [selectedRecordId]);
 
   const handleSubmit = event => {
     event.preventDefault();
+    console.log('handlesubmit')
     console.log(records)
-    const test = records.filter(record => record.scoreMemberId != 0 && record.AssisMemberId != 0)
+    const test = records.filter(record => record.scoreMemberId != 0 && record.scoreMemberId != 0)
     console.log(test)
     //dispatch(postRecordsStart(records));
   }
 
   const handleChange = event => {
     console.log('target')
-    console.log(event)
-    console.log(...records)
-    console.log(records.id)
+
     //setRecords({ ...records.find(record => record.id === event.value), scoreMemberId: event.value })
 
     // const { name, value } = event.target;
@@ -80,23 +83,22 @@ const RecordPreview = ({ matchRecords, homeTeamId, awayTeamId, isAdmin, isRecord
   }
   
   const newRecord = {scoreMemberId: 0, assistMemberId: 0 }
-  let homeRecordCount = !!matchRecords ? matchRecords.filter(record => record.scoreTeamId === homeTeamId).length : null
-  let awayRecordCount = !!matchRecords ? matchRecords.filter(record => record.scoreTeamId === awayTeamId).length : null
-  console.log(homeRecordCount)
-  console.log(awayRecordCount)
+  let homeRecordCount = !!records ? records.filter(record => record.scoreTeamId === homeTeamId).length : null
+  let awayRecordCount = !!records ? records.filter(record => record.scoreTeamId === awayTeamId).length : null
+  console.log(matchId)
   
   if (homeRecordCount < awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      matchRecords.push({scoreMemberId: 0, scoreTeamId: homeTeamId, assistMemberId: 0 })
+      records.push({scoreMemberId: 0, scoreTeamId: homeTeamId, assistMemberId: 0 })
       homeRecordCount++;
     }
   } else if (homeRecordCount > awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      matchRecords.push({scoreMemberId: 0, scoreTeamId: awayTeamId, assistMemberId: 0 })
+      records.push({scoreMemberId: 0, scoreTeamId: awayTeamId, assistMemberId: 0 })
       awayRecordCount++
     }
   }
@@ -147,7 +149,21 @@ const RecordPreview = ({ matchRecords, homeTeamId, awayTeamId, isAdmin, isRecord
   )
 }
 
-export default RecordPreview;
+const mapStateToProps = createStructuredSelector({
+  isRecordFetching: selectIsRecordFetching,
+  isRecordLoaded: selectIsRecordsLoaded,
+  matchRecords: selectRecords
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId }))
+});
+
+export default connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(RecordPreview);
+
 
 
 

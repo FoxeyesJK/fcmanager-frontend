@@ -1,7 +1,8 @@
 import RecordActionTypes from './record.types';
 
-export const fetchRecordsStart = () => ({
-    type: RecordActionTypes.FETCH_RECORDS_START
+export const fetchRecordsStart = recordsMap => ({
+    type: RecordActionTypes.FETCH_RECORDS_START,
+    payload: recordsMap
 })
 
 export const fetchRecordsSuccess = recordsMap => ({
