@@ -27,29 +27,28 @@ import FixtureDetailItem from '../../components/fixture-detail-item/fixture-deta
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 const Fixture = ({ matches, isAdmin}) => {
-  const [button, setButton] = useState({ selectedId: undefined, type: '' })
+  const [button, setButton] = useState({ matchId: 0, type: '' })
 
-  const { selectedId, type } = button;
-
-  const match = selectedId != 0 
-                ? matches.flatMap(({matches}) => matches).find(({id}) => id === selectedId) 
-                : {
-                  homeTeamName: '',
-                  homeTeamId: '',
-                  homeScore: 0,
-                  awayTeamName: '',
-                  awayTeamId: 0,
-                  awayscore: 0,
-                  scheduledAt: '',
-                  location: '',
-                  leagueId: '',
-                  club: '',
-                  clubId: 1
-                }
+  const { matchId, type } = button;
 
   const handleClick = (id, type) => {
     console.log(id)
-    setButton({ selectedId: id, type: type });
+    setButton({ matchId: id, type: type });
+  }
+
+  var match = matchId != 0 && !!matches
+  ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
+  : {
+    id: 0,
+    homeTeamId: '',
+    homeScore: 0,
+    awayTeamId: 0,
+    awayScore: 0,
+    scheduledAt: new Date(),
+    location: '',
+    leagueId: 1,
+    clubId: 1,
+    matchRecords: []
   }
 
   return (
@@ -69,17 +68,16 @@ const Fixture = ({ matches, isAdmin}) => {
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
+            !!matches ? 
               matches.map(({ id, ...otherMatchProps }) => (
-                <FixturePreview key={id} id={selectedId} type={type} handleClick={handleClick} {...otherMatchProps} />
-              ))
+                <FixturePreview key={id} id={matchId} type={type} handleClick={handleClick} {...otherMatchProps} />
+              )) : null
           }
           </SimpleBarReact>
         </Table>
         </FixtureListContainer>
         {
-          !!match 
-          ? <FixtureDetail handleClick={handleClick} isAdmin={isAdmin} match={match}/>
-          : null
+          <FixtureDetail isAdmin={isAdmin} match={match}/>
         }
       </FixtureContainer>
     </FixturePage>

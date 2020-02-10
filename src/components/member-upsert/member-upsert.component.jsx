@@ -31,15 +31,12 @@ const MemberUpsert = ({ type, postMembersStart, putMembersStart, roles, teams, m
   const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
 
   useEffect(() => {
-    console.log('im called');
-    console.log(members);
-    setMembers(members)
-  }, [members]);
+    setMembers(member)
+  }, [member]);
 
 const handleSubmit = type => event => {
   event.preventDefault();
-  console.log('hi')
-  console.log(members)
+
   type == 'add' ? postMembersStart(members) : putMembersStart(members);
 }
 

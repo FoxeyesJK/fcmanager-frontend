@@ -8,6 +8,7 @@ import leagueReducer from './league/league.reducer';
 import memberReducer from './member/member.reducer';
 import roleReducer from './role/role.reducer';
 import matchReducer from './match/match.reducer';
+import recordReducer from './record/record.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   member: memberReducer,
   match: matchReducer,
   role: roleReducer,
+  record: recordReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -10,6 +10,8 @@ import FixtureDetailItem from '../fixture-detail-item/fixture-detail-item.compon
 const FixtureDetail = ({match, isAdmin}) => {
   return (
       <FixtureDetailContainer>
+        {console.log('fixtureDetail')}
+        {console.log(match)}
         <Title></Title>
         {
           !!match 

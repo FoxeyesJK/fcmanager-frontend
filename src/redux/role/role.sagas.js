@@ -12,7 +12,6 @@ const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'code/';
 export function* fetchRolesAsync() {
     try {
-        console.log('fetchCorefiredagain')
         const roleRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchRolesSuccess(roleRes.data))
     } catch (error) {

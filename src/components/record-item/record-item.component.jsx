@@ -28,13 +28,13 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordItem = ({ record, teamId, memberOptions, isAdmin }) => {
-  const [records, setRecords] = useState(record);
-  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName } = records;
+const RecordItem = ({ record, teamId, memberOptions, isAdmin, isRecordAdmin, handleChange }) => {
+  // const [records, setRecords] = useState(record);
+  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName } = record;
 
-  useEffect(() => {
-    setRecords(records)
-  }, [records]);
+  // useEffect(() => {
+  //   setRecords(record)
+  // }, [record]);
 
   // const handleSubmit = type => event => {
   //   event.preventDefault();
@@ -50,17 +50,14 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin }) => {
     
   return (
         <RecordDetailItemContainer>
-          {
-            console.log(records)
-          }
           <PlayerContainer>
             <Player>
             {
-              isAdmin ?       
+              isAdmin && isRecordAdmin ?       
               <CustomDropdown
                     name='member'
                     value={scoreMemberId}
-                    handleChange={member => setRecords({ ...records, scoreMemberId: member.value })}
+                    handleChange={handleChange}
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     required
                 /> :
@@ -69,11 +66,11 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin }) => {
             </Player>
             <Player>
             {
-              isAdmin ?       
+              isAdmin && isRecordAdmin ?       
               <CustomDropdown
                     name='member'
                     value={assistMemberId}
-                    handleChange={member => setRecords({ ...records, assistMemberId: member.value })}
+                    handleChange={handleChange}
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     required
                 /> :
@@ -81,52 +78,6 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin }) => {
             }
             </Player>
           </PlayerContainer>
-            {/* <PlayerContainer>
-              <StyledScoreIcon />
-              {
-                  isAdmin ?
-                  <CustomDropdown
-                    name='team'
-                    value={teamId}
-                    handleChange={team => setMembers({ ...members, teamId: team.value })}
-                    options={teams}
-                    required
-                />
-                : <Player>{memberName}</Player>
-                }
-            </PlayerContainer>
-            <PlayerContainer>
-            {
-                  isAdmin ?
-                  <CustomDropdown
-                    name='team'
-                    value={teamId}
-                    handleChange={team => setMembers({ ...members, teamId: team.value })}
-                    options={teams}
-                    required
-                />
-                : <Player>{memberName}</Player>
-                }
-              <StyledScoreIcon />
-            </PlayerContainer>
-          </Record>
-          <Record>
-            <PlayerContainer>
-              <StyledAssistIcon />   
-                {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-            </PlayerContainer>
-            <PlayerContainer>
-            {
-                  isAdmin ?
-                  <Dropdown/>
-                : <Player>Nathan Jeong</Player>
-                }
-              <StyledAssistIcon />
-            </PlayerContainer> */}
         </RecordDetailItemContainer>
   )
 }

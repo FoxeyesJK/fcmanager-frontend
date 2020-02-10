@@ -17,7 +17,11 @@ export const RecordPreviewContainer = styled.form`
     margin-top: 0px;
     padding: 5px 0;
     width:100%;
+`;
+
+export const TeamRecordContainer = styled.form`
     display: flex;
+    width:100%;
 `;
 
 export const HomeTeamRecord = styled.div`
@@ -48,6 +52,18 @@ export const PlayerContainer = styled.div`
 export const Player = styled.div`
     padding: 0px 2px;
 `;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+`;
+
+export const AddButtonContainer = styled.div`
+    width: 30%;
+`;
+
+export const SaveButtonContainer = styled.div`
+    width: 70%;
+`
 
 
 export const StyledAssistIcon = styled(AssistIcon)`

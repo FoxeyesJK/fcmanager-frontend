@@ -16,7 +16,6 @@ const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'match/';
 export function* fetchMatchesAsync() {
     try {
-        console.log('fetchfiredagain')
         const matchRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchMatchesSuccess(matchRes.data))
     } catch (error) {
@@ -48,7 +47,6 @@ export function* onPostMatchesSuccess() {
     yield takeLatest(MatchActionTypes.POST_MATCHES_SUCCESS, fetchMatchesAsyncAfterPost)
 }
 
-
 export function* postMatchesStart() {
     yield takeLatest(
         MatchActionTypes.POST_MATCHES_START,
@@ -57,11 +55,10 @@ export function* postMatchesStart() {
 }
 
 export function* putMatchesAsync({payload}) {
-    console.log('payload');
-    console.log(payload);
+    console.log('putMatchesAsync');
     try {
-        const { match } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-        yield put(putMatchesSuccess(match))
+        const { resMatch } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
+        yield put(putMatchesSuccess(resMatch))
     } catch (error) {
         yield put(putMatchesFailure(error.message))
     }

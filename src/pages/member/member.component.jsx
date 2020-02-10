@@ -25,7 +25,7 @@ const Member = ({ teamMembers, members, isAdmin }) => {
   const [button, setButton] = useState({ memberId: 0, type: '' })
 
   const { memberId, type } = button;
-
+  
   const handleClick = (id, type) => {
     console.log('selectedId')
     console.log(id)
@@ -40,9 +40,6 @@ const Member = ({ teamMembers, members, isAdmin }) => {
       </TitleContainer>
       {
         type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0 }} type={type}/>  : null
-      }
-      {
-                console.log(members)
       }
       {
       type =='edit' && members != null ? 

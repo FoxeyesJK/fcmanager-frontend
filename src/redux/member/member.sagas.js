@@ -19,7 +19,6 @@ const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
     try {
-        console.log('fetchfiredagain')
         const memberRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchMembersSuccess(memberRes.data))
     } catch (error) {
@@ -60,8 +59,6 @@ export function* postMembersStart() {
 }
 
 export function* putMembersAsync({payload}) {
-    console.log('payload');
-    console.log(payload);
     try {
         const { member } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
         yield put(putMembersSuccess(member))
