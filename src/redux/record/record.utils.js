@@ -3,12 +3,16 @@ export const addRecord = (records, recordToAdd) => {
     console.log(records)
     console.log(recordToAdd)
 
+    //records 없을때 예외처리
     if (recordToAdd.id === 0) {
+        console.log('add')
+        console.log(records.find(record => record.tempRecordId === recordToAdd.tempRecordId))
         //add
         return records.map(record => 
             record.tempRecordId === recordToAdd.tempRecordId
             ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
-            : record
+            : [...records, {...recordToAdd}]
+            //push but instead of push
         );
     }
     //update
@@ -20,18 +24,8 @@ export const addRecord = (records, recordToAdd) => {
     );
 }
 
-export const updateRecord = (recordItems, recordItemToAdd) => {
-    const existingRecordItem = recordItems.find(
-        recordItem => recordItem.id === recordItemToAdd.id
-    )
-
-    if (existingRecordItem) {
-        return recordItems.map(recordItem => 
-            recordItem.id === recordItemToAdd.id
-            ? { ...recordItem, quantity: recordItem.quantity + 1 }
-            : recordItem
-        );
-    }
-    
-    return [...recordItems, { ...recordItemToAdd, quantity: 1}];
+export const addRowToRecord = (records, recordToAdd) => {
+    console.log('addRowToRecord')
+    return [...records, {...recordToAdd}]
 }
+

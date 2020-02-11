@@ -25,7 +25,7 @@ const memberReducer = (state = INITIAL_STATE, action) => {
             }
         case MemberActionTypes.FETCH_MEMBERS_FAILURE:
         case MemberActionTypes.POST_MEMBERS_FAILURE:
-        case MemberActionTypes.FUT_MEMBERS_FAILURE:
+        case MemberActionTypes.PUT_MEMBERS_FAILURE:
             return {
                 ...state,
                 isFetching: false,

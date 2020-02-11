@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectRecords } from '../../redux/record/record.selectors';
-import { fetchRecordsStart, postRecordsStart, putRecordsStart } from '../../redux/record/record.actions';
+import { fetchRecordsStart, postRecordsStart, putRecordsStart, addRowToRecord } from '../../redux/record/record.actions';
 import { selectIsRecordFetching, selectIsRecordsLoaded } from '../../redux/record/record.selectors';
 
 import {
@@ -38,21 +38,17 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
-  const [records, setRecords] = useState(matchRecords);
+const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
+  //const [records, setRecords] = useState(matchRecords);
   const [selectedRecordId, setSelectedRecordId] = useState(null);
   //const records = useSelector(selectRecords, shallowEqual)
   const dispatch = useDispatch();
 
   const selectedId = 0;
 
-  useEffect(() => {
-    setRecords(matchRecords)
-  }, [matchRecords]);
-
-  useEffect(() => {
-    setRecords(records)
-  }, [records]);
+  // useEffect(() => {
+  //   setRecords(matchRecords)
+  // }, [matchRecords]);
 
   useEffect(() => {
     fetchRecordsStart(matchId);
@@ -81,38 +77,51 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
     // setMembers({ ...members, [name]: value });
     // member => setRecords({ ...records, scoreMemberId: member.value })
   }
+
   
+  console.log(records)
   const newRecord = {scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7 }
   let homeRecordCount = !!records ? records.filter(record => record.scoreTeamId === homeTeamId).length : null
   let awayRecordCount = !!records ? records.filter(record => record.scoreTeamId === awayTeamId).length : null
   let tempRecordId = 1
+
+  console.log(homeRecordCount)
+  console.log(awayRecordCount)
   
   if (homeRecordCount < awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
+      console.log('homeAdd')
+      addRowToRecord({...records, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+      //records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
       homeRecordCount++;
-      tempRecordId++;
     }
   } else if (homeRecordCount > awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
+      console.log('awayAdd')
+      addRowToRecord({...records, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+      //records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
       awayRecordCount++
-      tempRecordId++;
     }
   }
-  console.log(matchRecords)
+
+  const handleClick = event => {
+    console.log('clicked')
+    addRowToRecord({...records, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+    addRowToRecord({...records, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+    console.log(records)
+  }
     
   return (
         <RecordPreviewContainer onSubmit={handleSubmit}>
           <TeamRecordContainer>
           <HomeTeamRecord>
           {
-            !!matchRecords ?
-              matchRecords.filter(record => record.scoreTeamId === homeTeamId)
+            !!records ?
+              records.filter(record => record.scoreTeamId === homeTeamId)
                           .map(record =>
                             <RecordItem record={record} teamId={homeTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
@@ -123,8 +132,8 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
           </HomeTeamRecord>
           <AwayTeamRecord>
           {
-            !!matchRecords ?
-              matchRecords.filter(record => record.scoreTeamId === awayTeamId)
+            !!records ?
+              records.filter(record => record.scoreTeamId === awayTeamId)
                           .map(record =>
                             <RecordItem record={record} teamId={awayTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
@@ -138,7 +147,7 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
             isAdmin && isRecordAdmin ?
             <ButtonContainer>
             <AddButtonContainer>
-            <CustomButton>Add</CustomButton>
+            <CustomButton type='button' handleClick={handleClick}>Add</CustomButton>
             </AddButtonContainer>
             <SaveButtonContainer>
             <CustomButton type='submit'>Save</CustomButton>
@@ -154,11 +163,12 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
 const mapStateToProps = createStructuredSelector({
   isRecordFetching: selectIsRecordFetching,
   isRecordLoaded: selectIsRecordsLoaded,
-  matchRecords: selectRecords
+  records: selectRecords
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId }))
+  fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId })),
+  addRowToRecord: record => dispatch(addRowToRecord(record))
 });
 
 export default connect (

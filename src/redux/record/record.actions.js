@@ -50,8 +50,8 @@ export const addRecord = record => ({
     payload: record
 })
 
-export const updateRecord = record => ({
-    type: RecordActionTypes.UPDATE_RECORD,
+export const addRowToRecord = record => ({
+    type: RecordActionTypes.ADD_ROW_TO_RECORD,
     payload: record
 })
 

@@ -25,7 +25,7 @@ const matchReducer = (state = INITIAL_STATE, action) => {
             }
         case MatchActionTypes.FETCH_MATCHES_FAILURE:
         case MatchActionTypes.POST_MATCHES_FAILURE:
-        case MatchActionTypes.FUT_MATCHES_FAILURE:
+        case MatchActionTypes.PUT_MATCHES_FAILURE:
             return {
                 ...state,
                 isFetching: false,

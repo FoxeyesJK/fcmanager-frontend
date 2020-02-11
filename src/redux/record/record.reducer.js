@@ -1,5 +1,5 @@
 import RecordActionTypes from './record.types';
-import { addRecord, updateRecord } from './record.utils';
+import { addRecord, addRowToRecord } from './record.utils';
 
 const INITIAL_STATE = {
     records: [],
@@ -37,10 +37,10 @@ const recordReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 records: addRecord(state.records, action.payload)
             }
-        case RecordActionTypes.UPDATE_RECORD:
+        case RecordActionTypes.ADD_ROW_TO_RECORD:
             return {
                 ...state,
-                recordItems: updateRecord(state.records, action.payload)
+                records: addRowToRecord(state.records, action.payload)
             }
         default:
             return state;
