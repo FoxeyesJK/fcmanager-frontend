@@ -1,5 +1,5 @@
 import RecordActionTypes from './record.types';
-import { addItemToRecord, updateItemToRecord } from './record.utils';
+import { addRecord, updateRecord } from './record.utils';
 
 const INITIAL_STATE = {
     records: [],
@@ -32,15 +32,15 @@ const recordReducer = (state = INITIAL_STATE, action) => {
                 isFetching: false,
                 errorMessage: action.payload
             }
-        case RecordActionTypes.ADD_RECORDS:
+        case RecordActionTypes.ADD_RECORD:
             return {
                 ...state,
-                recordItems: addItemToRecord(state.recordItems, action.payload)
+                records: addRecord(state.records, action.payload)
             }
-        case RecordActionTypes.UPDATE_RECORDS:
+        case RecordActionTypes.UPDATE_RECORD:
             return {
                 ...state,
-                recordItems: updateItemToRecord(state.recordItems, action.payload)
+                recordItems: updateRecord(state.records, action.payload)
             }
         default:
             return state;

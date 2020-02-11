@@ -44,3 +44,14 @@ export const putRecordsFailure = errorMessage => ({
     type: RecordActionTypes.PUT_RECORDS_FAILURE,
     payload: errorMessage
 })
+
+export const addRecord = record => ({
+    type: RecordActionTypes.ADD_RECORD,
+    payload: record
+})
+
+export const updateRecord = record => ({
+    type: RecordActionTypes.UPDATE_RECORD,
+    payload: record
+})
+

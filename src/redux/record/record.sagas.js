@@ -1,5 +1,6 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
 import axios from 'axios';
+import { fetchMatchesAsyncAfterPost } from '../match/match.sagas';
 
 import {
     fetchRecordsSuccess,
@@ -32,21 +33,17 @@ export function* fetchRecordsStart() {
 
 export function* postRecordsAsync({payload}) {
     try {
-        const { recordRes } = yield axios.post(baseUrl + apiEndPoint, payload);
+        const recordRes = yield axios.post(baseUrl + apiEndPoint, payload);
         yield put(postRecordsSuccess(recordRes.data))
     } catch (error) {
         yield put(postRecordsFailure(error.message))
     }
 }
 
-export function* fetchRecordsAsyncAfterPost() {
-    yield fetchRecordsAsync();
-}
 
 export function* onPostRecordsSuccess() {
-    yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, fetchRecordsAsyncAfterPost)
+    yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
 }
-
 
 export function* postRecordsStart() {
     yield takeLatest(
@@ -55,30 +52,30 @@ export function* postRecordsStart() {
     );
 }
 
-export function* putRecordsAsync({payload}) {
-    console.log('putRecordsAsync');
-    try {
-        const { resRecord } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-        yield put(putRecordsSuccess(resRecord.data))
-    } catch (error) {
-        yield put(putRecordsFailure(error.message))
-    }
-}
+// export function* putRecordsAsync({payload}) {
+//     console.log('putRecordsAsync');
+//     try {
+//         const { resRecord } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
+//         yield put(putRecordsSuccess(resRecord.data))
+//     } catch (error) {
+//         yield put(putRecordsFailure(error.message))
+//     }
+// }
 
-export function* fetchRecordsAsyncAfterPut() {
-    yield fetchRecordsAsync();
-}
+// export function* fetchRecordsAsyncAfterPut() {
+//     yield fetchRecordsAsync();
+// }
 
-export function* onPutRecordsSuccess() {
-    yield takeLatest(MatchActionTypes.PUT_RECORDS_SUCCESS, fetchRecordsAsyncAfterPut)
-}
+// export function* onPutRecordsSuccess() {
+//     yield takeLatest(MatchActionTypes.PUT_RECORDS_SUCCESS, fetchRecordsAsyncAfterPut)
+// }
 
-export function* putRecordsStart() {
-    yield takeLatest(
-        MatchActionTypes.PUT_RECORDS_START,
-        putRecordsAsync
-    );
-}
+// export function* putRecordsStart() {
+//     yield takeLatest(
+//         MatchActionTypes.PUT_RECORDS_START,
+//         putRecordsAsync
+//     );
+// }
 
 
 export function* recordSagas() {
@@ -86,7 +83,7 @@ export function* recordSagas() {
         call(fetchRecordsStart), 
         call(postRecordsStart),
         call(onPostRecordsSuccess),
-        call(putRecordsStart),
-        call(onPutRecordsSuccess),
+        //call(putRecordsStart),
+        //call(onPutRecordsSuccess),
     ]);
 }

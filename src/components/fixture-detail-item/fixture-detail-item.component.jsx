@@ -74,11 +74,9 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
 
   const handleSubmit = type => event => {
     event.preventDefault();
-    const response = id === 0 ? dispatch(postMatchesStart(matches)) : dispatch(putMatchesStart(matches));
-    console.log('test')
-    console.log(response)
-    console.log(response.payload)
-    response.payload ? setRecordAdmin(true) : alert('Failed to save data.')
+    const response = dispatch(postMatchesStart(matches))
+
+    !!response.payload ? setRecordAdmin(true) : alert('Failed to save data.')
   }
   
   const handleChange = event => {

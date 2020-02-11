@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectMemberNames } from '../../redux/member/member.selectors';
+import { addRecord } from '../../redux/record/record.actions';
 
 import {
   RecordDetailItemContainer,
@@ -28,9 +29,9 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordItem = ({ record, teamId, memberOptions, isAdmin, isRecordAdmin, handleChange }) => {
+const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecordAdmin }) => {
   // const [records, setRecords] = useState(record);
-  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName } = record;
+  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
 
   // useEffect(() => {
   //   setRecords(record)
@@ -57,7 +58,7 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin, isRecordAdmin, han
               <CustomDropdown
                     name='member'
                     value={scoreMemberId}
-                    handleChange={handleChange}
+                    handleChange={member => addRecord({ ...record, scoreMemberId: member.value })}
                     //add to record redux
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     required
@@ -71,7 +72,7 @@ const RecordItem = ({ record, teamId, memberOptions, isAdmin, isRecordAdmin, han
               <CustomDropdown
                     name='member'
                     value={assistMemberId}
-                    handleChange={handleChange}
+                    handleChange={member => addRecord({ ...record, assistMemberId: member.value })}
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     required
                 /> :
@@ -88,7 +89,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // /fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId }))
+  addRecord: record => dispatch(addRecord(record))
 })
 
 export default connect(

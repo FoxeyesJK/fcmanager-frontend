@@ -66,9 +66,9 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
     event.preventDefault();
     console.log('handlesubmit')
     console.log(records)
-    const test = records.filter(record => record.scoreMemberId != 0 && record.scoreMemberId != 0)
+    const test = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
     console.log(test)
-    //dispatch(postRecordsStart(records));
+    dispatch(postRecordsStart(test));
   }
 
   const handleChange = event => {
@@ -82,24 +82,26 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
     // member => setRecords({ ...records, scoreMemberId: member.value })
   }
   
-  const newRecord = {scoreMemberId: 0, assistMemberId: 0 }
+  const newRecord = {scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7 }
   let homeRecordCount = !!records ? records.filter(record => record.scoreTeamId === homeTeamId).length : null
   let awayRecordCount = !!records ? records.filter(record => record.scoreTeamId === awayTeamId).length : null
-  console.log(matchId)
+  let tempRecordId = 1
   
   if (homeRecordCount < awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      records.push({scoreMemberId: 0, scoreTeamId: homeTeamId, assistMemberId: 0 })
+      records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
       homeRecordCount++;
+      tempRecordId++;
     }
   } else if (homeRecordCount > awayRecordCount)
   {
     while(homeRecordCount != awayRecordCount)
     {
-      records.push({scoreMemberId: 0, scoreTeamId: awayTeamId, assistMemberId: 0 })
+      records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
       awayRecordCount++
+      tempRecordId++;
     }
   }
   console.log(matchRecords)
@@ -115,9 +117,9 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
                             <RecordItem record={record} teamId={homeTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
-          {
+          {/* {
             <RecordItem record={newRecord} teamId={homeTeamId} isAdmin={isAdmin}/>
-          }
+          } */}
           </HomeTeamRecord>
           <AwayTeamRecord>
           {
@@ -127,9 +129,9 @@ const RecordPreview = ({ fetchRecordsStart, matchRecords, matchId, homeTeamId, a
                             <RecordItem record={record} teamId={awayTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
-          {
+          {/* {
             <RecordItem record={newRecord} teamId={homeTeamId} isAdmin={isAdmin}/>
-          }
+          } */}
           </AwayTeamRecord>
           </TeamRecordContainer>
           {
