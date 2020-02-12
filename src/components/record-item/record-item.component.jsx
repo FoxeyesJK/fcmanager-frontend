@@ -30,25 +30,9 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecordAdmin }) => {
-  // const [records, setRecords] = useState(record);
+
   const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
-
-  // useEffect(() => {
-  //   setRecords(record)
-  // }, [record]);
-
-  // const handleSubmit = type => event => {
-  //   event.preventDefault();
-
-  //   //type == 'add' ? postMatchesStart(matches) : putMatchesStart(matches);
-  // }
   
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-  
-  //   setMatches({ ...matches, [name]: value });
-  // }
-    
   return (
         <RecordDetailItemContainer>
           <PlayerContainer>

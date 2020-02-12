@@ -40,6 +40,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
   //const [records, setRecords] = useState(matchRecords);
+  const [tempRecordId, setTempRecordId] = useState(0);
   const [selectedRecordId, setSelectedRecordId] = useState(null);
   //const records = useSelector(selectRecords, shallowEqual)
   const dispatch = useDispatch();
@@ -57,6 +58,12 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
   useEffect(() => {
     setSelectedRecordId(selectedRecordId)
   }, [selectedRecordId]);
+
+  useEffect(() => {
+    console.log(tempRecordId)
+    setTempRecordId(tempRecordId + 1);
+  }, [addRowToRecord])
+
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -83,35 +90,57 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
   const newRecord = {scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7 }
   let homeRecordCount = !!records ? records.filter(record => record.scoreTeamId === homeTeamId).length : null
   let awayRecordCount = !!records ? records.filter(record => record.scoreTeamId === awayTeamId).length : null
-  let tempRecordId = 1
 
   console.log(homeRecordCount)
   console.log(awayRecordCount)
+  const countDiff = homeRecordCount - awayRecordCount;
+
+  let i = 0;
+  let insertTeamId = countDiff > 0 ? awayTeamId : homeTeamId;
+  console.log(insertTeamId)
+
+  console.log(countDiff)
+  if (countDiff != 0)
+  {
+    console.log(i)
+    while(countDiff != i)
+    {
+      console.log('in')
+      console.log(tempRecordId)
+      setTempRecordId(tempRecordId + 1);
+      addRowToRecord({scoreMemberName:null, scoreMemberId: null, scoreTeamId: insertTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
+      i++;
+    }
+}
+
   
-  if (homeRecordCount < awayRecordCount)
-  {
-    while(homeRecordCount != awayRecordCount)
-    {
-      console.log('homeAdd')
-      addRowToRecord({...records, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-      //records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-      homeRecordCount++;
-    }
-  } else if (homeRecordCount > awayRecordCount)
-  {
-    while(homeRecordCount != awayRecordCount)
-    {
-      console.log('awayAdd')
-      addRowToRecord({...records, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-      //records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-      awayRecordCount++
-    }
-  }
+  // if (homeRecordCount < awayRecordCount)
+  // {
+  //   while(homeRecordCount != awayRecordCount)
+  //   {
+  //     console.log('homeAdd')
+  //     setTempRecordId(tempRecordId + 1);
+  //     addRowToRecord({scoreMemberName:null, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
+  //     //records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+  //     homeRecordCount++;
+  //   }
+  // } else if (homeRecordCount > awayRecordCount)
+  // {
+  //   while(homeRecordCount != awayRecordCount)
+  //   {
+  //     console.log('awayAdd')
+  //     setTempRecordId(tempRecordId + 1);
+  //     addRowToRecord({scoreMemberName: null, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
+  //     //records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+  //     awayRecordCount++
+  //   }
+  // }
 
   const handleClick = event => {
     console.log('clicked')
-    addRowToRecord({...records, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-    addRowToRecord({...records, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
+    console.log(tempRecordId)
+    setTempRecordId(tempRecordId + 1);
+    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
     console.log(records)
   }
     
