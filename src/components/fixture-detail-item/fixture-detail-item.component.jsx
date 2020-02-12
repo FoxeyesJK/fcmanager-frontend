@@ -78,6 +78,10 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
 
     !!response.payload ? setRecordAdmin(true) : alert('Failed to save data.')
   }
+
+  const handleIsRecordAdmin = event => {
+    setRecordAdmin(false);
+  }
   
   const handleChange = event => {
     const { name, value } = event.target;
@@ -161,7 +165,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             </FixtureContainer>
           }
         </FormContainer>
-        <RecordPreview matchId={match.id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} />
+        <RecordPreview matchId={match.id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
     </FixtureDetailItemContainer>
   )
 }

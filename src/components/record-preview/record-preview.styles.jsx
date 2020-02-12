@@ -54,11 +54,12 @@ export const Player = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-    display: flex;
+
 `;
 
 export const AddButtonContainer = styled.div`
-    width: 30%;
+    display: flex;
+    justify-content: space-between;
 `;
 
 export const SaveButtonContainer = styled.div`

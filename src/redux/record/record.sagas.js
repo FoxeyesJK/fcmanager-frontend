@@ -42,7 +42,9 @@ export function* postRecordsAsync({payload}) {
 
 
 export function* onPostRecordsSuccess() {
-    yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
+    //yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, postRecordsAsync)
+    //yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
+    
 }
 
 export function* postRecordsStart() {

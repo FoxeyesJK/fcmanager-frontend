@@ -8,18 +8,20 @@ export const addRecord = (records, recordToAdd) => {
     
         //add
         return records.map(record => 
-            record.tempRecordId === recordToAdd.tempRecordId
+            record.id === 0 && record.scoreTeamId === recordToAdd.scoreTeamId
             ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
             : record
         );
     }
 
+    console.log('update')
     return records.map(record => 
-        record.Id === recordToAdd.Id
+        record.id === recordToAdd.id
         ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
         : record
     );
 }
+
 
 export const addRowToRecord = (records, recordToAdd) => {
     console.log('addRowToRecord')

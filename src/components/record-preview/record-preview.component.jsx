@@ -38,9 +38,8 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin }) => {
+const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin }) => {
   //const [records, setRecords] = useState(matchRecords);
-  const [tempRecordId, setTempRecordId] = useState(0);
   const [selectedRecordId, setSelectedRecordId] = useState(null);
   //const records = useSelector(selectRecords, shallowEqual)
   const dispatch = useDispatch();
@@ -59,12 +58,6 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     setSelectedRecordId(selectedRecordId)
   }, [selectedRecordId]);
 
-  useEffect(() => {
-    console.log(tempRecordId)
-    setTempRecordId(tempRecordId + 1);
-  }, [addRowToRecord])
-
-
   const handleSubmit = event => {
     event.preventDefault();
     console.log('handlesubmit')
@@ -72,76 +65,17 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     const test = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
     console.log(test)
     dispatch(postRecordsStart(test));
+    //success
+    handleIsRecordAdmin();
   }
 
-  const handleChange = event => {
-    console.log('target')
-
-    //setRecords({ ...records.find(record => record.id === event.value), scoreMemberId: event.value })
-
-    // const { name, value } = event.target;
-
-    // setMembers({ ...members, [name]: value });
-    // member => setRecords({ ...records, scoreMemberId: member.value })
+  let testId = 1;
+  const handleHomeClick = event => {
+    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0})
   }
 
-  
-  console.log(records)
-  const newRecord = {scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7 }
-  let homeRecordCount = !!records ? records.filter(record => record.scoreTeamId === homeTeamId).length : null
-  let awayRecordCount = !!records ? records.filter(record => record.scoreTeamId === awayTeamId).length : null
-
-  console.log(homeRecordCount)
-  console.log(awayRecordCount)
-  const countDiff = homeRecordCount - awayRecordCount;
-
-  let i = 0;
-  let insertTeamId = countDiff > 0 ? awayTeamId : homeTeamId;
-  console.log(insertTeamId)
-
-  console.log(countDiff)
-  if (countDiff != 0)
-  {
-    console.log(i)
-    while(countDiff != i)
-    {
-      console.log('in')
-      console.log(tempRecordId)
-      setTempRecordId(tempRecordId + 1);
-      addRowToRecord({scoreMemberName:null, scoreMemberId: null, scoreTeamId: insertTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
-      i++;
-    }
-}
-
-  
-  // if (homeRecordCount < awayRecordCount)
-  // {
-  //   while(homeRecordCount != awayRecordCount)
-  //   {
-  //     console.log('homeAdd')
-  //     setTempRecordId(tempRecordId + 1);
-  //     addRowToRecord({scoreMemberName:null, scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
-  //     //records.push({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-  //     homeRecordCount++;
-  //   }
-  // } else if (homeRecordCount > awayRecordCount)
-  // {
-  //   while(homeRecordCount != awayRecordCount)
-  //   {
-  //     console.log('awayAdd')
-  //     setTempRecordId(tempRecordId + 1);
-  //     addRowToRecord({scoreMemberName: null, scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberName: null, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
-  //     //records.push({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId++ })
-  //     awayRecordCount++
-  //   }
-  // }
-
-  const handleClick = event => {
-    console.log('clicked')
-    console.log(tempRecordId)
-    setTempRecordId(tempRecordId + 1);
-    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId })
-    console.log(records)
+  const handleAwayClick = event => {
+    addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0})
   }
     
   return (
@@ -152,7 +86,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === homeTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={homeTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={homeTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
           {/* {
@@ -164,7 +98,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === awayTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={awayTeamId} handleChange={handleChange} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
           {/* {
@@ -176,7 +110,8 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             isAdmin && isRecordAdmin ?
             <ButtonContainer>
             <AddButtonContainer>
-            <CustomButton type='button' handleClick={handleClick}>Add</CustomButton>
+            <CustomButton type='button' handleClick={handleHomeClick}>Add</CustomButton>
+            <CustomButton type='button' handleClick={handleAwayClick}>Add</CustomButton>
             </AddButtonContainer>
             <SaveButtonContainer>
             <CustomButton type='submit'>Save</CustomButton>
