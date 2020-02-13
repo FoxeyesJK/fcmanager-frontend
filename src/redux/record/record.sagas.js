@@ -11,7 +11,7 @@ import {
     putRecordsFailure,
 } from './record.actions';
 
-import MatchActionTypes from './record.types';
+import RecordActionTypes from './record.types';
 
 const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'matchrecord/';
@@ -26,15 +26,25 @@ export function* fetchRecordsAsync({payload: { matchId }}) {
 
 export function* fetchRecordsStart() {
     yield takeLatest(
-        MatchActionTypes.FETCH_RECORDS_START, 
+        RecordActionTypes.FETCH_RECORDS_START, 
         fetchRecordsAsync 
     );
 }
 
 export function* postRecordsAsync({payload}) {
     try {
-        const recordRes = yield axios.post(baseUrl + apiEndPoint, payload);
-        yield put(postRecordsSuccess(recordRes.data))
+        console.log('postRecordsasync')
+        console.log(payload)
+        console.log(payload.matchId)
+        const recordRes = yield axios.post(baseUrl + apiEndPoint, payload.payload);
+        const records = recordRes.data;
+        const matchId = payload.matchId;
+        console.log(records)
+        console.log(payload.matchId)
+        console.log({records, matchId})
+        yield put(postRecordsSuccess(records))
+
+        //yield put(postRecordsSuccess({records, matchId }))
     } catch (error) {
         yield put(postRecordsFailure(error.message))
     }
@@ -42,49 +52,31 @@ export function* postRecordsAsync({payload}) {
 
 
 export function* onPostRecordsSuccess() {
-    //yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, postRecordsAsync)
-    //yield takeLatest(MatchActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
+    console.log('onPostRecordsSuccess')
+    yield takeLatest(RecordActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
     
+}
+
+export function* fetchRecordsAsyncAfterPost(records) {
+//export function* fetchRecordsAsyncAfterPost({payload: matchId}}) {
+    console.log('postRecordsasyncAfterPost')
+    console.log(records)
+    //console.log(matchId)
+    //yield fetchRecordsAsync(matchId);
 }
 
 export function* postRecordsStart() {
     yield takeLatest(
-        MatchActionTypes.POST_RECORDS_START,
+        RecordActionTypes.POST_RECORDS_START,
         postRecordsAsync
     );
 }
-
-// export function* putRecordsAsync({payload}) {
-//     console.log('putRecordsAsync');
-//     try {
-//         const { resRecord } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-//         yield put(putRecordsSuccess(resRecord.data))
-//     } catch (error) {
-//         yield put(putRecordsFailure(error.message))
-//     }
-// }
-
-// export function* fetchRecordsAsyncAfterPut() {
-//     yield fetchRecordsAsync();
-// }
-
-// export function* onPutRecordsSuccess() {
-//     yield takeLatest(MatchActionTypes.PUT_RECORDS_SUCCESS, fetchRecordsAsyncAfterPut)
-// }
-
-// export function* putRecordsStart() {
-//     yield takeLatest(
-//         MatchActionTypes.PUT_RECORDS_START,
-//         putRecordsAsync
-//     );
-// }
-
 
 export function* recordSagas() {
     yield all([
         call(fetchRecordsStart), 
         call(postRecordsStart),
-        call(onPostRecordsSuccess),
+        call(onPostRecordsSuccess)
         //call(putRecordsStart),
         //call(onPutRecordsSuccess),
     ]);

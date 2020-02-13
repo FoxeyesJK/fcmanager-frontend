@@ -20,9 +20,11 @@ export const postRecordsStart = recordsMap => ({
     payload: recordsMap
 })
 
-export const postRecordsSuccess = recordsMap => ({
+//export const postRecordsSuccess = ({ records, matchId }) => ({
+export const postRecordsSuccess = (records) => ({
     type: RecordActionTypes.POST_RECORDS_SUCCESS,
-    payload: recordsMap
+    payload: records
+    //payload: { records, matchId }
 })
 
 export const postRecordsFailure = errorMessage => ({
@@ -35,9 +37,9 @@ export const putRecordsStart = recordsMap => ({
     payload: recordsMap
 })
 
-export const putRecordsSuccess = recordsMap => ({
+export const putRecordsSuccess = records => ({
     type: RecordActionTypes.PUT_RECORDS_SUCCESS,
-    payload: recordsMap
+    payload: records
 })
 
 export const putRecordsFailure = errorMessage => ({

@@ -40,11 +40,8 @@ import CustomButton from '../custom-button/custom-button.component';
 
 const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin }) => {
   //const [records, setRecords] = useState(matchRecords);
-  const [selectedRecordId, setSelectedRecordId] = useState(null);
   //const records = useSelector(selectRecords, shallowEqual)
   const dispatch = useDispatch();
-
-  const selectedId = 0;
 
   // useEffect(() => {
   //   setRecords(matchRecords)
@@ -54,22 +51,16 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     fetchRecordsStart(matchId);
   }, [fetchRecordsStart, matchId]);
 
-  useEffect(() => {
-    setSelectedRecordId(selectedRecordId)
-  }, [selectedRecordId]);
-
   const handleSubmit = event => {
     event.preventDefault();
     console.log('handlesubmit')
     console.log(records)
-    const test = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
-    console.log(test)
-    dispatch(postRecordsStart(test));
+    const payload = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
+    dispatch(postRecordsStart({payload, matchId}));
     //success
-    handleIsRecordAdmin();
+    //handleIsRecordAdmin();
   }
 
-  let testId = 1;
   const handleHomeClick = event => {
     addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0})
   }
@@ -79,7 +70,13 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
   }
     
   return (
-        <RecordPreviewContainer onSubmit={handleSubmit}>
+    <RecordPreviewContainer onSubmit={handleSubmit}>
+    {
+      console.log('recordpreview again')
+    }
+    {
+      console.log(records)
+    }
           <TeamRecordContainer>
           <HomeTeamRecord>
           {
