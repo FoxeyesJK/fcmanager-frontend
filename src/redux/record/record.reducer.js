@@ -3,6 +3,7 @@ import { addRecord, addRowToRecord } from './record.utils';
 
 const INITIAL_STATE = {
     records: [],
+    matchId: 0,
     isFetching: false,
     errorMessage: undefined
 };

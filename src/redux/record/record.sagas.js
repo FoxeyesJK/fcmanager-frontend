@@ -17,8 +17,12 @@ const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'matchrecord/';
 export function* fetchRecordsAsync({payload: { matchId }}) {
     try {
+        console.log(baseUrl + apiEndPoint + matchId)
         const recordRes = yield axios.get(baseUrl + apiEndPoint + matchId);
-        yield put(fetchRecordsSuccess(recordRes.data))
+        const records = recordRes.data;
+         console.log('hi')
+         console.log(records)
+        yield put(fetchRecordsSuccess(records))
     } catch (error) {
         yield put(fetchRecordsFailure(error.message))
     }
@@ -34,17 +38,12 @@ export function* fetchRecordsStart() {
 export function* postRecordsAsync({payload}) {
     try {
         console.log('postRecordsasync')
-        console.log(payload)
-        console.log(payload.matchId)
         const recordRes = yield axios.post(baseUrl + apiEndPoint, payload.payload);
         const records = recordRes.data;
         const matchId = payload.matchId;
-        console.log(records)
-        console.log(payload.matchId)
-        console.log({records, matchId})
-        yield put(postRecordsSuccess(records))
+        //yield put(postRecordsSuccess(records))
 
-        //yield put(postRecordsSuccess({records, matchId }))
+        yield put(postRecordsSuccess({records, matchId}))
     } catch (error) {
         yield put(postRecordsFailure(error.message))
     }
@@ -53,16 +52,18 @@ export function* postRecordsAsync({payload}) {
 
 export function* onPostRecordsSuccess() {
     console.log('onPostRecordsSuccess')
-    yield takeLatest(RecordActionTypes.POST_RECORDS_SUCCESS, fetchMatchesAsyncAfterPost)
+    yield takeLatest(RecordActionTypes.POST_RECORDS_SUCCESS, fetchRecordsAsyncAfterPost)
     
 }
 
-export function* fetchRecordsAsyncAfterPost(records) {
-//export function* fetchRecordsAsyncAfterPost({payload: matchId}}) {
+//export function* fetchRecordsAsyncAfterPost(records) {
+export function* fetchRecordsAsyncAfterPost({records, matchId}) {
     console.log('postRecordsasyncAfterPost')
     console.log(records)
+    console.log(matchId)
     //console.log(matchId)
-    //yield fetchRecordsAsync(matchId);
+    yield fetchMatchesAsyncAfterPost();
+    yield fetchRecordsAsync({payload: {matchId}});
 }
 
 export function* postRecordsStart() {

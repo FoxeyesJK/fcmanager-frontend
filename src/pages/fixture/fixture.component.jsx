@@ -36,6 +36,9 @@ const Fixture = ({ matches, isAdmin}) => {
     setButton({ matchId: id, type: type });
   }
 
+  console.log('why render')
+  console.log(matchId)
+  console.log(matches)
   var match = matchId != 0 && !!matches
   ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
   : {

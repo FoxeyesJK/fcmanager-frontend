@@ -8,7 +8,7 @@ export const addRecord = (records, recordToAdd) => {
     
         //add
         return records.map(record => 
-            record.id === 0 && record.scoreTeamId === recordToAdd.scoreTeamId
+            record.id === 0 && record.tempRecordId === recordToAdd.tempRecordId
             ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
             : record
         );

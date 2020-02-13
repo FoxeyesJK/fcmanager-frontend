@@ -45,6 +45,7 @@ const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecor
                     handleChange={member => addRecord({ ...record, scoreMemberId: member.value })}
                     //add to record redux
                     options={memberOptions.filter(member => member.teamId === teamId)}
+                    isEmptySelectable
                     required
                 /> :
               scoreMemberName
@@ -58,6 +59,7 @@ const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecor
                     value={assistMemberId}
                     handleChange={member => addRecord({ ...record, assistMemberId: member.value })}
                     options={memberOptions.filter(member => member.teamId === teamId)}
+                    isEmptySelectable
                     required
                 /> :
               assistMemberName

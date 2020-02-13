@@ -62,7 +62,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
   const teams = useSelector(selectTeams, shallowEqual)
   const dispatch = useDispatch();
 
-  const { id, homeTeamId, homeTeamName, homeScore, awayTeamId, awayTeamName, awayScore, scheduledAt, location, league, matchRecords} = matches;
+  const { id, homeTeamId, homeTeamName, homeScore, awayTeamId, awayTeamName, awayScore, scheduledAt, location, league} = matches;
 
   useEffect(() => {
     setMatches(match)
@@ -74,6 +74,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
 
   const handleSubmit = type => event => {
     event.preventDefault();
+    console.log(scheduledAt)
     const response = dispatch(!matches.id ? postMatchesStart(matches) : putMatchesStart(matches))
 
     !!response.payload ? setRecordAdmin(true) : alert('Failed to save data.')
@@ -145,7 +146,11 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             isAdmin && !isRecordAdmin
             ? <FixtureContainer>
               <DateTimePickerContainer>
-                <DateTimePicker defaultValue={new Date()} />
+                <DateTimePicker 
+                  defaultValue={new Date()} 
+                  value={new Date(scheduledAt)}
+                  onChange={date => setMatches({ ...matches, scheduledAt: date })}
+                />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
                 <FormInput
@@ -165,7 +170,11 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             </FixtureContainer>
           }
         </FormContainer>
-        <RecordPreview matchId={match.id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
+        {
+          id != 0 ?  
+        <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
+          : null
+      } 
     </FixtureDetailItemContainer>
   )
 }

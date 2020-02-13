@@ -41,6 +41,7 @@ import CustomButton from '../custom-button/custom-button.component';
 const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin }) => {
   //const [records, setRecords] = useState(matchRecords);
   //const records = useSelector(selectRecords, shallowEqual)
+  const [tempRecordId, setTempRecordId] = useState(0);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -62,11 +63,15 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
   }
 
   const handleHomeClick = event => {
-    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0})
+    setTempRecordId(tempRecordId + 1);
+    console.log(tempRecordId)
+    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId})
   }
 
   const handleAwayClick = event => {
-    addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0})
+    setTempRecordId(tempRecordId + 1);
+    console.log(tempRecordId)
+    addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId})
   }
     
   return (
@@ -81,7 +86,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
           <HomeTeamRecord>
           {
             !!records ?
-              records.filter(record => record.scoreTeamId === homeTeamId)
+              records.filter(record => record.scoreTeamId === homeTeamId || record.assistTeamId === homeTeamId)
                           .map(record =>
                             <RecordItem record={record} teamId={homeTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
@@ -91,9 +96,18 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
           } */}
           </HomeTeamRecord>
           <AwayTeamRecord>
+            {
+              console.log('teamId')
+            }
+            {
+              console.log(awayTeamId)
+            }
+                        {
+              console.log(homeTeamId)
+            }
           {
             !!records ?
-              records.filter(record => record.scoreTeamId === awayTeamId)
+              records.filter(record => record.scoreTeamId === awayTeamId || record.assistTeamId === awayTeamId)
                           .map(record =>
                             <RecordItem record={record} teamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null

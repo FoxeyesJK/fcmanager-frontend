@@ -1,13 +1,13 @@
 import RecordActionTypes from './record.types';
 
-export const fetchRecordsStart = recordsMap => ({
+export const fetchRecordsStart = records => ({
     type: RecordActionTypes.FETCH_RECORDS_START,
-    payload: recordsMap
+    payload: records
 })
 
-export const fetchRecordsSuccess = recordsMap => ({
+export const fetchRecordsSuccess = records => ({
     type: RecordActionTypes.FETCH_RECORDS_SUCCESS,
-    payload: recordsMap
+    payload: records
 })
 
 export const fetchRecordsFailure = errorMessage => ({
@@ -20,11 +20,11 @@ export const postRecordsStart = recordsMap => ({
     payload: recordsMap
 })
 
-//export const postRecordsSuccess = ({ records, matchId }) => ({
-export const postRecordsSuccess = (records) => ({
+export const postRecordsSuccess = ({ records, matchId }) => ({
+//export const postRecordsSuccess = (records) => ({
     type: RecordActionTypes.POST_RECORDS_SUCCESS,
-    payload: records
-    //payload: { records, matchId }
+    //payload: records
+    payload: records, matchId
 })
 
 export const postRecordsFailure = errorMessage => ({

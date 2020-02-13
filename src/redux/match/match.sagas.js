@@ -57,8 +57,14 @@ export function* postMatchesStart() {
 export function* putMatchesAsync({payload}) {
     console.log('putMatchesAsync');
     try {
-        const { resMatch } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-        yield put(putMatchesSuccess(resMatch))
+        console.log(payload)
+        const {scheduledAt} = payload
+        console.log(scheduledAt)
+        const resMatch = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
+        console.log('resMatch')
+        console.log(resMatch)
+        const resdata = resMatch.data;
+        yield put(putMatchesSuccess(undefined))
     } catch (error) {
         yield put(putMatchesFailure(error.message))
     }
