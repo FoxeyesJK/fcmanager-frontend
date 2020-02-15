@@ -15,6 +15,7 @@ FCManager Front-end provides users with optimized UI, UX, and responsive design 
 
 **Javascript**
 * React
+* React Hooks
 * Redux
 * Redux-saga
 * Reselect
