@@ -5,7 +5,8 @@ import { toggleLeagueHidden } from '../../redux/league/league.actions';
 
 import {
    Dropdown,
-   StyledSelect
+   StyledSelect,
+   RequiredInput
 } from './custom-dropdown.styles.jsx';
 
 const customStyles = {
@@ -29,7 +30,7 @@ const customStyles = {
 const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...otherProps }) => {
    return (
    <Dropdown>
-      <StyledSelect
+      <StyledSelect name="input"
          value=
          {
             value > 0 ? 
@@ -45,6 +46,22 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
          options={isEmptySelectable ? [{ value: '', label: 'Select...'}, ...options] : options} 
          onChange={handleChange}
          {...otherProps}
+      />
+      <RequiredInput
+         tabIndex={-1}
+         autoComplete="off"
+         value=         
+         {
+            value > 0 ? 
+            {
+            value: value, 
+            label: 
+               !!options ? options
+                  .find(option => option.value == value).label
+                  : null
+            } : null
+         }
+         required
       />
    </Dropdown>
    );

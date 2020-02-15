@@ -73,14 +73,16 @@ const Fixture = ({ matches, isAdmin}) => {
           {
             !!matches ? 
               matches.map(({ id, ...otherMatchProps }) => (
-                <FixturePreview key={id} id={matchId} type={type} handleClick={handleClick} {...otherMatchProps} />
+                <FixturePreview key={id} selectedMatchId={matchId} type={type} handleClick={handleClick} {...otherMatchProps} />
               )) : null
           }
           </SimpleBarReact>
         </Table>
         </FixtureListContainer>
         {
-          <FixtureDetail isAdmin={isAdmin} match={match}/>
+          isAdmin || (!isAdmin && matchId != 0) ?
+          <FixtureDetail isAdmin={isAdmin} match={match}/> 
+          : null
         }
       </FixtureContainer>
     </FixturePage>

@@ -31,5 +31,12 @@ export const StyledSelect = styled(Select)`
   > div:nth-of-type(2) {
       transform: skew(0);
     }
-
 `;
+
+export const RequiredInput = styled.input`
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+`;
+

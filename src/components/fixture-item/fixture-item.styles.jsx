@@ -1,11 +1,25 @@
-import styled from 'styled-components';
+import Styled, { css } from 'styled-components';
+import { SelectedRowColor } from '../../global.styles';
 
-export const TableRow = styled.div`
-    text-align: center;
-    display: flex;
+const selectedMatchRowStyles = css`
+    background-color: ${ SelectedRowColor} !important;
+    border-radius: 5px !important;
 `;
 
-export const TableData = styled.div`
+const getSectedMatchRowStyles = props => {
+    if (props.selectedMatchId === props.matchId)
+        return selectedMatchRowStyles;
+}
+
+export const TableRow = Styled.div`
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+
+    ${getSectedMatchRowStyles}
+`;
+
+export const TableData = Styled.div`
     padding: 5px 0;
     &:nth-child(1) {
         text-align: center;

@@ -1,6 +1,6 @@
-import Styled from 'styled-components';
+import Styled, { css } from 'styled-components';
 
-import { MainTableColor, MainBackgroundColor } from '../../global.styles';
+import { MainTableColor, MainBackgroundColor, HoverRowColor } from '../../global.styles';
 
 export const FixturePreviewContainer = Styled.div`
 
@@ -17,7 +17,12 @@ export const FixtureItemContainer = Styled.div`
     display: flex;
     justify-content: space-between;
 `;
+
 export const TableBody = Styled.div`
     > div:nth-child(odd) {background-color: ${MainTableColor};}
     > div:nth-child(even) {background-color: ${MainBackgroundColor};}
+
+    > div:hover { 
+        background-color: ${HoverRowColor}
+    }
 `;

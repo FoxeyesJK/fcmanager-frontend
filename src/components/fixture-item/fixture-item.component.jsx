@@ -6,11 +6,11 @@ import {
     TableData
 } from './fixture-item.styles.jsx';
 
-const FixtureItem = ({match, handleClick, type, id}) => {
+const FixtureItem = ({match, handleClick, type, id, selectedMatchId}) => {
     const { scheduledAt, homeTeamName, homeScore, awayTeamName, awayScore} = match;
     
     return (
-    <TableRow onClick={() => handleClick(id, type)} >
+    <TableRow onClick={() => handleClick(id, type)} selectedMatchId={selectedMatchId} matchId={match.id}>
         <TableData IsCenter>{moment(scheduledAt).format('LT')}</TableData>
         <TableData>{homeTeamName} vs {awayTeamName}</TableData>
         <TableData>{homeScore} - {awayScore}</TableData>

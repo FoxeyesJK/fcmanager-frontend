@@ -5,6 +5,8 @@ export const SubTableColor = '#321450';
 export const MainBackgroundColor = '#361556';
 export const SubBackgroundColor = '#2e1249';
 export const TitleColor = '#FFFD5E';
+export const HoverRowColor = '#4d1f7a';
+export const SelectedRowColor = '#1f637a';
 
 export const GlobalStyle = createGlobalStyle`
     body {
