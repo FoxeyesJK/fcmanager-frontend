@@ -30,10 +30,10 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isAdmin, isRecordAdmin }) => {
+const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isAdmin, isRecordHidden }) => {
 
   const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
-  const isRecordEditable = isAdmin && isRecordAdmin;
+  const isRecordEditable = isAdmin && !isRecordHidden;
   
   return (
         <RecordDetailItemContainer>

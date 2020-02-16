@@ -4,6 +4,7 @@ import { addRecord, addRowToRecord } from './record.utils';
 const INITIAL_STATE = {
     records: [],
     matchId: 0,
+    hidden: true,
     isFetching: false,
     errorMessage: undefined
 };
@@ -43,6 +44,11 @@ const recordReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 records: addRowToRecord(state.records, action.payload)
             }
+        case RecordActionTypes.TOGGLE_RECORD_HIDDEN:
+            return {
+                ...state,
+                hidden: action.hidden
+            } 
         default:
             return state;
     }

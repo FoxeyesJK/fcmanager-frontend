@@ -57,3 +57,8 @@ export const addRowToRecord = record => ({
     payload: record
 })
 
+export const toggleRecordHidden = hidden => ({
+    type: RecordActionTypes.TOGGLE_RECORD_HIDDEN,
+    hidden: hidden
+})
+

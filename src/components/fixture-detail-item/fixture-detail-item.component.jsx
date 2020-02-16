@@ -14,9 +14,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
+import { postMatchesStart, putMatchesStart } from '../../redux/match/match.actions';
+import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { selectTeams } from '../../redux/team/team.selectors';
-import { postMatchesStart, putMatchesStart } from '../../redux/match/match.actions';
+
 
 import {
   FixtureDetailItemContainer,
@@ -52,6 +54,7 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { selectIsMatchesLoaded } from '../../redux/match/match.selectors';
+import { selectIsHidden } from '../../redux/record/record.selectors';
 
 moment.locale('en')
 momentLocalizer()
@@ -60,6 +63,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
   const [matches, setMatches] = useState(match);
   const [isRecordAdmin, setRecordAdmin] = useState(null);
   const teams = useSelector(selectTeams, shallowEqual)
+  const isRecordHidden = useSelector(selectIsHidden, shallowEqual)
   const dispatch = useDispatch();
 
   const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
@@ -77,11 +81,11 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
     console.log(scheduledAt)
     const response = dispatch(!matches.id ? postMatchesStart(matches) : putMatchesStart(matches))
 
-    !!response.payload ? setRecordAdmin(true) : alert('Failed to save data.')
+    !!response.payload ? dispatch(toggleRecordHidden(false)) : alert('Failed to save data.')
   }
 
   const handleIsRecordAdmin = event => {
-    setRecordAdmin(false);
+    dispatch(toggleRecordHidden(true))
   }
   
   const handleChange = event => {
@@ -95,7 +99,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
       <FormContainer onSubmit={handleSubmit(type)}>
         <TeamContainer>
             {
-              isAdmin && !isRecordAdmin
+              isAdmin && isRecordHidden
               ?
               <CustomDropdown
                 name='team'
@@ -109,7 +113,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
                 <TeamIcon style={{backgroundImage: `url(${homeTeamLogoUrl})`}}/>
               </IconContainer>
               }
-            {!isAdmin || isRecordAdmin ? 
+            {!isAdmin || !isRecordHidden ? 
             <ScoreContainer>
               { homeScore }
               -
@@ -118,7 +122,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             : null
             } 
             {
-              isAdmin && !isRecordAdmin
+              isAdmin && isRecordHidden
               ?
               <CustomDropdown
                 name='team'
@@ -134,7 +138,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
             }
         </TeamContainer>
         {
-        isAdmin && !isRecordAdmin ? 
+        isAdmin && isRecordHidden ? 
         <ScoreContainer>
               { homeScore }
               -
@@ -143,7 +147,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
         : null
         }
           {
-            isAdmin && !isRecordAdmin
+            isAdmin && isRecordHidden
             ? <FixtureContainer>
               <DateTimePickerContainer>
                 <DateTimePicker 
@@ -172,7 +176,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
         </FormContainer>
         {
           id != 0 ?  
-        <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
+        <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
           : null
       } 
     </FixtureDetailItemContainer>

@@ -7,6 +7,11 @@ export const selectRecords = createSelector(
     record => record.records
 )
 
+export const selectIsHidden = createSelector(
+    [selectRecord],
+    record => record.hidden
+)
+
 export const selectIsRecordFetching = createSelector(
     [selectRecord],
     record => record.isFetching

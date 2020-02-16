@@ -15,9 +15,11 @@ const AdminIconStyles = css`
     height: 24px;
     width: 24px;
     margin:auto;
+    margin: auto 5px;
 `;
 
 const IconStyles = css`
+    margin: 0 5px;
     height: 20px;
     width: 20px;
 `;

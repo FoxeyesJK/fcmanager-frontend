@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import { connect } from 'react-redux';
 
 import { toggleLeagueHidden } from '../../redux/league/league.actions';
@@ -28,9 +29,10 @@ const customStyles = {
 
 
 const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...otherProps }) => {
+
    return (
    <Dropdown>
-      <StyledSelect name="input"
+      <StyledSelect
          value=
          {
             value > 0 ? 
@@ -48,9 +50,8 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
          {...otherProps}
       />
       <RequiredInput
-         tabIndex={-1}
          autoComplete="off"
-         value=         
+         value=
          {
             value > 0 ? 
             {
@@ -63,6 +64,9 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
          }
          required
       />
+      {
+         console.log(value)
+      }
    </Dropdown>
    );
 };

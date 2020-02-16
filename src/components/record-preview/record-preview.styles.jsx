@@ -63,7 +63,7 @@ export const AddButtonContainer = styled.div`
 `;
 
 export const SaveButtonContainer = styled.div`
-    width: 70%;
+    width: 100%;
 `
 
 

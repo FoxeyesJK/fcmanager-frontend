@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import MATCH_DATA from './fixture.data.js';
 import SimpleBarReact from 'simplebar-react';
 
@@ -6,6 +7,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectMatches } from '../../redux/match/match.selectors';
+
+import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { 
   FixturePage,
@@ -28,19 +31,16 @@ import CustomIcon from '../../components/custom-icon-button/custom-icon-button.c
 
 const Fixture = ({ matches, isAdmin}) => {
   const [sections, setSection] = useState({ matchId: 0, section: '' })
-
   const { matchId, section } = sections;
+
+  const dispatch = useDispatch();
 
   const handleClick = (id, type) => {
     console.log(id)
     setSection({ matchId: id, section:'' });
-    //if Admin type = admin
-    //if isRecord admin = type admin-record
+    dispatch(toggleRecordHidden(true))
   }
 
-  console.log('why render')
-  console.log(matchId)
-  console.log(matches)
   var match = matchId != 0 && !!matches
   ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
   : {

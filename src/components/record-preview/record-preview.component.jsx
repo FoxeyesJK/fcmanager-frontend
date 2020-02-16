@@ -14,8 +14,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectRecords } from '../../redux/record/record.selectors';
-import { fetchRecordsStart, postRecordsStart, putRecordsStart, addRowToRecord } from '../../redux/record/record.actions';
-import { selectIsRecordFetching, selectIsRecordsLoaded } from '../../redux/record/record.selectors';
+import { fetchRecordsStart, postRecordsStart, putRecordsStart, addRowToRecord, setIsRecordChangeable, toggleRecordHidden } from '../../redux/record/record.actions';
+import { selectIsRecordFetching, selectIsRecordsLoaded, selectIsHidden } from '../../redux/record/record.selectors';
 
 import {
   RecordPreviewContainer,
@@ -38,9 +38,9 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin }) => {
+const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin}) => {
   //const [records, setRecords] = useState(matchRecords);
-  //const records = useSelector(selectRecords, shallowEqual)
+  const isRecordHidden = useSelector(selectIsHidden, shallowEqual);
   const [tempRecordId, setTempRecordId] = useState(0);
   const dispatch = useDispatch();
 
@@ -59,7 +59,8 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     const payload = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
     dispatch(postRecordsStart({payload, matchId}));
     //success
-    handleIsRecordAdmin();
+    dispatch(toggleRecordHidden(true))
+    //handleIsRecordAdmin();
   }
 
   const handleHomeClick = event => {
@@ -82,7 +83,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === homeTeamId || record.assistTeamId === homeTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isAdmin={isAdmin} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
           {/* {
@@ -94,7 +95,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === awayTeamId || record.assistTeamId === awayTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isAdmin={isAdmin} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
           {/* {
@@ -103,7 +104,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
           </AwayTeamRecord>
           </TeamRecordContainer>
           {
-            isAdmin && isRecordAdmin ?
+            isAdmin && !isRecordHidden ?
             <ButtonContainer>
             <AddButtonContainer>
             <CustomButton type='button' handleClick={handleHomeClick}>Add</CustomButton>
@@ -128,7 +129,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   fetchRecordsStart: (matchId) => dispatch(fetchRecordsStart({ matchId })),
-  addRowToRecord: record => dispatch(addRowToRecord(record))
+  addRowToRecord: record => dispatch(addRowToRecord(record)),
 });
 
 export default connect (
