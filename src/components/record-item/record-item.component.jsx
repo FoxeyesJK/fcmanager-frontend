@@ -18,8 +18,9 @@ import { addRecord } from '../../redux/record/record.actions';
 import {
   RecordDetailItemContainer,
   Record,
-  PlayerContainer,
+  RecordContainer,
   Player,
+  PlayerName,
   StyledAssistIcon,
   StyledScoreIcon,
 } from './record-item.styles.jsx';
@@ -29,16 +30,18 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecordAdmin }) => {
+const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isAdmin, isRecordAdmin }) => {
 
   const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
+  const isRecordEditable = isAdmin && isRecordAdmin;
   
   return (
         <RecordDetailItemContainer>
-          <PlayerContainer>
-            <Player>
+          <RecordContainer>
+            <Player isHomeTeam={isHomeTeam}>
+            <StyledScoreIcon isRecordEditable={isRecordEditable}/>
             {
-              isAdmin && isRecordAdmin ?       
+              isRecordEditable ? 
               <CustomDropdown
                     name='member'
                     value={scoreMemberId}
@@ -48,12 +51,13 @@ const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecor
                     isEmptySelectable
                     required
                 /> :
-              scoreMemberName
+              <PlayerName>{scoreMemberName}</PlayerName>
             }
             </Player>
-            <Player>
+            <Player isHomeTeam={isHomeTeam}>
+            <StyledAssistIcon isRecordEditable={isRecordEditable}/>
             {
-              isAdmin && isRecordAdmin ?       
+              isRecordEditable ?       
               <CustomDropdown
                     name='member'
                     value={assistMemberId}
@@ -62,10 +66,10 @@ const RecordItem = ({ record, teamId, memberOptions, addRecord, isAdmin, isRecor
                     isEmptySelectable
                     required
                 /> :
-              assistMemberName
+              <PlayerName>{assistMemberName}</PlayerName>
             }
             </Player>
-          </PlayerContainer>
+          </RecordContainer>
         </RecordDetailItemContainer>
   )
 }

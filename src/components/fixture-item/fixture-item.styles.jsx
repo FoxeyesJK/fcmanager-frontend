@@ -1,9 +1,14 @@
 import Styled, { css } from 'styled-components';
-import { SelectedRowColor } from '../../global.styles';
+import { MainTableColor, SelectedRowColor } from '../../global.styles';
 
 const selectedMatchRowStyles = css`
-    background-color: ${ SelectedRowColor} !important;
+    background-color: ${SelectedRowColor} !important;
     border-radius: 5px !important;
+    
+    > div {
+        color: ${MainTableColor} !important;
+        font-weight: bold !important;
+    }
 `;
 
 const getSectedMatchRowStyles = props => {
@@ -22,21 +27,20 @@ export const TableRow = Styled.div`
 export const TableData = Styled.div`
     padding: 5px 0;
     &:nth-child(1) {
-        text-align: center;
-        width: 25%;
+        text-align: left;
+        width: 30%;
+        padding-left: 20px;
     }
     &:nth-child(2) {
-        text-align: left;
-        width: 40%
-        padding-left: 10px;
+        text-align: center;
+        width: 35%
     }
     &:nth-child(3) {
         text-align: center;
         width: 20%
     }
     &:nth-child(4) {
-        text-align: left;
+        text-align: center;
         width: 35%;
-        padding-left: 10px;
     }
 `;

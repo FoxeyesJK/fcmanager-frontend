@@ -21,11 +21,11 @@ const IconStyles = css`
 
 export const MenuContainer = styled.div`
   font-family: 'Open Sans Condensed', sans-serif;
-  background: #262626;
+  background: #0F0F0F;
   padding: 1.5em;
   position: fixed;
   left: 0;
-  width: 25%;
+  width: 20%;
   height: 100%;
   overflow-y: auto;
   display: flex;

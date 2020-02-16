@@ -1,12 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const MainTableColor = '#3e1964';
-export const SubTableColor = '#321450';
-export const MainBackgroundColor = '#361556';
-export const SubBackgroundColor = '#2e1249';
-export const TitleColor = '#FFFD5E';
-export const HoverRowColor = '#4d1f7a';
-export const SelectedRowColor = '#1f637a';
+export const MainTableColor = '#000E2A';
+export const SubTableColor = '#E4BF3F';
+export const MainBackgroundColor = '#001131';
+export const SubBackgroundColor = '#24324E';
+export const TitleColor = '#FEDBC4';
+export const HoverRowColor = '#24324E';
+export const SelectedRowColor = 'rgb(254, 249, 246, 1)';
+export const BorderColor = '#C0C0C0'
 
 export const GlobalStyle = createGlobalStyle`
     body {

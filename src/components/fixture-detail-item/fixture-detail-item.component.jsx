@@ -62,7 +62,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
   const teams = useSelector(selectTeams, shallowEqual)
   const dispatch = useDispatch();
 
-  const { id, homeTeamId, homeTeamName, homeScore, awayTeamId, awayTeamName, awayScore, scheduledAt, location, league} = matches;
+  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
 
   useEffect(() => {
     setMatches(match)
@@ -106,7 +106,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
               />
               :
               <IconContainer>
-                <TeamIcon />
+                <TeamIcon style={{backgroundImage: `url(${homeTeamLogoUrl})`}}/>
               </IconContainer>
               }
             {!isAdmin || isRecordAdmin ? 
@@ -129,7 +129,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
               />
               :
               <IconContainer>
-                <TeamIcon />
+                <TeamIcon style={{backgroundImage: `url(${awayTeamLogoUrl})`}}/>
               </IconContainer>
             }
         </TeamContainer>
@@ -165,7 +165,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
               </FixtureContainer>
             : <FixtureContainer>
             <LeagueContainer>{league}</LeagueContainer>
-            <Schedule>{moment(scheduledAt).format('LLLL')}</Schedule>
+            <Schedule>{moment(scheduledAt).format('llll')}</Schedule>
             <LocationContainer>{location}</LocationContainer>
             </FixtureContainer>
           }

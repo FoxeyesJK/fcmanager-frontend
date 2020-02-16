@@ -14,7 +14,7 @@ const IconStyles = css`
 export const RecordPreviewContainer = styled.form`
     border-top: 1px solid #efefef;
     font-size: 12px;
-    margin-top: 0px;
+    margin-top: 20px;
     padding: 5px 0;
     width:100%;
 `;

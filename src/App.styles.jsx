@@ -16,7 +16,7 @@ export const BodyContainer= styled.div`
 
 export const Body = styled.div`
     padding: 0 0px;
-    width: 75%;
+    width: 80%;
     float: right;
     background-color: ${MainBackgroundColor};
 

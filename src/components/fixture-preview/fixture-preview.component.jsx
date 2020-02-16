@@ -9,10 +9,10 @@ import {
 
 import FixtureItem from '../fixture-item/fixture-item.component';
 
-const FixturePreview = ({ scheduledOn, matches, selectedMatchId, type, handleClick }) => {
+const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick }) => {
   return (
     <FixturePreviewContainer>
-      <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).calendar()}</Title>
+      <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).format('l')}</Title>
       {/* <MatchItemContainer>
         {
         matches
@@ -26,7 +26,7 @@ const FixturePreview = ({ scheduledOn, matches, selectedMatchId, type, handleCli
         {
           !!matches ? 
           matches.map(match => (
-            <FixtureItem key={match.id} id={match.id} selectedMatchId={selectedMatchId} match={match} type={type} handleClick={handleClick}/>
+            <FixtureItem key={match.id} id={match.id} selectedMatchId={selectedMatchId} match={match} handleClick={handleClick}/>
           )) : null
         }
         </TableBody>

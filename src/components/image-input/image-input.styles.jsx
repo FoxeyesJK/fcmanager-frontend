@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { MainTableColor } from '../../global.styles';
+import { MainTableColor, HoverRowColor } from '../../global.styles';
 
 export const FormInputContainer = styled.div`
   margin: auto;
@@ -27,6 +27,6 @@ export const Label = styled.label`
   cursor: pointer;
 
   &:hover {
-    background-color: #4d1f7a;
+    background-color: ${HoverRowColor};
   }
 `;

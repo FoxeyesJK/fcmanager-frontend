@@ -19,7 +19,7 @@ const SubHeader = ({ match, isSelectedOption }) => {
         <OptionNavLink exact to='/payment'>
           Payment
         </OptionNavLink> */}
-        <OptionNavLink exact to='/member'>
+        {/* <OptionNavLink exact to='/member'>
           Players
         </OptionNavLink>
         <OptionNavLink exact to='/league'>
@@ -27,7 +27,7 @@ const SubHeader = ({ match, isSelectedOption }) => {
         </OptionNavLink>
         <OptionNavLink exact to='/fixture'>
           Fixture
-        </OptionNavLink>
+        </OptionNavLink> */}
       </OptionsContainer>
     </SubHeaderContainer>
   )

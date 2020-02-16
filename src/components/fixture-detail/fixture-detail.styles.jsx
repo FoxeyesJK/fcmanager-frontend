@@ -5,7 +5,7 @@ import { TitleColor, SubBackgroundColor } from '../../global.styles';
 export const FixtureDetailContainer = styled.div`
     width: 35%;
     background-color: ${SubBackgroundColor};
-    margin: 15px;
+    margin: 40px;
 
     @media screen and (max-width: 800px) {
         width: 100%;

@@ -27,13 +27,15 @@ import FixtureDetailItem from '../../components/fixture-detail-item/fixture-deta
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 const Fixture = ({ matches, isAdmin}) => {
-  const [button, setButton] = useState({ matchId: 0, type: '' })
+  const [sections, setSection] = useState({ matchId: 0, section: '' })
 
-  const { matchId, type } = button;
+  const { matchId, section } = sections;
 
   const handleClick = (id, type) => {
     console.log(id)
-    setButton({ matchId: id, type: type });
+    setSection({ matchId: id, section:'' });
+    //if Admin type = admin
+    //if isRecord admin = type admin-record
   }
 
   console.log('why render')
@@ -65,15 +67,15 @@ const Fixture = ({ matches, isAdmin}) => {
         <Table>
           <TableRow>
               <TableHeader>TIME</TableHeader>
-              <TableHeader>OPPOSITION</TableHeader>
-              <TableHeader>RESULT</TableHeader>
-              <TableHeader>COMPETITION</TableHeader>
+              <TableHeader>HOME</TableHeader>
+              <TableHeader>VS</TableHeader>
+              <TableHeader>AWAY</TableHeader>
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
             !!matches ? 
               matches.map(({ id, ...otherMatchProps }) => (
-                <FixturePreview key={id} selectedMatchId={matchId} type={type} handleClick={handleClick} {...otherMatchProps} />
+                <FixturePreview key={id} selectedMatchId={matchId} handleClick={handleClick} {...otherMatchProps} />
               )) : null
           }
           </SimpleBarReact>

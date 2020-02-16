@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-
+import { MainTableColor, MainBackgroundColor, HoverRowColor } from '../../global.styles';
 
 export const FormInputContainer = styled.div`
   width: 100%;
@@ -9,8 +9,8 @@ export const FormInputContainer = styled.div`
 export const Input = styled.input`
   width: 100%;
   text-align: center;
-  background-color: #441f69;
-  border: solid 1px #5f3a85;
+  background-color: ${MainBackgroundColor};
+  border: solid 1px ${MainBackgroundColor};
   border-radius: 7px;
   height: 30px;
   color: #FFFFFF;

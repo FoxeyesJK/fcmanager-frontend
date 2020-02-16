@@ -14,6 +14,10 @@ const IconStyles = css`
 export const FixtureDetailItemContainer = styled.div`
     padding: ${props => props.isAdmin ? "30px 10px;" : "0px 60px"}
 
+    // div {
+    //     color: ${MainTableColor};
+    // }
+
     @media screen and (max-width: 800px) {
         padding: 0px 10px;
     }
@@ -42,7 +46,22 @@ export const AwayRecord = styled.div`
     text-align: right;
 `;
 
-export const TeamIcon = styled(BlueIcon)`
+export const TeamIcon1 = styled(BlueIcon)`
+    width: 70px;
+    height: 70px;
+
+    @media screen and (max-width: 1200px) {
+        width: 45px;
+        height: 45px;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 30px;
+        height: 30px;
+    }
+`;
+
+export const TeamIcon = styled.img`
     width: 70px;
     height: 70px;
 

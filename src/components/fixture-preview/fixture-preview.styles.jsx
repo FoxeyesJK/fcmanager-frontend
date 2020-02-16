@@ -9,7 +9,7 @@ export const FixturePreviewContainer = Styled.div`
 export const Title = Styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: 	#C0C0C0;
+    color: 	#E4BF3F;
     padding: 5px 20px;
 `;
 
@@ -24,5 +24,9 @@ export const TableBody = Styled.div`
 
     > div:hover { 
         background-color: ${HoverRowColor}
+        > div {
+            color : #FFFFFF;
+            font-weight: bold;
+        }
     }
 `;

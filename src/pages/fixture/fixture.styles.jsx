@@ -19,6 +19,7 @@ export const LeagueContainer = styled.div`
 export const FixtureContainer = styled.div`
     display: flex;
     flex-direction: row;
+    padding: 0 40px;
 
     @media screen and (max-width: 800px) {
         display: flex;
@@ -64,25 +65,26 @@ export const TableRow = styled.div`
 export const TableHeader = styled.div`
     background-color: ${MainBackgroundColor};
     text-align: left;
-    padding: 0px 5px;
-    font-size: 12px;
+    padding: 0px 0px;
+    font-size: 15px;
     font-weight: bold;
     color: 	#C0C0C0;
 
     &:nth-child(1) {
         text-align: left;
-        width: 25%;
+        padding-left: 20px;
+        width: 30%;
     }
     &:nth-child(2) {
-        text-align: left;
-        width: 40%;
+        text-align: center;
+        width: 35%;
     }
     &:nth-child(3) {
         text-align: center;
         width: 20%;
     }
     &:nth-child(4) {
-        text-align: left;
+        text-align: center;
         width: 35%;
     }
 `;

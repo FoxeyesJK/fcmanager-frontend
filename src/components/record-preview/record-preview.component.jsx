@@ -59,7 +59,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     const payload = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
     dispatch(postRecordsStart({payload, matchId}));
     //success
-    //handleIsRecordAdmin();
+    handleIsRecordAdmin();
   }
 
   const handleHomeClick = event => {
@@ -76,19 +76,13 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
     
   return (
     <RecordPreviewContainer onSubmit={handleSubmit}>
-    {
-      console.log('recordpreview again')
-    }
-    {
-      console.log(records)
-    }
           <TeamRecordContainer>
           <HomeTeamRecord>
           {
             !!records ?
               records.filter(record => record.scoreTeamId === homeTeamId || record.assistTeamId === homeTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={homeTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
           {/* {
@@ -96,20 +90,11 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
           } */}
           </HomeTeamRecord>
           <AwayTeamRecord>
-            {
-              console.log('teamId')
-            }
-            {
-              console.log(awayTeamId)
-            }
-                        {
-              console.log(homeTeamId)
-            }
           {
             !!records ?
               records.filter(record => record.scoreTeamId === awayTeamId || record.assistTeamId === awayTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={awayTeamId} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
+                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isAdmin={isAdmin} isRecordAdmin={isRecordAdmin}/>
                             ) : null
           }
           {/* {

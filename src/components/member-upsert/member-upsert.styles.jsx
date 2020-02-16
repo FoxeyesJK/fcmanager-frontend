@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TitleColor, SubBackgroundColor } from '../../global.styles';
+import { TitleColor, MainBackgroundColor, SubBackgroundColor, BorderColor } from '../../global.styles';
 
 export const MemberUpsertContainer = styled.div`
     width: 600px;
@@ -20,8 +20,8 @@ export const FormContentContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-    background-color: #441f69;
-    border: solid 1px #5f3a85;
+    background-color: ${MainBackgroundColor};
+    border: solid 1px ${BorderColor};
     border-radius: 7px;
     width: 150px;
     height: 150px;

@@ -1,6 +1,6 @@
 import styled, {css}from 'styled-components';
 
-import { MainTableColor } from '../../global.styles';
+import { MainTableColor, HoverRowColor } from '../../global.styles';
 
 export const Button = styled.button`
     border: 1px solid #C0C0C0;
@@ -13,7 +13,7 @@ export const Button = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: #4d1f7a;
+        background-color: ${HoverRowColor};
     }
 `
 //     min-width: 165px;
