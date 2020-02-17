@@ -1,6 +1,9 @@
+
 export const updateHomeTeamToMatch = (matches, selectedMatchId, homeTeamId) => {
+    console.log('updateHomeTeamToMatch')
     const existingMatch = matches.find(m => m.id === selectedMatchId)
     if (existingMatch) {
+        console.log('updateHomeTeamToMatch exsist')
         return matches.map(match =>
             match.id === selectedMatchId
             ? { ...match, homeTeamId: homeTeamId }
@@ -24,6 +27,13 @@ export const updateAwayTeamToMatch = (matches, selectedMatchId, awayTeamId) => {
     return matches;
 }
 
+
+export const updateLocationToMatch = (matches, locationValue) => {
+
+    return matches;
+}
+
+
 export const updateMatch = (matches, payload) => {
     const existingMatch = matches.find(m => m.id === payload.id)
 
@@ -38,25 +48,16 @@ export const updateMatch = (matches, payload) => {
     return matches;
 }
 
+export const addNewMatch = (matches, matchToAdd) => {
+    const existingMatch = matches.find(m => m.id === matchToAdd.id)
 
+    if (existingMatch) {
+        return matches.map(match =>
+            match.id === matchToAdd.id
+            ? { ...match, matchToAdd }
+        : match
+        )
+    }
 
-
-
-//     if (recordToAdd.id === 0) {
-//         console.log('add')
-    
-//         //add
-//         return records.map(record => 
-//             record.id === 0 && record.tempRecordId === recordToAdd.tempRecordId
-//             ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
-//             : record
-//         );
-//     }
-
-//     console.log('update')
-//     return records.map(record => 
-//         record.id === recordToAdd.id
-//         ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
-//         : record
-//     );
-// }
+    return [...matches, {...matchToAdd}];
+}

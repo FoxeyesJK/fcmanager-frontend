@@ -46,31 +46,21 @@ export const AwayRecord = styled.div`
     text-align: right;
 `;
 
-export const TeamIcon1 = styled(BlueIcon)`
+export const TeamIcon = styled.div`
+    background-image: url(${props => props.homeTeamLogoUrl});
+    background-size: 70px;
     width: 70px;
     height: 70px;
+    outline: none;
 
     @media screen and (max-width: 1200px) {
+        background-size: 45px;
         width: 45px;
         height: 45px;
     }
 
     @media screen and (max-width: 800px) {
-        width: 30px;
-        height: 30px;
-    }
-`;
-
-export const TeamIcon = styled.img`
-    width: 70px;
-    height: 70px;
-
-    @media screen and (max-width: 1200px) {
-        width: 45px;
-        height: 45px;
-    }
-
-    @media screen and (max-width: 800px) {
+        background-size: 30px;
         width: 30px;
         height: 30px;
     }

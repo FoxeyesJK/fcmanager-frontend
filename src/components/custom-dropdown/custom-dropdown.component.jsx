@@ -64,9 +64,6 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
          }
          required
       />
-      {
-         console.log(value)
-      }
    </Dropdown>
    );
 };

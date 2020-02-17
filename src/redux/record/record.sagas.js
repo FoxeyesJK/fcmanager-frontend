@@ -20,7 +20,6 @@ export function* fetchRecordsAsync({payload: { matchId }}) {
         console.log(baseUrl + apiEndPoint + matchId)
         const recordRes = yield axios.get(baseUrl + apiEndPoint + matchId);
         const records = recordRes.data;
-         console.log('hi')
          console.log(records)
         yield put(fetchRecordsSuccess(records))
     } catch (error) {

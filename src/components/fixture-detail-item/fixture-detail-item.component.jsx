@@ -63,26 +63,23 @@ momentLocalizer()
 const FixtureDetailItem = ({ type, isAdmin }) => {
   const teams = useSelector(selectTeams, shallowEqual)
   const match = useSelector(selectMatchItem, shallowEqual)
-  //const [matches, setMatches] = useState(match);
+  const [matches, setMatches] = useState(match);
   const isRecordHidden = useSelector(selectIsHidden, shallowEqual)
   const dispatch = useDispatch();
 
-  console.log(match)
+  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
 
-  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = match;
+  useEffect(() => {
+    setMatches(match)
+  }, [match]);
 
-  // useEffect(() => {
-  //   setMatches(match)
-  // }, [match]);
-
-  // useEffect(() => {
-  //   setMatches(matches)
-  // }, [matches]);
+  useEffect(() => {
+    setMatches(matches)
+  }, [matches]);
 
   const handleSubmit = type => event => {
     event.preventDefault();
-    console.log(scheduledAt)
-    const response = dispatch(!match.id ? postMatchesStart(match) : putMatchesStart(match))
+    const response = dispatch(!matches.id ? postMatchesStart(matches) : putMatchesStart(matches))
 
     !!response.payload ? dispatch(toggleRecordHidden(false)) : alert('Failed to save data.')
   }
@@ -93,22 +90,12 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
   
   const handleChange = event => {
     const { name, value } = event.target;
-  
-    //setMatches({ ...matches, [name]: value });
+    setMatches({ ...matches, [name]: value });
   }
     
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
       <FormContainer onSubmit={handleSubmit(type)}>
-        {
-          console.log('test')
-        }
-        {
-          console.log(homeTeamId)
-        }
-        {
-          console.log(awayTeamId)
-        }
         <TeamContainer>
             {
               isAdmin && isRecordHidden
@@ -116,13 +103,13 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
               <CustomDropdown
                 name='team'
                 value={homeTeamId}
-                handleChange={team => dispatch(setMatchHomeTeam(team.value))}//setMatches({ ...matches, homeTeamId: team.value })}
+                handleChange={team => setMatches({ ...matches, homeTeamId: team.value })}//dispatch(setMatchHomeTeam(team.value))}//setMatches({ ...matches, homeTeamId: team.value })}
                 options={teams}
                 required
               />
               :
               <IconContainer>
-                <TeamIcon style={{backgroundImage: `url(${homeTeamLogoUrl})`}}/>
+                <TeamIcon homeTeamLogoUrl={homeTeamLogoUrl} />
               </IconContainer>
               }
             {!isAdmin || !isRecordHidden ? 
@@ -139,7 +126,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
               <CustomDropdown
                 name='team'
                 value={awayTeamId}
-                handleChange={team => dispatch(setMatchAwayTeam(team.value))}
+                handleChange={team => setMatches({ ...matches, awayTeamId: team.value })}//dispatch(setMatchAwayTeam(team.value))}
                 options={teams}
                 required
               />
@@ -165,7 +152,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
                 <DateTimePicker 
                   defaultValue={new Date()} 
                   value={new Date(scheduledAt)}
-                  //onChange={date => setMatches({ ...matches, scheduledAt: date })}
+                  onChange={date => setMatches({ ...matches, scheduledAt: date })}
                 />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
@@ -187,9 +174,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
           }
         </FormContainer>
         {
-          id != 0 ?  
         <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
-          : null
       } 
     </FixtureDetailItemContainer>
   )

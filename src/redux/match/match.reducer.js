@@ -1,9 +1,9 @@
 import MatchActionTypes from './match.types';
-import { updateHomeTeamToMatch, updateAwayTeamToMatch, updateMatch} from './match.utils';
+import { updateHomeTeamToMatch, updateAwayTeamToMatch, updateMatch, addNewMatch, updateLocationToMatch} from './match.utils';
 
 const INITIAL_STATE = {
     matches: [],
-    selectedMatchId: 0,
+    selectedMatchId: undefined,
     isFetching: false,
     errorMessage: undefined
 };
@@ -52,6 +52,16 @@ const matchReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 matches: updateAwayTeamToMatch(state.matches, state.selectedMatchId, action.awayTeamId)
+            };
+        case MatchActionTypes.SET_MATCH_LOCATION:
+            return {
+                ...state,
+                matches: updateLocationToMatch(state.matches, action.locationValue)
+            };
+        case MatchActionTypes.ADD_NEW_MATCH:
+            return {
+                ...state,
+                matches: addNewMatch(state.matches, action.matchToAdd)
             };
         default:
             return state;

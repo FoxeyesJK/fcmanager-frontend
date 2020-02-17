@@ -14,9 +14,6 @@ const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick }) 
     <FixturePreviewContainer>
       <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).format('l')}</Title>
         <TableBody>
-          {
-            console.log(matches)
-          }
         {
           !!matches ? 
           matches.map(match => (

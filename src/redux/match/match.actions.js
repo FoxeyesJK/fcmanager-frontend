@@ -58,3 +58,13 @@ export const setMatchAwayTeam = awayTeamId => ({
     type: MatchActionTypes.SET_MATCH_AWAY_TEAM,
     awayTeamId: awayTeamId
 })
+
+export const setMatchLocation = locationValue => ({
+    type: MatchActionTypes.SET_MATCH_LOCATION,
+    locationValue: locationValue
+})
+
+export const addNewMatch = match => ({
+    type: MatchActionTypes.ADD_NEW_MATCH,
+    matchToAdd: match
+})

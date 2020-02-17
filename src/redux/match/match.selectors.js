@@ -3,29 +3,19 @@ import _ from 'lodash';
 
 const selectMatch = state => state.match;
 
-const newMatch = {
-    id: 0,
-    homeTeamId: 0,
-    homeScore: 0,
-    awayTeamId: 0,
-    awayScore: 0,
-    scheduledAt: new Date(),
-    location: '',
-    leagueId: 1,
-    clubId: 1,
-    matchRecords: []
-  }
-
 export const selectMatches = createSelector(
     [selectMatch],
     match => match.matches
 )
 
+export const selectSelectedMatchId = createSelector(
+    [selectMatch],
+    match => match.selectedMatchId
+)
+
 export const selectMatchItem =  createSelector(
     [selectMatch],
-    match => match.selectedMatchId > 0 ?
-     match.matches.find(m => m.id === match.selectedMatchId) : 
-     newMatch
+    match => match.matches.find(m => m.id === match.selectedMatchId)
 )
 
 export const selectIsMatchFetching = createSelector(
