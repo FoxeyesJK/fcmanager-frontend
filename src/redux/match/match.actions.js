@@ -43,3 +43,18 @@ export const putMatchesFailure = errorMessage => ({
     type: MatchActionTypes.PUT_MATCHES_FAILURE,
     payload: errorMessage
 })
+
+export const setSelectedMatchId = matchId => ({
+    type: MatchActionTypes.SET_SELECTED_MATCHID,
+    matchId: matchId
+})
+
+export const setMatchHomeTeam = homeTeamId => ({
+    type: MatchActionTypes.SET_MATCH_HOME_TEAM,
+    homeTeamId: homeTeamId
+})
+
+export const setMatchAwayTeam = awayTeamId => ({
+    type: MatchActionTypes.SET_MATCH_AWAY_TEAM,
+    awayTeamId: awayTeamId
+})

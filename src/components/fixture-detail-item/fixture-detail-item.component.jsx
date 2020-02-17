@@ -14,10 +14,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import { postMatchesStart, putMatchesStart } from '../../redux/match/match.actions';
+import { postMatchesStart, putMatchesStart, setMatchHomeTeam, setMatchAwayTeam } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { selectTeams } from '../../redux/team/team.selectors';
+import { selectMatchItem } from '../../redux/match/match.selectors';
 
 
 import {
@@ -59,27 +60,29 @@ import { selectIsHidden } from '../../redux/record/record.selectors';
 moment.locale('en')
 momentLocalizer()
 
-const FixtureDetailItem = ({ type, match, isAdmin }) => {
-  const [matches, setMatches] = useState(match);
-  const [isRecordAdmin, setRecordAdmin] = useState(null);
+const FixtureDetailItem = ({ type, isAdmin }) => {
   const teams = useSelector(selectTeams, shallowEqual)
+  const match = useSelector(selectMatchItem, shallowEqual)
+  //const [matches, setMatches] = useState(match);
   const isRecordHidden = useSelector(selectIsHidden, shallowEqual)
   const dispatch = useDispatch();
 
-  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
+  console.log(match)
 
-  useEffect(() => {
-    setMatches(match)
-  }, [match]);
+  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = match;
 
-  useEffect(() => {
-    setMatches(matches)
-  }, [matches]);
+  // useEffect(() => {
+  //   setMatches(match)
+  // }, [match]);
+
+  // useEffect(() => {
+  //   setMatches(matches)
+  // }, [matches]);
 
   const handleSubmit = type => event => {
     event.preventDefault();
     console.log(scheduledAt)
-    const response = dispatch(!matches.id ? postMatchesStart(matches) : putMatchesStart(matches))
+    const response = dispatch(!match.id ? postMatchesStart(match) : putMatchesStart(match))
 
     !!response.payload ? dispatch(toggleRecordHidden(false)) : alert('Failed to save data.')
   }
@@ -91,12 +94,21 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
   const handleChange = event => {
     const { name, value } = event.target;
   
-    setMatches({ ...matches, [name]: value });
+    //setMatches({ ...matches, [name]: value });
   }
     
   return (
     <FixtureDetailItemContainer isAdmin={isAdmin}>
       <FormContainer onSubmit={handleSubmit(type)}>
+        {
+          console.log('test')
+        }
+        {
+          console.log(homeTeamId)
+        }
+        {
+          console.log(awayTeamId)
+        }
         <TeamContainer>
             {
               isAdmin && isRecordHidden
@@ -104,7 +116,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
               <CustomDropdown
                 name='team'
                 value={homeTeamId}
-                handleChange={team => setMatches({ ...matches, homeTeamId: team.value })}
+                handleChange={team => dispatch(setMatchHomeTeam(team.value))}//setMatches({ ...matches, homeTeamId: team.value })}
                 options={teams}
                 required
               />
@@ -127,7 +139,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
               <CustomDropdown
                 name='team'
                 value={awayTeamId}
-                handleChange={team => setMatches({ ...matches, awayTeamId: team.value })}
+                handleChange={team => dispatch(setMatchAwayTeam(team.value))}
                 options={teams}
                 required
               />
@@ -153,7 +165,7 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
                 <DateTimePicker 
                   defaultValue={new Date()} 
                   value={new Date(scheduledAt)}
-                  onChange={date => setMatches({ ...matches, scheduledAt: date })}
+                  //onChange={date => setMatches({ ...matches, scheduledAt: date })}
                 />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
@@ -184,22 +196,5 @@ const FixtureDetailItem = ({ type, match, isAdmin }) => {
 }
 
 export default FixtureDetailItem;
-
-// const mapStateToProps = createStructuredSelector({
-//   teams: selectTeams
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//   postMatchesStart: (matches) => dispatch(postMatchesStart(matches)),
-//   putMatchesStart: (matches) => dispatch(putMatchesStart(matches)),
-//   postMatchesSuccess: (matches) => dispatch(postMatchesSuccess(matches)),
-//   putMatchesSuccess: (matches) => dispatch(putMatchesSuccess(matches)),
-//   putMatchesFailure: (matches) => dispatch(putMatchesFailure(matches))
-// })
-
-// export default connect(
-//   mapStateToProps, 
-//   mapDispatchToProps
-// )(FixtureDetailItem);
 
 

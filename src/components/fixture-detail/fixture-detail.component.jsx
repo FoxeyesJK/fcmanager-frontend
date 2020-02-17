@@ -7,17 +7,14 @@ import {
 
 import FixtureDetailItem from '../fixture-detail-item/fixture-detail-item.component';
 
-const FixtureDetail = ({match, isAdmin}) => {
+const FixtureDetail = ({isAdmin}) => {
   return (
       <FixtureDetailContainer>
         {console.log('fixtureDetail')}
-        {console.log(match)}
         <Title></Title>
-        {
-          !!match 
-          ? <FixtureDetailItem match={match} isAdmin={isAdmin}/> 
-          : null
-        }
+ 
+        <FixtureDetailItem isAdmin={isAdmin}/> 
+
       </FixtureDetailContainer>
   )
 }

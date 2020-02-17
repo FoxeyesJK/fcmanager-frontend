@@ -32,8 +32,9 @@ export function* fetchMatchesStart() {
 
 export function* postMatchesAsync({payload}) {
     try {
-        const { match } = yield axios.post(baseUrl + apiEndPoint, payload);
-        yield put(postMatchesSuccess(match))
+        const resMatch = yield axios.post(baseUrl + apiEndPoint, payload);
+        const resData = resMatch.data;
+        yield put(postMatchesSuccess(resData))
     } catch (error) {
         yield put(postMatchesFailure(error.message))
     }
@@ -57,14 +58,9 @@ export function* postMatchesStart() {
 export function* putMatchesAsync({payload}) {
     console.log('putMatchesAsync');
     try {
-        console.log(payload)
-        const {scheduledAt} = payload
-        console.log(scheduledAt)
         const resMatch = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-        console.log('resMatch')
-        console.log(resMatch)
-        const resdata = resMatch.data;
-        yield put(putMatchesSuccess(undefined))
+        const resData = resMatch.data;
+        yield put(putMatchesSuccess(resData))
     } catch (error) {
         yield put(putMatchesFailure(error.message))
     }

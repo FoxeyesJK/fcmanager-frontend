@@ -34,6 +34,9 @@ const Member = ({ teamMembers, members, isAdmin }) => {
   
   return (
     <MemberPage>
+      {
+        console.log(teamMembers)
+      }
       <TitleContainer>
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}

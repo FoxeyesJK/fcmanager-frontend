@@ -6,8 +6,9 @@ import SimpleBarReact from 'simplebar-react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import { selectMatches } from '../../redux/match/match.selectors';
+import { selectMatches, selectScheduledMatches } from '../../redux/match/match.selectors';
 
+import { setSelectedMatchId } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { 
@@ -33,28 +34,31 @@ const Fixture = ({ matches, isAdmin}) => {
   const [sections, setSection] = useState({ matchId: 0, section: '' })
   const { matchId, section } = sections;
 
+  console.log('match')
+  console.log(matches.value())
   const dispatch = useDispatch();
 
   const handleClick = (id, type) => {
     console.log(id)
-    setSection({ matchId: id, section:'' });
+    //setSection({ matchId: id, section:'' });
+    dispatch(setSelectedMatchId(id))
     dispatch(toggleRecordHidden(true))
   }
 
-  var match = matchId != 0 && !!matches
-  ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
-  : {
-    id: 0,
-    homeTeamId: '',
-    homeScore: 0,
-    awayTeamId: 0,
-    awayScore: 0,
-    scheduledAt: new Date(),
-    location: '',
-    leagueId: 1,
-    clubId: 1,
-    matchRecords: []
-  }
+  // var match = matchId != 0 && !!matches
+  // ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
+  // : {
+  //   id: 0,
+  //   homeTeamId: '',
+  //   homeScore: 0,
+  //   awayTeamId: 0,
+  //   awayScore: 0,
+  //   scheduledAt: new Date(),
+  //   location: '',
+  //   leagueId: 1,
+  //   clubId: 1,
+  //   matchRecords: []
+  // }
 
   return (
     <FixturePage>
@@ -74,16 +78,16 @@ const Fixture = ({ matches, isAdmin}) => {
           <SimpleBarReact style={{maxHeight: 700}}>
           {
             !!matches ? 
-              matches.map(({ id, ...otherMatchProps }) => (
-                <FixturePreview key={id} selectedMatchId={matchId} handleClick={handleClick} {...otherMatchProps} />
-              )) : null
+              matches.value().map(match => 
+                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items}/>
+              ) : null
           }
           </SimpleBarReact>
         </Table>
         </FixtureListContainer>
         {
           isAdmin || (!isAdmin && matchId != 0) ?
-          <FixtureDetail isAdmin={isAdmin} match={match}/> 
+          <FixtureDetail isAdmin={isAdmin} /> 
           : null
         }
       </FixtureContainer>
@@ -92,7 +96,8 @@ const Fixture = ({ matches, isAdmin}) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  matches: selectMatches,
+  //matches: selectMatches,
+  matches: selectScheduledMatches
 })
 
 export default withRouter(connect(
