@@ -112,7 +112,7 @@ const Fixture = ({ isAdmin}) => {
         </FixtureListContainer>
         {console.log('fix')}
         {
-          (isAdmin && matchId != undefined) || (!isAdmin && matchId != 0) ?
+          (isAdmin && matchId !== undefined) || (!isAdmin && matchId !== undefined) ?
           <FixtureDetail isAdmin={isAdmin} /> 
           : null
         }

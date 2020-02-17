@@ -152,7 +152,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
                 <DateTimePicker 
                   defaultValue={new Date()} 
                   value={new Date(scheduledAt)}
-                  onChange={date => setMatches({ ...matches, scheduledAt: date })}
+                  onChange={date => setMatches({ ...matches, scheduledAt: moment(date).format() })}
                 />
               </DateTimePickerContainer>
               <LocationContainer isAdmin={isAdmin}>
