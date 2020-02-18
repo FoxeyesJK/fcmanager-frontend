@@ -25,11 +25,12 @@ export const FixtureContainer = styled.div`
         display: flex;
         flex-direction: column;
         font-size: 12px;
+        padding: 0
     }
 `;
 
 export const FixtureListContainer = styled.div`
-    width: 65%;
+    width: 60%;
 
     @media screen and (max-width: 800px) {
         width: 100%;
@@ -73,11 +74,11 @@ export const TableHeader = styled.div`
     &:nth-child(1) {
         text-align: left;
         padding-left: 20px;
-        width: 30%;
+        width: 20%;
     }
     &:nth-child(2) {
         text-align: center;
-        width: 35%;
+        width: 32%;
     }
     &:nth-child(3) {
         text-align: center;
@@ -85,6 +86,14 @@ export const TableHeader = styled.div`
     }
     &:nth-child(4) {
         text-align: center;
-        width: 35%;
+        width: 32%;
+    }
+    &:nth-child(5) {
+        text-align: center;
+        width: 6%;
+    }
+    
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
     }
 `;

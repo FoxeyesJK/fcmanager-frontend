@@ -12,14 +12,27 @@ const IconStyles = css`
 `;
 
 export const FixtureDetailItemContainer = styled.div`
-    padding: ${props => props.isAdmin ? "30px 10px;" : "0px 60px"}
+    padding: ${props => props.isAdmin ? "30px 10px;" : "40px 60px"}
 
     // div {
     //     color: ${MainTableColor};
     // }
 
+    @media screen and (max-width: 1200px) {
+        padding: 0px 0px;
+    }
+
     @media screen and (max-width: 800px) {
-        padding: 0px 10px;
+        padding: ${props => props.isAdmin ? "10px 10px;" : "20px 60px"}
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: ${props => props.isAdmin ? "10px 10px;" : "30px 80px"}
+    }
+
+
+    @media screen and (max-width: 450px) {
+        padding: ${props => props.isAdmin ? "10px 10px;" : "10px 10px"}
     }
 `;
 
@@ -53,16 +66,16 @@ export const TeamIcon = styled.div`
     height: 70px;
     outline: none;
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1500px) {
         background-size: 45px;
         width: 45px;
         height: 45px;
     }
 
     @media screen and (max-width: 800px) {
-        background-size: 30px;
-        width: 30px;
-        height: 30px;
+        background-size: 45px;
+        width: 45px;
+        height: 45px;
     }
 `;
 
@@ -77,6 +90,18 @@ export const ScoreContainer = styled.div`
     padding: 10px;
     letter-spacing: 10px;
     margin: auto;
+
+    @media screen and (max-width: 1600px) {
+        font-size: 20px
+    }
+
+    @media screen and (max-width: 800px) {
+        font-size: 30px
+    }
+
+    @media screen and (max-width: 500px) {
+        font-size: 16px
+    }
 `;
 
 export const FixtureContainer = styled.div`

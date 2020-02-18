@@ -44,6 +44,20 @@ export const putMatchesFailure = errorMessage => ({
     payload: errorMessage
 })
 
+export const deleteMatchesStart = matchId => ({
+    type: MatchActionTypes.DELETE_MATCHES_START,
+    matchId: matchId
+})
+
+export const deleteMatchesSuccess = matchId => ({
+    type: MatchActionTypes.DELETE_MATCHES_SUCCESS
+})
+
+export const deleteMatchesFailure = errorMessage => ({
+    type: MatchActionTypes.DELETE_MATCHES_FAILURE,
+    payload: errorMessage
+})
+
 export const setSelectedMatchId = matchId => ({
     type: MatchActionTypes.SET_SELECTED_MATCHID,
     matchId: matchId

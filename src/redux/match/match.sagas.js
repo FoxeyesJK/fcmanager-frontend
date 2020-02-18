@@ -8,6 +8,8 @@ import {
     postMatchesFailure,
     putMatchesSuccess,
     putMatchesFailure,
+    deleteMatchesSuccess,
+    deleteMatchesFailure
 } from './match.actions';
 
 import MatchActionTypes from './match.types';
@@ -81,13 +83,41 @@ export function* putMatchesStart() {
     );
 }
 
+export function* deleteMatchesAsync({matchId}) {
+    console.log('deleteMatchesAsync');
+    console.log(matchId)
+    try {
+        const resMatch = yield axios.delete(baseUrl + apiEndPoint + matchId);
+        const resData = resMatch.data;
+        yield put(deleteMatchesSuccess(resData))
+    } catch (error) {
+        yield put(deleteMatchesFailure(error.message))
+    }
+}
+
+export function* fetchMatchesAsyncAfterDelete() {
+    yield fetchMatchesAsync();
+}
+
+export function* onDeleteMatchesSuccess() {
+    yield takeLatest(MatchActionTypes.DELETE_MATCHES_SUCCESS, fetchMatchesAsyncAfterDelete)
+}
+
+export function* deleteMatchesStart() {
+    yield takeLatest(
+        MatchActionTypes.DELETE_MATCHES_START,
+        deleteMatchesAsync
+    );
+}
 
 export function* matchSagas() {
     yield all([
         call(fetchMatchesStart), 
         call(postMatchesStart),
-        call(onPostMatchesSuccess),
+        //call(onPostMatchesSuccess),
         call(putMatchesStart),
         call(onPutMatchesSuccess),
+        call(deleteMatchesStart),
+        call(onDeleteMatchesSuccess)
     ]);
 }

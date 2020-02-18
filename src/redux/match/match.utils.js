@@ -36,16 +36,29 @@ export const updateLocationToMatch = (matches, locationValue) => {
 
 export const updateMatch = (matches, payload) => {
     const existingMatch = matches.find(m => m.id === payload.id)
-
+    
     if (existingMatch) {
         return matches.map(match =>
             match.id === payload.id
             ? { ...match, payload }
-        : match
-        )
-    }
+            : match
+            )
+        }
 
-    return matches;
+        console.log('test')
+        console.log(matches)
+    const existingNewMatch = matches.find(m => m.id === 0)
+
+    if (existingNewMatch) {
+        console.log('in')
+        return matches.map(match => 
+            match.id === 0 
+            ? {...match, ...payload }
+            : match)
+    }
+    //return matches.map(match => match.id === 0 ? { ...match, payload } : [...matches, payload])
+        
+    return [...matches, payload];
 }
 
 export const addNewMatch = (matches, matchToAdd) => {

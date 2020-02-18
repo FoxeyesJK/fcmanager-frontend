@@ -9,15 +9,21 @@ import {
 
 import FixtureItem from '../fixture-item/fixture-item.component';
 
-const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick }) => {
+const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick, isAdmin }) => {
   return (
     <FixturePreviewContainer>
-      <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).format('l')}</Title>
+      {
+        console.log(scheduledOn)
+      }
+      {
+        scheduledOn !== 'undefined' ?
+        <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).format('l')}</Title> : <Title>New Fixture</Title>
+      }
         <TableBody>
         {
           !!matches ? 
           matches.map(match => (
-            <FixtureItem key={match.id} id={match.id} selectedMatchId={selectedMatchId} match={match} handleClick={handleClick}/>
+            <FixtureItem key={match.id} id={match.id} selectedMatchId={selectedMatchId} match={match} handleClick={handleClick} isAdmin={isAdmin}/>
           )) : null
         }
         </TableBody>

@@ -11,7 +11,6 @@ const FixtureDetail = ({isAdmin}) => {
   return (
       <FixtureDetailContainer>
         {console.log('fixtureDetail')}
-        <Title></Title>
  
         <FixtureDetailItem isAdmin={isAdmin}/> 
 

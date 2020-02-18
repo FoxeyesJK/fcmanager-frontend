@@ -66,9 +66,6 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
   const [matches, setMatches] = useState(match);
   const isRecordHidden = useSelector(selectIsHidden, shallowEqual)
   const dispatch = useDispatch();
-
-  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
-
   useEffect(() => {
     setMatches(match)
   }, [match]);
@@ -76,6 +73,11 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
   useEffect(() => {
     setMatches(matches)
   }, [matches]);
+
+  console.log(matches)
+  console.log(match)
+  const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
+
 
   const handleSubmit = type => event => {
     event.preventDefault();

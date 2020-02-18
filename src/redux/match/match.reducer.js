@@ -13,6 +13,7 @@ const matchReducer = (state = INITIAL_STATE, action) => {
         case MatchActionTypes.FETCH_MATCHES_START:
         case MatchActionTypes.POST_MATCHES_START:
         case MatchActionTypes.PUT_MATCHES_START:
+        case MatchActionTypes.DELETE_MATCHES_START:
             return {
                 ...state,
                 isFetching: true
@@ -23,20 +24,28 @@ const matchReducer = (state = INITIAL_STATE, action) => {
                 isFetching: false,
                 matches: action.payload
             }
+        case MatchActionTypes.DELETE_MATCHES_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                selectedMatchId: undefined
+            }
         case MatchActionTypes.POST_MATCHES_SUCCESS:
         case MatchActionTypes.PUT_MATCHES_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
-                matches: updateMatch(state.matches, action.payload) //action payload?
+                matches: updateMatch(state.matches, action.payload),
+                selectedMatchId: action.payload.id
             }
         case MatchActionTypes.FETCH_MATCHES_FAILURE:
         case MatchActionTypes.POST_MATCHES_FAILURE:
         case MatchActionTypes.PUT_MATCHES_FAILURE:
+        case MatchActionTypes.DELETE_MATCHES_FAILURE:
             return {
                 ...state,
                 isFetching: false,
-                errorMessage: action.payload
+                errorMessage: action.payload,
             };
         case MatchActionTypes.SET_SELECTED_MATCHID:
             return {

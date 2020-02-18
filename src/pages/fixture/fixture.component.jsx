@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import MATCH_DATA from './fixture.data.js';
 import SimpleBarReact from 'simplebar-react';
+import moment from 'moment';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectMatches, selectScheduledMatches, selectSelectedMatchId } from '../../redux/match/match.selectors';
 
-import { setSelectedMatchId, addNewMatch } from '../../redux/match/match.actions';
+import { setSelectedMatchId, addNewMatch, deleteMatchesStart } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { 
@@ -39,17 +40,14 @@ const Fixture = ({ isAdmin}) => {
   const matchId = useSelector(selectSelectedMatchId, shallowEqual)
   const matches = useSelector(selectScheduledMatches, shallowEqual)
 
-  // useEffect(() => {
-  //   useSelector(selectScheduledMatches, shallowEqual)
-  // }, [matches]);
-
   const newMatch = {
     id: 0,
     homeTeamId: 0,
     homeScore: 0,
     awayTeamId: 0,
     awayScore: 0,
-    scheduledAt: new Date(),
+    scheduledAt: moment(new Date()).format(),
+    scheduledOn: undefined,
     location: '',
     leagueId: 1,
     clubId: 1,
@@ -64,10 +62,16 @@ const Fixture = ({ isAdmin}) => {
       console.log(newMatch)
       dispatch(addNewMatch(newMatch))
     }
+
+    if (type === 'delete' || type === 'delete-blue')
+    {
+      console.log('delete')
+      console.log(id)
+      dispatch(deleteMatchesStart(id))
+    }
+
     dispatch(setSelectedMatchId(id))
     dispatch(toggleRecordHidden(true))
-
-    //If id = 0 create 
   }
 
   // var match = matchId != 0 && !!matches
@@ -99,12 +103,13 @@ const Fixture = ({ isAdmin}) => {
               <TableHeader>HOME</TableHeader>
               <TableHeader>VS</TableHeader>
               <TableHeader>AWAY</TableHeader>
+              <TableHeader></TableHeader>
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
             !!matches ? 
               matches.value().map(match => 
-                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items}/>
+                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items} isAdmin={isAdmin}/>
               ) : null
           }
           </SimpleBarReact>
