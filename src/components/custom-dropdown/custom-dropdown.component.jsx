@@ -41,11 +41,11 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             label: 
                !!options ? options
                   .find(option => option.value == value).label
-                  : null
-            } : null
+                  : '...Select'
+            } : '...Select'
          }
          styles={customStyles}
-         options={isEmptySelectable ? [{ value: '', label: 'Select...'}, ...options] : options} 
+         options={isEmptySelectable ? [{ value: 0, label: 'Select...'}, ...options] : options} 
          onChange={handleChange}
          {...otherProps}
       />
@@ -59,9 +59,10 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             label: 
                !!options ? options
                   .find(option => option.value == value).label
-                  : null
-            } : null
+                  : ''
+            } : ''
          }
+         onChange={handleChange}
          required
       />
    </Dropdown>

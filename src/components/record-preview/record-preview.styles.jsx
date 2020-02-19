@@ -19,7 +19,7 @@ export const RecordPreviewContainer = styled.form`
     width:100%;
 `;
 
-export const TeamRecordContainer = styled.form`
+export const TeamRecordContainer = styled.div`
     display: flex;
     width:100%;
 `;

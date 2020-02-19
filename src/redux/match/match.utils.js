@@ -56,7 +56,6 @@ export const updateMatch = (matches, payload) => {
             ? {...match, ...payload }
             : match)
     }
-    //return matches.map(match => match.id === 0 ? { ...match, payload } : [...matches, payload])
         
     return [...matches, payload];
 }

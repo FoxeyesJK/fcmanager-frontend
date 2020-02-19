@@ -16,7 +16,7 @@ export const fetchMatchesFailure = errorMessage => ({
 
 export const postMatchesStart = matchesMap => ({
     type: MatchActionTypes.POST_MATCHES_START,
-    payload: matchesMap
+    payload: matchesMap,
 })
 
 export const postMatchesSuccess = matchesMap => ({
