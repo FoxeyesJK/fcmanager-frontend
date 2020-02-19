@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import { connect } from 'react-redux';
-import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import DatePicker from 'react-widgets/lib/DatePicker';
 import { createStructuredSelector } from 'reselect';
+import { moment } from 'moment';
 
 import ImageInput from '../image-input/image-input.component';
 import FormInput from '../form-input/form-input.component';
@@ -11,6 +13,7 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import { postMembersStart, putMembersStart } from '../../redux/member/member.actions';
 import { selectRoles } from '../../redux/role/role.selectors';
 import { selectTeams } from '../../redux/team/team.selectors';
+import { selectCurrentMemberId } from '../../redux/member/member.selectors';
 
 import {
   MemberUpsertContainer,
@@ -26,18 +29,27 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ type, postMembersStart, putMembersStart, roles, teams, member}) => {
+const MemberUpsert = ({ postMembersStart, putMembersStart, roles, teams, member}) => {
   const [members, setMembers] = useState(member);
   const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
+
+  const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
 
   useEffect(() => {
     setMembers(member)
   }, [member]);
 
-const handleSubmit = type => event => {
+  useEffect(() => {
+    setMembers(members)
+  }, [members]);
+
+//let formatter = Globalize.dateFormatter({ raw: 'MMM dd, yyyy' })
+
+const handleSubmit = event => {
   event.preventDefault();
 
-  type == 'add' ? postMembersStart(members) : putMembersStart(members);
+  console.log(members)
+  currentMemberId > 0 ? putMembersStart(members) : postMembersStart(members);
 }
 
 const handleChange = event => {
@@ -48,10 +60,10 @@ const handleChange = event => {
   
   return (
     <MemberUpsertContainer>
-      <Title>{type == 'add' ? 'Add Player' : 'Edit Player'}</Title>
-      <FormContainer onSubmit={handleSubmit(type)}>
+      <Title>Update Player</Title>
+      <FormContainer onSubmit={handleSubmit()}>
         <FormContentContainer>
-        <ImageContainer>
+        {/* <ImageContainer>
           <ImageInput
             id='photo'
             name='file'
@@ -59,7 +71,7 @@ const handleChange = event => {
             label='Upload Photo'
             handleChange={handleChange}
           />
-        </ImageContainer>
+        </ImageContainer> */}
         <TextInputContainer>
           <InputContainer>
             <Text>Name: </Text>
@@ -91,7 +103,7 @@ const handleChange = event => {
               required
             />
           </InputContainer>
-          <InputContainer>
+          {/* <InputContainer>
             <Text>Team: </Text>
             <CustomDropdown
               name='team'
@@ -100,7 +112,7 @@ const handleChange = event => {
               options={teams}
               required
             />
-          </InputContainer>
+          </InputContainer> */}
           <InputContainer>
             <Text>Role: </Text>
             <CustomDropdown
@@ -114,19 +126,20 @@ const handleChange = event => {
           <InputContainer>
             <Text>Joined: </Text>
             <DateTimePickerContainer>
-              <DateTimePicker 
+              <DatePicker 
                 defaultValue={new Date()} 
                 onChange={value => setMembers({ ...members, startedOn: value })}
-                value={new Date(startedOn)}
+                value={startedOn !== null ? new Date(startedOn) : new Date()}
               />
             </DateTimePickerContainer>
           </InputContainer>
           <InputContainer>
             <Text>DOB: </Text>
             <DateTimePickerContainer>
-              <DateTimePicker 
+              <DatePicker 
+                defaultValue={new Date()} 
                 onChange={value => setMembers({ ...members, dob: value })}
-                value={new Date(dob)}
+                value={dob !== null ? new Date(dob) : new Date()}
               />
             </DateTimePickerContainer>
           </InputContainer>

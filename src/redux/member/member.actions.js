@@ -43,3 +43,8 @@ export const putMembersFailure = errorMessage => ({
     type: MemberActionTypes.PUT_MEMBERS_FAILURE,
     payload: errorMessage
 })
+
+export const setCurrentMemberId = memberId => ({
+    type: MemberActionTypes.SET_CURRENT_MEMBERID,
+    currentMemberId: memberId
+})

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { TitleColor, MainBackgroundColor, SubBackgroundColor, BorderColor } from '../../global.styles';
 
 export const MemberUpsertContainer = styled.div`
-    width: 600px;
+    width: 400px; //600px for photo upload
     background-color: ${SubBackgroundColor};
     margin: 20px;
 `;

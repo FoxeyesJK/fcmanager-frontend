@@ -3,6 +3,7 @@ import MemberActionTypes from './member.types';
 const INITIAL_STATE = {
     members: [],
     isFetching: false,
+    currentMemberId: undefined,
     errorMessage: undefined
 };
 
@@ -30,6 +31,11 @@ const memberReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 isFetching: false,
                 errorMessage: action.payload
+            };
+        case MemberActionTypes.SET_CURRENT_MEMBERID:
+            return {
+                ...state,
+                currentMemberId: action.currentMemberId
             };
         default:
             return state;

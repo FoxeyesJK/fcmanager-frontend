@@ -59,14 +59,11 @@ const Fixture = ({ isAdmin}) => {
     //setSection({ matchId: id, section:'' });
     if (id === 0)
     {
-      console.log(newMatch)
       dispatch(addNewMatch(newMatch))
     }
 
     if (type === 'delete' || type === 'delete-blue')
     {
-      console.log('delete')
-      console.log(id)
       dispatch(deleteMatchesStart(id))
     }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import _ from 'lodash';
 
 import { connect } from 'react-redux';
@@ -16,35 +17,41 @@ import Header from '../../components/header/header.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
-import { selectMembers, selectTeamMembers } from '../../redux/member/member.selectors';
+import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';
+import { setCurrentMemberId } from '../../redux/member/member.actions';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
 const Member = ({ teamMembers, members, isAdmin }) => {
-  const [button, setButton] = useState({ memberId: 0, type: '' })
+  //const [button, setButton] = useState({ memberId: 0, type: '' })
 
-  const { memberId, type } = button;
+  //const { memberId, type } = button;
+
+  const dispatch = useDispatch();
+  const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
   
   const handleClick = (id, type) => {
-    setButton({ memberId: id, type: type });
+    //setButton({ memberId: id, type: type });
+    console.log(id)
+    dispatch(setCurrentMemberId(id))
   }
   
   return (
     <MemberPage>
       <TitleContainer>
         <Title>PLAYERS</Title>          
-        {isAdmin ? <CustomIcon type='add' id={memberId} handleClick={handleClick} />: null}
+        {isAdmin ? <CustomIcon type='add' id={currentMemberId} handleClick={handleClick} />: null}
       </TitleContainer>
       {
-        type == 'add' ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0 }} type={type}/>  : null
+        currentMemberId === 0 ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0 }} />  : null
       }
       {
-      type =='edit' && members != null ? 
+      currentMemberId > 0 && members != null ? 
         members
-        .filter(member => member.id === memberId)
+        .filter(member => member.id === currentMemberId)
         .map((member) => (
-        <MemberUpsert member={member} type={type}/> 
+        <MemberUpsert member={member}/> 
         ))
       : null}
       <MemberContainer>

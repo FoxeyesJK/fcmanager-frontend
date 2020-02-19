@@ -3,7 +3,8 @@ import Styled, { css } from 'styled-components';
 import { MainTableColor, MainBackgroundColor, HoverRowColor } from '../../global.styles';
 
 export const FixturePreviewContainer = Styled.div`
-
+    > div:nth-child(odd) {background-color: ${MainTableColor};}
+    > div:nth-child(even) {background-color: ${MainBackgroundColor};}
 `;
 
 export const Title = Styled.div`
@@ -19,8 +20,6 @@ export const FixtureItemContainer = Styled.div`
 `;
 
 export const TableBody = Styled.div`
-    > div:nth-child(odd) {background-color: ${MainTableColor};}
-    > div:nth-child(even) {background-color: ${MainBackgroundColor};}
 
     > div:hover { 
         background-color: ${HoverRowColor}
