@@ -44,7 +44,27 @@ export const putMembersFailure = errorMessage => ({
     payload: errorMessage
 })
 
+export const deleteMembersStart = memberId => ({
+    type: MemberActionTypes.DELETE_MEMBERS_START,
+    memberId: memberId
+})
+
+export const deleteMembersSuccess = () => ({
+    type: MemberActionTypes.DELETE_MEMBERS_SUCCESS
+})
+
+export const deleteMembersFailure = errorMessage => ({
+    type: MemberActionTypes.DELETE_MEMBERS_FAILURE,
+    payload: errorMessage
+})
+
+
 export const setCurrentMemberId = currentMemberId => ({
     type: MemberActionTypes.SET_CURRENT_MEMBERID,
     currentMemberId: currentMemberId
+})
+
+export const addNewMember = member => ({
+    type: MemberActionTypes.ADD_NEW_MEMBER,
+    memberToAdd: member
 })

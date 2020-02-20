@@ -10,7 +10,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
-import { postMembersStart, putMembersStart } from '../../redux/member/member.actions';
+import { postMembersStart, putMembersStart, setCurrentMemberId } from '../../redux/member/member.actions';
 import { selectRoles } from '../../redux/role/role.selectors';
 import { selectTeams } from '../../redux/team/team.selectors';
 import { selectCurrentMemberId, selectMemberItem} from '../../redux/member/member.selectors';
@@ -38,22 +38,23 @@ const MemberUpsert = () => {
   const roles = useSelector(selectRoles, shallowEqual)
   const dispatch = useDispatch();
 
-  console.log(member)
-  useEffect(() => {
-    setMembers(member)
-  }, [member]);
+  // console.log(member)
+  // console.log('memberupsert')
+  // useEffect(() => {
+  //   setMembers(member)
+  // }, [member]);
 
   useEffect(() => {
     setMembers(members)
   }, [members]);
 
 
-
+console.log('memberUpsert')
 const handleSubmit = event => {
   event.preventDefault();
 
-  console.log(members)
   currentMemberId > 0 ? dispatch(putMembersStart(members)) : dispatch(postMembersStart(members));
+  //dispatch(setCurrentMemberId(undefined))
 }
 
 const handleChange = event => {

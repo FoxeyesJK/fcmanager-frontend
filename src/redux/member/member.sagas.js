@@ -10,6 +10,8 @@ import {
     postMembersFailure,
     putMembersSuccess,
     putMembersFailure,
+    deleteMembersSuccess,
+    deleteMembersFailure
 } from './member.actions';
 
 import MemberActionTypes from './member.types';
@@ -35,8 +37,8 @@ export function* fetchMembersStart() {
 
 export function* postMembersAsync({payload}) {
     try {
-        const { member } = yield axios.post(baseUrl + apiEndPoint, payload);
-        yield put(postMembersSuccess(member))
+        const member = yield axios.post(baseUrl + apiEndPoint, payload);
+        yield put(postMembersSuccess(member.data))
     } catch (error) {
         yield put(postMembersFailure(error.message))
     }
@@ -60,8 +62,8 @@ export function* postMembersStart() {
 
 export function* putMembersAsync({payload}) {
     try {
-        const { member } = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
-        yield put(putMembersSuccess(member))
+        const member = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
+        yield put(putMembersSuccess(member.data))
     } catch (error) {
         yield put(putMembersFailure(error.message))
     }
@@ -82,6 +84,34 @@ export function* putMembersStart() {
     );
 }
 
+export function* deleteMembersAsync({memberId}) {
+
+    console.log('deleteMember')
+    console.log(memberId)
+    try {
+        const resMember = yield axios.delete(baseUrl + apiEndPoint + memberId);
+        yield put(deleteMembersSuccess(resMember.data))
+    } catch (error) {
+        yield put(deleteMembersFailure(error.message))
+    }
+}
+
+export function* fetchMembersAsyncAfterDelete() {
+    yield fetchMembersAsync();
+}
+
+export function* onDeleteMembersSuccess() {
+    yield takeLatest(MemberActionTypes.DELETE_MEMBERS_SUCCESS, fetchMembersAsyncAfterDelete)
+}
+
+export function* deleteMembersStart() {
+    yield takeLatest(
+        MemberActionTypes.DELETE_MEMBERS_START,
+        deleteMembersAsync
+    );
+}
+
+
 
 export function* memberSagas() {
     yield all([
@@ -90,5 +120,7 @@ export function* memberSagas() {
         call(onPostMembersSuccess),
         call(putMembersStart),
         call(onPutMembersSuccess),
+        call(deleteMembersStart),
+        call(onDeleteMembersSuccess)
     ]);
 }

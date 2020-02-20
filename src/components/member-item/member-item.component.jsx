@@ -22,7 +22,7 @@ const MemberItem = ({ item, handleClick, isAdmin }) => {
         {isAdmin ? 
           <IconContainer>
             <CustomIcon type='edit' id={id} handleClick={handleClick} />
-            <CustomIcon type='delete' handleClick={handleClick} />
+            <CustomIcon type='delete' id={id} handleClick={handleClick} />
           </IconContainer>
           : null}
       </HeaderContainer>

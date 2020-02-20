@@ -72,6 +72,7 @@ const Fixture = ({ isAdmin}) => {
   }
 
 
+  console.log('match rerender')
   return (
     <FixturePage>
       <FixtureContainer>

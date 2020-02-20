@@ -35,12 +35,12 @@ export const selectIsMembersLoaded = createSelector(
     member => !!member.members
 )
 
-export const selectMemberItem =  createSelector(
-    [selectMember],
-    member => member.members.find(m => m.id === member.currentMemberId)
-)
-
 export const selectCurrentMemberId = createSelector(
     [selectMember],
     member => member.currentMemberId
+)
+
+export const selectMemberItem =  createSelector(
+    [selectMember],
+    member => member.members.find(m => m.id === member.currentMemberId)
 )

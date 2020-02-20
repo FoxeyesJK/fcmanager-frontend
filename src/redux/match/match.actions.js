@@ -49,7 +49,7 @@ export const deleteMatchesStart = matchId => ({
     matchId: matchId
 })
 
-export const deleteMatchesSuccess = matchId => ({
+export const deleteMatchesSuccess = () => ({
     type: MatchActionTypes.DELETE_MATCHES_SUCCESS
 })
 

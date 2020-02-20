@@ -114,7 +114,7 @@ export function* matchSagas() {
     yield all([
         call(fetchMatchesStart), 
         call(postMatchesStart),
-        //call(onPostMatchesSuccess),
+        call(onPostMatchesSuccess),
         call(putMatchesStart),
         call(onPutMatchesSuccess),
         call(deleteMatchesStart),

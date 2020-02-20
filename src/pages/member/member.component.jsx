@@ -18,7 +18,7 @@ import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';
-import { setCurrentMemberId } from '../../redux/member/member.actions';
+import { setCurrentMemberId, addNewMember, deleteMembersStart } from '../../redux/member/member.actions';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
@@ -34,6 +34,20 @@ const Member = ({ isAdmin }) => {
   const [members, setMembers] = useState(member);
   const teamMembers = useSelector(selectTeamMembers, shallowEqual)
 
+
+  const newMember = {
+    id: 0,
+    clubId:0,
+    teamId: 0,
+    roleId: 1,
+    startedOn: new Date(),
+    dob: new Date(),
+    phone: '',
+    email: '',
+    name: '',
+  }
+
+
   useEffect(() => {
     setMembers(members)
   }, [currentMemberId]);
@@ -42,6 +56,17 @@ const Member = ({ isAdmin }) => {
   const handleClick = (id, type) => {
     //setButton({ memberId: id, type: type });
     console.log(id)
+    if (id === 0)
+    {
+      dispatch(addNewMember(newMember))
+    }
+
+  if (type === 'delete')
+  {
+    console.log(id)
+      dispatch(deleteMembersStart(id))
+  }
+    
     dispatch(setCurrentMemberId(id))
   }
   
@@ -51,11 +76,11 @@ const Member = ({ isAdmin }) => {
     <MemberPage>
       <TitleContainer>
         <Title>PLAYERS</Title>          
-        {isAdmin ? <CustomIcon type='add' id={currentMemberId} handleClick={handleClick} />: null}
+        {isAdmin ? <CustomIcon type='add' id={0} handleClick={handleClick} />: null}
       </TitleContainer>
-      {/* {
-        currentMemberId === undefined ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0, clubId:0, teamName:'' }} />  : null
-      } */}
+      {
+        currentMemberId === 0 ? <MemberUpsert />  : null
+      }
       {/* {
       currentMemberId > 0 ?
         members
