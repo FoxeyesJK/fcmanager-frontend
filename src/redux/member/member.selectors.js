@@ -42,5 +42,5 @@ export const selectMemberItem =  createSelector(
 
 export const selectCurrentMemberId = createSelector(
     [selectMember],
-    member => member.selectCurrentMemberId
+    member => member.currentMemberId
 )

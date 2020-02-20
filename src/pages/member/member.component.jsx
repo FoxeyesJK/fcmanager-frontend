@@ -23,13 +23,21 @@ import { setCurrentMemberId } from '../../redux/member/member.actions';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
-const Member = ({ teamMembers, members, isAdmin }) => {
+const Member = ({ isAdmin }) => {
   //const [button, setButton] = useState({ memberId: 0, type: '' })
 
   //const { memberId, type } = button;
 
   const dispatch = useDispatch();
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
+  const member = useSelector(selectMembers, shallowEqual)
+  const [members, setMembers] = useState(member);
+  const teamMembers = useSelector(selectTeamMembers, shallowEqual)
+
+  useEffect(() => {
+    setMembers(members)
+  }, [currentMemberId]);
+
   
   const handleClick = (id, type) => {
     //setButton({ memberId: id, type: type });
@@ -37,23 +45,29 @@ const Member = ({ teamMembers, members, isAdmin }) => {
     dispatch(setCurrentMemberId(id))
   }
   
+  console.log('rerender')
+  
   return (
     <MemberPage>
       <TitleContainer>
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={currentMemberId} handleClick={handleClick} />: null}
       </TitleContainer>
-      {
-        currentMemberId === 0 ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0 }} />  : null
-      }
-      {
-      currentMemberId > 0 && members != null ? 
+      {/* {
+        currentMemberId === undefined ? <MemberUpsert member={{ name: '', email: '', phone: '', dob: new Date(), startedOn: new Date(), roleId: 1, teamId: 0, clubId:0, teamName:'' }} />  : null
+      } */}
+      {/* {
+      currentMemberId > 0 ?
         members
         .filter(member => member.id === currentMemberId)
-        .map((member) => (
-        <MemberUpsert member={member}/> 
-        ))
-      : null}
+        .map(member => 
+        <MemberUpsert member={member} />) : null
+        } */}
+
+        {
+          currentMemberId > 0 ?
+          <MemberUpsert /> : null
+        }
       <MemberContainer>
       {
           teamMembers.value().map(({ ...otherMemberProps }) => (
@@ -65,12 +79,5 @@ const Member = ({ teamMembers, members, isAdmin }) => {
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  teamMembers: selectTeamMembers,
-  members: selectMembers,
-})
-
-export default withRouter(connect(
- mapStateToProps 
-)(Member));
+export default Member;
 

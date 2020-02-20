@@ -44,7 +44,7 @@ export const putMembersFailure = errorMessage => ({
     payload: errorMessage
 })
 
-export const setCurrentMemberId = memberId => ({
+export const setCurrentMemberId = currentMemberId => ({
     type: MemberActionTypes.SET_CURRENT_MEMBERID,
-    currentMemberId: memberId
+    currentMemberId: currentMemberId
 })

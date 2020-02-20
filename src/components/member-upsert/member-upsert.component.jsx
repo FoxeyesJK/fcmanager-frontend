@@ -13,7 +13,7 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import { postMembersStart, putMembersStart } from '../../redux/member/member.actions';
 import { selectRoles } from '../../redux/role/role.selectors';
 import { selectTeams } from '../../redux/team/team.selectors';
-import { selectCurrentMemberId } from '../../redux/member/member.selectors';
+import { selectCurrentMemberId, selectMemberItem} from '../../redux/member/member.selectors';
 
 import {
   MemberUpsertContainer,
@@ -29,12 +29,16 @@ import {
 } from './member-upsert.styles';
 
 
-const MemberUpsert = ({ postMembersStart, putMembersStart, roles, teams, member}) => {
+const MemberUpsert = () => {
+  const member = useSelector(selectMemberItem, shallowEqual)
   const [members, setMembers] = useState(member);
   const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
-
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
+  const teams = useSelector(selectTeams, shallowEqual)
+  const roles = useSelector(selectRoles, shallowEqual)
+  const dispatch = useDispatch();
 
+  console.log(member)
   useEffect(() => {
     setMembers(member)
   }, [member]);
@@ -43,13 +47,13 @@ const MemberUpsert = ({ postMembersStart, putMembersStart, roles, teams, member}
     setMembers(members)
   }, [members]);
 
-//let formatter = Globalize.dateFormatter({ raw: 'MMM dd, yyyy' })
+
 
 const handleSubmit = event => {
   event.preventDefault();
 
   console.log(members)
-  currentMemberId > 0 ? putMembersStart(members) : postMembersStart(members);
+  currentMemberId > 0 ? dispatch(putMembersStart(members)) : dispatch(postMembersStart(members));
 }
 
 const handleChange = event => {
@@ -61,7 +65,7 @@ const handleChange = event => {
   return (
     <MemberUpsertContainer>
       <Title>Update Player</Title>
-      <FormContainer onSubmit={handleSubmit()}>
+      <FormContainer onSubmit={handleSubmit}>
         <FormContentContainer>
         {/* <ImageContainer>
           <ImageInput
@@ -153,19 +157,6 @@ const handleChange = event => {
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  roles: selectRoles,
-  teams: selectTeams
-})
-
-const mapDispatchToProps = dispatch => ({
-  postMembersStart: (members) => dispatch(postMembersStart(members)),
-  putMembersStart: (members) => dispatch(putMembersStart(members))
-})
-
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(MemberUpsert);
+export default MemberUpsert;
 
 

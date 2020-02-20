@@ -71,20 +71,6 @@ const Fixture = ({ isAdmin}) => {
     dispatch(toggleRecordHidden(true))
   }
 
-  // var match = matchId != 0 && !!matches
-  // ? matches.flatMap(({matches}) => matches).find(({id}) => id === matchId) 
-  // : {
-  //   id: 0,
-  //   homeTeamId: '',
-  //   homeScore: 0,
-  //   awayTeamId: 0,
-  //   awayScore: 0,
-  //   scheduledAt: new Date(),
-  //   location: '',
-  //   leagueId: 1,
-  //   clubId: 1,
-  //   matchRecords: []
-  // }
 
   return (
     <FixturePage>
