@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import SimpleBarReact from 'simplebar-react';
 import MATCH_DATA from '../fixture/fixture.data.js';
+
+import { selectStandings } from '../../redux/league/league.selectors';
 
 import { 
   LeaguePage,
@@ -19,22 +22,8 @@ import CurrentChampion from '../../components/current-champion/current-champion.
 import Standing from '../../components/standing/standing.component';
 import Record from '../../components/record/record.component';
 
-export default class League extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedId: 1,
-      matches: MATCH_DATA,
-      type: 'score',
-      type1: 'assist'
-    }
-  }
-
-  render () {
-    const { matches, selectedId, type, type1 } = this.state;
+const League = () => {
     return (
-    
     <LeaguePage>
       <StandingContainer >
         <StandingContentContainer>
@@ -43,10 +32,11 @@ export default class League extends React.Component {
         </StandingContentContainer>
       </StandingContainer >
       <RecordContainer>
-        <Record type={type} />
-        <Record type={type1} />
+        <Record type={'score'} />
+        <Record type={'assist'} />
       </RecordContainer>
     </LeaguePage>
     )
-  }
 }
+
+export default League;

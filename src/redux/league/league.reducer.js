@@ -3,6 +3,7 @@ import LeagueActionTypes from './league.types';
 const INITIAL_STATE = {
     hidden: true,
     leagues: [],
+    standings: [],
     isFetching: false,
     errorMessage: undefined
 };
@@ -23,7 +24,7 @@ const leagueReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isFetching: false,
-                leagues: action.payload
+                standings: action.payload
             }
         case LeagueActionTypes.FETCH_LEAGUES_FAILURE:
             return {

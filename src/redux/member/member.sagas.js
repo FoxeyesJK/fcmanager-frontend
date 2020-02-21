@@ -16,7 +16,6 @@ import {
 
 import MemberActionTypes from './member.types';
 
-//const url = 'https://jsonplaceholder.typicode.com/users';
 const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {

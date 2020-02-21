@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import { selectStandings } from '../../redux/league/league.selectors';
+import ordinal from 'ordinal';
 
 import {
   StandingContainer,
@@ -17,6 +20,9 @@ import {
 
 
 const Standing = () => {
+  const standings = useSelector(selectStandings, shallowEqual)
+
+  console.log(standings)
   return (
     <StandingContainer>
       <Title>STANDINGS</Title>
@@ -33,42 +39,22 @@ const Standing = () => {
           <TableHeader>GD</TableHeader>
           <TableHeader>PTS</TableHeader>
         </TableRow>
-        <TableRow>
-          <TableIndexData>1st</TableIndexData>
-          <TableTeamData><TeamIcon /><TableTeamText>Blue Team</TableTeamText></TableTeamData>
-          <TableData>6</TableData>
-          <TableData>2</TableData>
-          <TableData>2</TableData>
-          <TableData>0</TableData>
-          <TableData>0</TableData>
-          <TableData>6</TableData>
-          <TableData>3</TableData>
-          <TableData>3</TableData>
-        </TableRow>
-        <TableRow>
-          <TableIndexData>2nd</TableIndexData>
-          <TableTeamData><TeamIcon /><TableTeamText>Red Team</TableTeamText></TableTeamData>
-          <TableData>4</TableData>
-          <TableData>2</TableData>
-          <TableData>1</TableData>
-          <TableData>1</TableData>
-          <TableData>0</TableData>
-          <TableData>5</TableData>
-          <TableData>2</TableData>
-          <TableData>3</TableData>
-        </TableRow>
-        <TableRow>
-          <TableIndexData>3rd</TableIndexData>
-          <TableTeamData><TeamIcon /><TableTeamText>Yellow Team</TableTeamText></TableTeamData>
-          <TableData>4</TableData>
-          <TableData>2</TableData>
-          <TableData>1</TableData>
-          <TableData>1</TableData>
-          <TableData>0</TableData>
-          <TableData>3</TableData>
-          <TableData>0</TableData>
-          <TableData>3</TableData>
-        </TableRow>
+        {
+            standings.map((standing, index) => 
+              <TableRow>
+              <TableIndexData>{ordinal(index+1)}</TableIndexData>
+            <TableTeamData><TeamIcon /><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
+            <TableData>{standing.played}</TableData>
+            <TableData>{standing.won}</TableData>
+              <TableData>{standing.drawn}</TableData>
+              <TableData>{standing.lost}</TableData>
+              <TableData>{standing.goalFor}</TableData>
+              <TableData>{standing.goalAgainst}</TableData>
+              <TableData>{standing.goalDifference}</TableData>
+              <TableData>{standing.points}</TableData>
+            </TableRow>
+          )
+        }
       </Table>
    </StandingContainer>
   )
