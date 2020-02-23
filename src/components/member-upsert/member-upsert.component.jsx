@@ -40,16 +40,15 @@ const MemberUpsert = () => {
 
   // console.log(member)
   // console.log('memberupsert')
-  // useEffect(() => {
-  //   setMembers(member)
-  // }, [member]);
+  useEffect(() => {
+    setMembers(member)
+  }, [member]);
 
   useEffect(() => {
     setMembers(members)
   }, [members]);
 
 
-console.log('memberUpsert')
 const handleSubmit = event => {
   event.preventDefault();
 
@@ -108,7 +107,7 @@ const handleChange = event => {
               required
             />
           </InputContainer>
-          {/* <InputContainer>
+          <InputContainer>
             <Text>Team: </Text>
             <CustomDropdown
               name='team'
@@ -117,7 +116,7 @@ const handleChange = event => {
               options={teams}
               required
             />
-          </InputContainer> */}
+          </InputContainer>
           <InputContainer>
             <Text>Role: </Text>
             <CustomDropdown
