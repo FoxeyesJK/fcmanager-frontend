@@ -59,7 +59,9 @@ export const TableTeamData = styled.td`
     padding: 5px;
 `;
 
-export const TeamIcon = styled(BlueIcon)`
+export const TeamIcon = styled.div`
+    background-image: url(${props => props.teamLogoUrl});
+    background-size: 14px;
     ${IconStyles}
 `;
 

@@ -50,7 +50,10 @@ export const Team = styled.div`
     padding-left: 5px;
 `;
 
-export const TeamIcon = styled(BlueIcon)`
+export const TeamIcon = styled.div`
+    margin:auto;
+    background-image: url(${props => props.teamLogoUrl});
+    background-size: 80px;
     ${IconStyles}
 `;
 

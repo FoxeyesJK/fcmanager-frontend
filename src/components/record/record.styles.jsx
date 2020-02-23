@@ -12,6 +12,14 @@ const IconStyles = css`
     margin: 10px;
 `;
 
+export const TeamIcon = styled.div`
+    background-image: url(${props => props.teamLogoUrl});
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+    outline: none;
+`;
+
 export const ScoreIcon = styled(SoccerIcon)`
     ${IconStyles}
 `;

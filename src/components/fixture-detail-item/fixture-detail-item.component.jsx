@@ -134,7 +134,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
               />
               :
               <IconContainer>
-                <TeamIcon style={{backgroundImage: `url(${awayTeamLogoUrl})`}}/>
+                <TeamIcon homeTeamLogoUrl={awayTeamLogoUrl} />
               </IconContainer>
             }
         </TeamContainer>

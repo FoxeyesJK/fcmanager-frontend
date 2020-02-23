@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import ordinal from 'ordinal';
+
+import { selectMatchRecords } from '../../redux/league/league.selectors';
 
 import {
   RecordContainer,
   RecordContentContainer,
   IconContainer,
+  TeamIcon,
   ScoreIcon,
   AssistIcon,
   Title,
@@ -24,13 +29,15 @@ import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
 import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 
 const Record = ({ type }) => {
+  const matchRecords = useSelector(selectMatchRecords, shallowEqual)
+
   return (
     <RecordContainer>
       <IconContainer>
-        {type == 'score' ? <ScoreIcon /> : <AssistIcon />}
+        {type === 'score' ? <ScoreIcon /> : <AssistIcon />}
       </IconContainer>
       <RecordContentContainer>
-      <Title>{type == 'score' ? 'TOP SCORERS' : 'TOP ASSISTS'}</Title>
+      <Title>{type === 'score' ? 'TOP SCORERS' : 'TOP ASSISTS'}</Title>
       <Table>
         <TableRow>
           <TableIndexHeader>POS</TableIndexHeader>
@@ -38,24 +45,17 @@ const Record = ({ type }) => {
           <TableMemberHeader>NAME</TableMemberHeader>
           <TableGoalHeader>GOALS</TableGoalHeader>
         </TableRow>
-        <TableRow>
-          <TableIndexData>1st</TableIndexData>
-          <TableTeamData><BlueIcon className='icon' /></TableTeamData>
-          <TableMemberData>Nathan Jeong</TableMemberData>
-          <TableGoalData>2</TableGoalData>
-        </TableRow>
-        <TableRow>
-        <TableIndexData>2nd</TableIndexData>
-          <TableTeamData><BlueIcon className='icon' /></TableTeamData>
-          <TableMemberData>Nathan Jeong</TableMemberData>
-          <TableGoalData>2</TableGoalData>
-        </TableRow>
-        <TableRow>
-          <TableIndexData>3rd</TableIndexData>
-          <TableTeamData><BlueIcon className='icon' /></TableTeamData>
-          <TableMemberData>Nathan Jeong</TableMemberData>
-          <TableGoalData>2</TableGoalData>
-        </TableRow>
+          {
+            matchRecords
+            .filter(matchRecord => matchRecord.type === type)
+            .map((matchRecord, index) => 
+            <TableRow>
+          <TableIndexData>{ordinal(index+1)}</TableIndexData>
+          <TableTeamData><TeamIcon teamLogoUrl={matchRecord.teamLogoUrl} /></TableTeamData>
+          <TableMemberData>{matchRecord.memberName}</TableMemberData>
+          <TableGoalData>{matchRecord.count}</TableGoalData>
+          </TableRow>)
+          }
       </Table>
       </RecordContentContainer>
    </RecordContainer>

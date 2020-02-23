@@ -4,6 +4,7 @@ const INITIAL_STATE = {
     hidden: true,
     leagues: [],
     standings: [],
+    matchRecords: [],
     isFetching: false,
     errorMessage: undefined
 };
@@ -27,6 +28,23 @@ const leagueReducer = (state = INITIAL_STATE, action) => {
                 standings: action.payload
             }
         case LeagueActionTypes.FETCH_LEAGUES_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: action.payload
+            };
+        case LeagueActionTypes.FETCH_LEAGUE_MATCHRECORDS_START:
+            return {
+                ...state,
+                isFetching: true
+            }
+        case LeagueActionTypes.FETCH_LEAGUE_MATCHRECORDS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                matchRecords: action.payload
+            }
+        case LeagueActionTypes.FETCH_LEAGUE_MATCHRECORDS_FAILURE:
             return {
                 ...state,
                 isFetching: false,

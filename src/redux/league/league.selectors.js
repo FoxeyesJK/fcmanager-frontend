@@ -13,9 +13,19 @@ export const selectLeagueOptions = createSelector(
     leagues => leagues.map(league => { return { key: league.id, value: league.id, text: league.name }})
 )
 
+export const selectChampion = createSelector(
+    [selectLeague],
+    league => league.standings[0]
+)
+
 export const selectStandings = createSelector(
     [selectLeague],
     league => league.standings,
+)
+
+export const selectMatchRecords = createSelector(
+    [selectLeague],
+    league => league.matchRecords,
 )
 
 export const selectIsLeagueFetching = createSelector(

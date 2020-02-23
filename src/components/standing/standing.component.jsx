@@ -43,7 +43,7 @@ const Standing = () => {
             standings.map((standing, index) => 
               <TableRow>
               <TableIndexData>{ordinal(index+1)}</TableIndexData>
-            <TableTeamData><TeamIcon /><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
+            <TableTeamData><TeamIcon teamLogoUrl={standing.teamLogoUrl}/><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
             <TableData>{standing.played}</TableData>
             <TableData>{standing.won}</TableData>
               <TableData>{standing.drawn}</TableData>
