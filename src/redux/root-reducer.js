@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import userReducer from './user/user.reducer'
 import clubReducer from './club/club.reducer'
 import teamReducer from './team/team.reducer';
 import leagueReducer from './league/league.reducer';
@@ -17,6 +18,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
+  user: userReducer,
   club: clubReducer,
   team: teamReducer,
   league: leagueReducer,

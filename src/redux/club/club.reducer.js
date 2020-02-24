@@ -1,7 +1,7 @@
 import ClubActionTypes from './club.types';
 
 const INITIAL_STATE = {
-    currentClub: null,
+    currentClubId: undefined
 };
 
 const clubReducer = (state = INITIAL_STATE, action) => {

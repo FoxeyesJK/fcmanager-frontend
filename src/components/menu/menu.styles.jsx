@@ -6,6 +6,7 @@ import { ReactComponent as StrategyIcon } from '../../assets/icon-strategy.svg';
 import { ReactComponent as PaymentIcon } from '../../assets/icon-payment.svg';
 import { ReactComponent as ReportIcon } from '../../assets/icon-report.svg';
 import { ReactComponent as ScheduleIcon } from '../../assets/icon-schedule.svg';
+import { ReactComponent as AdminIcon } from '../../assets/icon-adminuser.svg';
 
 
 const IconStyles = css`
@@ -29,13 +30,17 @@ export const MenuContainer = styled.div`
   height: 100%;
   overflow-y: auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
 
   @media screen and (max-width: 800px) {
     width: 15vw;
     padding: 10px;
   }
+`;
+
+export const TitleOptionContainer = styled.div`
+
 `;
 
 export const TitleContainer = styled.div`
@@ -91,6 +96,29 @@ export const OptionName = styled.div`
   }
 `;
 
+export const UserContainer = styled.div`
+  padding: 20px;
+  
+`;
+
+export const UserLoginContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const InputContainer = styled.div`
+  width: 65%
+`;
+
+export const ButtonContainer = styled.div`
+  width: 30%
+`;
+
+export const UserTitle = styled.div`
+  font-size: 16px;
+  padding: 5px;
+`;
+
 export const StyledLeagueIcon = styled(ReportIcon)`
     ${IconStyles}
 `;
@@ -103,65 +131,6 @@ export const StyledSquadIcon = styled(SquadIcon)`
     ${IconStyles}
 `;
 
-
-
-
-// .menu {
-  // font-family: 'Open Sans Condensed', sans-serif;
-  // background: #262626;
-  // padding: 1.5em;
-  // position: fixed;
-  // left: 0;
-  // width: 25%;
-  // height: 100%;
-  // overflow-y: auto;
-  // display: flex;
-  // justify-content: flex-start;
-  // flex-direction: column;
-
-//   .menu-title {
-//     width: 100%;
-//     text-align: center;
-//     padding: 10px;
-//     h1 {
-//       font-size: 25px;
-//       font-weight: 700;
-//       padding: 5px;
-//     }
-
-//     span {
-//       font-size: 20px;
-//       font-weight: 300;
-//       padding: 5px;
-//     }
-//   }
-
-//   .options {
-//     display: flex;
-//     flex-direction: column;
-//     margin-top: 1.5em;
-//     width: 100%;
-
-//     .option {
-//       padding: 16px 0;
-//       border-bottom: 1px solid 	#404040;
-
-//       .icon {
-//         height: 24px;
-//         width: 40px;
-//         display: inline-block;
-//         vertical-align: middle;
-//       }
-
-//       span {
-//         margin-left: 3px;
-//         font-size: 20px;
-//       }
-//     }
-
-//     &.selected-option {
-//       background-color: #4285f4;
-//       color: white;
-//     }
-//   }
-// }
+export const StyledAdminIcon = styled(AdminIcon)`
+    ${IconStyles}
+`;
