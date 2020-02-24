@@ -5,12 +5,12 @@ const selectLeague = state => state.league;
 //Use selectLeagues if API contains Key, Text, Value
 export const selectLeagues = createSelector(
     [selectLeague],
-    league => league.leagues,
+    league => league.leagues.map(league => { return { value: league.id, label: league.name }})
 )
 
-export const selectLeagueOptions = createSelector(
-    [selectLeagues],
-    leagues => leagues.map(league => { return { key: league.id, value: league.id, text: league.name }})
+export const selectCurrentLeagueId = createSelector(
+    [selectLeague],
+    league => league.currentLeagueId
 )
 
 export const selectChampion = createSelector(

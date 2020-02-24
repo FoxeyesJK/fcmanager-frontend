@@ -2,6 +2,7 @@ import LeagueActionTypes from './league.types';
 
 const INITIAL_STATE = {
     hidden: true,
+    currentLeagueId: 1,
     leagues: [],
     standings: [],
     matchRecords: [],
@@ -11,11 +12,6 @@ const INITIAL_STATE = {
 
 const leagueReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case LeagueActionTypes.TOGGLE_LEAGUE_HIDDEN: 
-            return {
-                ...state,
-                hidden: !state.hidden
-            }
         case LeagueActionTypes.FETCH_LEAGUES_START:
             return {
                 ...state,
@@ -25,9 +21,26 @@ const leagueReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isFetching: false,
-                standings: action.payload
+                leagues: action.payload
             }
         case LeagueActionTypes.FETCH_LEAGUES_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: action.payload
+            };
+        case LeagueActionTypes.FETCH_LEAGUE_STANDINGS_START:
+            return {
+                ...state,
+                isFetching: true
+            }
+        case LeagueActionTypes.FETCH_LEAGUE_STANDINGS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                standings: action.payload
+            }
+        case LeagueActionTypes.FETCH_LEAGUE_STANDINGS_FAILURE:
             return {
                 ...state,
                 isFetching: false,
@@ -49,6 +62,11 @@ const leagueReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 isFetching: false,
                 errorMessage: action.payload
+            };
+        case LeagueActionTypes.SET_CURRENT_LEAGUE:
+            return {
+                ...state,
+                currentLeagueId: action.leagueId
             };
         default:
             return state;

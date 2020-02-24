@@ -37,5 +37,7 @@ export const Title = styled.div`
 export const SubTitle = styled.div`
     font-size: 12px;
     padding: 0px 10px;
+    width: 300px;
+
     ${TextFontStyles}
 `;

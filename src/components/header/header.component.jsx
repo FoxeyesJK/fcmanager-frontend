@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import { connect } from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
-import Dropdown from '../../components/custom-dropdown/custom-dropdown.component';
+import CustomDropdown from '../../components/custom-dropdown/custom-dropdown.component';
+
+import { selectLeagues, selectCurrentLeagueId } from '../../redux/league/league.selectors';
+import { setCurrentLeague } from '../../redux/league/league.actions';
 
 import { 
   HeaderContainer, 
@@ -13,16 +17,15 @@ import {
   SubTitle
 } from './header.styles';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
 const Header = ({ match, isSelectedOption, hidden }) => {
+
+  const dispatch = useDispatch();
+  const leagues = useSelector(selectLeagues, shallowEqual)
+  const leagueId = useSelector(selectCurrentLeagueId, shallowEqual)
+
+  console.log('league')
+  console.log(leagueId)
+  console.log(leagues)
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -31,18 +34,20 @@ const Header = ({ match, isSelectedOption, hidden }) => {
       <TextContainer>
         <Title>TEAM REPORT</Title>
         <SubTitle>
-          {/* <DropdownContainer>
-            <Dropdown />
-          </DropdownContainer> */}
-          {/* {hidden ? null : <DropdownLeagueContents />} */}
+          {
+          leagues.length > 0 ?
+          <CustomDropdown
+            name='team'
+            value={leagueId}
+            handleChange={league => dispatch(setCurrentLeague(league.value))}//setMatches({ ...matches, homeTeamId: team.value })}
+            options={leagues}
+            required
+          /> : null
+          }
           </SubTitle>
       </TextContainer>
     </HeaderContainer>
   )
 };
-
-const mapStateToProps = ({league: { hidden }}) => ({
-  hidden
-})
   
-export default connect(mapStateToProps)(Header);
+export default Header;

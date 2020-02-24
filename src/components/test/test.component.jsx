@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { fetchTeamsStart } from '../../redux/team/team.actions';
-import { fetchLeaguesStart, fetchLeagueMatchRecordsStart } from '../../redux/league/league.actions';
+import { fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart } from '../../redux/league/league.actions';
 import { fetchMembersStart } from '../../redux/member/member.actions';
 import { fetchMatchesStart } from '../../redux/match/match.actions';
 import { fetchClubsStart } from '../../redux/club/club.actions';
@@ -16,16 +16,17 @@ import { selectIsMatchFetching, selectIsMatchesLoaded } from '../../redux/match/
 //import { selectIsClubFetching, selectIsClubsLoaded } from '../../redux/club/club.selectors';
 import { selectIsRoleFetching, selectIsRolesLoaded } from '../../redux/role/role.selectors';
 
-const Test = ({ fetchTeamsStart, fetchLeaguesStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart }) => {
+const Test = ({ fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart }) => {
   useEffect(() => {
     fetchTeamsStart();
     fetchLeaguesStart();
+    fetchLeagueStandingsStart();
     fetchMembersStart();
     fetchMatchesStart();
     fetchLeagueMatchRecordsStart();
     //fetchClubsStart();
     fetchRolesStart();
-  }, [fetchTeamsStart, fetchLeaguesStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart]);
+  }, [fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart]);
 
   return (
     <div>
@@ -51,6 +52,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   fetchTeamsStart: () => dispatch(fetchTeamsStart()),
   fetchLeaguesStart: () => dispatch(fetchLeaguesStart()),
+  fetchLeagueStandingsStart: () => dispatch(fetchLeagueStandingsStart()),
   fetchLeagueMatchRecordsStart: () => dispatch(fetchLeagueMatchRecordsStart()),
   fetchMembersStart: () => dispatch(fetchMembersStart()),
   fetchMatchesStart: () => dispatch(fetchMatchesStart()),
