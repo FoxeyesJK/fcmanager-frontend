@@ -54,8 +54,6 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('handlesubmit')
-    console.log(records)
     const payload = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
     dispatch(postRecordsStart({payload, matchId}));
     //success
@@ -65,13 +63,11 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
 
   const handleHomeClick = event => {
     setTempRecordId(tempRecordId + 1);
-    console.log(tempRecordId)
     addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId})
   }
 
   const handleAwayClick = event => {
     setTempRecordId(tempRecordId + 1);
-    console.log(tempRecordId)
     addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId})
   }
     

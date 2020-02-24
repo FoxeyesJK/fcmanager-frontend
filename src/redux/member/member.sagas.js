@@ -84,9 +84,6 @@ export function* putMembersStart() {
 }
 
 export function* deleteMembersAsync({memberId}) {
-
-    console.log('deleteMember')
-    console.log(memberId)
     try {
         const resMember = yield axios.delete(baseUrl + apiEndPoint + memberId);
         yield put(deleteMembersSuccess(resMember.data))

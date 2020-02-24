@@ -58,7 +58,6 @@ export function* postMatchesStart() {
 }
 
 export function* putMatchesAsync({payload}) {
-    console.log('putMatchesAsync');
     try {
         const resMatch = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
         const resData = resMatch.data;
@@ -84,8 +83,6 @@ export function* putMatchesStart() {
 }
 
 export function* deleteMatchesAsync({matchId}) {
-    console.log('deleteMatchesAsync');
-    console.log(matchId)
     try {
         const resMatch = yield axios.delete(baseUrl + apiEndPoint + matchId);
         const resData = resMatch.data;

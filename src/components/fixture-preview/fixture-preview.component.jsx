@@ -13,9 +13,6 @@ const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick, is
   return (
     <FixturePreviewContainer>
       {
-        console.log(scheduledOn)
-      }
-      {
         scheduledOn !== 'undefined' ?
         <Title>{moment(scheduledOn).format('ddd')}, {moment(scheduledOn).format('l')}</Title> : <Title>New Fixture</Title>
       }

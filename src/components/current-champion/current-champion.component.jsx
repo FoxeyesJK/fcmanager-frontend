@@ -16,8 +16,6 @@ import {
 const CurrentChampion = () => {
   const champion = useSelector(selectChampion, shallowEqual)
 
-  console.log('champion')
-  console.log(champion)
   const { teamLogoUrl, teamName } = !!champion ? champion : '';
   return (
     <CurrentChampionContainer>

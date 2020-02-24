@@ -23,9 +23,6 @@ const Header = ({ match, isSelectedOption, hidden }) => {
   const leagues = useSelector(selectLeagues, shallowEqual)
   const leagueId = useSelector(selectCurrentLeagueId, shallowEqual)
 
-  console.log('league')
-  console.log(leagueId)
-  console.log(leagues)
   return (
     <HeaderContainer>
       <LogoContainer>

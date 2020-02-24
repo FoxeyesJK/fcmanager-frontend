@@ -20,7 +20,6 @@ export function* fetchLeaguesAsync() {
     const currentLeagueId = yield select(selectCurrentLeagueId)
     try {
         const response = yield axios.get(baseUrl + apiEndPoint + currentLeagueId);
-        console.log(response)
         yield put(fetchLeaguesSuccess(response.data))
     } catch (error) {
         yield put(fetchLeaguesFailure(error.message))
@@ -39,7 +38,6 @@ export function* fetchLeagueStandingsAsync() {
     const currentLeagueId = yield select(selectCurrentLeagueId)
     try {
         const response = yield axios.get(baseUrl + apiEndPoint + currentLeagueId + '/standings');
-        console.log(response)
         yield put(fetchLeagueStandingsSuccess(response.data))
     } catch (error) {
         yield put(fetchLeagueStandingsFailure(error.message))

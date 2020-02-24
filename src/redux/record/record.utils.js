@@ -1,10 +1,6 @@
 export const addRecord = (records, recordToAdd) => {
-    console.log('recordRedux')
-    console.log(records)
-    console.log(recordToAdd)
 
     if (recordToAdd.id === 0) {
-        console.log('add')
     
         //add
         return records.map(record => 
@@ -14,7 +10,6 @@ export const addRecord = (records, recordToAdd) => {
         );
     }
 
-    console.log('update')
     return records.map(record => 
         record.id === recordToAdd.id
         ? { ...record, scoreMemberId: recordToAdd.scoreMemberId, assistMemberId: recordToAdd.assistMemberId }
@@ -24,7 +19,6 @@ export const addRecord = (records, recordToAdd) => {
 
 
 export const addRowToRecord = (records, recordToAdd) => {
-    console.log('addRowToRecord')
     return [...records, { ...recordToAdd}]
 }
 

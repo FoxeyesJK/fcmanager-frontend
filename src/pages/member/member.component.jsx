@@ -18,6 +18,7 @@ import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';
+import { selectCurrentLeagueId } from '../../redux/league/league.selectors';
 import { setCurrentMemberId, addNewMember, deleteMembersStart } from '../../redux/member/member.actions';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
@@ -30,6 +31,7 @@ const Member = ({ isAdmin }) => {
 
   const dispatch = useDispatch();
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
+  const currentLeaugeId = useSelector(selectCurrentLeagueId, shallowEqual)
   const member = useSelector(selectMembers, shallowEqual)
   const [members, setMembers] = useState(member);
   const teamMembers = useSelector(selectTeamMembers, shallowEqual)
@@ -37,7 +39,8 @@ const Member = ({ isAdmin }) => {
 
   const newMember = {
     id: 0,
-    clubId:0,
+    clubId: 1,
+    leagueId: currentLeaugeId,
     teamId: 0,
     roleId: 1,
     startedOn: new Date(),
@@ -55,22 +58,15 @@ const Member = ({ isAdmin }) => {
   
   const handleClick = (id, type) => {
     //setButton({ memberId: id, type: type });
-    console.log(id)
     if (id === 0)
-    {
       dispatch(addNewMember(newMember))
-    }
 
-  if (type === 'delete')
-  {
-    console.log(id)
-      dispatch(deleteMembersStart(id))
-  }
+    if (type === 'delete')
+        dispatch(deleteMembersStart(id))
     
     dispatch(setCurrentMemberId(id))
   }
   
-  console.log('rerender')
   
   return (
     <MemberPage>

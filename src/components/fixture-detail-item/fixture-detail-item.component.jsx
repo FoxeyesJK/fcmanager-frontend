@@ -74,8 +74,6 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
     setMatches(matches)
   }, [matches]);
 
-  console.log(matches)
-  console.log(match)
   const { id, homeTeamId, homeTeamLogoUrl, homeScore, awayTeamId, awayTeamLogoUrl, awayScore, scheduledAt, location, league} = matches;
 
 

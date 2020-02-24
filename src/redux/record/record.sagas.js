@@ -17,10 +17,8 @@ const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'matchrecord/';
 export function* fetchRecordsAsync({payload: { matchId }}) {
     try {
-        console.log(baseUrl + apiEndPoint + matchId)
         const recordRes = yield axios.get(baseUrl + apiEndPoint + matchId);
         const records = recordRes.data;
-         console.log(records)
         yield put(fetchRecordsSuccess(records))
     } catch (error) {
         yield put(fetchRecordsFailure(error.message))
@@ -36,7 +34,6 @@ export function* fetchRecordsStart() {
 
 export function* postRecordsAsync({payload}) {
     try {
-        console.log('postRecordsasync')
         const recordRes = yield axios.post(baseUrl + apiEndPoint, payload.payload);
         const records = recordRes.data;
         const matchId = payload.matchId;
@@ -50,17 +47,12 @@ export function* postRecordsAsync({payload}) {
 
 
 export function* onPostRecordsSuccess() {
-    console.log('onPostRecordsSuccess')
     yield takeLatest(RecordActionTypes.POST_RECORDS_SUCCESS, fetchRecordsAsyncAfterPost)
     
 }
 
 //export function* fetchRecordsAsyncAfterPost(records) {
 export function* fetchRecordsAsyncAfterPost({records, matchId}) {
-    console.log('postRecordsasyncAfterPost')
-    console.log(records)
-    console.log(matchId)
-    //console.log(matchId)
     yield fetchMatchesAsyncAfterPost();
     yield fetchRecordsAsync({payload: {matchId}});
 }

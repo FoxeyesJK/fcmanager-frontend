@@ -22,7 +22,6 @@ import {
 const Standing = () => {
   const standings = useSelector(selectStandings, shallowEqual)
 
-  console.log(standings)
   return (
     <StandingContainer>
       <Title>STANDINGS</Title>

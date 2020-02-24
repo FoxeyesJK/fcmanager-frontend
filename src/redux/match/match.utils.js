@@ -1,9 +1,7 @@
 
 export const updateHomeTeamToMatch = (matches, selectedMatchId, homeTeamId) => {
-    console.log('updateHomeTeamToMatch')
     const existingMatch = matches.find(m => m.id === selectedMatchId)
     if (existingMatch) {
-        console.log('updateHomeTeamToMatch exsist')
         return matches.map(match =>
             match.id === selectedMatchId
             ? { ...match, homeTeamId: homeTeamId }
@@ -45,12 +43,9 @@ export const updateMatch = (matches, payload) => {
             )
         }
 
-        console.log('test')
-        console.log(matches)
     const existingNewMatch = matches.find(m => m.id === 0)
 
     if (existingNewMatch) {
-        console.log('in')
         return matches.map(match => 
             match.id === 0 
             ? {...match, ...payload }

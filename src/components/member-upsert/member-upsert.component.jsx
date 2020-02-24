@@ -38,8 +38,6 @@ const MemberUpsert = () => {
   const roles = useSelector(selectRoles, shallowEqual)
   const dispatch = useDispatch();
 
-  // console.log(member)
-  // console.log('memberupsert')
   useEffect(() => {
     setMembers(member)
   }, [member]);

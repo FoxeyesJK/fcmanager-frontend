@@ -26,7 +26,6 @@ export const updateMember = (members, payload) => {
     const existingNewMember = members.find(m => m.id === 0)
 
     if (existingNewMember) {
-        console.log('in')
         return members.map(member => 
             member.id === 0 
             ? {...member, ...payload }

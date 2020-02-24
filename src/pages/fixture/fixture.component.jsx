@@ -71,8 +71,6 @@ const Fixture = ({ isAdmin}) => {
     dispatch(toggleRecordHidden(true))
   }
 
-
-  console.log('match rerender')
   return (
     <FixturePage>
       <FixtureContainer>
@@ -99,7 +97,6 @@ const Fixture = ({ isAdmin}) => {
           </SimpleBarReact>
         </Table>
         </FixtureListContainer>
-        {console.log('fix')}
         {
           (isAdmin && matchId !== undefined) || (!isAdmin && matchId !== undefined) ?
           <FixtureDetail isAdmin={isAdmin} /> 
