@@ -4,7 +4,7 @@ import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as SoccerIcon } from '../../assets/icon-soccerball.svg';
 import { ReactComponent as ShoesIcon } from '../../assets/icon-soccershoes.svg';
 
-import { TitleColor, MainTableColor, SubTableColor } from '../../global.styles';
+import { TitleColor, MainTableColor, SubTableColor, SubBackgroundColor } from '../../global.styles';
 
 const IconStyles = css`
     height: 20px;
@@ -29,9 +29,8 @@ export const AssistIcon = styled(ShoesIcon)`
 `;
 
 export const RecordContainer = styled.div`
-    background-color: ${SubTableColor};
-    width: 400px;
-    height: 400px;
+    background-color: ${SubBackgroundColor};
+    width: 100%;
     margin-left: 10px;
     display: flex;
 
@@ -50,7 +49,7 @@ export const IconContainer = styled.div`
     margin: 10px;
     width: 40px;
     height: 40px;
-    background-color: ${TitleColor};
+    background-color: #FFFFFF;
     border-radius: 50%;
 
 `;
@@ -63,10 +62,10 @@ export const Title = styled.div`
 `;
 
 export const Table = styled.table`
-    background-color: ${SubTableColor};
+    background-color: ${SubBackgroundColor};
     text-align: center;
     width: 100%;
-    //border: 3px solid ${MainTableColor};
+    //border: 3px solid ${SubBackgroundColor};
 `;
 
 export const TableRow = styled.tr`

@@ -6,7 +6,7 @@ import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 
 import { MainTableColor, SubTableColor} from '../../global.styles';
 
-import { TitleColor } from '../../global.styles';
+import { TitleColor, SubBackgroundColor } from '../../global.styles';
 
 const IconStyles = css`
     height: 14px;
@@ -33,15 +33,15 @@ export const Title = styled.table`
 `;
 
 export const Table = styled.table`
-    background-color: ${MainTableColor};
+    background-color: ${SubBackgroundColor};
     text-align: center;
     width: 100%;
     //border: 3px solid ${MainTableColor};
 `;
 
 export const TableRow = styled.tr`
-    &:nth-child(even) {background-color: ${SubTableColor}}
-    &:nth-child(odd) {background-color: ${MainTableColor}}
+    &:nth-child(even) {background-color: ${SubBackgroundColor}}
+    &:nth-child(odd) {background-color: ${SubBackgroundColor}}
 `;
 
 export const TableHeader = styled.th`

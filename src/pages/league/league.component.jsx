@@ -7,6 +7,8 @@ import { selectStandings } from '../../redux/league/league.selectors';
 
 import { 
   LeaguePage,
+  ChampionsContainer,
+  RecordsContainer,
   StandingContainer,
   StandingContentContainer,
   LeagueContainer,
@@ -18,23 +20,27 @@ import {
   RecordContainer
 } from './league.styles.jsx';
 
-import CurrentChampion from '../../components/current-champion/current-champion.component';
+import Champions from '../../components/champions/champions.component';
 import Standing from '../../components/standing/standing.component';
 import Record from '../../components/record/record.component';
 
 const League = () => {
     return (
     <LeaguePage>
+      <ChampionsContainer>
+        <Champions />
+      </ChampionsContainer>
+      <RecordsContainer>
       <StandingContainer >
-        <StandingContentContainer>
-          <CurrentChampion />
           <Standing />
-        </StandingContentContainer>
       </StandingContainer >
       <RecordContainer>
         <Record type={'score'} />
+        </RecordContainer>
+        <RecordContainer>
         <Record type={'assist'} />
       </RecordContainer>
+      </RecordsContainer>
     </LeaguePage>
     )
 }

@@ -13,9 +13,9 @@ export const selectCurrentLeagueId = createSelector(
     league => league.currentLeagueId
 )
 
-export const selectChampion = createSelector(
+export const selectChampions = createSelector(
     [selectLeague],
-    league => league.standings[0]
+    league => league.standings.filter((standing, index) => index < 3)
 )
 
 export const selectStandings = createSelector(
