@@ -7,6 +7,7 @@ import {
   TitleContainer,
   OptionsContainer,
   UserContainer,
+  UserAdminContainer,
   UserLoginContainer,
   InputContainer,
   ButtonContainer,
@@ -34,11 +35,15 @@ const Menu = () => {
   const dispatch = useDispatch();
   const { username, password } = user;
 
-  const handleClick = event => {
+  const handleLoginClick = event => {
     dispatch(setCurrentUser({username: 'Administrator', password: user.password}))
 
     if (user.password !== 'fc2020')
       alert('Invalid password.')
+  }
+
+  const handleLogoutClick = event => {
+    dispatch(setCurrentUser({username: null, password: null}))
   }
 
   const handleChange = event => {
@@ -46,6 +51,8 @@ const Menu = () => {
   
     setUser({ ...user, [name]: value });
   }
+
+  
 
   return (
   <MenuContainer>
@@ -87,10 +94,13 @@ const Menu = () => {
       </TitleOptionContainer>
       {
         isAdmin ?
-        <UserContainer>
+        <UserAdminContainer isAdmin>
           <StyledAdminIcon />
-          Adminintrator Access Allowed
-        </UserContainer> :
+          <UserTitle>Adminintrator Access Allowed</UserTitle>
+          <ButtonContainer>
+            <CustomButton handleClick={handleLogoutClick}>Logout</CustomButton>
+          </ButtonContainer>
+        </UserAdminContainer> :
         <UserContainer>
           <UserTitle>Administrator</UserTitle>
           <UserLoginContainer>
@@ -104,7 +114,7 @@ const Menu = () => {
             />
           </InputContainer>
           <ButtonContainer>
-            <CustomButton handleClick={handleClick}>Login</CustomButton>
+            <CustomButton handleClick={handleLoginClick}>Login</CustomButton>
           </ButtonContainer>
           </UserLoginContainer>
         </UserContainer>

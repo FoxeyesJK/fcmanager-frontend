@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
 
-import Test from '../../components/test/test.component';
 import { Dropdown } from 'semantic-ui-react'
 import {
   HomePageContainer,
