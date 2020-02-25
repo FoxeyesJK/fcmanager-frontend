@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TitleColor, SubTableColor, MainBackgroundColor } from '../../global.styles';
+import { TitleColor, SubTableColor, MainBackgroundColor, SubBackgroundColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
     @media screen and (max-width: 800px) {
@@ -10,8 +10,15 @@ export const LeaguePage = styled.div`
     }
 `;
 
+export const ChampionsContainer = styled.div`
+    padding: 20px;
+`;
+
 export const StandingContainer = styled.div`
- 
+    background-color: ${SubBackgroundColor};
+    width: 40%
+    margin-left: 10px;
+    display: flex;
 `;
 
 export const StandingContentContainer = styled.div`
@@ -28,6 +35,14 @@ export const StandingContentContainer = styled.div`
     }
 `;
 
+export const RecordsContainer = styled.div`
+    display: flex;
+    justfy-content: space-between;
+    width: 100%;
+    height: 400px;
+`;
+
+
 export const LeagueContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -41,6 +56,7 @@ export const FixtureContainer = styled.div`
 
 export const RecordContainer = styled.div`
     display: flex;
+    width: 30%
 
     @media screen and (max-width: 800px) {
         flex-direction: column;
