@@ -63,7 +63,7 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             } : ''
          }
          onChange={handleChange}
-         required
+         {...otherProps}
       />
    </Dropdown>
    );
