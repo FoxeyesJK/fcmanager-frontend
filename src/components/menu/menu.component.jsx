@@ -66,10 +66,6 @@ const Menu = () => {
           <StyledSquadIcon />
           <OptionName>Players</OptionName>
         </OptionLink>
-        <OptionLink to='/member-admin'>
-          <StyledSquadIcon />
-          <OptionName>Players-Admin</OptionName>
-        </OptionLink>
         {/* <OptionLink to='/strategy'>
           <StrategyIcon className='icon' />
           <OptionName>Strategy</OptionName>
@@ -85,10 +81,6 @@ const Menu = () => {
         <OptionLink to='/fixture'>
           <StyledScheduleIcon/>
           <OptionName>Fixture</OptionName>
-        </OptionLink>
-        <OptionLink to='/fixture-admin'>
-          <StyledScheduleIcon/>
-          <OptionName>Fixture-Admin</OptionName>
         </OptionLink>
         </OptionsContainer>
       </TitleOptionContainer>

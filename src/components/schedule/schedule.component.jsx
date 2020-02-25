@@ -22,13 +22,7 @@ import SCHEDULE_DATA from '../../pages/league/fixture.data';
 import ScheduleAddItem from '../admin-schedule-add-item/admin-schedule-add-item.component';
 import ScheduleItem from '../schedule-item/schedule-item.component';
 
-export default class Schedule extends React.Component {
-  constructor(props) {
-    super(props);
-    
-  }
-
-  render() {
+const Schedule = () => {
     return (
         <AdminScheduleContainer>
             <TableRow>
@@ -57,6 +51,5 @@ export default class Schedule extends React.Component {
         </AdminScheduleContainer>
     )
   }
-}
 
-//https://www.youtube.com/watch?v=oQnojIyTXb8
+export default Schedule;

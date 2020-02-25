@@ -32,10 +32,8 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/member' component={Member} />
-              <Route exact path='/member-admin' render={(props) => <Member {...props} isAdmin={true} />} />
               <Route exact path='/league' component={League} />
               <Route exact path='/fixture' component={Fixture} />
-              <Route exact path='/fixture-admin' render={(props) => <Fixture {...props} isAdmin={true} />} />
             </Switch>
           </BodyContainer>
         </Body>

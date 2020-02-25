@@ -13,6 +13,7 @@ import 'react-widgets/dist/css/react-widgets.css';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { selectRecords } from '../../redux/record/record.selectors';
 import { fetchRecordsStart, postRecordsStart, putRecordsStart, addRowToRecord, setIsRecordChangeable, toggleRecordHidden } from '../../redux/record/record.actions';
 import { selectIsRecordFetching, selectIsRecordsLoaded, selectIsHidden } from '../../redux/record/record.selectors';
@@ -38,9 +39,10 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isAdmin, isRecordAdmin, handleIsRecordAdmin}) => {
+const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, homeTeamId, awayTeamId, isRecordAdmin, handleIsRecordAdmin}) => {
   //const [records, setRecords] = useState(matchRecords);
   const isRecordHidden = useSelector(selectIsHidden, shallowEqual);
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   const [tempRecordId, setTempRecordId] = useState(0);
   const dispatch = useDispatch();
 
@@ -79,24 +81,18 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === homeTeamId || record.assistTeamId === homeTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isAdmin={isAdmin} isRecordHidden={isRecordHidden}/>
+                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
-          {/* {
-            <RecordItem record={newRecord} teamId={homeTeamId} isAdmin={isAdmin}/>
-          } */}
           </HomeTeamRecord>
           <AwayTeamRecord>
           {
             !!records ?
               records.filter(record => record.scoreTeamId === awayTeamId || record.assistTeamId === awayTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isAdmin={isAdmin} isRecordHidden={isRecordHidden}/>
+                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
-          {/* {
-            <RecordItem record={newRecord} teamId={homeTeamId} isAdmin={isAdmin}/>
-          } */}
           </AwayTeamRecord>
           </TeamRecordContainer>
           {
