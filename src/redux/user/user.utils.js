@@ -1,8 +1,7 @@
 export const setAdminUser = (user) => {
-    console.log('userin')
-    console.log(user)
-    if (user.password === 'fc2020')
-    {
-        return user.username
-    }
+    return user.password === 'fc2020' ? user.username : null
+}
+
+export const toggleAdmin = (user) => {
+    return user.password === 'fc2020'
 }

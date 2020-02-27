@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {useSelector, shallowEqual} from 'react-redux';
+
 import { render } from 'react-dom';
 import moment from 'moment'
 import momentLocalizer from 'react-widgets-moment';
@@ -13,6 +15,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectMemberNames } from '../../redux/member/member.selectors';
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { addRecord } from '../../redux/record/record.actions';
 
 import {
@@ -30,8 +33,9 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isAdmin, isRecordHidden }) => {
+const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isRecordHidden }) => {
 
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
   const isRecordEditable = isAdmin && !isRecordHidden;
   

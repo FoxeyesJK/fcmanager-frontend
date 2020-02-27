@@ -16,7 +16,7 @@ import { selectIsMatchFetching, selectIsMatchesLoaded } from '../../redux/match/
 //import { selectIsClubFetching, selectIsClubsLoaded } from '../../redux/club/club.selectors';
 import { selectIsRoleFetching, selectIsRolesLoaded } from '../../redux/role/role.selectors';
 
-const Test = ({ fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart }) => {
+const Fetching = ({ fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart }) => {
   useEffect(() => {
     fetchTeamsStart();
     fetchLeaguesStart();
@@ -63,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect (
   mapStateToProps,
   mapDispatchToProps
-)(Test);
+)(Fetching);

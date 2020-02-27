@@ -19,12 +19,13 @@ import MemberPreview from '../../components/member-preview/member-preview.compon
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';
 import { selectCurrentLeagueId } from '../../redux/league/league.selectors';
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { setCurrentMemberId, addNewMember, deleteMembersStart } from '../../redux/member/member.actions';
 
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 
-const Member = ({ isAdmin }) => {
+const Member = () => {
   //const [button, setButton] = useState({ memberId: 0, type: '' })
 
   //const { memberId, type } = button;
@@ -35,7 +36,7 @@ const Member = ({ isAdmin }) => {
   const member = useSelector(selectMembers, shallowEqual)
   const [members, setMembers] = useState(member);
   const teamMembers = useSelector(selectTeamMembers, shallowEqual)
-
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
 
   const newMember = {
     id: 0,
@@ -92,7 +93,7 @@ const Member = ({ isAdmin }) => {
       <MemberContainer>
       {
           teamMembers.value().map(({ ...otherMemberProps }) => (
-            <MemberPreview {...otherMemberProps} handleClick={handleClick} isAdmin={isAdmin} />
+            <MemberPreview {...otherMemberProps} handleClick={handleClick}/>
           ))
       }
       </MemberContainer>

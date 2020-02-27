@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectMatches, selectScheduledMatches, selectSelectedMatchId } from '../../redux/match/match.selectors';
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 
 import { setSelectedMatchId, addNewMatch, deleteMatchesStart } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
@@ -31,7 +32,7 @@ import FixtureDetail from '../../components/fixture-detail/fixture-detail.compon
 import FixtureDetailItem from '../../components/fixture-detail-item/fixture-detail-item.component';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
-const Fixture = ({ isAdmin}) => {
+const Fixture = () => {
 
   //const [sections, setSection] = useState({ matchId: 0, section: '' })
   //const { matchId, section } = sections;
@@ -39,6 +40,7 @@ const Fixture = ({ isAdmin}) => {
   const dispatch = useDispatch();
   const matchId = useSelector(selectSelectedMatchId, shallowEqual)
   const matches = useSelector(selectScheduledMatches, shallowEqual)
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
 
   const newMatch = {
     id: 0,
@@ -91,7 +93,7 @@ const Fixture = ({ isAdmin}) => {
           {
             !!matches ? 
               matches.value().map(match => 
-                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items} isAdmin={isAdmin}/>
+                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items} />
               ) : null
           }
           </SimpleBarReact>
@@ -99,7 +101,7 @@ const Fixture = ({ isAdmin}) => {
         </FixtureListContainer>
         {
           (isAdmin && matchId !== undefined) || (!isAdmin && matchId !== undefined) ?
-          <FixtureDetail isAdmin={isAdmin} /> 
+          <FixtureDetail /> 
           : null
         }
       </FixtureContainer>

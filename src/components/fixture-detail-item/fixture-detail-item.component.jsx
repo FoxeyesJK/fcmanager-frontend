@@ -17,6 +17,7 @@ import { withRouter } from 'react-router-dom';
 import { postMatchesStart, putMatchesStart, setMatchHomeTeam, setMatchAwayTeam } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
 
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { selectTeams } from '../../redux/team/team.selectors';
 import { selectMatchItem } from '../../redux/match/match.selectors';
 
@@ -60,12 +61,14 @@ import { selectIsHidden } from '../../redux/record/record.selectors';
 moment.locale('en')
 momentLocalizer()
 
-const FixtureDetailItem = ({ type, isAdmin }) => {
+const FixtureDetailItem = ({ type }) => {
   const teams = useSelector(selectTeams, shallowEqual)
   const match = useSelector(selectMatchItem, shallowEqual)
   const [matches, setMatches] = useState(match);
   const isRecordHidden = useSelector(selectIsHidden, shallowEqual)
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   const dispatch = useDispatch();
+
   useEffect(() => {
     setMatches(match)
   }, [match]);
@@ -174,7 +177,7 @@ const FixtureDetailItem = ({ type, isAdmin }) => {
           }
         </FormContainer>
         {
-        <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} isAdmin={isAdmin} handleIsRecordAdmin={handleIsRecordAdmin} />
+        <RecordPreview matchId={id} homeTeamId={homeTeamId} awayTeamId={awayTeamId} handleIsRecordAdmin={handleIsRecordAdmin} />
       } 
     </FixtureDetailItemContainer>
   )

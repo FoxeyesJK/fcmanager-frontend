@@ -1,5 +1,5 @@
 import UserActionTypes from './user.types';
-import { setAdminUser } from './user.utils';
+import { setAdminUser, toggleAdmin } from './user.utils';
 
 const INITIAL_STATE = {
     currentUser: null,
@@ -12,7 +12,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: setAdminUser(action.payload),
-                isAdmin: true
+                isAdmin: toggleAdmin(action.payload)
             }
         default:
             return state;

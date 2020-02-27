@@ -20,6 +20,7 @@ const IconStyles = css`
   }
 `;
 
+
 export const MenuContainer = styled.div`
   font-family: 'Open Sans Condensed', sans-serif;
   background: #0F0F0F;
@@ -98,7 +99,12 @@ export const OptionName = styled.div`
 
 export const UserContainer = styled.div`
   padding: 20px;
-  
+`;
+
+export const UserAdminContainer = styled.div`
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const UserLoginContainer = styled.div`

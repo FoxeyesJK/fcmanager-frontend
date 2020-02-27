@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector, shallowEqual} from 'react-redux';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 import {
@@ -13,9 +14,12 @@ import {
   Text
 } from './member-item.styles.jsx';
 
+import { selectIsAdmin } from '../../redux/user/user.selectors';
 
-const MemberItem = ({ item, handleClick, isAdmin }) => {
+
+const MemberItem = ({ item, handleClick }) => {
   const { id, name, email, imageUrl } = item;
+  const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   return (
     <MemberItemContainer>
       <HeaderContainer>
@@ -41,31 +45,3 @@ const MemberItem = ({ item, handleClick, isAdmin }) => {
 }
 
 export default MemberItem;
-
-
-// <MemberItemContainer>
-{/* <NameContainer>
-  <Name>{name}</Name>
-  {isAdmin ? 
-    <IconContainer>
-      <CustomIcon type='edit' handleClick={handleClick} />
-      <CustomIcon type='delete' handleClick={handleClick} />
-    </IconContainer>
-    : null}
-</NameContainer>
-<ContentContainer>
-<ImageContainer>
-<ProfileImage
-    style={{
-        backgroundImage: `url('https://www.iottie.com/download/profile-blank.png')`//`url(${imageUrl})`
-    }}
-/>
-</ImageContainer>
-<TextContainer>
-    <Text>Email: jake.kw@iottie.com</Text>
-    <Text>phone: 917-832-6720</Text>
-    <Text>DOB: 01/27/1992</Text>
-    <Text>Since: 01/27/2020</Text>
-  </TextContainer>
-</ContentContainer> */}
-// </MemberItemContainer>
