@@ -93,7 +93,7 @@ const Fixture = () => {
           {
             !!matches ? 
               matches.value().map(match => 
-                <FixturePreview selectedMatchId={matchId} handleClick={handleClick} scheduledOn={match.scheduledOn} matches={match.items} />
+                <FixturePreview key={match.id} scheduledOn={match.scheduledOn} matches={match.items} selectedMatchId={matchId} handleClick={handleClick} />
               ) : null
           }
           </SimpleBarReact>

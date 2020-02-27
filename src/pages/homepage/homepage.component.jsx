@@ -13,8 +13,8 @@ class HomePage extends React.Component {
   render() {
 
     return (
-      <button type="submit"></button>
-    );
+      <div></div>
+    )
   }
 }
 

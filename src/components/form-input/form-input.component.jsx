@@ -8,7 +8,10 @@ import {
 
 const FormInput = ({ handleChange, label, ...otherProps }) => (
     <FormInputContainer>
-        <Input onChange={handleChange} {...otherProps}/>
+        <Input 
+            onChange={handleChange} 
+            {...otherProps}
+        />
         {label ? (
             <Label>
                 {label}

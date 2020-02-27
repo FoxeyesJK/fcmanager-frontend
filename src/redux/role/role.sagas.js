@@ -12,7 +12,7 @@ const baseUrl = 'http://68.132.136.143:5611/';
 const apiEndPoint = 'code/';
 export function* fetchRolesAsync() {
     try {
-        const roleRes = yield axios.get(baseUrl + apiEndPoint);
+        const roleRes = yield axios.get(baseUrl + apiEndPoint + 1);
         yield put(fetchRolesSuccess(roleRes.data))
     } catch (error) {
         yield put(fetchRolesFailure(error.message))
