@@ -74,7 +74,13 @@ export const FirstBarDesign = styled.div`
     display: flex;
     flex-direction: column;
     height: 300px;
-    background-color: ${SubBackgroundColor}
+    background-color: #b6c0c8
+    border: 2px solid grey;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 20px 0;
+    font-style: italic;
 `;
 
 export const SecondBarDesign = styled.div`
@@ -82,7 +88,13 @@ export const SecondBarDesign = styled.div`
     text-align: center;
     align-self: flex-end;
     height: 200px;
-    background-color: ${MainTableColor}
+    background-color: #b6c0c8
+    border: 2px solid grey;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 0;
+    font-style: italic;
 `;
 
 
@@ -91,8 +103,13 @@ export const ThirdBarDesign = styled.div`
     text-align: center;
     align-self: flex-end;
     height: 150px;
-    background-color: ${MainTableColor}
-    
+    background-color: #b6c0c8
+    border: 2px solid grey;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 0;
+    font-style: italic;
 `;
 
 
