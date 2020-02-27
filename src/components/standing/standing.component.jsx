@@ -7,6 +7,8 @@ import {
   StandingContainer,
   Title,
   Table,
+  TableHead,
+  TableBody,
   TableRow,
   TableHeader,
   TableData,
@@ -26,34 +28,38 @@ const Standing = () => {
     <StandingContainer>
       <Title>STANDINGS</Title>
       <Table>
-        <TableRow>
-          <TableIndexHeader>POS</TableIndexHeader>
-          <TableTeamHeader>TEAM</TableTeamHeader>
-          <TableHeader>MP</TableHeader>
-          <TableHeader>W</TableHeader>
-          <TableHeader>D</TableHeader>
-          <TableHeader>L</TableHeader>
-          <TableHeader>GF</TableHeader>
-          <TableHeader>GA</TableHeader>
-          <TableHeader>GD</TableHeader>
-          <TableHeader>PTS</TableHeader>
-        </TableRow>
-        {
-            standings.map((standing, index) => 
-              <TableRow>
-              <TableIndexData>{ordinal(index+1)}</TableIndexData>
-            <TableTeamData><TeamIcon teamLogoUrl={standing.teamLogoUrl}/><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
-            <TableData>{standing.played}</TableData>
-            <TableData>{standing.won}</TableData>
-              <TableData>{standing.drawn}</TableData>
-              <TableData>{standing.lost}</TableData>
-              <TableData>{standing.goalFor}</TableData>
-              <TableData>{standing.goalAgainst}</TableData>
-              <TableData>{standing.goalDifference}</TableData>
-              <TableData>{standing.points}</TableData>
-            </TableRow>
-          )
-        }
+        <TableHead>
+          <TableRow>
+            <TableIndexHeader>POS</TableIndexHeader>
+            <TableTeamHeader>TEAM</TableTeamHeader>
+            <TableHeader>MP</TableHeader>
+            <TableHeader>W</TableHeader>
+            <TableHeader>D</TableHeader>
+            <TableHeader>L</TableHeader>
+            <TableHeader>GF</TableHeader>
+            <TableHeader>GA</TableHeader>
+            <TableHeader>GD</TableHeader>
+            <TableHeader>PTS</TableHeader>
+          </TableRow>
+          </TableHead>
+          <TableBody>
+          {
+              standings.map((standing, index) =>
+              <TableRow key={index}>
+                <TableIndexData>{ordinal(index+1)}</TableIndexData>
+                <TableTeamData><TeamIcon teamLogoUrl={standing.teamLogoUrl}/><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
+                <TableData>{standing.played}</TableData>
+                <TableData>{standing.won}</TableData>
+                <TableData>{standing.drawn}</TableData>
+                <TableData>{standing.lost}</TableData>
+                <TableData>{standing.goalFor}</TableData>
+                <TableData>{standing.goalAgainst}</TableData>
+                <TableData>{standing.goalDifference}</TableData>
+                <TableData>{standing.points}</TableData>
+              </TableRow>
+            )
+          }
+        </TableBody>
       </Table>
    </StandingContainer>
   )

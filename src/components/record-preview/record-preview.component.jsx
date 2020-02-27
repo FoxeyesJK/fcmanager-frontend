@@ -81,7 +81,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === homeTeamId || record.assistTeamId === homeTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={homeTeamId} isHomeTeam={true} isRecordHidden={isRecordHidden}/>
+                            <RecordItem key={record.id} record={record} teamId={homeTeamId} isHomeTeam={true} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
           </HomeTeamRecord>
@@ -90,7 +90,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
             !!records ?
               records.filter(record => record.scoreTeamId === awayTeamId || record.assistTeamId === awayTeamId)
                           .map(record =>
-                            <RecordItem record={record} teamId={awayTeamId} isHomeTeam={false} isRecordHidden={isRecordHidden}/>
+                            <RecordItem key={record.id} record={record} teamId={awayTeamId} isHomeTeam={false} isRecordHidden={isRecordHidden}/>
                             ) : null
           }
           </AwayTeamRecord>

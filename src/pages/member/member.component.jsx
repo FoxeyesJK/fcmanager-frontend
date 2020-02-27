@@ -43,7 +43,7 @@ const Member = () => {
     clubId: 1,
     leagueId: currentLeaugeId,
     teamId: 0,
-    roleId: 1,
+    roleId: 0,
     startedOn: new Date(),
     dob: new Date(),
     phone: '',
@@ -75,9 +75,6 @@ const Member = () => {
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={0} handleClick={handleClick} />: null}
       </TitleContainer>
-      {
-        currentMemberId === 0 ? <MemberUpsert />  : null
-      }
       {/* {
       currentMemberId > 0 ?
         members
@@ -85,15 +82,14 @@ const Member = () => {
         .map(member => 
         <MemberUpsert member={member} />) : null
         } */}
-
         {
-          currentMemberId > 0 ?
+          currentMemberId >= 0 ?
           <MemberUpsert /> : null
         }
       <MemberContainer>
       {
-          teamMembers.value().map(({ ...otherMemberProps }) => (
-            <MemberPreview {...otherMemberProps} handleClick={handleClick}/>
+          teamMembers.value().map(({ ...otherMemberProps }, index) => (
+            <MemberPreview key={index} {...otherMemberProps} handleClick={handleClick}/>
           ))
       }
       </MemberContainer>

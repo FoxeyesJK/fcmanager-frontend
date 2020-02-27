@@ -22,7 +22,7 @@ const MemberPreview = ({ name, items, handleClick }) => {
         <MemberItemContainer>
             {items
                 .map(item => (
-                    <MemberItem item={item} handleClick={handleClick} />
+                    <MemberItem key={item.id} item={item} handleClick={handleClick} />
             ))}
         </MemberItemContainer>
     </MemberPreivewContainer>

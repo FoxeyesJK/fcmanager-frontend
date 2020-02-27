@@ -13,6 +13,8 @@ import {
   AssistIcon,
   Title,
   Table,
+  TableHead,
+  TableBody,
   TableRow,
   TableIndexHeader,
   TableTeamHeader,
@@ -39,12 +41,15 @@ const Record = ({ type }) => {
       <RecordContentContainer>
       <Title>{type === 'score' ? 'TOP SCORERS' : 'TOP ASSISTS'}</Title>
       <Table>
+        <TableHead>
         <TableRow>
           <TableIndexHeader>POS</TableIndexHeader>
           <TableTeamHeader>TEAM</TableTeamHeader>
           <TableMemberHeader>NAME</TableMemberHeader>
           <TableGoalHeader>GOALS</TableGoalHeader>
         </TableRow>
+        </TableHead>
+        <TableBody>
           {
             matchRecords
             .filter(matchRecord => matchRecord.type === type)
@@ -56,6 +61,7 @@ const Record = ({ type }) => {
           <TableGoalData>{matchRecord.count}</TableGoalData>
           </TableRow>)
           }
+          </TableBody>
       </Table>
       </RecordContentContainer>
    </RecordContainer>

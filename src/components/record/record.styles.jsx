@@ -68,6 +68,12 @@ export const Table = styled.table`
     //border: 3px solid ${SubBackgroundColor};
 `;
 
+export const TableHead = styled.thead`
+`;
+
+export const TableBody = styled.tbody`
+`;
+
 export const TableRow = styled.tr`
     // &:nth-child(even) {background-color: ${SubTableColor}}
     // &:nth-child(odd) {background-color: ${MainTableColor}}

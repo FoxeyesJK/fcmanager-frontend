@@ -25,7 +25,7 @@ export const StandingContainer = styled.div`
 
 `;
 
-export const Title = styled.table`
+export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: ${TitleColor};
@@ -37,6 +37,12 @@ export const Table = styled.table`
     text-align: center;
     width: 100%;
     //border: 3px solid ${MainTableColor};
+`;
+
+export const TableHead = styled.thead`
+`;
+
+export const TableBody = styled.tbody`
 `;
 
 export const TableRow = styled.tr`
@@ -65,7 +71,7 @@ export const TeamIcon = styled.div`
     ${IconStyles}
 `;
 
-export const TableTeamText = styled.td`
+export const TableTeamText = styled.div`
     padding: 0 5px;
     @media screen and (max-width: 800px) {
         display: none;
