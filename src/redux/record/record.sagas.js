@@ -13,7 +13,7 @@ import {
 
 import RecordActionTypes from './record.types';
 
-const baseUrl = 'https://localhost:5612/';
+const baseUrl = 'http://68.132.136.143:5611/';
 const apiEndPoint = 'matchrecord/';
 export function* fetchRecordsAsync({payload: { matchId }}) {
     try {

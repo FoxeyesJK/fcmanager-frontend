@@ -16,7 +16,7 @@ import {
 
 import MemberActionTypes from './member.types';
 
-const baseUrl = 'https://localhost:5612/';
+const baseUrl = 'http://68.132.136.143:5611/';
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
     try {
