@@ -16,6 +16,7 @@ import {
 
 import MemberActionTypes from './member.types';
 
+//const baseUrl = 'https://localhost:5612/';
 const baseUrl = 'http://68.132.136.143:5611/';
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
@@ -60,6 +61,7 @@ export function* postMembersStart() {
 }
 
 export function* putMembersAsync({payload}) {
+    console.log(payload)
     try {
         const member = yield axios.put(baseUrl + apiEndPoint + payload.id, payload);
         yield put(putMembersSuccess(member.data))

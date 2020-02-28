@@ -18,7 +18,6 @@ import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';
-import { selectCurrentLeagueId } from '../../redux/league/league.selectors';
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { setCurrentMemberId, addNewMember, deleteMembersStart } from '../../redux/member/member.actions';
 
@@ -32,7 +31,6 @@ const Member = () => {
 
   const dispatch = useDispatch();
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
-  const currentLeaugeId = useSelector(selectCurrentLeagueId, shallowEqual)
   const member = useSelector(selectMembers, shallowEqual)
   const [members, setMembers] = useState(member);
   const teamMembers = useSelector(selectTeamMembers, shallowEqual)
@@ -41,7 +39,6 @@ const Member = () => {
   const newMember = {
     id: 0,
     clubId: 1,
-    leagueId: currentLeaugeId,
     teamId: 0,
     roleId: 0,
     startedOn: new Date(),
@@ -63,8 +60,9 @@ const Member = () => {
       dispatch(addNewMember(newMember))
 
     if (type === 'delete')
-        dispatch(deleteMembersStart(id))
-    
+    {
+      dispatch(deleteMembersStart(id))
+    }
     dispatch(setCurrentMemberId(id))
   }
   

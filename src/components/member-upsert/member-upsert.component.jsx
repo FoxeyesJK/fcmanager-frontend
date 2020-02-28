@@ -14,6 +14,7 @@ import { postMembersStart, putMembersStart, setCurrentMemberId } from '../../red
 import { selectRoles } from '../../redux/role/role.selectors';
 import { selectTeams } from '../../redux/team/team.selectors';
 import { selectCurrentMemberId, selectMemberItem} from '../../redux/member/member.selectors';
+import { selectCurrentLeagueId } from '../../redux/league/league.selectors';
 
 import {
   MemberUpsertContainer,
@@ -32,8 +33,10 @@ import {
 const MemberUpsert = () => {
   const member = useSelector(selectMemberItem, shallowEqual)
   const [members, setMembers] = useState(member);
+
   const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
+  const currentLeagueId = useSelector(selectCurrentLeagueId, shallowEqual)
   const teams = useSelector(selectTeams, shallowEqual)
   const roles = useSelector(selectRoles, shallowEqual)
   const dispatch = useDispatch();
@@ -50,7 +53,8 @@ const MemberUpsert = () => {
 const handleSubmit = event => {
   event.preventDefault();
 
-  currentMemberId > 0 ? dispatch(putMembersStart(members)) : dispatch(postMembersStart(members));
+  console.log(currentLeagueId)
+  currentMemberId > 0 ? dispatch(putMembersStart({...members, leagueId: currentLeagueId})) : dispatch(postMembersStart({...members, leagueId: currentLeagueId}));
   //dispatch(setCurrentMemberId(undefined))
 }
 
