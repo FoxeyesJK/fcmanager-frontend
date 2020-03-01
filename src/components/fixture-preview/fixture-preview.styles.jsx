@@ -1,4 +1,4 @@
-import Styled, { css } from 'styled-components';
+import Styled from 'styled-components';
 
 import { MainTableColor, MainBackgroundColor, HoverRowColor } from '../../global.styles';
 

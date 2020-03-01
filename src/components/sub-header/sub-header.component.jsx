@@ -2,11 +2,10 @@ import React from 'react';
 
 import {
   SubHeaderContainer,
-  OptionsContainer,
-  OptionNavLink
+  OptionsContainer
 } from './sub-header.styles';
 
-const SubHeader = ({ match, isSelectedOption }) => {
+const SubHeader = () => {
   return (
     <SubHeaderContainer>
       <OptionsContainer>

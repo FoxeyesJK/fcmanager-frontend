@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector, shallowEqual} from 'react-redux';
-import SimpleBarReact from 'simplebar-react';
-import MATCH_DATA from '../fixture/fixture.data.js';
-
-import { selectStandings } from '../../redux/league/league.selectors';
+import React from 'react';
 
 import { 
   LeaguePage,
   ChampionsContainer,
   RecordsContainer,
   StandingContainer,
-  StandingContentContainer,
-  LeagueContainer,
-  FixtureContainer,
-  Title,
-  TableRow,
-  TableHeader,
-  Table,
   RecordContainer
 } from './league.styles.jsx';
 

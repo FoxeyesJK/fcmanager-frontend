@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
-import { render } from 'react-dom';
 import moment from 'moment'
 import momentLocalizer from 'react-widgets-moment';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import { Combobox } from 'react-input-enhancements';
-import { DropdownList } from 'react-widgets'
-import Select from 'react-select'
 
 import 'react-widgets/dist/css/react-widgets.css';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
-
-import { postMatchesStart, putMatchesStart, setMatchHomeTeam, setMatchAwayTeam } from '../../redux/match/match.actions';
+import { postMatchesStart, putMatchesStart } from '../../redux/match/match.actions';
 import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { selectIsAdmin } from '../../redux/user/user.selectors';
@@ -25,7 +17,6 @@ import { selectMatchItem } from '../../redux/match/match.selectors';
 import {
   FixtureDetailItemContainer,
   FormContainer,
-  Title,
   IconContainer,
   TeamIcon,
   TeamContainer,
@@ -34,19 +25,7 @@ import {
   Schedule,
   LocationContainer,
   ScoreContainer,
-  Record,
-  HomeRecord,
-  AwayRecord,
-  RecordContainer,
-  PlayerContainer,
-  Player,
-  StyledAssistIcon,
-  StyledScoreIcon,
-  StyledDropdown,
   DateTimePickerContainer,
-  ButtonContainer,
-  AddButtonContainer,
-  SaveButtonContainer
 } from './fixture-detail-item.styles.jsx';
 
 

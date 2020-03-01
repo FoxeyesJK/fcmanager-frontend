@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { MainTableColor, MainBackgroundColor, HoverRowColor } from '../../global.styles';
+import styled from 'styled-components';
+import { MainBackgroundColor } from '../../global.styles';
 
 export const FormInputContainer = styled.div`
   width: 100%;

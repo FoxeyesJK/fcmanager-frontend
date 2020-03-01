@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import React from 'react';
+import {useSelector, shallowEqual} from 'react-redux';
 import ordinal from 'ordinal';
 
 import { selectMatchRecords } from '../../redux/league/league.selectors';
@@ -25,10 +25,6 @@ import {
   TableMemberData,
   TableGoalData
 } from './record.styles.jsx';
-
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
-import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
-import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
 
 const Record = ({ type }) => {
   const matchRecords = useSelector(selectMatchRecords, shallowEqual)

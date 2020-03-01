@@ -1,23 +1,14 @@
 import React from 'react';
-import axios from 'axios';
-import moment from 'moment';
 import SimpleBarReact from 'simplebar-react';
 
 import {
   AdminScheduleContainer,
-  Title,
-  AdminScheduleTable,
   TableRow,
   TableHeader,
   TableBody
 } from './schedule.styles.jsx';
 
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
 import CustomIconButton from '../../components/custom-icon-button/custom-icon-button.component';
-
-
-import SCHEDULE_DATA from '../../pages/league/fixture.data';
 
 import ScheduleAddItem from '../admin-schedule-add-item/admin-schedule-add-item.component';
 import ScheduleItem from '../schedule-item/schedule-item.component';

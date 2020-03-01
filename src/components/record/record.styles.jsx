@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
 
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as SoccerIcon } from '../../assets/icon-soccerball.svg';
 import { ReactComponent as ShoesIcon } from '../../assets/icon-soccershoes.svg';
 

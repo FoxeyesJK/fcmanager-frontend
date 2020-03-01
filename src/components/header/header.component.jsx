@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
-import { connect } from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
 import CustomDropdown from '../../components/custom-dropdown/custom-dropdown.component';
@@ -12,7 +11,6 @@ import {
   HeaderContainer, 
   LogoContainer, 
   TextContainer,
-  DropdownContainer,
   Title,
   SubTitle
 } from './header.styles';

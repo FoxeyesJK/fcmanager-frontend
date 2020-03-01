@@ -1,7 +1,7 @@
-import styled, {css}from 'styled-components';
+import styled from 'styled-components';
 import Select from 'react-select';
 
-import { MainTableColor, MainBackgroundColor, BorderColor } from '../../global.styles';
+import { MainBackgroundColor, BorderColor } from '../../global.styles';
 
 export const Dropdown = styled.div`
     width: 100%;

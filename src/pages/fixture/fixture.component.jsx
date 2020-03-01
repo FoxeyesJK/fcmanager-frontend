@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
-import MATCH_DATA from './fixture.data.js';
 import SimpleBarReact from 'simplebar-react';
 import moment from 'moment';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
-import { selectMatches, selectScheduledMatches, selectSelectedMatchId } from '../../redux/match/match.selectors';
+import { selectScheduledMatches, selectSelectedMatchId } from '../../redux/match/match.selectors';
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 
 import { setSelectedMatchId, addNewMatch, deleteMatchesStart } from '../../redux/match/match.actions';
@@ -15,12 +11,9 @@ import { toggleRecordHidden } from '../../redux/record/record.actions';
 
 import { 
   FixturePage,
-  StandingContainer,
-  LeagueContainer,
   FixtureContainer,
   FixtureListContainer,
   TitleContainer,
-  SimpleBarReactContainer,
   Title,
   TableRow,
   TableHeader,

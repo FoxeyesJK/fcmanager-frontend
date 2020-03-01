@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import React from 'react';
+import {useSelector, shallowEqual} from 'react-redux';
 import { selectStandings } from '../../redux/league/league.selectors';
 import ordinal from 'ordinal';
 

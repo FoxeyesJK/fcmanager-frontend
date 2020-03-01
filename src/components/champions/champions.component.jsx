@@ -1,18 +1,11 @@
 import React from 'react';
-import {useDispatch, useSelector, shallowEqual} from 'react-redux';
-import { selectChampions, selectFirstChampion, selectSecondChampion, selectThirdChampion } from '../../redux/league/league.selectors';
+import { useSelector, shallowEqual} from 'react-redux';
+import { selectChampions } from '../../redux/league/league.selectors';
 
 import {
   ChampionsContainer,
   ChampionContainer,
   IconContainer,
-  BarDesign,
-  TeamContainer,
-  TitleContainer,
-  Title,
-  Team,
-  TeamIcon, 
-  ChampionIcon,
   FirstPlace,
   SecondPlace,
   ThirdPlace,

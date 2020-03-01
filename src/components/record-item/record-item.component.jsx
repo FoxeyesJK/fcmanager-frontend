@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {useSelector, shallowEqual} from 'react-redux';
-
-import { render } from 'react-dom';
-import moment from 'moment'
-import momentLocalizer from 'react-widgets-moment';
-import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import { Combobox } from 'react-input-enhancements';
-import { DropdownList } from 'react-widgets'
-import Select from 'react-select'
 
 import 'react-widgets/dist/css/react-widgets.css';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
 import { selectMemberNames } from '../../redux/member/member.selectors';
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { addRecord } from '../../redux/record/record.actions';
@@ -28,10 +19,7 @@ import {
   StyledScoreIcon,
 } from './record-item.styles.jsx';
 
-import Dropdown from '../custom-dropdown/custom-dropdown.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
 
 const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isRecordHidden }) => {
 

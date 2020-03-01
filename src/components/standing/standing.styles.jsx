@@ -1,10 +1,6 @@
 import styled, {css} from 'styled-components';
 
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
-import { ReactComponent as RedIcon } from '../../assets/icon-red.svg';
-import { ReactComponent as YellowIcon } from '../../assets/icon-yellow.svg';
-
-import { MainTableColor, SubTableColor} from '../../global.styles';
+import { MainTableColor } from '../../global.styles';
 
 import { TitleColor, SubBackgroundColor } from '../../global.styles';
 

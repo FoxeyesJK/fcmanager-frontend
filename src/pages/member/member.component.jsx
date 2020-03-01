@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import _ from 'lodash';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
-
 import {
   MemberPage,
   MemberContainer,
@@ -13,8 +9,6 @@ import {
   Title
 } from './member.styles';
 
-import Header from '../../components/header/header.component';
-import SubHeader from '../../components/sub-header/sub-header.component';
 import MemberPreview from '../../components/member-preview/member-preview.component';
 import MemberUpsert from '../../components/member-upsert/member-upsert.component';
 import { selectMembers, selectTeamMembers, selectCurrentMemberId } from '../../redux/member/member.selectors';

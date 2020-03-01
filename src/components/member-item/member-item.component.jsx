@@ -6,19 +6,17 @@ import {
   MemberItemContainer,
   HeaderContainer,
   IconContainer,
-  ImageContainer,
   ContentContainer,
   FooterContainer,
   Name,
   ProfileImage, 
-  Text
 } from './member-item.styles.jsx';
 
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 
 
 const MemberItem = ({ item, handleClick }) => {
-  const { id, name, email, imageUrl } = item;
+  const { id, name } = item;
   const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   return (
     <MemberItemContainer>

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import React from 'react';
+import {useSelector, shallowEqual} from 'react-redux';
 
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 
@@ -8,16 +8,10 @@ import {
   TitleOptionContainer,
   TitleContainer,
   OptionsContainer,
-  UserContainer,
-  UserAdminContainer,
-  UserLoginContainer,
-  InputContainer,
-  ButtonContainer,
   ClubName,
   ClubType,
   OptionLink,
   OptionName,
-  UserTitle,
   StyledLeagueIcon,
   StyledScheduleIcon,
   StyledSquadIcon,

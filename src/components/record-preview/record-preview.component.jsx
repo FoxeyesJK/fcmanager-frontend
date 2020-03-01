@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
-import { render } from 'react-dom';
-import moment from 'moment'
-import momentLocalizer from 'react-widgets-moment';
-import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import { Combobox } from 'react-input-enhancements';
-import { DropdownList } from 'react-widgets'
-import Select from 'react-select'
 
 import 'react-widgets/dist/css/react-widgets.css';
 
@@ -15,7 +8,7 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { selectIsAdmin } from '../../redux/user/user.selectors';
 import { selectRecords } from '../../redux/record/record.selectors';
-import { fetchRecordsStart, postRecordsStart, putRecordsStart, addRowToRecord, setIsRecordChangeable, toggleRecordHidden } from '../../redux/record/record.actions';
+import { fetchRecordsStart, postRecordsStart, addRowToRecord, toggleRecordHidden } from '../../redux/record/record.actions';
 import { selectIsRecordFetching, selectIsRecordsLoaded, selectIsHidden } from '../../redux/record/record.selectors';
 
 import {
@@ -23,11 +16,6 @@ import {
   TeamRecordContainer,
   HomeTeamRecord,
   AwayTeamRecord,
-  Record,
-  PlayerContainer,
-  Player,
-  StyledAssistIcon,
-  StyledScoreIcon,
   ButtonContainer,
   AddButtonContainer,
   SaveButtonContainer
@@ -45,10 +33,6 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
   const isAdmin = useSelector(selectIsAdmin, shallowEqual)
   const [tempRecordId, setTempRecordId] = useState(0);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   setRecords(matchRecords)
-  // }, [matchRecords]);
 
   useEffect(() => {
     fetchRecordsStart(matchId);

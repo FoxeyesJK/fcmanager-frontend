@@ -1,8 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-import { connect } from 'react-redux';
-
-import { toggleLeagueHidden } from '../../redux/league/league.actions';
+import React from 'react';
 
 import {
    Dropdown,

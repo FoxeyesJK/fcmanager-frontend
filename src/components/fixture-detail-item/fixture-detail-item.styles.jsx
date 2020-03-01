@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Dropdown } from 'semantic-ui-react';
+
 import { ReactComponent as AssistIcon } from '../../assets/icon-soccershoes.svg';
 import { ReactComponent as ScoreIcon } from '../../assets/icon-football.svg';
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 
 import { MainTableColor } from '../../global.styles';
 
@@ -13,10 +13,6 @@ const IconStyles = css`
 
 export const FixtureDetailItemContainer = styled.div`
     padding: ${props => props.isAdmin ? "30px 10px;" : "40px 60px"}
-
-    // div {
-    //     color: ${MainTableColor};
-    // }
 
     @media screen and (max-width: 1200px) {
         padding: 0px 0px;

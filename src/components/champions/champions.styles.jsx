@@ -1,13 +1,12 @@
 import styled, {css}from 'styled-components';
 
-import { ReactComponent as BlueIcon } from '../../assets/icon-blue.svg';
 import { ReactComponent as ChampIcon } from '../../assets/icon-champion.svg';
 import { ReactComponent as FirstPlaceIcon } from '../../assets/icon-first-trophy.svg';
 import { ReactComponent as SecondPlaceIcon } from '../../assets/icon-second-trophy.svg';
 import { ReactComponent as ThirdPlaceIcon } from '../../assets/icon-third-trophy.svg';
 
 
-import { TitleColor, MainTableColor, SubTableColor, SubBackgroundColor } from '../../global.styles';
+import { TitleColor } from '../../global.styles';
 
 const IconStyles = css`
     height: 80px;
@@ -44,28 +43,6 @@ export const ChampionsContainer = styled.div`
 
 export const ChampionContainer = styled.div`
     width: 15%;
-    ///display: flex;
-    //flex-direction: column;
-    //align-items: flex-end;
-    // background-color: ${SubBackgroundColor}
-    // text-align: center;
-    // align-self: flex-end;
-
-    // &:nth-child(1) {
-    //     height: 200px
-    //     background-color: ${MainTableColor}
-
-    // }
-    // &:nth-child(2) {
-    //     height: 300px;
-    //     //background-color: ${MainTableColor}
-    //     background-image: url(../../assets/icon-first-trophy.svg)
-    //     background-size: 80px;
-    // }
-    // &:nth-child(3) {
-    //     height: 150px;
-    //     background-color: ${MainTableColor}
-    // }
 `;
 
 export const FirstBarDesign = styled.div`

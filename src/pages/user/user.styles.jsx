@@ -1,7 +1,5 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import { SubBackgroundColor } from '../../global.styles';
-import { ReactComponent as AdminIcon } from '../../assets/icon-adminuser.svg';
-
 
 export const UserPage = styled.div`
     width: 400px;

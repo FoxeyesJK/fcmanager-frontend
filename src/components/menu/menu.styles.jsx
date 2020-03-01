@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as SquadIcon } from '../../assets/icon-squad.svg';
-import { ReactComponent as StrategyIcon } from '../../assets/icon-strategy.svg';
-import { ReactComponent as PaymentIcon } from '../../assets/icon-payment.svg';
 import { ReactComponent as ReportIcon } from '../../assets/icon-report.svg';
 import { ReactComponent as ScheduleIcon } from '../../assets/icon-schedule.svg';
 import { ReactComponent as AdminIcon } from '../../assets/icon-adminuser.svg';
