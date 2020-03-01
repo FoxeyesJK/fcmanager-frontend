@@ -80,6 +80,7 @@ const Member = () => {
         }
       <MemberContainer>
       {
+        currentMemberId === undefined &&
           teamMembers.value().map(({ ...otherMemberProps }, index) => (
             <MemberPreview key={index} {...otherMemberProps} handleClick={handleClick}/>
           ))

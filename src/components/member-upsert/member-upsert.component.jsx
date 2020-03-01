@@ -50,7 +50,6 @@ const handleSubmit = event => {
 
   console.log(currentLeagueId)
   currentMemberId > 0 ? dispatch(putMembersStart({...members, leagueId: currentLeagueId})) : dispatch(postMembersStart({...members, leagueId: currentLeagueId}));
-  //dispatch(setCurrentMemberId(undefined))
 }
 
 const handleChange = event => {

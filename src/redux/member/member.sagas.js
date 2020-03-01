@@ -11,7 +11,8 @@ import {
     putMembersSuccess,
     putMembersFailure,
     deleteMembersSuccess,
-    deleteMembersFailure
+    deleteMembersFailure,
+    setCurrentMemberId,
 } from './member.actions';
 
 import MemberActionTypes from './member.types';
@@ -23,8 +24,10 @@ export function* fetchMembersAsync() {
     try {
         const memberRes = yield axios.get(baseUrl + apiEndPoint);
         yield put(fetchMembersSuccess(memberRes.data))
+        yield put(setCurrentMemberId(undefined))
     } catch (error) {
         yield put(fetchMembersFailure(error.message))
+        yield put(setCurrentMemberId(undefined))
     }
 }
 
