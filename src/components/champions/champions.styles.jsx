@@ -5,29 +5,46 @@ import { ReactComponent as FirstPlaceIcon } from '../../assets/icon-first-trophy
 import { ReactComponent as SecondPlaceIcon } from '../../assets/icon-second-trophy.svg';
 import { ReactComponent as ThirdPlaceIcon } from '../../assets/icon-third-trophy.svg';
 
-
 import { TitleColor } from '../../global.styles';
 
 const IconStyles = css`
     height: 80px;
     width: 80px;
+
+    @media screen and (max-width: 800px) {
+        height: 60px;
+        width: 60px;
+    }
+`;
+
+const BarStyles = css`
+    width: 100%;
+    text-align: center;
+    background-color: #b6c0c8
+    border: 2px solid grey;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 20px 0;
+    font-style: italic;
+
+    @media screen and (max-width: 800px) {
+        font-size: 10px;
+    }
 `;
 
 export const FirstPlace = styled(FirstPlaceIcon)`
-    height: 80px;
-    width: 80px;
+    ${IconStyles}
 `;
 
 export const SecondPlace = styled(SecondPlaceIcon)`
-    height: 80px;
-    width: 80px;
+    ${IconStyles}
     display: flex;
     justify-content: center;
 `;
 
 export const ThirdPlace = styled(ThirdPlaceIcon)`
-    height: 80px;
-    width: 80px;
+    ${IconStyles}
 `;
 
 export const IconContainer = styled.div`
@@ -43,50 +60,32 @@ export const ChampionsContainer = styled.div`
 
 export const ChampionContainer = styled.div`
     width: 15%;
+
+    @media screen and (max-width: 800px) {
+        width: 20%;
+    }
 `;
 
 export const FirstBarDesign = styled.div`
-    width: 100%;
-    text-align: center;
     display: flex;
     flex-direction: column;
     height: 300px;
-    background-color: #b6c0c8
-    border: 2px solid grey;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
     padding: 20px 0;
-    font-style: italic;
+    ${BarStyles}
 `;
 
 export const SecondBarDesign = styled.div`
-    width: 100%;
-    text-align: center;
     align-self: flex-end;
     height: 200px;
-    background-color: #b6c0c8
-    border: 2px solid grey;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: bold;
     padding: 20px 0;
-    font-style: italic;
+    ${BarStyles}
 `;
 
 
 export const ThirdBarDesign = styled.div`
-    width: 100%;
-    text-align: center;
     align-self: flex-end;
     height: 150px;
-    background-color: #b6c0c8
-    border: 2px solid grey;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 20px 0;
-    font-style: italic;
+    ${BarStyles}
 `;
 
 

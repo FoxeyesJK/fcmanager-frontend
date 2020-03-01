@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { TitleColor, SubTableColor, MainBackgroundColor, SubBackgroundColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
-    @media screen and (max-width: 800px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+
+    // @media screen and (max-width: 800px) {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     justify-content: center;
+    // }
 `;
 
 export const ChampionsContainer = styled.div`
@@ -16,30 +17,28 @@ export const ChampionsContainer = styled.div`
 
 export const StandingContainer = styled.div`
     background-color: ${SubBackgroundColor};
-    width: 40%
-    margin-left: 10px;
+    width: 60%
+    margin: 0 5px;
     display: flex;
-`;
 
-export const StandingContentContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    background-color: ${SubTableColor};
-    margin: 5px 10px;
-
-    @media screen and (max-width: 800px) {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    @media screen and (max-width: 850px) {
+        width: 100%;
         margin: 0;
     }
 `;
 
-export const RecordsContainer = styled.div`
+export const RecordTablesContainer = styled.div`
     display: flex;
     justfy-content: space-between;
     width: 100%;
     height: 400px;
+
+    @media screen and (max-width: 850px) {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 `;
 
 
@@ -54,57 +53,22 @@ export const FixtureContainer = styled.div`
     width: 65%;
 `;
 
-export const RecordContainer = styled.div`
+export const RecordsContainer = styled.div`
     display: flex;
-    width: 30%
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1300px) {
+        display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        margin: 20px 0;
     }
 `;
 
-export const Title = styled.div`
-    font-size: 14px;
-    font-weight: bold;
-    color: ${TitleColor};
-    padding: 5px 3px;
-`;
 
-export const Table = styled.div`
-    margin: 5px 10px;
-    //background-color: #a3a3a3;
-`;
+export const RecordContainer = styled.div`
+    margin: 0 5px;
 
-export const TableRow = styled.div`
-    width: 100%;
-    display: flex;
-`;
-
-export const TableHeader = styled.div`
-    background-color: ${MainBackgroundColor};
-    text-align: left;
-    padding: 5px 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #A9A9A9;
-
-    &:nth-child(1) {
-        text-align: center;
-        width: 70px;
-    }
-    &:nth-child(2) {
-        text-align: left;
-        width: 300px;
-    }
-    &:nth-child(3) {
-        text-align: center;
-        width: 60px;
-    }
-    &:nth-child(4) {
-        text-align: left;
-        width: 400px;
+    @media screen and (max-width: 1300px) {
+        height: 100%;
+        margin: 0;
     }
 `;

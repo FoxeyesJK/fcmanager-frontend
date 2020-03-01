@@ -3,8 +3,9 @@ import React from 'react';
 import { 
   LeaguePage,
   ChampionsContainer,
-  RecordsContainer,
+  RecordTablesContainer,
   StandingContainer,
+  RecordsContainer,
   RecordContainer
 } from './league.styles.jsx';
 
@@ -18,17 +19,19 @@ const League = () => {
       <ChampionsContainer>
         <Champions />
       </ChampionsContainer>
-      <RecordsContainer>
+      <RecordTablesContainer>
       <StandingContainer >
           <Standing />
       </StandingContainer >
-      <RecordContainer>
-        <Record type={'score'} />
+      <RecordsContainer>
+        <RecordContainer>
+          <Record type={'score'} />
         </RecordContainer>
         <RecordContainer>
-        <Record type={'assist'} />
-      </RecordContainer>
+          <Record type={'assist'} />
+        </RecordContainer>
       </RecordsContainer>
+      </RecordTablesContainer>
     </LeaguePage>
     )
 }

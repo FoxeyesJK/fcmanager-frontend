@@ -19,13 +19,6 @@ export const TextContainer = styled.div`
     padding: 5px 10px;
 `;
 
-export const DropdownContainer = styled.div`
-    width: 300px;
-    @media screen and (max-width: 800px) {
-        width: 50vw;
-    }
-`;
-
 export const Title = styled.div`
     font-size: 16px;
     padding: 0px 10px;
@@ -39,4 +32,8 @@ export const SubTitle = styled.div`
     width: 300px;
 
     ${TextFontStyles}
+
+    @media screen and (max-width: 800px) {
+        width: 50vw;
+    }
 `;

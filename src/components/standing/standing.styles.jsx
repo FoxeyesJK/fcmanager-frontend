@@ -15,6 +15,11 @@ const IconStyles = css`
 
 export const StandingContainer = styled.div`
     flex-grow: 4;
+    
+    @media screen and (max-width: 1300px) {
+        margin: 0;
+    }
+
     @media screen and (max-width: 800px) {
         border-top: 1px solid white;
     }
@@ -26,6 +31,10 @@ export const Title = styled.div`
     font-weight: bold;
     color: ${TitleColor};
     margin: 5px 0px;
+
+    @media screen and (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 export const Table = styled.table`
