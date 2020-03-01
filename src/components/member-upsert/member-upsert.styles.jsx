@@ -6,17 +6,28 @@ export const MemberUpsertContainer = styled.div`
     width: 400px; //600px for photo upload
     background-color: ${SubBackgroundColor};
     margin: 20px;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+        margin: 0;
+    }
 `;
 
 export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const FormContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     padding: 30px;
+
+    @media screen and (max-width: 800px) {
+        padding: 0 10px;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -40,6 +51,10 @@ export const InputContainer = styled.div`
     flex-direction: row;
     padding: 5px 20px;
     justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+        padding: 5px 0;
+    }
 `;
 
 export const DateTimePickerContainer = styled.div`
@@ -59,6 +74,10 @@ export const Title = styled.div`
     font-weight: bold;
     color: ${TitleColor};
     padding: 5px;
+
+    @media screen and (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 export const Text = styled.div`

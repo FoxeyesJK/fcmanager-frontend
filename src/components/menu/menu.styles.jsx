@@ -14,7 +14,8 @@ const IconStyles = css`
   vertical-align: middle;
 
   @media screen and (max-width: 800px) {
-    height: 40px;
+    height: 30px;
+    width: 30px;
   }
 `;
 
