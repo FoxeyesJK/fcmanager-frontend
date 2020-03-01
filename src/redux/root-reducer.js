@@ -14,7 +14,7 @@ import recordReducer from './record/record.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart']
+  whitelist: ['user']
 }
 
 const rootReducer = combineReducers({

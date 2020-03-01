@@ -96,35 +96,6 @@ export const OptionName = styled.div`
     display: none;
   }
 `;
-
-export const UserContainer = styled.div`
-  padding: 20px;
-`;
-
-export const UserAdminContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const UserLoginContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const InputContainer = styled.div`
-  width: 65%
-`;
-
-export const ButtonContainer = styled.div`
-  width: 30%
-`;
-
-export const UserTitle = styled.div`
-  font-size: 16px;
-  padding: 5px;
-`;
-
 export const StyledLeagueIcon = styled(ReportIcon)`
     ${IconStyles}
 `;
