@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import _ from 'lodash';
 
 const selectRole = state => state.role;
 

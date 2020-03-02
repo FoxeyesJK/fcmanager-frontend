@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  Title,
   FixtureDetailContainer
 } from './fixture-detail.styles.jsx';
 

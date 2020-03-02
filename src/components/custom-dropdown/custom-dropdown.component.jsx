@@ -36,7 +36,7 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             value: value, 
             label: 
                !!options ? options
-                  .find(option => option.value == value).label
+                  .find(option => option.value === value).label
                   : '...Select'
             } : '...Select'
          }
@@ -54,7 +54,7 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             value: value, 
             label: 
                !!options ? options
-                  .find(option => option.value == value).label
+                  .find(option => option.value === value).label
                   : ''
             } : ''
          }

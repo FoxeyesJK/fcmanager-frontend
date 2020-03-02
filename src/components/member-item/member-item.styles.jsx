@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { MainTableColor, SubBackgroundColor } from '../../global.styles';
+import { SubBackgroundColor } from '../../global.styles';
 
 export const MemberItemContainer = styled.div`
     // background-color: ${SubBackgroundColor};

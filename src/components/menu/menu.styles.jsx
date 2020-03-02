@@ -59,32 +59,40 @@ export const OptionsContainer = styled.div`
     margin-top: 1.5em;
     width: 100%;
 
-        @media screen and (max-width: 800px) {
+    @media screen and (max-width: 800px) {
       margin-top: 0;
     }
 `;
 
+export const LoginContainer = styled.div`
+
+  @media (max-width: 800px) {
+    padding: 10px 0;
+    margin: 0 auto;
+  }
+`;
+
 export const ClubName = styled.div`
-      font-size: 25px;
-      font-weight: 700;
-      padding: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 5px;
 `;
 
 export const ClubType = styled.div`
-      font-size: 20px;
-      font-weight: 300;
-      padding: 5px;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 5px;
 `;
 
 export const OptionLink = styled(Link)`
-      display: flex;
-      padding: 16px 0;
-      border-bottom: 1px solid 	#404040;
+  display: flex;
+  padding: 16px 0;
+  border-bottom: 1px solid 	#404040;
 
-      @media (max-width: 800px) {
-        padding: 20px 0;
-        margin: auto;
-      }
+  @media (max-width: 800px) {
+    padding: 10px 0;
+    margin: auto;
+  }
 `;
 
 export const OptionName = styled.div`

@@ -7,8 +7,6 @@ import {
     fetchRecordsFailure,
     postRecordsSuccess,
     postRecordsFailure,
-    putRecordsSuccess,
-    putRecordsFailure,
 } from './record.actions';
 
 import RecordActionTypes from './record.types';
@@ -37,7 +35,6 @@ export function* postRecordsAsync({payload}) {
         const recordRes = yield axios.post(baseUrl + apiEndPoint, payload.payload);
         const records = recordRes.data;
         const matchId = payload.matchId;
-        //yield put(postRecordsSuccess(records))
 
         yield put(postRecordsSuccess({records, matchId}))
     } catch (error) {
@@ -51,8 +48,7 @@ export function* onPostRecordsSuccess() {
     
 }
 
-//export function* fetchRecordsAsyncAfterPost(records) {
-export function* fetchRecordsAsyncAfterPost({records, matchId}) {
+export function* fetchRecordsAsyncAfterPost({matchId}) {
     yield fetchMatchesAsyncAfterPost();
     yield fetchRecordsAsync({payload: {matchId}});
 }
@@ -69,7 +65,5 @@ export function* recordSagas() {
         call(fetchRecordsStart), 
         call(postRecordsStart),
         call(onPostRecordsSuccess)
-        //call(putRecordsStart),
-        //call(onPutRecordsSuccess),
     ]);
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
-import _ from 'lodash';
 
 import {
   MemberPage,
@@ -45,7 +44,7 @@ const Member = () => {
 
   useEffect(() => {
     setMembers(members)
-  }, [currentMemberId]);
+  }, [currentMemberId, members]);
 
   
   const handleClick = (id, type) => {

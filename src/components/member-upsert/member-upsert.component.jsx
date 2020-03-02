@@ -29,7 +29,7 @@ const MemberUpsert = () => {
   const member = useSelector(selectMemberItem, shallowEqual)
   const [members, setMembers] = useState(member);
 
-  const { name, email, phone, dob, startedOn, roleId, teamId, clubId } = members;
+  const { name, email, phone, dob, startedOn, roleId, teamId } = members;
   const currentMemberId = useSelector(selectCurrentMemberId, shallowEqual)
   const currentLeagueId = useSelector(selectCurrentLeagueId, shallowEqual)
   const teams = useSelector(selectTeams, shallowEqual)

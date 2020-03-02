@@ -8,6 +8,7 @@ import {
   TitleOptionContainer,
   TitleContainer,
   OptionsContainer,
+  LoginContainer,
   ClubName,
   ClubType,
   OptionLink,
@@ -49,6 +50,9 @@ const Menu = () => {
           <StyledScheduleIcon/>
           <OptionName>Fixture</OptionName>
         </OptionLink>
+        </OptionsContainer>
+      </TitleOptionContainer>
+        <LoginContainer>
         {
           isAdmin ?
           <OptionLink to='/user'>
@@ -60,8 +64,7 @@ const Menu = () => {
             <OptionName>Login</OptionName>
           </OptionLink>
         }
-        </OptionsContainer>
-      </TitleOptionContainer>
+        </LoginContainer>
   </MenuContainer>
   )
 };

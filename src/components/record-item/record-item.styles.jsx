@@ -45,9 +45,9 @@ export const PlayerName = styled.div`
 
 
 export const StyledAssistIcon = styled(AssistIcon)`
-    ${props => props.isRecordEditable ? AdminIconStyles : IconStyles} 
+    ${props => props.admin ? AdminIconStyles : IconStyles} 
 `;
 
 export const StyledScoreIcon = styled(ScoreIcon)`
-    ${props => props.isRecordEditable ? AdminIconStyles : IconStyles} 
+    ${props => props.admin ? AdminIconStyles : IconStyles} 
 `;

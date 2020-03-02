@@ -20,7 +20,7 @@ const FixturePreview = ({ scheduledOn, matches, selectedMatchId, handleClick }) 
         {
           !!matches ? 
           matches.map(match => (
-            <FixtureItem id={match.id} selectedMatchId={selectedMatchId} match={match} handleClick={handleClick} />
+            <FixtureItem key={match.id} selectedMatchId={selectedMatchId} match={match} handleClick={handleClick} />
           )) : null
         }
         </TableBody>

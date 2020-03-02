@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TitleColor, SubTableColor, MainBackgroundColor, SubBackgroundColor } from '../../global.styles';
+import { SubTableColor, SubBackgroundColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
 

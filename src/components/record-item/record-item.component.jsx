@@ -11,7 +11,6 @@ import { addRecord } from '../../redux/record/record.actions';
 
 import {
   RecordDetailItemContainer,
-  Record,
   RecordContainer,
   Player,
   PlayerName,
@@ -24,14 +23,14 @@ import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isRecordHidden }) => {
 
   const isAdmin = useSelector(selectIsAdmin, shallowEqual)
-  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName, matchId } = record;
+  const { scoreMemberId, scoreMemberName, assistMemberId, assistMemberName } = record;
   const isRecordEditable = isAdmin && !isRecordHidden;
   
   return (
         <RecordDetailItemContainer>
           <RecordContainer>
             <Player isHomeTeam={isHomeTeam}>
-            <StyledScoreIcon isRecordEditable={isRecordEditable}/>
+            <StyledScoreIcon admin={isRecordEditable.toString()}/>
             {
               isRecordEditable ? 
               <CustomDropdown
@@ -46,7 +45,7 @@ const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isRe
             }
             </Player>
             <Player isHomeTeam={isHomeTeam}>
-            <StyledAssistIcon isRecordEditable={isRecordEditable}/>
+            <StyledAssistIcon admin={isRecordEditable.toString()}/>
             {
               isRecordEditable ?       
               <CustomDropdown

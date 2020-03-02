@@ -17,11 +17,11 @@ const CustomIconButton = ({ type, id, handleClick }) => (
    <CustomIconButtonContainer>
       <Button className='button-icon' onClick={() => handleClick(id, type)}>
          {
-            type == 'add' ? <AddIcon className='icon' /> :
-            type == 'save' ? <SaveIcon className='icon'/> :
-            type == 'edit' ? <EditIcon className='icon' /> :
-            type == 'delete' ? <DeleteIcon className='icon' /> : 
-            type == 'delete-blue' ? <DeleteBlueIcon className='icon' /> : 
+            type === 'add' ? <AddIcon className='icon' /> :
+            type === 'save' ? <SaveIcon className='icon'/> :
+            type === 'edit' ? <EditIcon className='icon' /> :
+            type === 'delete' ? <DeleteIcon className='icon' /> : 
+            type === 'delete-blue' ? <DeleteBlueIcon className='icon' /> : 
             <ErrorIcon className='icon' /> 
          }
       </Button>

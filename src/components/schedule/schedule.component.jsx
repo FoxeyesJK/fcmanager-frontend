@@ -34,7 +34,7 @@ const Schedule = () => {
             }
             {
               this.props.matches.map(({ id, match}) => (
-                <ScheduleItem id={id} match={match} handleClick={this.handleClick} />
+                <ScheduleItem key={match.id} id={id} match={match} handleClick={this.handleClick} />
               ))
             }
             </TableBody>

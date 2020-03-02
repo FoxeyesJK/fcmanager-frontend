@@ -25,7 +25,7 @@ const User = () => {
   const isAdmin = useSelector(selectIsAdmin, shallowEqual)
 
   const dispatch = useDispatch();
-  const { username, password } = user;
+  const { password } = user;
 
   const handleLoginClick = event => {
     dispatch(setCurrentUser({username: 'Administrator', password: user.password}))

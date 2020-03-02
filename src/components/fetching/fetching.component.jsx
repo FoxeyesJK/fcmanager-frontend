@@ -7,7 +7,6 @@ import { fetchTeamsStart } from '../../redux/team/team.actions';
 import { fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart } from '../../redux/league/league.actions';
 import { fetchMembersStart } from '../../redux/member/member.actions';
 import { fetchMatchesStart } from '../../redux/match/match.actions';
-import { fetchClubsStart } from '../../redux/club/club.actions';
 import { fetchRolesStart } from '../../redux/role/role.actions';
 import { selectIsTeamFetching, selectIsTeamsLoaded } from '../../redux/team/team.selectors';
 import { selectIsLeagueFetching, selectIsLeaguesLoaded } from '../../redux/league/league.selectors';
@@ -24,7 +23,6 @@ const Fetching = ({ fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStar
     fetchMembersStart();
     fetchMatchesStart();
     fetchLeagueMatchRecordsStart();
-    //fetchClubsStart();
     fetchRolesStart();
   }, [fetchTeamsStart, fetchLeaguesStart, fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart, fetchMembersStart, fetchMatchesStart, fetchRolesStart]);
 
@@ -56,7 +54,6 @@ const mapDispatchToProps = dispatch => ({
   fetchLeagueMatchRecordsStart: () => dispatch(fetchLeagueMatchRecordsStart()),
   fetchMembersStart: () => dispatch(fetchMembersStart()),
   fetchMatchesStart: () => dispatch(fetchMatchesStart()),
-  //fetchClubsStart: () => dispatch(fetchClubsStart()),
   fetchRolesStart: () => dispatch(fetchRolesStart())
 });
 

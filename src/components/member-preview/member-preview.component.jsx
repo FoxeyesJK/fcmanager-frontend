@@ -15,7 +15,7 @@ const MemberPreview = ({ name, items, handleClick }) => {
         <TeamContainer>
           <Team>
           {
-            name != "null" ? name : "Others"
+            name !== "null" ? name : "Others"
           }
           </Team>
         </TeamContainer>

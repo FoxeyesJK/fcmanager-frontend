@@ -50,7 +50,7 @@ const Record = ({ type }) => {
             matchRecords
             .filter(matchRecord => matchRecord.type === type)
             .map((matchRecord, index) => 
-            <TableRow>
+            <TableRow key={matchRecord.id}>
           <TableIndexData>{ordinal(index+1)}</TableIndexData>
           <TableTeamData><TeamIcon teamLogoUrl={matchRecord.teamLogoUrl} /></TableTeamData>
           <TableMemberData>{matchRecord.memberName}</TableMemberData>

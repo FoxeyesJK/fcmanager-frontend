@@ -22,7 +22,6 @@ import {
 
 import FixturePreview from '../../components/fixture-preview/fixture-preview.component';
 import FixtureDetail from '../../components/fixture-detail/fixture-detail.component';
-import FixtureDetailItem from '../../components/fixture-detail-item/fixture-detail-item.component';
 import CustomIcon from '../../components/custom-icon-button/custom-icon-button.component';
 
 const Fixture = () => {
@@ -84,10 +83,9 @@ const Fixture = () => {
           </TableRow>
           <SimpleBarReact style={{maxHeight: 700}}>
           {
-            !!matches ? 
-              matches.value().map(match => 
-                <FixturePreview key={match.id} scheduledOn={match.scheduledOn} matches={match.items} selectedMatchId={matchId} handleClick={handleClick} />
-              ) : null
+              matches.value().map((match, index) => 
+                <FixturePreview key={index} scheduledOn={match.scheduledOn} matches={match.items} selectedMatchId={matchId} handleClick={handleClick} />
+              )
           }
           </SimpleBarReact>
         </Table>

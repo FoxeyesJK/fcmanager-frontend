@@ -30,11 +30,9 @@ import {
 
 
 import RecordPreview from '../record-preview/record-preview.component';
-import Dropdown from '../custom-dropdown/custom-dropdown.component';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { selectIsMatchesLoaded } from '../../redux/match/match.selectors';
 import { selectIsHidden } from '../../redux/record/record.selectors';
 
 moment.locale('en')
