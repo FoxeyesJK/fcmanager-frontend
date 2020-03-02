@@ -8,7 +8,7 @@ import {
 
 import RoleActionTypes from './role.types';
 
-const baseUrl = 'http://68.132.136.143:5611/';
+const baseUrl = 'https://68.132.136.143:5612/';
 const apiEndPoint = 'code/';
 export function* fetchRolesAsync() {
     try {
