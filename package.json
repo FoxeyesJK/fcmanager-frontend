@@ -2,7 +2,6 @@
   "name": "fcmanager-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://foxeyesjk.github.io/fcmanager-frontend",
   "dependencies": {
     "@progress/kendo-react-dateinputs": "^3.9.0",
     "@progress/kendo-react-intl": "^3.9.0",
