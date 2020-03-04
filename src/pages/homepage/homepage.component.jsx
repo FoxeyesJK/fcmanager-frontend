@@ -7,7 +7,6 @@ import {
   MainBanner
  } from './homepage.styles';
 
-
 const HomePage = () => {
     return (
       <HomePageContainer>
