@@ -1,36 +1,55 @@
 import styled from 'styled-components';
-import Select from 'react-select';
 
-import { MainTableColor } from '../../global.styles';
+import MainBannerImage from  '../../assets/main-banner-son3.jpg';
+import MainBannerMobileImage from  '../../assets/main-banner-mobile.png';
 
 export const HomePageContainer = styled.div`
-  width: 300px;
+
 `;
 
-export const StyledSelect = styled(Select)`
+export const TitleContainer = styled.div`
+  position: relative;
+  text-align: center;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    height: 800px
+  }
+`;
+
+export const Title = styled.div`
+  font-size: 50px;
+  padding: 20px;
+  font-family: Helvetica
+
+  @media screen and (max-width: 800px) {
+    font-size: 20px;
+    padding: 5px;
+  }
+`;
+
+export const SubTitle = styled.div`
+  padding: 20px;
+  font-size: 22px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 10px;
+    padding: 5px;
+  }
+`;
+
+
+export const MainBanner = styled.div`
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.3), #001131), url(${MainBannerImage});
   width: 100%;
-  border-radius: 20px;
-    
-
-  div {
-    background-color: ${MainTableColor};
-    color: white;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #4d1f7a;
-    }
+  height: 800px;
+  background-size: cover;
+  position: absolute;
+  @media screen and (max-width: 800px) {
+    height: 800px;
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.3), #001131), url(${MainBannerMobileImage});
   }
-
-  > div:nth-of-type(1) {
-    transform: skew(-15deg);
-    &:hover * {
-      background-color: #4d1f7a;
-    }
-  }
-
-  > div:nth-of-type(2) {
-      transform: skew(0);
-    }
-
 `;

@@ -1,13 +1,24 @@
 import React from 'react';
+import { 
+  HomePageContainer,
+  TitleContainer,
+  Title,
+  SubTitle,
+  MainBanner
+ } from './homepage.styles';
 
-class HomePage extends React.Component {
 
-  render() {
-
+const HomePage = () => {
     return (
-      <div></div>
+      <HomePageContainer>
+        <MainBanner />
+        <TitleContainer>
+          <Title>"Football is my happiness."</Title>
+          <SubTitle>HEUNG-MIN SON</SubTitle>
+        </TitleContainer>
+      </HomePageContainer>
     )
-  }
+  
 }
 
 export default HomePage;

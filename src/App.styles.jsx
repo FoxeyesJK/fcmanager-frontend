@@ -7,7 +7,7 @@ export const AppContainer= styled.div`
 `;
 
 export const BodyContainer= styled.div`
-    padding: 15px;
+    //padding: 15px;
 
     @media screen and (max-width: 800px) {
         padding: 5px 0;
