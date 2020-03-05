@@ -21,8 +21,8 @@ export function* fetchRolesAsync() {
 
 export function* fetchRolesStart() {
     yield takeLatest(
-        RoleActionTypes.FETCH_ROLES_START, //Start listening to actions
-        fetchRolesAsync //moment they heard run function
+        RoleActionTypes.FETCH_ROLES_START,
+        fetchRolesAsync
     );
 }
 

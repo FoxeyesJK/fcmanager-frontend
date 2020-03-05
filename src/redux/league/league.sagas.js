@@ -1,5 +1,7 @@
 import { takeLatest, select, call, all, put } from 'redux-saga/effects';
 import axios from 'axios';
+//listens for every action 
+//call: invokes method
 
 import {
     fetchLeaguesSuccess,

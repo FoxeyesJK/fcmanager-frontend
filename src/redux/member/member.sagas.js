@@ -1,7 +1,5 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
 import axios from 'axios';
-//listens for every action 
-//call: invokes method
 
 import {
     fetchMembersSuccess,
@@ -33,8 +31,8 @@ export function* fetchMembersAsync() {
 
 export function* fetchMembersStart() {
     yield takeLatest(
-        MemberActionTypes.FETCH_MEMBERS_START, //Start listening to actions
-        fetchMembersAsync //moment they heard run function
+        MemberActionTypes.FETCH_MEMBERS_START, 
+        fetchMembersAsync 
     );
 }
 

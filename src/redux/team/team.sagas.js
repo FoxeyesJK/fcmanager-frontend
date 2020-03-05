@@ -21,8 +21,8 @@ export function* fetchTeamsAsync() {
 
 export function* fetchTeamsStart() {
     yield takeLatest(
-        TeamActionTypes.FETCH_TEAMS_START, //Start listening to actions
-        fetchTeamsAsync //moment they heard run function
+        TeamActionTypes.FETCH_TEAMS_START,
+        fetchTeamsAsync
     );
 }
 

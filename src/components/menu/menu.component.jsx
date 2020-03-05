@@ -34,14 +34,6 @@ const Menu = () => {
           <StyledSquadIcon />
           <OptionName>Players</OptionName>
         </OptionLink>
-        {/* <OptionLink to='/strategy'>
-          <StrategyIcon className='icon' />
-          <OptionName>Strategy</OptionName>
-        </OptionLink>
-        <OptionLink to='/payment'>
-          <PaymentIcon className='icon' />
-          <OptionName>Payment</OptionName>
-        </OptionLink> */}
         <OptionLink to='/league'>
           <StyledLeagueIcon/>
           <OptionName>League</OptionName>

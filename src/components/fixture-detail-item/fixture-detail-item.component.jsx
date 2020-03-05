@@ -83,7 +83,7 @@ const FixtureDetailItem = ({ type }) => {
               <CustomDropdown
                 name='team'
                 value={homeTeamId}
-                handleChange={team => setMatches({ ...matches, homeTeamId: team.value })}//dispatch(setMatchHomeTeam(team.value))}//setMatches({ ...matches, homeTeamId: team.value })}
+                handleChange={team => setMatches({ ...matches, homeTeamId: team.value })}
                 options={teams}
                 required
               />
@@ -106,7 +106,7 @@ const FixtureDetailItem = ({ type }) => {
               <CustomDropdown
                 name='team'
                 value={awayTeamId}
-                handleChange={team => setMatches({ ...matches, awayTeamId: team.value })}//dispatch(setMatchAwayTeam(team.value))}
+                handleChange={team => setMatches({ ...matches, awayTeamId: team.value })}
                 options={teams}
                 required
               />
