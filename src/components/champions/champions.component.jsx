@@ -45,14 +45,6 @@ const Champions = () => {
           {champions.filter((champion, index) => index === 2).map(champion => champion.teamName)}
           </ThirdBarDesign>
         </ChampionContainer>
-
-      {/* <IconContainer>
-        <TeamIcon teamLogoUrl={teamLogoUrl} />
-      </IconContainer>
-      <TeamContainer>
-        <ChampionIcon />
-        <Team>{teamName}</Team>
-      </TeamContainer> */}
     </ChampionsContainer>
   )
 }

@@ -21,9 +21,7 @@ export const postRecordsStart = recordsMap => ({
 })
 
 export const postRecordsSuccess = ({ records, matchId }) => ({
-//export const postRecordsSuccess = (records) => ({
     type: RecordActionTypes.POST_RECORDS_SUCCESS,
-    //payload: records
     payload: records, matchId
 })
 

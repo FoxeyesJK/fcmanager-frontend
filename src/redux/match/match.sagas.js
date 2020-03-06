@@ -28,8 +28,8 @@ export function* fetchMatchesAsync() {
 
 export function* fetchMatchesStart() {
     yield takeLatest(
-        MatchActionTypes.FETCH_MATCHES_START, //Start listening to actions
-        fetchMatchesAsync //moment they heard run function
+        MatchActionTypes.FETCH_MATCHES_START,
+        fetchMatchesAsync
     );
 }
 
