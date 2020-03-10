@@ -6,9 +6,8 @@ FCManager Front-end provides users with optimized UI, UX, and responsive design 
 
 ### Features
 * Member Page (Alpha)
-* Team Page
 * Strategy Page
-* League Page
+* League Page (Alpha)
 * Fixture Page (Alpha)
 
 ### Languages & Tools
