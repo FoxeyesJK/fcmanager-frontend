@@ -8,6 +8,10 @@ export const HomePageContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
+  line-height: 1.08365;
+  letter-spacing: -.003em;
+  font-weight: 700;
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
   position: relative;
   text-align: center;
   height: 800px;
@@ -21,9 +25,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 50px;
-  padding: 20px;
-  font-family: Helvetica
+  font-size: 70px;
 
   @media screen and (max-width: 800px) {
     font-size: 20px;
@@ -32,8 +34,7 @@ export const Title = styled.div`
 `;
 
 export const SubTitle = styled.div`
-  padding: 20px;
-  font-size: 22px;
+  font-size: 48px;
 
   @media screen and (max-width: 800px) {
     font-size: 10px;

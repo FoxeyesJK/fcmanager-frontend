@@ -10,10 +10,11 @@ import {
 const HomePage = () => {
     return (
       <HomePageContainer>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato' type='text/css' />
         <MainBanner />
         <TitleContainer>
-          <Title>"Football is my happiness."</Title>
-          <SubTitle>HEUNG-MIN SON</SubTitle>
+          <Title>SPORTIFY</Title>
+          <SubTitle>Football is my happiness.</SubTitle>
         </TitleContainer>
       </HomePageContainer>
     )
