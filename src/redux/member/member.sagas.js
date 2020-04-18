@@ -15,8 +15,8 @@ import {
 
 import MemberActionTypes from './member.types';
 
-//const baseUrl = 'https://localhost:5612/';
-const baseUrl = 'https://68.132.136.143:5612/';
+const baseUrl = 'https://localhost:5612/';
+//const baseUrl = 'https://api.fcmanagers.club/';
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
     try {

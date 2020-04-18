@@ -18,6 +18,8 @@
     "ordinal": "^1.0.3",
     "original": "^1.0.2",
     "react": "^16.12.0",
+    "react-alert": "^7.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-datepicker": "^2.12.1",
     "react-datetime-picker": "^2.9.0",
     "react-dom": "^16.11.0",
@@ -43,6 +45,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start-prod": "react-scripts start",
+    "build-prod": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -62,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "eslint": "^6.8.0"
   }
 }

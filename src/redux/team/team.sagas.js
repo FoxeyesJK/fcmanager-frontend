@@ -8,7 +8,7 @@ import {
 
 import TeamActionTypes from './team.types';
 
-const baseUrl = 'https://68.132.136.143:5612/';
+const baseUrl = 'https://localhost:5612/';
 const apiEndPoint = 'team/';
 export function* fetchTeamsAsync() {
     try {

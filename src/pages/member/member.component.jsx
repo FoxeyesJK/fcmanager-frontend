@@ -54,9 +54,10 @@ const Member = () => {
 
     if (type === 'delete')
     {
-      dispatch(deleteMembersStart(id))
-    }
-    dispatch(setCurrentMemberId(id))
+      if(window.confirm('Delete this member?'))
+        dispatch(deleteMembersStart(id))
+    } else
+      dispatch(setCurrentMemberId(id))
   }
   
   

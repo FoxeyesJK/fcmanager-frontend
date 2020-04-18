@@ -14,8 +14,8 @@ import {
 
 import MatchActionTypes from './match.types';
 
-//const baseUrl = 'http://68.132.136.143:5611/';
-const baseUrl = 'https://68.132.136.143:5612/';
+const baseUrl = 'https://localhost:5612/';
+//const baseUrl = 'https://api.fcmanagers.club/';
 const apiEndPoint = 'match/';
 export function* fetchMatchesAsync() {
     try {

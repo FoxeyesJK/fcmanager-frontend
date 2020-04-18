@@ -58,11 +58,12 @@ const Fixture = () => {
 
     if (type === 'delete' || type === 'delete-blue')
     {
-      dispatch(deleteMatchesStart(id))
-    }
-
+      if(window.confirm('Delete this match?'))
+        dispatch(deleteMatchesStart(id))
+    } else {
     dispatch(setSelectedMatchId(id))
     dispatch(toggleRecordHidden(true))
+    }
   }
 
   return (
