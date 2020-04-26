@@ -11,7 +11,7 @@ import {
 
 import RecordActionTypes from './record.types';
 
-const baseUrl = 'https://localhost:5612/';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const apiEndPoint = 'matchrecord/';
 export function* fetchRecordsAsync({payload: { matchId }}) {
     try {

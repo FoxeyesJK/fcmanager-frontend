@@ -8,7 +8,7 @@ import {
 
 import RoleActionTypes from './role.types';
 
-const baseUrl = 'https://localhost:5612/';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const apiEndPoint = 'code/';
 export function* fetchRolesAsync() {
     try {

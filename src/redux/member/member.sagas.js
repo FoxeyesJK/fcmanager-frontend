@@ -15,8 +15,7 @@ import {
 
 import MemberActionTypes from './member.types';
 
-const baseUrl = 'https://localhost:5612/';
-//const baseUrl = 'https://api.fcmanagers.club/';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const apiEndPoint = 'member/';
 export function* fetchMembersAsync() {
     try {

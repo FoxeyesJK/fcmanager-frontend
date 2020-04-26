@@ -15,7 +15,7 @@ import {
 import LeagueActionTypes from './league.types';
 
 import { selectCurrentLeagueId } from './league.selectors';
-const baseUrl = 'https://localhost:5612/';
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const apiEndPoint = 'league/';
 
 export function* fetchLeaguesAsync() {
