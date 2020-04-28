@@ -35,7 +35,6 @@ export function* postRecordsAsync({payload}) {
         const recordRes = yield axios.post(baseUrl + apiEndPoint, payload.payload);
         const records = recordRes.data;
         const matchId = payload.matchId;
-
         yield put(postRecordsSuccess({records, matchId}))
     } catch (error) {
         yield put(postRecordsFailure(error.message))

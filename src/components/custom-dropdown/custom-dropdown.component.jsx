@@ -41,7 +41,7 @@ const CustomDropdown = ({ handleChange, value, options, isEmptySelectable, ...ot
             } : '...Select'
          }
          styles={customStyles}
-         options={isEmptySelectable ? [{ value: 0, label: 'Select...'}, ...options] : options} 
+         options={isEmptySelectable ? [{ value: null, label: 'Select...'}, ...options] : options} 
          onChange={handleChange}
          {...otherProps}
       />
