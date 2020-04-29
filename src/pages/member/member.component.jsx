@@ -4,6 +4,8 @@ import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import {
   MemberPage,
   MemberContainer,
+  MemberListContainer,
+  MemberUpsertContainer,
   TitleContainer,
   Title
 } from './member.styles';
@@ -67,24 +69,20 @@ const Member = () => {
         <Title>PLAYERS</Title>          
         {isAdmin ? <CustomIcon type='add' id={0} handleClick={handleClick} />: null}
       </TitleContainer>
-      {/* {
-      currentMemberId > 0 ?
-        members
-        .filter(member => member.id === currentMemberId)
-        .map(member => 
-        <MemberUpsert member={member} />) : null
-        } */}
-        {
-          currentMemberId >= 0 ?
-          <MemberUpsert /> : null
-        }
       <MemberContainer>
-      {
-        currentMemberId === undefined &&
-          teamMembers.value().map(({ ...otherMemberProps }, index) => (
-            <MemberPreview key={index} {...otherMemberProps} handleClick={handleClick}/>
-          ))
-      }
+        <MemberListContainer>
+        {
+            teamMembers.value().map(({ ...otherMemberProps }, index) => (
+              <MemberPreview key={index} {...otherMemberProps} handleClick={handleClick}/>
+            ))
+        }
+        </MemberListContainer>
+        <MemberUpsertContainer>
+          {
+            currentMemberId >= 0 ?
+            <MemberUpsert /> : null
+          }
+        </MemberUpsertContainer>
       </MemberContainer>
     </MemberPage>
   )

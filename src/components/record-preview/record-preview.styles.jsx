@@ -32,9 +32,6 @@ export const AwayTeamRecord = styled.div`
     text-align: right;
 `;
 
-
-
-
 export const Record = styled.div`
     display: flex;
     justify-content: space-between;

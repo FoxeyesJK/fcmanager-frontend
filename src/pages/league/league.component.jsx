@@ -20,17 +20,17 @@ const League = () => {
         <Champions />
       </ChampionsContainer>
       <RecordTablesContainer>
-      <StandingContainer >
-          <Standing />
-      </StandingContainer >
-      <RecordsContainer>
-        <RecordContainer>
-          <Record type={'score'} />
-        </RecordContainer>
-        <RecordContainer>
-          <Record type={'assist'} />
-        </RecordContainer>
-      </RecordsContainer>
+        <StandingContainer >
+            <Standing />
+        </StandingContainer >
+        <RecordsContainer>
+          <RecordContainer>
+            <Record type={'score'} />
+          </RecordContainer>
+          <RecordContainer>
+            <Record type={'assist'} />
+          </RecordContainer>
+        </RecordsContainer>
       </RecordTablesContainer>
     </LeaguePage>
     )

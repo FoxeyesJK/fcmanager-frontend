@@ -2,28 +2,25 @@ import styled from 'styled-components';
 import { SubTableColor, SubBackgroundColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
+    padding: 30px;
 
-    // @media screen and (max-width: 800px) {
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: center;
-    //     justify-content: center;
-    // }
+    @media screen and (max-width: 800px) {
+        padding: 15px;
+    }
 `;
 
 export const ChampionsContainer = styled.div`
-    padding: 20px;
+    padding: 30px;
 `;
 
 export const StandingContainer = styled.div`
-    background-color: ${SubBackgroundColor};
     width: 60%
-    margin: 0 5px;
+    padding: 10px 15px;
     display: flex;
 
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 1000px) {
         width: 100%;
-        margin: 0;
+        //padding: 10px 15px;
     }
 `;
 
@@ -31,9 +28,8 @@ export const RecordTablesContainer = styled.div`
     display: flex;
     justfy-content: space-between;
     width: 100%;
-    height: 400px;
 
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 1000px) {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -60,15 +56,15 @@ export const RecordsContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 0 15px;
     }
 `;
 
 
 export const RecordContainer = styled.div`
-    margin: 0 5px;
+    margin: 10px 15px;
 
     @media screen and (max-width: 1300px) {
         height: 100%;
-        margin: 0;
     }
 `;

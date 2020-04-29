@@ -27,6 +27,7 @@ const BarStyles = css`
     text-transform: uppercase;
     padding: 20px 0;
     font-style: italic;
+    border-radius: 20px 20px 0 0;
 
     @media screen and (max-width: 800px) {
         font-size: 10px;

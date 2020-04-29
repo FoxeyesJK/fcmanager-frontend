@@ -15,9 +15,13 @@ const IconStyles = css`
 
 export const StandingContainer = styled.div`
     flex-grow: 4;
+    padding: 10px;
+    background-color: ${SubBackgroundColor};
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(19,20,21,.1);
     
     @media screen and (max-width: 1300px) {
-        margin: 0;
+        margin: 0 15px;
     }
 
     @media screen and (max-width: 800px) {
@@ -31,6 +35,7 @@ export const Title = styled.div`
     font-weight: bold;
     color: ${TitleColor};
     margin: 5px 0px;
+    text-align: center;
 
     @media screen and (max-width: 800px) {
         text-align: center;
@@ -38,7 +43,6 @@ export const Title = styled.div`
 `;
 
 export const Table = styled.table`
-    background-color: ${SubBackgroundColor};
     text-align: center;
     width: 100%;
     //border: 3px solid ${MainTableColor};
@@ -56,8 +60,8 @@ export const TableRow = styled.tr`
 `;
 
 export const TableHeader = styled.th`
-    width: 40px;
     padding: 5px;
+    width: 35px;
 `;
 
 export const TableData = styled.td`
@@ -85,7 +89,7 @@ export const TableTeamText = styled.div`
 
 export const TableTeamHeader = styled.th`
     text-align: left;
-    width: 500px;
+    padding-left: 5px;
 
     @media screen and (max-width: 800px) {
         text-align: center;
@@ -93,8 +97,8 @@ export const TableTeamHeader = styled.th`
 `;
 
 export const TableIndexHeader = styled.th`
-    text-align: left;
     width: 40px;
+    text-align: left;
     padding-left: 5px;
 `;
 

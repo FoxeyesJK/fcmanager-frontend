@@ -5,7 +5,7 @@ import { TitleColor, MainBackgroundColor, SubBackgroundColor, BorderColor } from
 export const MemberUpsertContainer = styled.div`
     width: 400px; //600px for photo upload
     background-color: ${SubBackgroundColor};
-    margin: 20px;
+    margin: 48px 20px;
 
     @media screen and (max-width: 800px) {
         width: 100%;
@@ -23,7 +23,6 @@ export const FormContainer = styled.form`
 export const FormContentContainer = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 30px;
 
     @media screen and (max-width: 800px) {
         padding: 0 10px;
@@ -73,10 +72,11 @@ export const Title = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: ${TitleColor};
-    padding: 5px;
+    padding: 20px;
+    text-align: center;
 
     @media screen and (max-width: 800px) {
-        text-align: center;
+        padding: 5px;
     }
 `;
 

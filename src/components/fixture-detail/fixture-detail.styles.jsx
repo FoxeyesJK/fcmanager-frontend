@@ -7,6 +7,7 @@ export const FixtureDetailContainer = styled.div`
     background-color: ${SubBackgroundColor};
     margin-left: 40px;
     margin-top: 30px;
+    border-radius: 10px;
 
     @media screen and (max-width: 800px) {
         width: 100%;

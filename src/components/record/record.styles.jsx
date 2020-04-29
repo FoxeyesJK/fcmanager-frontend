@@ -31,6 +31,9 @@ export const RecordContainer = styled.div`
     background-color: ${SubBackgroundColor};
     width: 100%;
     display: flex;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 18, 51, 0.1);
+    padding: 10px
 
     @media screen and (max-width: 800px) {
         width: 100%;
@@ -78,13 +81,14 @@ export const TableRow = styled.tr`
 
 export const TableIndexHeader = styled.th`
     text-align: left;
-    width: 40px;
+    width: 45px;
     padding-left: 5px;
 `;
 
 export const TableTeamHeader = styled.th`
     text-align: left;
     width: 40px;
+    padding-left: 5px;
 `;
 
 export const TableMemberHeader = styled.th`
