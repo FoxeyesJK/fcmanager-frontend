@@ -30,7 +30,7 @@ const Menu = () => {
         <ClubType>football club</ClubType>
       </TitleContainer>
       <OptionsContainer>
-        <OptionLink to='/member'>
+        <OptionLink to='/member' activeClassName='active'>
           <StyledSquadIcon />
           <OptionName>Players</OptionName>
         </OptionLink>

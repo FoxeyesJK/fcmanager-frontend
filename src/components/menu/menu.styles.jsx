@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { ReactComponent as SquadIcon } from '../../assets/icon-squad.svg';
 import { ReactComponent as ReportIcon } from '../../assets/icon-report.svg';
@@ -84,14 +84,20 @@ export const ClubType = styled.div`
   padding: 5px;
 `;
 
-export const OptionLink = styled(Link)`
+export const OptionLink = styled(NavLink)`
   display: flex;
   padding: 16px 0;
   border-bottom: 1px solid 	#404040;
+  border-radius: 5px;
 
   @media (max-width: 800px) {
     padding: 10px 0;
     margin: auto;
+  }
+
+  &:hover {
+    background-color: #43370a;
+    transition: 0.3s;
   }
 `;
 

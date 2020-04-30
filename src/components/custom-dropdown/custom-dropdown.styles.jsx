@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Select from 'react-select';
 
-import { MainBackgroundColor, BorderColor } from '../../global.styles';
+import { MainBackgroundColor, SubBackgroundColor, BorderColor } from '../../global.styles';
 
 export const Dropdown = styled.div`
     width: 100%;
@@ -16,7 +16,7 @@ export const StyledSelect = styled(Select)`
     cursor: pointer;
 
     &:hover {
-      background-color: ${MainBackgroundColor};
+      background-color: ${SubBackgroundColor};
     }
   }
 
@@ -24,7 +24,7 @@ export const StyledSelect = styled(Select)`
     transform: skew(-15deg);
     border: solid 1px ${BorderColor}
     &:hover * {
-      background-color: ${MainBackgroundColor};
+      background-color: ${SubBackgroundColor};
     }
   }
 
