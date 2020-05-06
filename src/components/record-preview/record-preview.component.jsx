@@ -36,7 +36,7 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
 
   const handleSubmit = event => {
     event.preventDefault();
-    const payload = records.filter(record => record.scoreMemberId != null || record.assistMemberId != null)
+    const payload = records;
     dispatch(postRecordsStart({payload, matchId}));
     //success
     dispatch(toggleRecordHidden(true))

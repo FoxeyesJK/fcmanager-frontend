@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const MemberPreivewContainer = styled.div`
     padding: 20px;
-    height: 100%;
     width: 100%;
 `;
 
