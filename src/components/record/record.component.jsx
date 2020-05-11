@@ -51,7 +51,11 @@ const Record = ({ type }) => {
             .filter(matchRecord => matchRecord.type === type)
             .map((matchRecord, index) => 
             <TableRow key={matchRecord.id}>
-          <TableIndexData>{ordinal(index+1)}</TableIndexData>
+          <TableIndexData>
+            {
+              index !== 0 ? matchRecords[index-1].count !== matchRecord.count ? ordinal(index+1) : "" : ordinal(index+1)
+            }
+            </TableIndexData>
           <TableTeamData><TeamIcon teamLogoUrl={matchRecord.teamLogoUrl} /></TableTeamData>
           <TableMemberData>{matchRecord.memberName}</TableMemberData>
           <TableGoalData>{matchRecord.count}</TableGoalData>

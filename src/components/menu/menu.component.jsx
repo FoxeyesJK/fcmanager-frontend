@@ -44,7 +44,7 @@ const Menu = () => {
         </OptionLink>
         </OptionsContainer>
       </TitleOptionContainer>
-      {process.env.REACT_APP_MODE}
+      {process.env.REACT_APP_MODE !== "Production" ? process.env.REACT_APP_MODE : ""}
         <LoginContainer>
         {
           isAdmin ?

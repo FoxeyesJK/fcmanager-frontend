@@ -46,6 +46,8 @@
   "scripts": {
     "start": "env-cmd -e prod react-scripts start",
     "build": "env-cmd -e prod react-scripts build",
+    "start-qa": "env-cmd -e qa react-scripts start",
+    "build-qa": "env-cmd -e qa react-scripts build",
     "start-dev": "env-cmd -e dev react-scripts start",
     "build-dev": "env-cmd -e dev react-scripts build",
     "test": "react-scripts test",

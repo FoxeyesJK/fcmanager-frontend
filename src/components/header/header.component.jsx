@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 
 import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
+import LogoIcon from '../../assets/icon-nvlogo.png';
 import CustomDropdown from '../../components/custom-dropdown/custom-dropdown.component';
 
 import { selectLeagues, selectCurrentLeagueId } from '../../redux/league/league.selectors';
@@ -9,7 +10,8 @@ import { setCurrentLeague } from '../../redux/league/league.actions';
 
 import { 
   HeaderContainer, 
-  LogoContainer, 
+  LogoContainer,
+  LogoImg,
   TextContainer,
   Title,
   SubTitle
@@ -24,7 +26,7 @@ const Header = ({ match, isSelectedOption, hidden }) => {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <ClubIcon />
+        <LogoImg src={LogoIcon} />
       </LogoContainer>
       <TextContainer>
         <Title>TEAM REPORT</Title>

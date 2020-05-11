@@ -69,9 +69,14 @@ export const Table = styled.table`
 `;
 
 export const TableHead = styled.thead`
+    display: block;
 `;
 
 export const TableBody = styled.tbody`
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: 350px;
 `;
 
 export const TableRow = styled.tr`
@@ -113,11 +118,14 @@ export const TableTeamData = styled.td`
 `;
 
 export const TableMemberData = styled.td`
+    width: 500px;
     padding: 5px 10px;
     text-align: left;
 `;
 
 export const TableGoalData = styled.td`
+    text-align: center;
+    width: 80px;
     padding: 5px;
 `;
 

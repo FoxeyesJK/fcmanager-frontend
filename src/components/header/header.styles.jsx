@@ -13,6 +13,17 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled.div`
     width: 50px;
     height: 50px;
+    margin: auto 0;
+
+    &::before {
+        content: "";
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+    }
 `;
 
 export const TextContainer = styled.div`
@@ -36,4 +47,11 @@ export const SubTitle = styled.div`
     @media screen and (max-width: 800px) {
         width: 50vw;
     }
+`;
+
+export const LogoImg = styled.img`
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    position: relative;
 `;

@@ -46,7 +46,11 @@ const Standing = () => {
           {
               standings.map((standing, index) =>
               <TableRow key={index}>
-                <TableIndexData>{ordinal(index+1)}</TableIndexData>
+                <TableIndexData>
+                  {
+                    index !== 0 ? standings[index-1].points !== standing.points ? ordinal(index+1) : "" : ordinal(index+1)
+                  }
+                  </TableIndexData>
                 <TableTeamData><TeamIcon teamLogoUrl={standing.teamLogoUrl}/><TableTeamText>{standing.teamName}</TableTeamText></TableTeamData>
                 <TableData>{standing.played}</TableData>
                 <TableData>{standing.won}</TableData>

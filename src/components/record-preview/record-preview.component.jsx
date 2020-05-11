@@ -45,12 +45,12 @@ const RecordPreview = ({ fetchRecordsStart, addRowToRecord, records, matchId, ho
 
   const handleHomeClick = event => {
     setTempRecordId(tempRecordId + 1);
-    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistTeamId: homeTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId, isHomeTeam: true})
+    addRowToRecord({scoreMemberId: null, scoreTeamId: homeTeamId, assistTeamId: homeTeamId, assistMemberId: null, matchId: matchId, id: 0, tempRecordId: tempRecordId, isHomeTeam: true})
   }
 
   const handleAwayClick = event => {
     setTempRecordId(tempRecordId + 1);
-    addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistTeamId: awayTeamId, assistMemberId: null, matchId: matchId, codeId: 7, id: 0, tempRecordId: tempRecordId, isHomeTeam: false})
+    addRowToRecord({scoreMemberId: null, scoreTeamId: awayTeamId, assistTeamId: awayTeamId, assistMemberId: null, matchId: matchId, id: 0, tempRecordId: tempRecordId, isHomeTeam: false})
   }
     
   return (
