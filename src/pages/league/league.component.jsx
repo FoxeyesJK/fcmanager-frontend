@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import { 
   LeaguePage,
@@ -9,11 +10,18 @@ import {
   RecordContainer
 } from './league.styles.jsx';
 
+import { fetchLeagueStandingsStart, fetchLeagueMatchRecordsStart } from '../../redux/league/league.actions';
+
 import Champions from '../../components/champions/champions.component';
 import Standing from '../../components/standing/standing.component';
 import Record from '../../components/record/record.component';
 
 const League = () => {
+
+  const dispatch = useDispatch();
+
+  dispatch(fetchLeagueStandingsStart())
+  dispatch(fetchLeagueMatchRecordsStart())
     return (
     <LeaguePage>
       <ChampionsContainer>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SubTableColor, SubBackgroundColor } from '../../global.styles';
+import { SubTableColor } from '../../global.styles';
 
 export const LeaguePage = styled.div`
     padding: 30px;

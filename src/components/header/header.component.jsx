@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 
-import { ReactComponent as ClubIcon } from '../../assets/icon-tottenham.svg';
 import LogoIcon from '../../assets/icon-nvlogo.png';
 import CustomDropdown from '../../components/custom-dropdown/custom-dropdown.component';
 

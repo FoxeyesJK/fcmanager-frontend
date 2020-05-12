@@ -9,6 +9,12 @@ const IconStyles = css`
     height: 20px;
     width: 20px;
     margin: 10px;
+
+    @media screen and (max-width: 800px) {
+        width: 10px;
+        height: 10px;
+        margin: 0;
+    }
 `;
 
 export const TeamIcon = styled.div`
@@ -52,6 +58,9 @@ export const IconContainer = styled.div`
     background-color: #FFFFFF;
     border-radius: 50%;
 
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
 `;
 
 export const Title = styled.div`
@@ -59,6 +68,10 @@ export const Title = styled.div`
     font-weight: bold;
     color: ${TitleColor};
     padding: 10px 5px 0px 5px;
+
+    @media screen and (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 export const Table = styled.table`
@@ -76,7 +89,7 @@ export const TableBody = styled.tbody`
     display: block;
     overflow: auto;
     width: 100%;
-    height: 350px;
+    max-height: 350px;
 `;
 
 export const TableRow = styled.tr`
