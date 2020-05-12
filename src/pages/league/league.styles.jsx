@@ -5,7 +5,7 @@ export const LeaguePage = styled.div`
     padding: 30px;
 
     @media screen and (max-width: 800px) {
-        padding: 15px;
+        padding: 0;
     }
 `;
 
@@ -20,7 +20,7 @@ export const StandingContainer = styled.div`
 
     @media screen and (max-width: 1000px) {
         width: 100%;
-        //padding: 10px 15px;
+        padding: 0;
     }
 `;
 
@@ -66,5 +66,6 @@ export const RecordContainer = styled.div`
 
     @media screen and (max-width: 1300px) {
         height: 100%;
+        margin: 10px 0 0 0;
     }
 `;

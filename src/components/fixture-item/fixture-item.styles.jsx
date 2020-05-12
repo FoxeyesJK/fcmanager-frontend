@@ -28,20 +28,20 @@ export const TableData = Styled.div`
     padding: 5px 0;
     &:nth-child(1) {
         text-align: left;
-        width: 20%;
+        width: 25%;
         padding-left: 20px;
     }
     &:nth-child(2) {
         text-align: center;
-        width: 32%
+        width: 27%
     }
     &:nth-child(3) {
         text-align: center;
-        width: 20%
+        width: 15%
     }
     &:nth-child(4) {
         text-align: center;
-        width: 32%;
+        width: 27%;
     }
     &:nth-child(5) {
         text-align: center;

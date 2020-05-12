@@ -37,7 +37,6 @@ const RecordItem = ({ record, teamId, isHomeTeam, memberOptions, addRecord, isRe
                     name='member'
                     value={scoreMemberId}
                     handleChange={member => addRecord({ ...record, scoreMemberId: member.value })}
-                    //add to record redux
                     options={memberOptions.filter(member => member.teamId === teamId)}
                     isEmptySelectable
                 /> :

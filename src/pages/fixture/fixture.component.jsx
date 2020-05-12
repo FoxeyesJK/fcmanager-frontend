@@ -17,6 +17,7 @@ import {
   Title,
   TableRow,
   TableHeader,
+  TableBody,
   Table
 } from './fixture.styles.jsx';
 
@@ -82,13 +83,13 @@ const Fixture = () => {
               <TableHeader>AWAY</TableHeader>
               <TableHeader></TableHeader>
           </TableRow>
-          <SimpleBarReact style={{maxHeight: 700}}>
+          <TableBody>
           {
               matches.value().map((match, index) => 
                 <FixturePreview key={index} scheduledOn={match.scheduledOn} matches={match.items} selectedMatchId={matchId} handleClick={handleClick} />
               )
           }
-          </SimpleBarReact>
+          </TableBody>
         </Table>
         </FixtureListContainer>
         {

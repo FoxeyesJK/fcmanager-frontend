@@ -62,10 +62,18 @@ export const TableRow = styled.tr`
 export const TableHeader = styled.th`
     padding: 5px;
     width: 35px;
+
+    @media screen and (max-width: 800px) {
+        display: ${props => props.isMobileOff ? "none" : ""}
+    }
 `;
 
 export const TableData = styled.td`
     padding: 5px;
+
+    @media screen and (max-width: 800px) {
+        display: ${props => props.isMobileOff ? "none" : ""}
+    }
 `;
 
 export const TableTeamData = styled.td`

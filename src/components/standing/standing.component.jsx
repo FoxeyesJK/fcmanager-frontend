@@ -36,8 +36,8 @@ const Standing = () => {
             <TableHeader>W</TableHeader>
             <TableHeader>D</TableHeader>
             <TableHeader>L</TableHeader>
-            <TableHeader>GF</TableHeader>
-            <TableHeader>GA</TableHeader>
+            <TableHeader isMobileOff>GF</TableHeader>
+            <TableHeader isMobileOff>GA</TableHeader>
             <TableHeader>GD</TableHeader>
             <TableHeader>PTS</TableHeader>
           </TableRow>
@@ -56,8 +56,8 @@ const Standing = () => {
                 <TableData>{standing.won}</TableData>
                 <TableData>{standing.drawn}</TableData>
                 <TableData>{standing.lost}</TableData>
-                <TableData>{standing.goalFor}</TableData>
-                <TableData>{standing.goalAgainst}</TableData>
+                <TableData isMobileOff>{standing.goalFor}</TableData>
+                <TableData isMobileOff>{standing.goalAgainst}</TableData>
                 <TableData>{standing.goalDifference}</TableData>
                 <TableData>{standing.points}</TableData>
               </TableRow>

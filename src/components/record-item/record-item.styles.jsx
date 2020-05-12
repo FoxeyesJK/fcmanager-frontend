@@ -12,6 +12,11 @@ const AdminIconStyles = css`
     width: 24px;
     margin:auto;
     margin: auto 5px;
+
+    @media screen and (max-width: 800px) {
+        height: 20px;
+        width: 20px;
+    }
 `;
 
 const IconStyles = css`
@@ -41,6 +46,10 @@ export const Player = styled.div`
 export const PlayerName = styled.div`
     font-size: 14px;
     padding: 0px 5px;
+
+    @media screen and (max-width: 800px) {
+        font-size: 12px;
+    }
 `;
 
 

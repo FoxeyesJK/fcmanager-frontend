@@ -74,19 +74,19 @@ export const TableHeader = styled.div`
     &:nth-child(1) {
         text-align: left;
         padding-left: 20px;
-        width: 20%;
+        width: 25%;
     }
     &:nth-child(2) {
         text-align: center;
-        width: 32%;
+        width: 27%;
     }
     &:nth-child(3) {
         text-align: center;
-        width: 20%;
+        width: 15%;
     }
     &:nth-child(4) {
         text-align: center;
-        width: 32%;
+        width: 27%;
     }
     &:nth-child(5) {
         text-align: center;
@@ -95,5 +95,14 @@ export const TableHeader = styled.div`
     
     @media screen and (max-width: 600px) {
         font-size: 12px;
+    }
+`;
+
+export const TableBody = styled.div`
+    height: 700px;
+    overflow: auto;
+
+    @media screen and (max-width: 800px) {
+        height: 350px;
     }
 `;
