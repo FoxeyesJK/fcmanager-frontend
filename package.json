@@ -14,7 +14,7 @@
     "globalize": "^1.4.2",
     "iana-tz-data": "^2019.1.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "ordinal": "^1.0.3",
     "original": "^1.0.2",
     "react": "^16.12.0",
